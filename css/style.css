@@ -1,0 +1,40 @@
+#cpnalg {
+    color: #007cc6;
+}
+
+.row {
+    background: rgb(255, 255, 255);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 110px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    min-height: 650px;
+}
+
+.tracado {
+    border: 0.7px solid #bbbbbbd7;
+    border-style: dotted;
+    margin: 1.3px;
+}
+
+.list-group-item {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    width: 80%;
+    padding: 10px;
+}
+
+.area {
+    display: block;
+    position: relative;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    width: 100%;
+    height: 650px;
+    padding: 10px;
+}
