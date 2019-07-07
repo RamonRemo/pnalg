@@ -5,11 +5,11 @@
 .row {
     background: rgb(255, 255, 255);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-top: 110px;
+    margin-top: 80px;
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px;
-    min-height: 650px;
+    min-height: 610px;
 }
 
 .tracado {
@@ -25,6 +25,12 @@
     margin-top: 3px;
     width: 80%;
     padding: 10px;
+    background-color: #007cc6;
+    color: white;
+}
+
+.list-group-item:hover{
+    background-color: #005d92;
 }
 
 .area {
@@ -35,6 +41,10 @@
     margin-right: auto;
     margin-top: 3px;
     width: 100%;
-    height: 650px;
+    height: 610px;
     padding: 10px;
+}
+
+.atribuicao{
+    display: none;
 }
