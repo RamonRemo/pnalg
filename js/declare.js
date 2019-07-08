@@ -6,5 +6,4 @@ adicionarDeclaracoes.addEventListener("click", function (event) {
     var nomeVariavel = form.nome.value;
     console.log(tipoVariavel);
     console.log(nomeVariavel);
-    
 });

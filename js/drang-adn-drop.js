@@ -1,13 +1,16 @@
-function allowDrop(evevent) {
-    evevent.preventDefault();
+function dragstart_handler(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.effectAllowed = "copy";
 }
 
-function drag(evevent) {
-    evevent.dataTransfer.setData("text", evevent.target.id);
+function drop_handler(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var nodeCopy = document.getElementById(data).cloneNode(true);
+    nodeCopy.data = "newId";
+    ev.target.appendChild(nodeCopy);
 }
 
-function drop(evevent) {
-    evevent.preventDefault();
-    var data = evevent.dataTransfer.getData("text");
-    evevent.target.appendChild(document.getElementById(data));
+function dragover_handler(ev) {
+    ev.preventDefault();
 }
