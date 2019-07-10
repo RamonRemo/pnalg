@@ -17,6 +17,7 @@ function drop_handler(ev) {
         var id = document.querySelectorAll('#target button').length;
         var nodeCopy = document.getElementById(data).cloneNode(true);
         nodeCopy.id = data + "-" + id;
+        nodeCopy.dataset.toggle = "modal";
         document.getElementById('target').appendChild(nodeCopy);
     }
 }
