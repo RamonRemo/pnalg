@@ -25,10 +25,15 @@
     background-color: #f5f5f5;
 }
 
-/* -------------------- Scroll Bar --------------------*/
+/* -------------------- /Scroll Bar --------------------*/
 
 #cpnalg {
     color: #007cc6;
+}
+
+ul {
+    margin-left: 10px;
+    list-style-type: none;
 }
 
 .row {
@@ -76,4 +81,9 @@
 
 .atribuicao {
     display: none;
+}
+
+.componente-declare {
+    padding: 5px;
+    background-color: rgb(189, 189, 189);
 }

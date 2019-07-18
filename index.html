@@ -28,22 +28,28 @@
                 <div class="col tracado">
                     <div class="mt-4" data-id="components">
                         <!-- Componente Declare -->
-                        <button type="button" class="list-group-item btn" data-target="#modalDeclare"
-                            ondragstart="dragstart_handler(event);" draggable="true" id="declare">
-                            Declare
-                        </button>
+                        <div id="componente-declare" ondragstart="dragstart_handler(event);" draggable="true">
+                            <button type="button" class="list-group-item btn" data-target="#modalDeclare" id="declare">
+                                Declare
+                            </button>
+                        </div>
                         <!-- Componente Leia -->
-                        <button type="button" class="list-group-item btn" ondragstart="dragstart_handler(event);"
-                            draggable="true" id="leia">Leia</button>
+                        <div id="componente-leia" ondragstart="dragstart_handler(event);" draggable="true">
+                            <button type="button" class="list-group-item btn" id="leia">Leia</button>
+                        </div>
                         <!-- Componente Exiba -->
-                        <button type="button" class="list-group-item btn" ondragstart="dragstart_handler(event);"
-                            draggable="true" id="exiba">Exiba</button>
+                        <div id="componente-exiba" ondragstart="dragstart_handler(event);" draggable="true">
+                            <button type="button" class="list-group-item btn" id="exiba">Exiba</button>
+                        </div>
                         <!-- Componente Atribuicao -->
-                        <button type="button" class="list-group-item btn" data-target="#modalAtribuicao"
-                            ondragstart="dragstart_handler(event);" draggable="true" id="atribuicao">Atribuição</button>
+                        <div id="componente atribuicao" ondragstart="dragstart_handler(event);" draggable="true">
+                            <button type="button" class="list-group-item btn" data-target="#modalAtribuicao"
+                                id="atribuicao">Atribuição</button>
+                        </div>
                         <!-- Componente Se -->
-                        <button type="button" class="list-group-item btn" ondragstart="dragstart_handler(event);"
-                            draggable="true" id="se">Se</button>
+                        <div id="componente-se" ondragstart="dragstart_handler(event);" draggable="true">
+                            <button type="button" class="list-group-item btn" id="se">Se</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Area -->
@@ -76,10 +82,10 @@
                         <div class="form-group" id="form-tipo">
                             <label for="tipo">Tipo de Dado</label>
                             <select class="form-control" id="tipo">
-                                <option>Inteiro</option>
-                                <option>Real</option>
-                                <option>Caractere</option>
-                                <option>Lógico</option>
+                                <option>inteiro</option>
+                                <option>real</option>
+                                <option>caractere</option>
+                                <option>logico</option>
                             </select>
                         </div>
                         <div class="form-group">
