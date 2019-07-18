@@ -83,7 +83,8 @@ ul {
     display: none;
 }
 
-.componente-declare {
+.componente{
     padding: 5px;
     background-color: rgb(189, 189, 189);
+    margin-bottom: 2px;
 }
