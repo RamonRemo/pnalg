@@ -1,12 +1,8 @@
-var adicionarAtribuicoes =document.querySelector("#btn-atribuicao");
+var adicionarAtribuicoes = document.querySelector("#btn-atribuicao");
 adicionarAtribuicoes.addEventListener("click", function (event) {
     event.preventDefault();
-
-    var ul = document.querySelector("#atribuicoes");
-    var li = document.createElement("li");
-    li.id = "atribuicao";
-
-    ul.appendChild(li);
+    var variavel = document.querySelectorAll("#variavel");
+    console.log(variavel);
     $("#modalDeclare").modal('hide');
 
     if (tipoVariavel == "caractere") {

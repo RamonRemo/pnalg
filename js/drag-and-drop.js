@@ -16,7 +16,7 @@ function drop_handler(ev) {
     } else {
         var id = document.querySelectorAll('#target button').length;
         var nodeCopy = document.getElementById(data).cloneNode(true);
-
+        var listVariavel = document.querySelectorAll('#variavel');
         switch (nodeCopy.id) {
 
             case 'componente-declare':
@@ -26,6 +26,10 @@ function drop_handler(ev) {
                 break;
 
             case 'componente-leia':
+                if (listVariavel.length == "0") {
+                    bootbox.alert("Declare ao menos uma variável!");
+                    return;
+                }
                 nodeCopy.className = "componente";
                 break;
 
@@ -34,7 +38,6 @@ function drop_handler(ev) {
                 break;
 
             case 'componente-atribuicao':
-                var listVariavel = document.querySelectorAll('#variavel');
                 if (listVariavel.length == "0") {
                     bootbox.alert("Declare ao menos uma variável!");
                     return;
@@ -60,18 +63,8 @@ function dragover_handler(ev) {
 }
 
 function componenteDeclare(nodeCopy) {
-    var div = document.createElement("div");
-    div.setAttribute('id', 'variaveis-declaradas');
-
-    var divVariaveis = document.createElement("div");
-    divVariaveis.className = "card mt-1";
-
     var ul = document.createElement("ul");
     ul.setAttribute('id', 'variaveis');
-    ul.className = "list-group list-group-flush";
-    divVariaveis.appendChild(ul);
-
-    div.appendChild(divVariaveis);
-
-    nodeCopy.appendChild(div);
+    ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
+    nodeCopy.appendChild(ul);
 }

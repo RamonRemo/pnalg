@@ -25,14 +25,13 @@
     background-color: #f5f5f5;
 }
 
-/* -------------------- /Scroll Bar --------------------*/
+/* -------------------- Gerais --------------------*/
 
 #cpnalg {
     color: #007cc6;
 }
 
 ul {
-    margin-left: 10px;
     list-style-type: none;
 }
 
@@ -42,7 +41,7 @@ ul {
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px;
-    background: rgb(255, 255, 255);
+    background: white;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -79,12 +78,29 @@ ul {
     margin-top: 10px;
 }
 
-.atribuicao {
-    display: none;
+.componente {
+    background-color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    box-shadow: 7px 7px 5px rgba(190, 190, 190, 0.76);
 }
 
-.componente{
-    padding: 5px;
-    background-color: rgb(189, 189, 189);
+/* -------------------- Variaveis "Declare" --------------------*/
+.componente-variavel-ul {
+    margin: auto;
+    width: 80%;
+}
+
+.componente-variavel-li {
+    border: 0.7px solid #007cc6;
+    border-radius: 5px;
     margin-bottom: 2px;
+    padding: 6px;
+}
+
+/* -------------------- Atribuição --------------------*/
+
+.atribuicao {
+    display: none;
 }
