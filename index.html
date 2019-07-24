@@ -17,7 +17,7 @@
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar fixed-top navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-dark bg-dark" id="step0">
             <a class="navbar-brand" href="index.html" id="cpnalg">
                 <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="CPNAlg">
                 CPNAlg
@@ -28,8 +28,7 @@
         <section>
             <div class="row">
                 <!-- Componentes -->
-                <div class="col tracado" id='kanvas-drag'
-                    data-intro='Componentes básicos para que você possa criar um fluxograma!'>
+                <div class="col tracado" id="step1">
                     <div class="mt-4" data-id="components">
                         <!-- Componente Declare -->
                         <div id="componente-declare" ondragstart="dragstart_handler(event);" draggable="true">
@@ -56,14 +55,14 @@
                     </div>
                 </div>
                 <!-- Area -->
-                <div class="col tracado" data-id="area" data-step='2'>
+                <div class="col tracado" data-id="area" id="step2">
                     <div id="target" class="area" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
                     </div>
                 </div>
 
                 <!-- Run -->
-                <div class="col tracado d-flex align-items-end d-flex justify-content-center">
-                    <button data-step='3' type="button" class="btn btn-success mb-2 btn-lg btn-block">
+                <div class="col tracado d-flex align-items-end d-flex justify-content-center" id="step3">
+                    <button id="step4" type="button" class="btn btn-success mb-2 btn-lg btn-block">
                         Simular
                     </button>
                 </div>
