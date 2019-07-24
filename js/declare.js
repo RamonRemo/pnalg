@@ -7,7 +7,7 @@ adicionarDeclaracoes.addEventListener("click", function (event) {
     form.nome.value = "";
 
     criaVariavel(tipoVariavel, nomeVariavel);
-    insereEmOptions(nomeVariavel);
+    insereEmOptions(tipoVariavel, nomeVariavel);
 
     $("#modalDeclare").modal('hide');
 });
@@ -22,9 +22,10 @@ function criaVariavel(tipoVariavel, nomeVariavel) {
     ul.appendChild(li);
 }
 
-function insereEmOptions(nomeVariavel) {
+function insereEmOptions(tipoVariavel, nomeVariavel) {
     var variaveisOptions = document.querySelector('#variaveis-options');
     var options = document.createElement('option');
-    options.appendChild(document.createTextNode(nomeVariavel));
+    options.text = nomeVariavel;
+    options.value = tipoVariavel;
     variaveisOptions.appendChild(options);
 }
