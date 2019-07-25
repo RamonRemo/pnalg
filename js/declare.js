@@ -14,7 +14,7 @@ adicionarDeclaracoes.addEventListener("click", function (event) {
 
 function criaVariavel(tipoVariavel, nomeVariavel) {
     var variavelDeclarada = document.createTextNode(tipoVariavel + ": " + nomeVariavel + ";");
-    var ul = document.querySelector("#variaveis");
+    var ul = document.querySelector("#declaracoes");
     var li = document.createElement("li");
     li.id = "variavel";
     li.className = "componente-variavel-li";
@@ -23,7 +23,7 @@ function criaVariavel(tipoVariavel, nomeVariavel) {
 }
 
 function insereEmOptions(tipoVariavel, nomeVariavel) {
-    var variaveisOptions = document.querySelector('#variaveis-options');
+    var variaveisOptions = document.querySelector('#variaveisOptions');
     var options = document.createElement('option');
     options.text = nomeVariavel;
     options.value = tipoVariavel;

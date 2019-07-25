@@ -1,9 +1,15 @@
-var comboVar = document.getElementById("variaveis-options");
+var nomeDaVariavel;
+var tipoDaVariavel;
+
+var comboVar = document.getElementById("variaveisOptions");
 comboVar.addEventListener("click", function (event) {
     event.preventDefault();
 
     var tipoVariavel = comboVar.options[comboVar.selectedIndex].value;
     var nomeVariavel = comboVar.options[comboVar.selectedIndex].text;
+
+    nomeDaVariavel = nomeVariavel;
+    tipoDaVariavel = tipoVariavel;
 
     switch (tipoVariavel) {
 
@@ -28,10 +34,45 @@ comboVar.addEventListener("click", function (event) {
             break;
     }
 
-    $("#modalDeclare").modal('hide');
-
 });
 
+var adicionarAtribuicao = document.querySelector("#adciona-atribuicoes");
+adicionarAtribuicao.addEventListener("click", function (event) {
+    event.preventDefault();
+    var form = document.querySelector("#form-atribuicao");
+    var valor;
+    switch (tipoDaVariavel) {
+
+        case 'inteiro':
+            valor = form.valorInteiro.value;
+            break;
+
+        case 'real':
+            valor = form.valorReal.value;
+            break;
+
+        case 'caractere':
+            valor = form.valorCaractere.value;
+            break;
+
+        case 'logico':
+            valor = form.valorLogico.value;
+            break;
+    }
+
+    criaComponente(valor);
+    $("#modalAtribuicao").modal('hide');
+});
+
+function criaComponente(valor) {
+    var variavelDeclarada = document.createTextNode(nomeDaVariavel + " <− " + valor + ";");
+    var ul = document.querySelector("#atribuicoes");
+    var li = document.createElement("li");
+    li.id = "variavel";
+    li.className = "componente-variavel-li";
+    li.appendChild(variavelDeclarada);
+    ul.appendChild(li);
+}
 
 function dysplayNone(tipo) {
     tipoInt = document.getElementById("inteiro");

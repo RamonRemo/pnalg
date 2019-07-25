@@ -22,7 +22,7 @@ function drop_handler(ev) {
             case 'componente-declare':
                 document.getElementById(data).remove()
                 nodeCopy.className = "componente";
-                componenteDeclare(nodeCopy);
+                componentes(nodeCopy, "declaracoes");
                 break;
 
             case 'componente-leia':
@@ -43,6 +43,7 @@ function drop_handler(ev) {
                     return;
                 }
                 nodeCopy.className = "componente";
+                componentes(nodeCopy, "atribuicoes");
                 break;
 
             case 'componente-se':
@@ -62,9 +63,9 @@ function dragover_handler(ev) {
     ev.preventDefault();
 }
 
-function componenteDeclare(nodeCopy) {
+function componentes(nodeCopy, nome) {
     var ul = document.createElement("ul");
-    ul.setAttribute('id', 'variaveis');
+    ul.setAttribute('id', nome);
     ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
     nodeCopy.appendChild(ul);
 }
