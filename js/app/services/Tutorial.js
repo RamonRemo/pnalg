@@ -1,5 +1,5 @@
 $(function () {
-    var introguide = introJs();
+    let introguide = introJs();
     introguide.setOptions({
         steps: [
             {

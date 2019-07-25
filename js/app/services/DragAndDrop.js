@@ -1,5 +1,5 @@
 function dragstart_handler(ev) {
-    var target = $(ev.target).closest('[data-id]');
+    let target = $(ev.target).closest('[data-id]');
     if (target.data('id') == "components") {
         ev.dataTransfer.setData("text", ev.target.id);
         ev.dataTransfer.effectAllowed = "copy";
@@ -10,13 +10,13 @@ function dragstart_handler(ev) {
 
 function drop_handler(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
+    let data = ev.dataTransfer.getData("text");
     if (document.getElementById(data) == null) {
         return;
     } else {
-        var id = document.querySelectorAll('#target button').length;
-        var nodeCopy = document.getElementById(data).cloneNode(true);
-        var listVariavel = document.querySelectorAll('#variavel');
+        let id = document.querySelectorAll('#target button').length;
+        let nodeCopy = document.getElementById(data).cloneNode(true);
+        let listVariavel = document.querySelectorAll('#variavel');
         switch (nodeCopy.id) {
 
             case 'componente-declare':
@@ -53,7 +53,7 @@ function drop_handler(ev) {
 
         nodeCopy.id = data + "-" + id;
 
-        var modal = nodeCopy.childNodes[1];
+        let modal = nodeCopy.childNodes[1];
         modal.dataset.toggle = "modal";
         document.getElementById('target').appendChild(nodeCopy);
     }
@@ -64,7 +64,7 @@ function dragover_handler(ev) {
 }
 
 function componentes(nodeCopy, nome) {
-    var ul = document.createElement("ul");
+    let ul = document.createElement("ul");
     ul.setAttribute('id', nome);
     ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
     nodeCopy.appendChild(ul);

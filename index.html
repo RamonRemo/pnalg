@@ -12,6 +12,7 @@
 
     <!-- Meu CSS -->
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+
 </head>
 
 <body>
@@ -71,21 +72,20 @@
     </main>
 
     <!-- Modal Declare -->
-    <div class="modal fade" id="modalDeclare" tabindex="-1" role="dialog" aria-labelledby="modalDeclare"
-        aria-hidden="true">
+    <div class="modal fade" id="modalDeclare" role="dialog" aria-labelledby="modalDeclare" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalDeclare">Declare</h5>
+                    <h5 id="modalDeclare" class="modal-title">Declare</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="form-declare">
-                        <div class="form-group" id="form-tipo">
-                            <label for="tipo">Tipo de Dado</label>
-                            <select class="form-control" id="tipo">
+                    <form id="form-declare" onsubmit="declaracoesController.adiciona(event)">
+                        <div id="form-tipo" class="form-group">
+                            <label for="declaracoes-tipo">Tipo de Dado</label>
+                            <select id="declaracoes-tipo" class="form-control" required>
                                 <option>inteiro</option>
                                 <option>real</option>
                                 <option>caractere</option>
@@ -93,14 +93,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="variavelNome">Nome da Variável</label>
-                            <input class="form-control" type="text" placeholder="digite o nome variável" id="nome">
+                            <label for="declaracoes-nome">Nome da Variável</label>
+                            <input id="declaracoes-nome" class="form-control" type="text"
+                                placeholder="digite o nome variável" required autofocus>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button class="btn btn-primary" type="submit">Salvar</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button id="adiciona-declaracoes" type="button" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>
@@ -118,51 +119,67 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="form-atribuicao">
+                    <form id="form-atribuicao" onsubmit="atribuicoesController.adiciona(event)">
                         <div class="form-group" id="form-variaveis">
-                            <label for="variaveisOptions">Variaveis Declaras</label>
-                            <select class="form-control" id="variaveisOptions">
+                            <label for="atribuicao-nome">Variaveis Declaras</label>
+                            <select class="form-control" id="atribuicao-nome">
                             </select>
                         </div>
                         <div id="inteiro" class="form-group atribuicao mt-3">
-                            <label for="valorInteiro">Tipo de Dados Inteiro</label>
-                            <input id="valorInteiro" class="form-control" type="number" placeholder="aceita números inteiros">
+                            <label for="atribuicaoValorInt">Tipo de Dados Inteiro</label>
+                            <input id="atribuicaoValorInt" class="form-control" type="number"
+                                placeholder="aceita números inteiros">
                         </div>
                         <div id="real" class="form-group atribuicao mt-3">
-                            <label for="valorReal">Tipo de Dados Real</label>
-                            <input id="valorReal" class="form-control" type="number" step="0.1" placeholder="aceita números decimais">
+                            <label for="atribuicaoValorFloat">Tipo de Dados Real</label>
+                            <input id="atribuicaoValorFloat" class="form-control" type="number" step="0.1"
+                                placeholder="aceita números decimais">
                         </div>
                         <div id="caractere" class="form-group atribuicao mt-3">
-                            <label for="valorCaractere">Tipo de Dados Caractere</label>
-                            <input id="valorCaractere" class="form-control" type="text" placeholder="aceita cadeias de caractere">
+                            <label for="atribuicaoValorChar">Tipo de Dados Caractere</label>
+                            <input id="atribuicaoValorChar" class="form-control" type="text"
+                                placeholder="aceita cadeias de caractere">
                         </div>
                         <div id="logico" class="form-group atribuicao mt-3">
-                            <label for="valorLogico">Tipo de Dados Lógico</label>
-                            <select id="valorLogico" class="form-control">
+                            <label for="atribuicaoValorBoolean">Tipo de Dados Lógico</label>
+                            <select id="atribuicaoValorBoolean" class="form-control">
                                 <option>true</option>
                                 <option>false</option>
                             </select>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button id="adciona-atribuicoes" type="button" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Externo -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
     <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="js/drag-and-drop.js" type="text/javascript"></script>
-    <script src="js/declare.js" type="text/javascript"></script>
-    <script src="js/atribuicao.js" type="text/javascript"></script>
-    <script src="js/tutorial.js" type="text/javascript"></script>
+
+    <!-- JavaScript -->
+    <script src="js/app/services/Tutorial.js" type="text/javascript"></script>
+    <script src="js/app/services/DragAndDrop.js" type="text/javascript"></script>
+    <script src="js/app/services/EscutadorAtribuicoes.js" type="text/javascript"></script>
+    <script src="js/app/utils/Utils.js" type="text/javascript"></script>
+    <script src="js/app/models/Declaracoes.js" type="text/javascript"></script>
+    <script src="js/app/controllers/DeclaracoesController.js" type="text/javascript"></script>
+    <script src="js/app/models/ListDeclaracoes.js" type="text/javascript"></script>
+    <script src="js/app/models/Atribuicoes.js" type="text/javascript"></script>
+    <script src="js/app/controllers/AtribuicoesController.js" type="text/javascript"></script>
+    <script src="js/app/models/ListAtribuicoes.js" type="text/javascript"></script>
+
+    <script>
+        var declaracoesController = new DeclaracoesController();
+        var atribuicoesController = new AtribuicoesController();
+    </script>
 </body>
 
 </html>
