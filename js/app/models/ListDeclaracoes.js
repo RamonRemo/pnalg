@@ -13,4 +13,9 @@ class ListDeclaracoes {
 
         return [].concat(this._declaracoes);
     }
+
+    apaga() {
+
+        return [].concat(this._declaracoes[this._declaracoes--]);
+    }
 }

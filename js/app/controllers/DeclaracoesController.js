@@ -14,13 +14,20 @@ class DeclaracoesController {
 
         let declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(declaracao);
+
+        Views.updateOptions(this._listDeclaracoes, 'atribuicao-nome');
+        Views.updateOptions(this._listDeclaracoes, 'exiba-variavel');
+
+        DeclaracoesView.exiba(this._listDeclaracoes, this._inputNome, this._inputTipo);
         this._limpaForm();
 
         $("#modalDeclare").modal('hide');
-        declaracao.printObject();
-        declaracao.insereEmAtribuicoesOptions();
     }
 
+    remove() {
+
+    }
+    
     _newDeclaracoes() {
 
         return new Declaracoes(this._inputNome.value, this._inputTipo.value);

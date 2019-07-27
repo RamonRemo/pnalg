@@ -1,4 +1,5 @@
 function dragstart_handler(ev) {
+    
     let target = $(ev.target).closest('[data-id]');
     if (target.data('id') == "components") {
         ev.dataTransfer.setData("text", ev.target.id);
@@ -9,8 +10,10 @@ function dragstart_handler(ev) {
 }
 
 function drop_handler(ev) {
+
     ev.preventDefault();
     let data = ev.dataTransfer.getData("text");
+
     if (document.getElementById(data) == null) {
         return;
     } else {
@@ -20,7 +23,7 @@ function drop_handler(ev) {
         switch (nodeCopy.id) {
 
             case 'componente-declare':
-                document.getElementById(data).remove()
+                document.getElementById(data).remove();
                 nodeCopy.className = "componente";
                 componentes(nodeCopy, "declaracoes");
                 break;
@@ -35,6 +38,7 @@ function drop_handler(ev) {
 
             case 'componente-exiba':
                 nodeCopy.className = "componente";
+                componentes(nodeCopy, "exiba");
                 break;
 
             case 'componente-atribuicao':
@@ -42,6 +46,8 @@ function drop_handler(ev) {
                     bootbox.alert("Declare ao menos uma variável!");
                     return;
                 }
+
+                document.getElementById(data).remove()
                 nodeCopy.className = "componente";
                 componentes(nodeCopy, "atribuicoes");
                 break;
@@ -60,10 +66,12 @@ function drop_handler(ev) {
 }
 
 function dragover_handler(ev) {
+
     ev.preventDefault();
 }
 
 function componentes(nodeCopy, nome) {
+
     let ul = document.createElement("ul");
     ul.setAttribute('id', nome);
     ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
