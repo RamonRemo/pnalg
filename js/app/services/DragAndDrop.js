@@ -1,79 +1,76 @@
-function dragstart_handler(ev) {
-    
+function dragstartHandler(ev) {
+
     let target = $(ev.target).closest('[data-id]');
-    if (target.data('id') == "components") {
-        ev.dataTransfer.setData("text", ev.target.id);
-        ev.dataTransfer.effectAllowed = "copy";
-    } else {
+
+    if (target.data('id') != "components") {
         return;
     }
+
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.effectAllowed = "copy";
 }
 
-function drop_handler(ev) {
+function dropHandler(ev) {
 
     ev.preventDefault();
     let data = ev.dataTransfer.getData("text");
 
     if (document.getElementById(data) == null) {
         return;
-    } else {
-        let id = document.querySelectorAll('#target button').length;
-        let nodeCopy = document.getElementById(data).cloneNode(true);
-        let listVariavel = document.querySelectorAll('#variavel');
-        switch (nodeCopy.id) {
-
-            case 'componente-declare':
-                document.getElementById(data).remove();
-                nodeCopy.className = "componente";
-                componentes(nodeCopy, "declaracoes");
-                break;
-
-            case 'componente-leia':
-                if (listVariavel.length == "0") {
-                    bootbox.alert("Declare ao menos uma variável!");
-                    return;
-                }
-                nodeCopy.className = "componente";
-                break;
-
-            case 'componente-exiba':
-                nodeCopy.className = "componente";
-                componentes(nodeCopy, "exiba");
-                break;
-
-            case 'componente-atribuicao':
-                if (listVariavel.length == "0") {
-                    bootbox.alert("Declare ao menos uma variável!");
-                    return;
-                }
-
-                document.getElementById(data).remove()
-                nodeCopy.className = "componente";
-                componentes(nodeCopy, "atribuicoes");
-                break;
-
-            case 'componente-se':
-                nodeCopy.className = "componente";
-                break;
-        }
-
-        nodeCopy.id = data + "-" + id;
-
-        let modal = nodeCopy.childNodes[1];
-        modal.dataset.toggle = "modal";
-        document.getElementById('target').appendChild(nodeCopy);
     }
+
+    let nodeCopy = document.getElementById(data).cloneNode(true);
+    nodeCopy.className = "componente";
+
+    if (!valida(data, nodeCopy)) {
+        return;
+    }
+
+    let id = document.querySelectorAll('#target button').length;
+    nodeCopy.id = data + "-" + id;
+
+    let modal = nodeCopy.childNodes[1];
+    modal.dataset.toggle = "modal";
+
+    document.getElementById('target').appendChild(nodeCopy);
 }
 
-function dragover_handler(ev) {
+function dragoverHandler(ev) {
 
     ev.preventDefault();
 }
 
-function componentes(nodeCopy, nome) {
 
-    let ul = document.createElement("ul");
-    ul.setAttribute('id', nome);
-    ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
-    nodeCopy.appendChild(ul);
+function valida(data, nodeCopy) {
+
+    let listVariavel = document.querySelectorAll('#variavel');
+
+    switch (nodeCopy.id) {
+
+        case 'componente-declare':
+            document.getElementById(data).remove();
+            return true;
+
+        case 'componente-leia':
+            if (listVariavel.length == "0") {
+                bootbox.alert("Declare ao menos uma variável!");
+                return false;
+            }
+            return true;
+
+        case 'componente-exiba':
+            return true;
+
+        case 'componente-atribuicao':
+            if (listVariavel.length == "0") {
+                bootbox.alert("Declare ao menos uma variável!");
+                return false;
+            }
+
+            document.getElementById(data).remove()
+            return true;
+
+        case 'componente-se':
+            return true;
+    }
 }

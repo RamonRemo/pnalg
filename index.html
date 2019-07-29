@@ -32,33 +32,38 @@
                 <div class="col tracado" id="step1">
                     <div class="mt-4" data-id="components">
                         <!-- Componente Declare -->
-                        <div id="componente-declare" ondragstart="dragstart_handler(event);" draggable="true">
+                        <div id="componente-declare" ondragstart="dragstartHandler(event);" draggable="true">
                             <button type="button" class="list-group-item btn" data-target="#modalDeclare"
                                 id="btn-declare">Declare</button>
+                            <ul id="declaracoes" class="list-group list-group-flush mt-2 componente-variavel-ul"></ul>
                         </div>
                         <!-- Componente Leia -->
-                        <div id="componente-leia" ondragstart="dragstart_handler(event);" draggable="true">
+                        <div id="componente-leia" ondragstart="dragstartHandler(event);" draggable="true">
                             <button type="button" class="list-group-item btn" id="btn-leia">Leia</button>
+                            <ul id="leia" class="list-group list-group-flush mt-2 componente-variavel-ul"></ul>
                         </div>
                         <!-- Componente Exiba -->
-                        <div id="componente-exiba" ondragstart="dragstart_handler(event);" draggable="true">
+                        <div id="componente-exiba" ondragstart="dragstartHandler(event);" draggable="true">
                             <button type="button" class="list-group-item btn" data-target="#modalExiba"
                                 id="btn-exiba">Exiba</button>
+                            <ul id="exiba" class="list-group list-group-flush mt-2 componente-variavel-ul"></ul>
                         </div>
                         <!-- Componente Atribuicao -->
-                        <div id="componente-atribuicao" ondragstart="dragstart_handler(event);" draggable="true">
+                        <div id="componente-atribuicao" ondragstart="dragstartHandler(event);" draggable="true">
                             <button type="button" class="list-group-item btn" data-target="#modalAtribuicao"
                                 id="btn-atribuicao">Atribuição</button>
+                            <ul id="atribuicoes" class="list-group list-group-flush mt-2 componente-variavel-ul"></ul>
                         </div>
                         <!-- Componente Se -->
-                        <div id="componente-se" ondragstart="dragstart_handler(event);" draggable="true">
+                        <div id="componente-se" ondragstart="dragstartHandler(event);" draggable="true">
                             <button type="button" class="list-group-item btn" id="btn-se">Se</button>
+                            <ul id="se" class="list-group list-group-flush mt-2 componente-variavel-ul"></ul>
                         </div>
                     </div>
                 </div>
                 <!-- Area -->
                 <div class="col tracado" data-id="area" id="step2">
-                    <div id="target" class="area" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+                    <div id="target" class="area" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
                     </div>
                 </div>
 
@@ -206,9 +211,9 @@
     <script src="js/app/models/Declaracoes.js" type="text/javascript"></script>
     <script src="js/app/controllers/DeclaracoesController.js" type="text/javascript"></script>
     <script src="js/app/models/ListDeclaracoes.js" type="text/javascript"></script>
+    <script src="js/app/views/View.js" type="text/javascript"></script>
     <script src="js/app/views/DeclaracoesView.js" type="text/javascript"></script>
     <script src="js/app/views/AtribuicoesView.js" type="text/javascript"></script>
-    <script src="js/app/views/Views.js" type="text/javascript"></script>
     <script src="js/app/models/Atribuicoes.js" type="text/javascript"></script>
     <script src="js/app/controllers/AtribuicoesController.js" type="text/javascript"></script>
     <script src="js/app/models/ListAtribuicoes.js" type="text/javascript"></script>

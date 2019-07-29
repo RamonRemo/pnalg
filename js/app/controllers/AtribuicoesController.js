@@ -6,6 +6,33 @@ class AtribuicoesController {
         this._inputTipo;
         this._inputValor;
         this._listAtribuicoes = new ListAtribuicoes();
+        this._atribuicoesView = new AtribuicoesView();
+    }
+
+    adiciona(event) {
+        event.preventDefault();
+
+        let campo = document.querySelector('#atribuicao-nome');
+        this._inputNome = campo.options[campo.selectedIndex].text;
+        this._inputTipo = campo.options[campo.selectedIndex].value;
+        this._inputValor = this._getValor();
+
+        let atribuicao = this._newAtribuicoes();
+        this._listAtribuicoes.add(atribuicao);
+
+        this._atribuicoesView.update(atribuicao, this._listAtribuicoes);
+        this._limpaForm();
+
+        $("#modalAtribuicao").modal('hide');
+    }
+
+    remove(event) {
+
+        event.preventDefault();
+        this._listAtribuicoes.apaga(this._declaracao);
+
+        let li = event.target.parentNode.parentNode;
+        li.parentNode.removeChild(li);
     }
 
     abreForm(event) {
@@ -37,23 +64,6 @@ class AtribuicoesController {
                 this._dysplayNone(tipoLogico);
                 break;
         }
-    }
-
-    adiciona(event) {
-        event.preventDefault();
-
-        let campo = document.querySelector('#atribuicao-nome');
-        this._inputNome = campo.options[campo.selectedIndex].text;
-        this._inputTipo = campo.options[campo.selectedIndex].value;
-        this._inputValor = this._getValor();
-
-        let atribuicao = this._newAtribuicoes();
-        this._listAtribuicoes.add(atribuicao);
-
-        AtribuicoesView.exiba(this._listAtribuicoes, this._inputNome, this._inputValor.value);
-        this._limpaForm();
-
-        $("#modalAtribuicao").modal('hide');
     }
 
     _getValor() {

@@ -5,6 +5,8 @@ class DeclaracoesController {
         let $ = document.querySelector.bind(document);
         this._inputNome = $('#declaracoes-nome');
         this._inputTipo = $('#declaracoes-tipo');
+        this._declaracao;
+        this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
     }
 
@@ -12,22 +14,25 @@ class DeclaracoesController {
 
         event.preventDefault();
 
-        let declaracao = this._newDeclaracoes();
-        this._listDeclaracoes.add(declaracao);
+        this._declaracao = this._newDeclaracoes();
+        this._listDeclaracoes.add(this._declaracao);
 
-        Views.updateOptions(this._listDeclaracoes, 'atribuicao-nome');
-        Views.updateOptions(this._listDeclaracoes, 'exiba-variavel');
-
-        DeclaracoesView.exiba(this._listDeclaracoes, this._inputNome, this._inputTipo);
+        this._declaracoesView.update(this._declaracao, this._listDeclaracoes);
         this._limpaForm();
 
         $("#modalDeclare").modal('hide');
     }
 
-    remove() {
+    remove(event) {
 
+        event.preventDefault();
+        this._listDeclaracoes.apaga(this._declaracao);
+        View.updateOptions(this._listDeclaracoes, 'atribuicao-nome');
+
+        let li = event.target.parentNode.parentNode;
+        li.parentNode.removeChild(li);
     }
-    
+
     _newDeclaracoes() {
 
         return new Declaracoes(this._inputNome.value, this._inputTipo.value);

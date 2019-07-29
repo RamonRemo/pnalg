@@ -9,13 +9,19 @@ class ListDeclaracoes {
         this._declaracoes.push(declaracao);
     }
 
+    apaga(remover) {
+
+        var index = this._declaracoes.indexOf(remover);
+
+        if (index > -1) {
+
+            return this._declaracoes.splice(index, 1);
+        }
+    }
+
     get declaracoes() {
 
         return [].concat(this._declaracoes);
     }
 
-    apaga() {
-
-        return [].concat(this._declaracoes[this._declaracoes--]);
-    }
 }
