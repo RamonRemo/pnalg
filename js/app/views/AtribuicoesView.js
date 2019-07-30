@@ -1,8 +1,8 @@
 class AtribuicoesView extends View {
 
-    constructor(elemento, el) {
+    constructor(elemento) {
 
-        super(elemento, el);
+        super(elemento);
     }
 
     template(model) {

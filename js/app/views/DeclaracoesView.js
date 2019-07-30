@@ -1,12 +1,12 @@
 class DeclaracoesView extends View {
 
-    constructor(elemento, el) {
+    constructor(elemento) {
 
-        super(elemento, el);
+        super(elemento);
     }
 
     template(model, list) {
-        
+
         let ul = document.querySelector('#declaracoes');;
 
         let li = document.createElement("li");
@@ -19,12 +19,14 @@ class DeclaracoesView extends View {
 
         this._addRemovedor(li);
         View.updateOptions(list, 'atribuicao-nome');
+        View.updateOptions(list, 'exiba-variavel');
+        View.updateOptions(list, 'leia-variavel');
     }
 
     _addRemovedor(li) {
 
-        let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="declaracoesController.remove(event);">x</span>';
-        li.appendChild(span);
+        let div = document.createElement('div');
+        div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="declaracoesController.remove(event);">x</span>';
+        li.appendChild(div);
     }
 }

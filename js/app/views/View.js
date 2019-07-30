@@ -1,9 +1,8 @@
 class View {
 
-    constructor(elemento, el) {
+    constructor(elemento) {
 
         this._elemento = elemento;
-        this._el = el;
     }
 
     template() {

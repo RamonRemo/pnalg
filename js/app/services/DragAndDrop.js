@@ -49,16 +49,20 @@ function valida(data, nodeCopy) {
 
         case 'componente-declare':
             document.getElementById(data).remove();
+
             return true;
 
         case 'componente-leia':
+
             if (listVariavel.length == "0") {
                 bootbox.alert("Declare ao menos uma variável!");
                 return false;
             }
+
             return true;
 
         case 'componente-exiba':
+            document.getElementById(data).remove();
             return true;
 
         case 'componente-atribuicao':
@@ -67,10 +71,12 @@ function valida(data, nodeCopy) {
                 return false;
             }
 
-            document.getElementById(data).remove()
+            document.getElementById(data).remove();
+
             return true;
 
         case 'componente-se':
+
             return true;
     }
 }

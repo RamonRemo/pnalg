@@ -1,8 +1,12 @@
 class Exiba {
 
-    constructor() {
+    constructor(saida) {
 
-        this._variavel;
-        this._text;
+        this._saida = saida;
+    }
+
+    get saida(){
+
+        return this._saida;
     }
 }
