@@ -53,7 +53,7 @@ class AtribuicoesController {
                 let tipoReal = document.getElementById("real");
                 this._dysplayNone(tipoReal);
                 break;
-
+                document.querySelector('#exiba-saida');
             case 'caractere':
                 let tipoCaractere = document.getElementById("caractere");
                 this._dysplayNone(tipoCaractere);

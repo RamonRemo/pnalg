@@ -1,4 +1,4 @@
-class ExibaView extends View {
+class LeiaView extends View {
 
     constructor(elemento) {
 
@@ -7,13 +7,13 @@ class ExibaView extends View {
 
     template(model) {
 
-        let ul = document.querySelector('#exiba');;
+        let ul = document.querySelector('#leia');;
 
         let li = document.createElement("li");
-        li.id = "exiba-variavel";
+        li.id = "leia-variavel";
         li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
 
-        let obj = document.createTextNode(`escreval(${model.saida});`);
+        let obj = document.createTextNode(`leia(${model.nome});`);
         li.appendChild(obj);
         ul.appendChild(li);
 

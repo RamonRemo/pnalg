@@ -48,21 +48,20 @@ function valida(data, nodeCopy) {
     switch (nodeCopy.id) {
 
         case 'componente-declare':
+            addUl(nodeCopy, "declaracoes");
             document.getElementById(data).remove();
-
             return true;
 
         case 'componente-leia':
-
             if (listVariavel.length == "0") {
                 bootbox.alert("Declare ao menos uma variável!");
                 return false;
             }
-
+            addUl(nodeCopy, "leia");
             return true;
 
         case 'componente-exiba':
-            document.getElementById(data).remove();
+            addUl(nodeCopy, "exiba");
             return true;
 
         case 'componente-atribuicao':
@@ -70,13 +69,19 @@ function valida(data, nodeCopy) {
                 bootbox.alert("Declare ao menos uma variável!");
                 return false;
             }
-
+            addUl(nodeCopy, "atribuicoes");
             document.getElementById(data).remove();
-
             return true;
 
         case 'componente-se':
-
+            addUl(nodeCopy, "se");
             return true;
     }
+}
+
+function addUl(nodeCopy, nome) {
+    var ul = document.createElement("ul");
+    ul.setAttribute('id', nome);
+    ul.className = "list-group list-group-flush mt-2 componente-variavel-ul";
+    nodeCopy.appendChild(ul);
 }
