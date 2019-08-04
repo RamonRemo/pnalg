@@ -2,9 +2,8 @@ class DeclaracoesController {
 
     constructor() {
 
-        let $ = document.querySelector.bind(document);
-        this._inputNome = $('#declaracoes-nome');
-        this._inputTipo = $('#declaracoes-tipo');
+        this._inputNome;
+        this._inputTipo;
         this._declaracao;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
@@ -14,12 +13,14 @@ class DeclaracoesController {
 
         event.preventDefault();
 
+        this._inputNome = document.querySelector('#declaracoes-nome').value;
+        this._inputTipo = document.querySelector('#declaracoes-tipo').value;
+
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
-
         this._declaracoesView.update(this._declaracao, this._listDeclaracoes);
         this._limpaForm();
-        console.log(this._listDeclaracoes);
+
         $("#modalDeclare").modal('hide');
     }
 
@@ -37,12 +38,12 @@ class DeclaracoesController {
 
     _newDeclaracoes() {
 
-        return new Declaracoes(this._inputNome.value, this._inputTipo.value);
+        return new Declaracoes(this._inputNome, this._inputTipo);
     }
 
     _limpaForm() {
 
-        this._inputNome.value = '';
+        this._inputNome = '';
         Utils.focus('modalDeclare', 'declaracoes-nome');
     }
 }

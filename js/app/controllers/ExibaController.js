@@ -2,7 +2,7 @@ class ExibaController {
 
     constructor() {
 
-        this._saidaCampo = document.querySelector('#exiba-saida');
+        this._saidaCampo;
         this._exiba;
         this._id;
         this._inputNome;
@@ -13,7 +13,7 @@ class ExibaController {
     captura(event) {
 
         event.preventDefault();
-
+        this._saidaCampo = document.querySelector('#exiba-saida')
         this._saidaCampo.innerHTML = "\"" + event.target.value + "\"";
     }
 
@@ -28,7 +28,7 @@ class ExibaController {
     }
 
     adiciona(event) {
-        
+
         event.preventDefault();
         let id = this._listExiba._exiba.length + 1;
         this._exiba = this._newExiba(id);
