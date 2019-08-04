@@ -1,4 +1,4 @@
-(function () {
+function trigger() {
     var $body = $('body'),
 
         $modalTriggers = $('button.modalTrigger'),
@@ -22,8 +22,9 @@
                 };
 
             $.get(modalPath, showModal);
+            console.log(modalPath);
             evt.preventDefault();
         };
 
     $modalTriggers.on('click', openModal);
-}());
+};
