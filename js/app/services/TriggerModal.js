@@ -6,13 +6,17 @@
         openModal = function (evt) {
             var $trigger = $(this),
 
-                modalPath = $trigger.attr('data-url'),
+                modalPath = $trigger.attr('url'),
                 $newModal,
 
-                removeModal = function (evt) {
-                    $newModal.off('hidden.bs.modal');
-                    $newModal.remove();
-                },
+            if (!modalPath || modalPath.indexOf('#') === 0) {
+                return;
+            }
+
+            removeModal = function (evt) {
+                $newModal.off('hidden.bs.modal');
+                $newModal.remove();
+            },
 
                 showModal = function (data) {
                     $body.append(data);
@@ -22,7 +26,6 @@
                 };
 
             $.get(modalPath, showModal);
-
             evt.preventDefault();
         };
 
