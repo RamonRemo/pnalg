@@ -33,8 +33,8 @@
                     <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
                         <div id='componente-declare' ondragstart='dragstartHandler(event);' draggable='true'>
-                            <button id='btn-declare' type='button' class='list-group-item btn'
-                                data-target='#modalDeclare'>Declare</button>
+                            <button id='btn-declare' type='button' class='modalTrigger list-group-item btn'
+                                onclick="window.location.href= '/modais/remote.html'">Declare</button>
                         </div>
                         <!-- Componente Leia -->
                         <div id='componente-leia' ondragstart='dragstartHandler(event);' draggable='true'>
@@ -66,7 +66,6 @@
 
                 <!-- Run -->
                 <div id='step3' class='col tracado d-flex align-items-end d-flex justify-content-center'>
-                    <a href="remote.html" class="modalTrigger">Open Modal</a>
                     <button id='step4' type='button' class='btn btn-success mb-2 btn-lg btn-block'>
                         Simular
                     </button>
@@ -218,55 +217,6 @@
                             <button class='btn btn-primary' type='submit'>Salvar</button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Se -->
-    <div id='modalSe' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalSe' aria-hidden='true'>
-        <div class='modal-dialog' role='document'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title'>Se</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
-                        <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>
-                <div class='modal-body'>
-                    <form id='form-se' onsubmit='leiaController.adiciona(event)'>
-                        <div id='se-variavel-declarada' ondragstart='dragstartHandler(event);' draggable='true'>
-                        </div>
-                        <div class='col tracado' data-id='area'>
-                            <div id='target' class='area' ondrop='dropHandler(event)'
-                                ondragover='dragoverHandler(event)'>
-                            </div>
-                        </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
-                            <button class='btn btn-primary' type='submit'>Salvar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id='remote-modal' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='remote-modal'
-        aria-hidden='true'>
-        <div class='modal-dialog' role='document'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title'>Se</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
-                        <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>
-                <div class='modal-body'>
-                </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
-                    <button class='btn btn-primary' type='submit'>Salvar</button>
                 </div>
             </div>
         </div>
