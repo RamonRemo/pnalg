@@ -1,34 +1,30 @@
 (function () {
-    // Create jQuery body object
     var $body = $('body'),
 
-        // Use a tags with 'class="modalTrigger"' as the triggers
-        $modalTriggers = $('a.modalTrigger'),
+        $modalTriggers = $('button.modalTrigger'),
 
-        // Trigger event handler
         openModal = function (evt) {
-            var $trigger = $(this),                  // Trigger jQuery object
+            var $trigger = $(this),
 
-                modalPath = $trigger.attr('href'),       // Modal path is href of trigger
+                modalPath = $trigger.attr('data-url'),
+                $newModal,
 
-                $newModal,                               // Declare modal variable
-
-                removeModal = function (evt) {            // Remove modal handler
-                    $newModal.off('hidden.bs.modal');  // Turn off 'hide' event
-                    $newModal.remove();                // Remove modal from DOM
+                removeModal = function (evt) {
+                    $newModal.off('hidden.bs.modal');
+                    $newModal.remove();
                 },
 
-                showModal = function (data) {             // Ajax complete event handler
-                    $body.append(data);                // Add to DOM
-                    $newModal = $('.modal').last();    // Modal jQuery object
-                    $newModal.modal('show');           // Showtime!
-                    $newModal.on('hidden.bs.modal', removeModal); // Remove modal from DOM on hide
+                showModal = function (data) {
+                    $body.append(data);
+                    $newModal = $('.modal').last();
+                    $newModal.modal('show');
+                    $newModal.on('hidden.bs.modal', removeModal);
                 };
 
-            $.get(modalPath, showModal);             // Ajax request
+            $.get(modalPath, showModal);
 
-            evt.preventDefault();                   // Prevent default a tag behavior
+            evt.preventDefault();
         };
 
-    $modalTriggers.on('click', openModal);         // Add event handlers
+    $modalTriggers.on('click', openModal);
 }());
