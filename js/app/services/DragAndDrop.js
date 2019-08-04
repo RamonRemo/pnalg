@@ -29,9 +29,6 @@ function dropHandler(ev) {
     let id = document.querySelectorAll('#target button').length;
     nodeCopy.id = data + '-' + id;
 
-    let modal = nodeCopy.childNodes[1];
-    modal.dataset.toggle = 'modal';
-
     document.getElementById('target').appendChild(nodeCopy);
 }
 
@@ -44,10 +41,12 @@ function dragoverHandler(ev) {
 function valida(data, nodeCopy) {
 
     let listVariavel = document.querySelectorAll('#variavel');
-
+    let url = nodeCopy.childNodes[1];
     switch (nodeCopy.id) {
 
         case 'componente-declare':
+            let node = nodeCopy.childNodes[1];
+            node.setAttribute('url', 'modais/declare.html');
             addUl(nodeCopy, 'declaracoes');
             document.getElementById(data).remove();
             return true;
@@ -57,11 +56,13 @@ function valida(data, nodeCopy) {
                 bootbox.alert('Declare ao menos uma variável!');
                 return false;
             }
+            url.setAttribute('url', 'modais/leia.html');
             addUl(nodeCopy, 'leia');
             document.getElementById(data).remove();
             return true;
 
         case 'componente-exiba':
+            url.setAttribute('url', 'modais/exiba.html');
             addUl(nodeCopy, 'exiba');
             document.getElementById(data).remove();
             return true;
@@ -71,11 +72,13 @@ function valida(data, nodeCopy) {
                 bootbox.alert('Declare ao menos uma variável!');
                 return false;
             }
+            url.setAttribute('url', 'modais/atribuicao.html');
             addUl(nodeCopy, 'atribuicoes');
             document.getElementById(data).remove();
             return true;
 
         case 'componente-se':
+            url.setAttribute('url', 'modais/se.html');
             addUl(nodeCopy, 'se');
             document.getElementById(data).remove();
             return true;
