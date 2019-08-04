@@ -9,14 +9,10 @@
                 modalPath = $trigger.attr('url'),
                 $newModal,
 
-            if (!modalPath || modalPath.indexOf('#') === 0) {
-                return;
-            }
-
-            removeModal = function (evt) {
-                $newModal.off('hidden.bs.modal');
-                $newModal.remove();
-            },
+                removeModal = function (evt) {
+                    $newModal.off('hidden.bs.modal');
+                    $newModal.remove();
+                },
 
                 showModal = function (data) {
                     $body.append(data);
