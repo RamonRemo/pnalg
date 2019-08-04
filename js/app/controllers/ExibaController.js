@@ -3,8 +3,9 @@ class ExibaController {
     constructor() {
 
         this._saidaCampo = document.querySelector('#exiba-saida');
-        this._inputNome;
         this._exiba;
+        this._id;
+        this._inputNome;
         this._exibaView = new ExibaView();
         this._listExiba = new ListExiba();
     }
@@ -13,7 +14,7 @@ class ExibaController {
 
         event.preventDefault();
 
-        this._saidaCampo.innerHTML = "'" + event.target.value + "'";
+        this._saidaCampo.innerHTML = "\"" + event.target.value + "\"";
     }
 
     addVar(event) {
@@ -27,10 +28,10 @@ class ExibaController {
     }
 
     adiciona(event) {
-
+        
         event.preventDefault();
-
-        this._exiba = this._newExiba();
+        let id = this._listExiba._exiba.length + 1;
+        this._exiba = this._newExiba(id);
         this._listExiba.add(this._exiba);
 
         this._exibaView.update(this._exiba);
@@ -49,9 +50,9 @@ class ExibaController {
         li.parentNode.removeChild(li);
     }
 
-    _newExiba() {
+    _newExiba(id) {
 
-        return new Exiba(this._saidaCampo.value);
+        return new Exiba(this._saidaCampo.value, id);
     }
 
     _limpaForm() {

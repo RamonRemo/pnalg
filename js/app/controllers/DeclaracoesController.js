@@ -19,7 +19,7 @@ class DeclaracoesController {
 
         this._declaracoesView.update(this._declaracao, this._listDeclaracoes);
         this._limpaForm();
-
+        console.log(this._listDeclaracoes);
         $("#modalDeclare").modal('hide');
     }
 
@@ -28,6 +28,8 @@ class DeclaracoesController {
         event.preventDefault();
         this._listDeclaracoes.apaga(this._declaracao);
         View.updateOptions(this._listDeclaracoes, 'atribuicao-nome');
+        View.updateOptions(this._listDeclaracoes, 'exiba-variavel');
+        View.updateOptions(this._listDeclaracoes, 'leia-variavel');
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);

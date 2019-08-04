@@ -6,11 +6,11 @@ class ExibaView extends View {
     }
 
     template(model) {
-
-        let ul = document.querySelector('#exiba');;
+        console.log(model.id)
+        let ul = document.querySelector("#exiba");
 
         let li = document.createElement("li");
-        li.id = "exiba-variavel";
+        li.id = "exiba-var";
         li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
 
         let obj = document.createTextNode(`escreval(${model.saida});`);

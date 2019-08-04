@@ -58,10 +58,12 @@ function valida(data, nodeCopy) {
                 return false;
             }
             addUl(nodeCopy, "leia");
+            document.getElementById(data).remove();
             return true;
 
         case 'componente-exiba':
             addUl(nodeCopy, "exiba");
+            document.getElementById(data).remove();
             return true;
 
         case 'componente-atribuicao':
@@ -75,6 +77,7 @@ function valida(data, nodeCopy) {
 
         case 'componente-se':
             addUl(nodeCopy, "se");
+            document.getElementById(data).remove();
             return true;
     }
 }

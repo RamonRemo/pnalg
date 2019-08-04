@@ -7,7 +7,7 @@ class DeclaracoesView extends View {
 
     template(model, list) {
 
-        let ul = document.querySelector('#declaracoes');;
+        let ul = document.querySelector('#declaracoes');
 
         let li = document.createElement("li");
         li.id = "variavel";

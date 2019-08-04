@@ -1,71 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang='pt-br'>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
     <title>CPNAlg</title>
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link rel='shortcut icon' href='img/icon.png' type='image/x-icon' />
 
     <!-- CSS  externo-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css' />
 
     <!-- Meu CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel='stylesheet' href='css/style.css' type='text/css' />
 
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar fixed-top navbar-dark bg-dark" id="step0">
-            <a class="navbar-brand" href="index.html" id="cpnalg">
-                <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="CPNAlg">
+        <nav class='navbar fixed-top navbar-dark bg-dark' id='step0'>
+            <a class='navbar-brand' href='index.html' id='cpnalg'>
+                <img src='img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'>
                 CPNAlg
             </a>
         </nav>
     </header>
     <main>
         <section>
-            <div class="row">
+            <div class='row'>
                 <!-- Componentes -->
-                <div class="col tracado" id="step1">
-                    <div class="mt-4" data-id="components">
+                <div id='step1' class='col tracado'>
+                    <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
-                        <div id="componente-declare" ondragstart="dragstartHandler(event);" draggable="true">
-                            <button type="button" class="list-group-item btn" data-target="#modalDeclare"
-                                id="btn-declare">Declare</button>
+                        <div id='componente-declare' ondragstart='dragstartHandler(event);' draggable='true'>
+                            <button id='btn-declare' type='button' class='list-group-item btn'
+                                data-target='#modalDeclare'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
-                        <div id="componente-leia" ondragstart="dragstartHandler(event);" draggable="true">
-                            <button type="button" class="list-group-item btn" data-target="#modalLeia"
-                                id="btn-leia">Leia</button>
+                        <div id='componente-leia' ondragstart='dragstartHandler(event);' draggable='true'>
+                            <button id='btn-leia' type='button' class='list-group-item btn'
+                                data-target='#modalLeia'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
-                        <div id="componente-exiba" ondragstart="dragstartHandler(event);" draggable="true">
-                            <button type="button" class="list-group-item btn" data-target="#modalExiba"
-                                id="btn-exiba">Exiba</button>
+                        <div id='componente-exiba' ondragstart='dragstartHandler(event);' draggable='true'>
+                            <button id='btn-exiba' type='button' class='list-group-item btn'
+                                data-target='#modalExiba'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
-                        <div id="componente-atribuicao" ondragstart="dragstartHandler(event);" draggable="true">
-                            <button type="button" class="list-group-item btn" data-target="#modalAtribuicao"
-                                id="btn-atribuicao">Atribuição</button>
+                        <div id='componente-atribuicao' ondragstart='dragstartHandler(event);' draggable='true'>
+                            <button id='btn-atribuicao' type='button' class='list-group-item btn'
+                                data-target='#modalAtribuicao'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
-                        <div id="componente-se" ondragstart="dragstartHandler(event);" draggable="true">
-                            <button type="button" class="list-group-item btn" id="btn-se">Se</button>
+                        <div id='componente-se' ondragstart='dragstartHandler(event);' draggable='true'>
+                            <button id='btn-se' type='button' class='list-group-item btn'
+                                data-target='#modalSe'>Se</button>
                         </div>
                     </div>
                 </div>
                 <!-- Area -->
-                <div class="col tracado" data-id="area" id="step2">
-                    <div id="target" class="area" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+                <div id='step2' class='col tracado' data-id='area'>
+                    <div id='target' class='area' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
                     </div>
                 </div>
 
                 <!-- Run -->
-                <div class="col tracado d-flex align-items-end d-flex justify-content-center" id="step3">
-                    <button id="step4" type="button" class="btn btn-success mb-2 btn-lg btn-block">
+                <div id='step3' class='col tracado d-flex align-items-end d-flex justify-content-center'>
+                    <a href="remote.html" class="modalTrigger">Open Modal</a>
+                    <button id='step4' type='button' class='btn btn-success mb-2 btn-lg btn-block'>
                         Simular
                     </button>
                 </div>
@@ -74,34 +76,34 @@
     </main>
 
     <!-- Modal Declare -->
-    <div class="modal fade" id="modalDeclare" role="dialog" aria-labelledby="modalDeclare" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 id="modalDeclare" class="modal-title">Declare</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
+    <div id='modalDeclare' class='modal fade' role='dialog' aria-labelledby='modalDeclare' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Declare</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="form-declare" onsubmit="declaracoesController.adiciona(event)">
-                        <div id="form-tipo" class="form-group">
-                            <label for="declaracoes-tipo">Tipo de Dado</label>
-                            <select id="declaracoes-tipo" class="form-control" required>
+                <div class='modal-body'>
+                    <form id='form-declare' onsubmit='declaracoesController.adiciona(event)'>
+                        <div class='form-group'>
+                            <label for='declaracoes-tipo'>Tipo de Dado</label>
+                            <select id='declaracoes-tipo' class='form-control' required>
                                 <option>inteiro</option>
                                 <option>real</option>
                                 <option>caractere</option>
                                 <option>logico</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="declaracoes-nome">Nome da Variável</label>
-                            <input id="declaracoes-nome" class="form-control" type="text"
-                                placeholder="digite o nome variável" required autofocus>
+                        <div class='form-group'>
+                            <label for='declaracoes-nome'>Nome da Variável</label>
+                            <input id='declaracoes-nome' class='form-control' type='text'
+                                placeholder='digite o nome variável' required autofocus>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button class='btn btn-primary' type='submit'>Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -110,49 +112,49 @@
     </div>
 
     <!-- Modal Atribuicao -->
-    <div class="modal fade" id="modalAtribuicao" tabindex="-1" role="dialog" aria-labelledby="modalAtribuicao"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Atribuição</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
+    <div id='modalAtribuicao' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalAtribuicao'
+        aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Atribuição</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="form-atribuicao" onsubmit="atribuicoesController.adiciona(event)">
-                        <div class="form-group" id="form-variaveis">
-                            <label for="atribuicao-nome">Variaveis Declaras</label>
-                            <select class="form-control" id="atribuicao-nome"
-                                onclick="atribuicoesController.abreForm(event)">
+                <div class='modal-body'>
+                    <form id='form-atribuicao' onsubmit='atribuicoesController.adiciona(event)'>
+                        <div class='form-group'>
+                            <label for='atribuicao-nome'>Variaveis Declaras</label>
+                            <select id='atribuicao-nome' class='form-control'
+                                onclick='atribuicoesController.abreForm(event)'>
                             </select>
                         </div>
-                        <div id="inteiro" class="form-group atribuicao mt-3">
-                            <label for="atribuicaoValorInt">Tipo de Dados Inteiro</label>
-                            <input id="atribuicaoValorInt" class="form-control" type="number"
-                                placeholder="aceita números inteiros">
+                        <div id='inteiro' class='form-group atribuicao mt-3'>
+                            <label for='atribuicaoValorInt'>Tipo de Dados Inteiro</label>
+                            <input id='atribuicaoValorInt' class='form-control' type='number'
+                                placeholder='aceita números inteiros'>
                         </div>
-                        <div id="real" class="form-group atribuicao mt-3">
-                            <label for="atribuicaoValorFloat">Tipo de Dados Real</label>
-                            <input id="atribuicaoValorFloat" class="form-control" type="number" step="0.1"
-                                placeholder="aceita números decimais">
+                        <div id='real' class='form-group atribuicao mt-3'>
+                            <label for='atribuicaoValorFloat'>Tipo de Dados Real</label>
+                            <input id='atribuicaoValorFloat' class='form-control' type='number' step='0.1'
+                                placeholder='aceita números decimais'>
                         </div>
-                        <div id="caractere" class="form-group atribuicao mt-3">
-                            <label for="atribuicaoValorChar">Tipo de Dados Caractere</label>
-                            <input id="atribuicaoValorChar" class="form-control" type="text"
-                                placeholder="aceita cadeias de caractere">
+                        <div id='caractere' class='form-group atribuicao mt-3'>
+                            <label for='atribuicaoValorChar'>Tipo de Dados Caractere</label>
+                            <input id='atribuicaoValorChar' class='form-control' type='text'
+                                placeholder='aceita cadeias de caractere'>
                         </div>
-                        <div id="logico" class="form-group atribuicao mt-3">
-                            <label for="atribuicaoValorBoolean">Tipo de Dados Lógico</label>
-                            <select id="atribuicaoValorBoolean" class="form-control">
+                        <div id='logico' class='form-group atribuicao mt-3'>
+                            <label for='atribuicaoValorBoolean'>Tipo de Dados Lógico</label>
+                            <select id='atribuicaoValorBoolean' class='form-control'>
                                 <option>true</option>
                                 <option>false</option>
                             </select>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button class='btn btn-primary' type='submit'>Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -161,32 +163,32 @@
     </div>
 
     <!-- Modal Exiba -->
-    <div class="modal fade" id="modalExiba" tabindex="-1" role="dialog" aria-labelledby="modalExiba" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Exiba</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
+    <div id='modalExiba' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalExiba' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Exiba</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="form-exiba" onsubmit="exibaController.adiciona(event)">
-                        <div id="form-variaveisTexto" class="form-group">
-                            <label for="exiba-texto">Exiba um texto</label>
-                            <input id="exiba-texto" class="form-control" type="text"
-                                placeholder="aceita cadeias de caractere" autofocus
-                                onkeyup="exibaController.captura(event)">
+                <div class='modal-body'>
+                    <form id='form-exiba' onsubmit='exibaController.adiciona(event)'>
+                        <div class='form-group'>
+                            <label for='exiba-texto'>Exiba um texto</label>
+                            <input id='exiba-texto' class='form-control' type='text'
+                                placeholder='aceita cadeias de caractere' autofocus
+                                onkeyup='exibaController.captura(event)'>
                         </div>
-                        <div id="form-exibaVariavel" class="form-group mt-3">
-                            <label for="exiba-variavel">Variaveis Declaras</label>
-                            <select class="form-control" id="exiba-variavel" onclick="exibaController.addVar(event)">
+                        <div class='form-group mt-3'>
+                            <label for='exiba-variavel'>Variaveis Declaras</label>
+                            <select id='exiba-variavel' class='form-control' onclick='exibaController.addVar(event)'>
                             </select>
                         </div>
-                        <textarea id="exiba-saida" class="form-control" type="text" readonly rows="1"></textarea>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        <textarea id='exiba-saida' class='form-control' type='text' readonly rows='1'></textarea>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button class='btn btn-primary' type='submit'>Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -195,25 +197,25 @@
     </div>
 
     <!-- Modal Leia -->
-    <div class="modal fade" id="modalLeia" tabindex="-1" role="dialog" aria-labelledby="modalLeia" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Exiba</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
+    <div id='modalLeia' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalLeia' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Exiba</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="form-leia" onsubmit="leiaController.adiciona(event)">
-                        <div id="form-leiaVar" class="form-group">
-                            <label for="leia-variavel">Variaveis Declaras</label>
-                            <select class="form-control" id="leia-variavel" onclick="leiaController.addVar(event)">
+                <div class='modal-body'>
+                    <form id='form-leia' onsubmit='leiaController.adiciona(event)'>
+                        <div class='form-group'>
+                            <label for='leia-variavel'>Variaveis Declaras</label>
+                            <select id='leia-variavel' class='form-control' onclick='leiaController.addVar(event)'>
                             </select>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button class='btn btn-primary' type='submit'>Salvar</button>
                         </div>
                     </form>
                 </div>
@@ -221,34 +223,84 @@
         </div>
     </div>
 
+    <!-- Modal Se -->
+    <div id='modalSe' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalSe' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Se</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <div class='modal-body'>
+                    <form id='form-se' onsubmit='leiaController.adiciona(event)'>
+                        <div id='se-variavel-declarada' ondragstart='dragstartHandler(event);' draggable='true'>
+                        </div>
+                        <div class='col tracado' data-id='area'>
+                            <div id='target' class='area' ondrop='dropHandler(event)'
+                                ondragover='dragoverHandler(event)'>
+                            </div>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button class='btn btn-primary' type='submit'>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='remote-modal' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='remote-modal'
+        aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title'>Se</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <div class='modal-body'>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                    <button class='btn btn-primary' type='submit'>Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Externo -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"></script>
-    <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js'></script>
+    <script src='https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
 
     <!-- JavaScript -->
-    <script src="js/app/services/Tutorial.js" type="text/javascript"></script>
-    <script src="js/app/services/DragAndDrop.js" type="text/javascript"></script>
-    <script src="js/app/utils/Utils.js" type="text/javascript"></script>
-    <script src="js/app/views/View.js" type="text/javascript"></script>
-    <script src="js/app/models/Declaracoes.js" type="text/javascript"></script>
-    <script src="js/app/controllers/DeclaracoesController.js" type="text/javascript"></script>
-    <script src="js/app/models/ListDeclaracoes.js" type="text/javascript"></script>
-    <script src="js/app/views/DeclaracoesView.js" type="text/javascript"></script>
-    <script src="js/app/models/Atribuicoes.js" type="text/javascript"></script>
-    <script src="js/app/controllers/AtribuicoesController.js" type="text/javascript"></script>
-    <script src="js/app/models/ListAtribuicoes.js" type="text/javascript"></script>
-    <script src="js/app/views/AtribuicoesView.js" type="text/javascript"></script>
-    <script src="js/app/models/Exiba.js" type="text/javascript"></script>
-    <script src="js/app/controllers/ExibaController.js" type="text/javascript"></script>
-    <script src="js/app/models/ListExiba.js" type="text/javascript"></script>
-    <script src="js/app/views/ExibaView.js" type="text/javascript"></script>
-    <script src="js/app/models/Leia.js" type="text/javascript"></script>
-    <script src="js/app/controllers/LeiaController.js" type="text/javascript"></script>
-    <script src="js/app/models/ListLeia.js" type="text/javascript"></script>
-    <script src="js/app/views/LeiaView.js" type="text/javascript"></script>
+    <script src='js/app/services/Tutorial.js' type='text/javascript'></script>
+    <script src='js/app/services/DragAndDrop.js' type='text/javascript'></script>
+    <script src='js/app/utils/Utils.js' type='text/javascript'></script>
+    <script src='js/app/views/View.js' type='text/javascript'></script>
+    <script src='js/app/models/Declaracoes.js' type='text/javascript'></script>
+    <script src='js/app/controllers/DeclaracoesController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListDeclaracoes.js' type='text/javascript'></script>
+    <script src='js/app/views/DeclaracoesView.js' type='text/javascript'></script>
+    <script src='js/app/models/Atribuicoes.js' type='text/javascript'></script>
+    <script src='js/app/controllers/AtribuicoesController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListAtribuicoes.js' type='text/javascript'></script>
+    <script src='js/app/views/AtribuicoesView.js' type='text/javascript'></script>
+    <script src='js/app/models/Exiba.js' type='text/javascript'></script>
+    <script src='js/app/controllers/ExibaController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListExiba.js' type='text/javascript'></script>
+    <script src='js/app/views/ExibaView.js' type='text/javascript'></script>
+    <script src='js/app/models/Leia.js' type='text/javascript'></script>
+    <script src='js/app/controllers/LeiaController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListLeia.js' type='text/javascript'></script>
+    <script src='js/app/views/LeiaView.js' type='text/javascript'></script>
+    <script src='js/app/services/TriggerModal.js'></script>
 
     <script>
         var declaracoesController = new DeclaracoesController();

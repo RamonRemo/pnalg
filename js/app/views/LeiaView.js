@@ -7,10 +7,10 @@ class LeiaView extends View {
 
     template(model) {
 
-        let ul = document.querySelector('#leia');;
+        let ul = document.querySelector('#leia');
 
         let li = document.createElement("li");
-        li.id = "leia-variavel";
+        li.id = "leia-var";
         li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
 
         let obj = document.createTextNode(`leia(${model.nome});`);
