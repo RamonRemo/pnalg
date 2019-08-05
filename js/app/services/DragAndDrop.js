@@ -1,4 +1,4 @@
-function dragstartHandler(ev) {
+function dragStartHandler(ev) {
 
     let target = $(ev.target).closest('[data-id]');
 
@@ -76,6 +76,10 @@ function valida(data, nodeCopy) {
             return true;
 
         case 'componente-se':
+            if (listVariavel.length == "0") {
+                bootbox.alert("Declare ao menos uma variável!");
+                return false;
+            }
             addUl(nodeCopy, "se");
             document.getElementById(data).remove();
             return true;

@@ -4,6 +4,7 @@ class Exiba {
 
         this._saida = saida;
         this._id = id;
+        Object.freeze(this);
     }
 
     get saida(){

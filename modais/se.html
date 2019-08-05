@@ -1,11 +1,26 @@
-<form id='form-se' onsubmit='leiaController.adiciona(event)'>
-    <div id='se-variavel-declarada' ondragstart='dragstartHandler(event);' draggable='true'>
-    </div>
-    <div class='col tracado' data-id='area'>
-        <div id='target' class='area' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
+<form id='form-se'>
+    <div class="form-row">
+        <div class="col">
+            <select id='se-variavel' class='form-control'>
+            </select>
+        </div>
+        <div id='se-relacionais-declarada' class="col">
+            <select id='se-relacionais' class="custom-select mr-sm-2">
+                <option selected>Escolher...</option>
+                <option class="relacionais">&ne;</option>
+                <option class="relacionais">=</option>
+                <option class="relacionais">&gt;</option>
+                <option class="relacionais">&lt;</option>
+                <option class="relacionais">&le;</option>
+                <option class="relacionais">&ge;</option>
+            </select>
+        </div>
+        <div class="col">
+            <select id='se-variavel-secundaria' class='form-control'>
+            </select>
         </div>
     </div>
-    <div class='modal-footer'>
+    <div class='modal-footer mt-3'>
         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
         <button class='btn btn-primary' type='submit'>Salvar</button>
     </div>

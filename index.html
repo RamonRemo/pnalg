@@ -12,7 +12,6 @@
 
     <!-- Meu CSS -->
     <link rel='stylesheet' href='css/style.css' type='text/css' />
-
 </head>
 
 <body>
@@ -32,27 +31,27 @@
                 <div id='step1' class='col tracado'>
                     <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
-                        <div id='componente-declare' ondragstart='dragstartHandler(event);' draggable='true'>
+                        <div id='componente-declare' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-declare' type='button' class='list-group-item btn'
                                 data-target='#modalDeclare'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
-                        <div id='componente-leia' ondragstart='dragstartHandler(event);' draggable='true'>
+                        <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-leia' type='button' class='list-group-item btn'
                                 data-target='#modalLeia'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
-                        <div id='componente-exiba' ondragstart='dragstartHandler(event);' draggable='true'>
+                        <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-exiba' type='button' class='list-group-item btn'
                                 data-target='#modalExiba'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
-                        <div id='componente-atribuicao' ondragstart='dragstartHandler(event);' draggable='true'>
+                        <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-atribuicao' type='button' class='list-group-item btn'
                                 data-target='#modalAtribuicao'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
-                        <div id='componente-se' ondragstart='dragstartHandler(event);' draggable='true'>
+                        <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-se' type='button' class='list-group-item btn'
                                 data-target='#modalSe'>Se</button>
                         </div>
@@ -178,6 +177,7 @@
     <script src='js/app/controllers/LeiaController.js' type='text/javascript'></script>
     <script src='js/app/models/ListLeia.js' type='text/javascript'></script>
     <script src='js/app/views/LeiaView.js' type='text/javascript'></script>
+    <script src='js/app/services/DragAndDropForm.js' type='text/javascript'></script>
 
     <script>
         var declaracoesController = new DeclaracoesController();

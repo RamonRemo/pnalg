@@ -18,9 +18,7 @@ class DeclaracoesView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
-        View.updateOptions(list, 'atribuicao-nome');
-        View.updateOptions(list, 'exiba-variavel');
-        View.updateOptions(list, 'leia-variavel');
+        this._atualizaOptions(list);
     }
 
     _addRemovedor(li) {
@@ -28,5 +26,14 @@ class DeclaracoesView extends View {
         let div = document.createElement('div');
         div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="declaracoesController.remove(event);">x</span>';
         li.appendChild(div);
+    }
+
+    _atualizaOptions(list) {
+
+        View.updateOptions(list, 'atribuicao-nome');
+        View.updateOptions(list, 'exiba-variavel');
+        View.updateOptions(list, 'leia-variavel');
+        View.updateOptions(list, 'se-variavel');
+        View.updateOptions(list, 'se-variavel-secundaria');
     }
 }
