@@ -83,6 +83,10 @@ function valida(data, nodeCopy) {
             addUl(nodeCopy, "se");
             document.getElementById(data).remove();
             return true;
+
+        default:
+            document.getElementById(data).remove();
+            return true;
     }
 }
 
