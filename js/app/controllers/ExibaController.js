@@ -24,7 +24,7 @@ class ExibaController {
         let campo = document.querySelector('#exiba-variavel');
         this._inputNome = campo.options[campo.selectedIndex].text;
 
-        this._saidaCampo.innerHTML = this._saidaCampo.value + "," + this._inputNome;
+        this._saidaCampo.innerHTML = this._saidaCampo.value + ',' + this._inputNome;
     }
 
     adiciona(event) {
@@ -37,7 +37,7 @@ class ExibaController {
         this._exibaView.update(this._exiba);
         this._limpaForm();
 
-        $("#modalExiba").modal('hide');
+        $('#modalExiba').modal('hide');
     }
 
     remove(event) {

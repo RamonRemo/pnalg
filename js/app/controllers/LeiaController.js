@@ -29,7 +29,7 @@ class LeiaController {
 
         this._leiaView.update(this._leia);
 
-        $("#modalLeia").modal('hide');
+        $('#modalLeia').modal('hide');
     }
 
     remove(event) {

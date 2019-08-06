@@ -23,7 +23,7 @@ class DeclaracoesController {
         this._declaracoesView.update(this._declaracao, this._listDeclaracoes);
         this._limpaForm();
 
-        $("#modalDeclare").modal('hide');
+        $('#modalDeclare').modal('hide');
     }
 
     remove(event) {

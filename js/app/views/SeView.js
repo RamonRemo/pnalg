@@ -9,9 +9,9 @@ class SeView extends View {
 
         let ul = document.querySelector('#se');
 
-        let li = document.createElement("li");
+        let li = document.createElement('li');
         li.id = model.id;
-        li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
+        li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`se ${model.var1_nome} ${model.relacionais} ${model.var2_nome} entao`);
         li.appendChild(obj);

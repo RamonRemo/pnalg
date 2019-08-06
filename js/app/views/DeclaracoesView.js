@@ -9,9 +9,9 @@ class DeclaracoesView extends View {
 
         let ul = document.querySelector('#declaracoes');
 
-        let li = document.createElement("li");
+        let li = document.createElement('li');
         li.id = model.id;
-        li.className = "var componente-variavel-li d-flex justify-content-between align-items-center";
+        li.className = 'var componente-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.tipo} : ${model.nome};`);
         li.appendChild(obj);

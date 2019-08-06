@@ -23,7 +23,7 @@ class SeController {
 
         this._seView.update(this._se);
 
-        $("#modalSe").modal('hide');
+        $('#modalSe').modal('hide');
     }
 
     remove(event) {

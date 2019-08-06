@@ -26,7 +26,7 @@ class AtribuicoesController {
         this._atribuicoesView.update(atribuicao, this._listAtribuicoes);
         this._limpaForm();
 
-        $("#modalAtribuicao").modal('hide');
+        $('#modalAtribuicao').modal('hide');
     }
 
     remove(event) {
@@ -49,22 +49,22 @@ class AtribuicoesController {
         switch (tipo) {
 
             case 'inteiro':
-                let tipoInt = document.getElementById("inteiro");
+                let tipoInt = document.getElementById('inteiro');
                 this._dysplayNone(tipoInt);
                 break;
 
             case 'real':
-                let tipoReal = document.getElementById("real");
+                let tipoReal = document.getElementById('real');
                 this._dysplayNone(tipoReal);
                 break;
 
             case 'caractere':
-                let tipoCaractere = document.getElementById("caractere");
+                let tipoCaractere = document.getElementById('caractere');
                 this._dysplayNone(tipoCaractere);
                 break;
 
             case 'logico':
-                let tipoLogico = document.getElementById("logico");
+                let tipoLogico = document.getElementById('logico');
                 this._dysplayNone(tipoLogico);
                 break;
         }
