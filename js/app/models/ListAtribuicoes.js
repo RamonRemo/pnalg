@@ -9,13 +9,11 @@ class ListAtribuicoes {
         this._atribuicoes.push(atribuicao);
     }
 
-    apaga(remover) {
+    apaga(id) {
 
-        var index = this._atribuicoes.indexOf(remover);
+        if (id > -1) {
 
-        if (index > -1) {
-
-            return this._atribuicoes.splice(index, 1);
+            return this._atribuicoes.splice(id, 1);
         }
     }
 

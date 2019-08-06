@@ -5,6 +5,7 @@ class LeiaController {
         this._leia;
         this._inputNome;
         this._inputTipo;
+        this._id;
         this._leiaView = new LeiaView();
         this._listLeia = new ListLeia();
     }
@@ -16,6 +17,7 @@ class LeiaController {
         let campo = document.querySelector('#leia-variavel');
         this._inputNome = campo.options[campo.selectedIndex].text;
         this._inputTipo = campo.options[campo.selectedIndex].value;
+        this._id = document.getElementById('leia').children.length;
     }
 
     adiciona(event) {
@@ -34,14 +36,14 @@ class LeiaController {
 
         event.preventDefault();
 
-        this._listLeia.apaga(this._leia);
-
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
+
+        this._listLeia.apaga(li.id);
     }
 
     _newLeia() {
 
-        return new Leia(this._inputNome, this._inputTipo);
+        return new Leia(this._inputNome, this._inputTipo, this._id);
     }
 }

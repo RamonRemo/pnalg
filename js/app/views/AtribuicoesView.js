@@ -10,7 +10,7 @@ class AtribuicoesView extends View {
         let ul = $('#atribuicoes');
 
         let li = document.createElement("li");
-        li.id = "variavel";
+        li.id = model.id;
         li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
 
         let obj = document.createTextNode(`${model.nome} <− ${model.valor};`);

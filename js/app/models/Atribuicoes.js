@@ -1,10 +1,11 @@
 class Atribuicoes {
 
-    constructor(nome, tipo, valor) {
-        
+    constructor(nome, tipo, valor, id) {
+
         this._nome = nome;
         this._tipo = tipo;
         this._valor = valor;
+        this._id = id;
         Object.freeze(this);
     }
 
@@ -21,5 +22,10 @@ class Atribuicoes {
     get valor() {
 
         return this._valor;
+    }
+
+    get id() {
+
+        return this._id;
     }
 }

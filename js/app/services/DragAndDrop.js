@@ -43,7 +43,7 @@ function dragoverHandler(ev) {
 
 function valida(data, nodeCopy) {
 
-    let listVariavel = document.querySelectorAll('#variavel');
+    let listVariavel = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
 

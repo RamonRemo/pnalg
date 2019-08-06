@@ -5,6 +5,7 @@ class AtribuicoesController {
         this._inputNome;
         this._inputTipo;
         this._inputValor;
+        this._id;
         this._listAtribuicoes = new ListAtribuicoes();
         this._atribuicoesView = new AtribuicoesView();
     }
@@ -13,9 +14,11 @@ class AtribuicoesController {
         event.preventDefault();
 
         let campo = document.querySelector('#atribuicao-nome');
+
         this._inputNome = campo.options[campo.selectedIndex].text;
         this._inputTipo = campo.options[campo.selectedIndex].value;
         this._inputValor = this._getValor();
+        this._id = document.getElementById('atribuicoes').children.length;
 
         let atribuicao = this._newAtribuicoes();
         this._listAtribuicoes.add(atribuicao);
@@ -29,10 +32,11 @@ class AtribuicoesController {
     remove(event) {
 
         event.preventDefault();
-        this._listAtribuicoes.apaga(this._declaracao);
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
+
+        this._listAtribuicoes.apaga(li.id);
     }
 
     abreForm(event) {
@@ -53,7 +57,7 @@ class AtribuicoesController {
                 let tipoReal = document.getElementById("real");
                 this._dysplayNone(tipoReal);
                 break;
-                
+
             case 'caractere':
                 let tipoCaractere = document.getElementById("caractere");
                 this._dysplayNone(tipoCaractere);
@@ -88,7 +92,7 @@ class AtribuicoesController {
 
     _newAtribuicoes() {
 
-        return new Atribuicoes(this._inputNome, this._inputTipo, this._inputValor.value);
+        return new Atribuicoes(this._inputNome, this._inputTipo, this._inputValor.value, this._id);
     }
 
     _limpaForm() {

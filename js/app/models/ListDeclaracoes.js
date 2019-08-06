@@ -9,13 +9,11 @@ class ListDeclaracoes {
         this._declaracoes.push(declaracao);
     }
 
-    apaga(remover) {
+    apaga(id) {
+        
+        if (id > -1) {
 
-        var index = this._declaracoes.indexOf(remover);
-
-        if (index > -1) {
-
-            return this._declaracoes.splice(index, 1);
+            return this._declaracoes.splice(id, 1);
         }
     }
 

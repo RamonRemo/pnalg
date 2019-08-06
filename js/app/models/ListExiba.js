@@ -9,13 +9,11 @@ class ListExiba {
         this._exiba.push(exiba);
     }
 
-    apaga(remover) {
+    apaga(id) {
 
-        var index = this._exiba.indexOf(remover);
+        if (id > -1) {
 
-        if (index > -1) {
-
-            return this._exiba.splice(index, 1);
+            return this._exiba.splice(id, 1);
         }
     }
 

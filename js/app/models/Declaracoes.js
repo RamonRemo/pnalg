@@ -1,9 +1,10 @@
 class Declaracoes {
 
-    constructor(nome, tipo) {
+    constructor(nome, tipo, id) {
 
         this._nome = nome;
         this._tipo = tipo;
+        this._id = id;
         Object.freeze(this);
     }
 
@@ -15,5 +16,10 @@ class Declaracoes {
     get tipo() {
 
         return this._tipo;
+    }
+
+    get id() {
+
+        return this._id;
     }
 }

@@ -30,8 +30,8 @@ class ExibaController {
     adiciona(event) {
 
         event.preventDefault();
-        let id = this._listExiba._exiba.length + 1;
-        this._exiba = this._newExiba(id);
+        this._id = document.getElementById('exiba').children.length;
+        this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 
         this._exibaView.update(this._exiba);
@@ -44,15 +44,15 @@ class ExibaController {
 
         event.preventDefault();
 
-        this._listExiba.apaga(this._declaracao);
-
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
+
+        this._listExiba.apaga(li.id);
     }
 
-    _newExiba(id) {
+    _newExiba() {
 
-        return new Exiba(this._saidaCampo.value, id);
+        return new Exiba(this._saidaCampo.value, this._id);
     }
 
     _limpaForm() {

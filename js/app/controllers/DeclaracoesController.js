@@ -4,6 +4,7 @@ class DeclaracoesController {
 
         this._inputNome;
         this._inputTipo;
+        this._id;
         this._declaracao;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
@@ -15,6 +16,7 @@ class DeclaracoesController {
 
         this._inputNome = document.querySelector('#declaracoes-nome').value;
         this._inputTipo = document.querySelector('#declaracoes-tipo').value;
+        this._id = this._listDeclaracoes.declaracoes.length;
 
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
@@ -27,23 +29,22 @@ class DeclaracoesController {
     remove(event) {
 
         event.preventDefault();
-        this._listDeclaracoes.apaga(this._declaracao);
-        View.updateOptions(this._listDeclaracoes, 'atribuicao-nome');
-        View.updateOptions(this._listDeclaracoes, 'exiba-variavel');
-        View.updateOptions(this._listDeclaracoes, 'leia-variavel');
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
+        
+        this._listDeclaracoes.apaga(li.id);
+        this._declaracoesView.atualizaOptions(this._listDeclaracoes);
     }
 
     _newDeclaracoes() {
 
-        return new Declaracoes(this._inputNome, this._inputTipo);
+        return new Declaracoes(this._inputNome, this._inputTipo, this._id);
     }
 
     _limpaForm() {
 
-        this._inputNome = '';
+        document.querySelector('#declaracoes-nome').value = '';
         Utils.focus('modalDeclare', 'declaracoes-nome');
     }
 }

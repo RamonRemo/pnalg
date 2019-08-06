@@ -1,9 +1,10 @@
 class Leia {
 
-    constructor(nome, tipo) {
+    constructor(nome, tipo, id) {
 
         this._nome = nome;
         this._tipo = tipo;
+        this._id = id;
         Object.freeze(this);
     }
 
@@ -15,5 +16,10 @@ class Leia {
     get tipo() {
 
         return this._tipo;
+    }
+
+    get id() {
+
+        return this._id;
     }
 }

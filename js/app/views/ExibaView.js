@@ -10,7 +10,7 @@ class ExibaView extends View {
         let ul = document.querySelector("#exiba");
 
         let li = document.createElement("li");
-        li.id = "exiba-var";
+        li.id = model.id;
         li.className = "componente-variavel-li d-flex justify-content-between align-items-center";
 
         let obj = document.createTextNode(`escreval(${model.saida});`);
