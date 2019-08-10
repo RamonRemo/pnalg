@@ -24,12 +24,22 @@ class ExibaController {
         let campo = document.querySelector('#exiba-variavel');
         this._inputNome = campo.options[campo.selectedIndex].text;
 
+        if (this._inputNome == "Escolher...") {
+            return;
+        }
+
         this._saidaCampo.innerHTML = this._saidaCampo.value + ',' + this._inputNome;
     }
 
     adiciona(event) {
 
         event.preventDefault();
+
+        if (!this._validacoes()) {
+
+            return;
+        }
+
         this._id = document.getElementById('exiba').children.length;
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
@@ -53,6 +63,21 @@ class ExibaController {
     _newExiba() {
 
         return new Exiba(this._saidaCampo.value, this._id);
+    }
+
+    _validacoes() {
+
+        if (!this._saidaCampo) {
+
+            bootbox.alert({
+                message: 'O que iremos exibir? 🤷‍🤷‍',
+                animate: true,
+            });
+
+            return false;
+        }
+
+        return true;
     }
 
     _limpaForm() {

@@ -27,6 +27,8 @@ class View {
             return;
         }
 
+        select.innerHTML = '<option selected>Escolher...</option>';
+
         array.forEach(objetos => {
             objetos.forEach(element => {
 

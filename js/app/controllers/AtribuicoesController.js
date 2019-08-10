@@ -20,6 +20,11 @@ class AtribuicoesController {
         this._inputValor = this._getValor();
         this._id = document.getElementById('atribuicoes').children.length;
 
+        if (!this._validacoes()) {
+
+            return;
+        }
+
         let atribuicao = this._newAtribuicoes();
         this._listAtribuicoes.add(atribuicao);
 
@@ -93,6 +98,31 @@ class AtribuicoesController {
     _newAtribuicoes() {
 
         return new Atribuicoes(this._inputNome, this._inputTipo, this._inputValor.value, this._id);
+    }
+
+    _validacoes() {
+
+        if (this._inputNome == "Escolher...") {
+
+            bootbox.alert({
+                message: 'Qual é a váriavel para atribuir o valor? 🤷‍🤷‍',
+                animate: true,
+            });
+
+            return false;
+        }
+
+        if (!this._inputValor.value) {
+
+            bootbox.alert({
+                message: 'Qual é o valor para atribuição? 🤷‍🤷‍',
+                animate: true,
+            });
+
+            return false;
+        }
+
+        return true;
     }
 
     _limpaForm() {

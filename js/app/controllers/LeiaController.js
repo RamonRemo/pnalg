@@ -24,6 +24,13 @@ class LeiaController {
 
         event.preventDefault();
 
+        if (!this._validacoes()) {
+            
+            return;
+        }
+
+        console.log(this._inputNome);
+        
         this._leia = this._newLeia();
         this._listLeia.add(this._leia);
 
@@ -45,5 +52,20 @@ class LeiaController {
     _newLeia() {
 
         return new Leia(this._inputNome, this._inputTipo, this._id);
+    }
+
+    _validacoes() {
+
+        if (this._inputNome == null || this._inputNome == "Escolher...") {
+
+            bootbox.alert({
+                message: 'Qual é a váriavel para leitura? 🤷‍🤷‍',
+                animate: true,
+            });
+
+            return false;
+        }
+
+        return true;
     }
 }
