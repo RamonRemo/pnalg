@@ -49,7 +49,17 @@ class DeclaracoesController {
 
     _validacoes() {
 
-        const regex = /\W|_/;
+        const regex = /\W/;
+        const isDigit = /^\d+$/;
+
+        if (isDigit.test(this._inputNome[0])) {
+
+            bootbox.alert({
+                message: 'O nome da variavel não pode ser iniciada com um número! 👨‍🏫',
+            });
+
+            return false;
+        }
 
         if (regex.test(this._inputNome)) {
 
@@ -57,17 +67,39 @@ class DeclaracoesController {
                 message: 'Todo nome deve ser composto apenas por letras, números e sublinhado ( ‘_’ ) 🤓',
             });
 
-            this._inputNome = this._inputNome.replace(/[^a-z0-9]/gi, '');
+            this._inputNome = this._inputNome.replace(/[^a-z0-9_]/gi, '');
         }
 
         if (this._inputTipo == "Escolher...") {
 
             bootbox.alert({
-                message: 'Escolha o tipo da variavel 🧐',
+                message: 'Escolha o tipo da variavel! 🧐',
                 animate: true,
             });
 
             return false;
+        }
+
+        let array = Object.values(this._listDeclaracoes);
+
+        if (array[0].length > 0) {
+
+            $.each(array, function (idx, obj) {
+                $.each(obj, function (idx, declaracoes) {
+
+                    array.push(declaracoes.nome);
+                });
+            });
+
+            if (array.indexOf(this._inputNome, 0) != -1) {
+
+                bootbox.alert({
+                    message: 'Você já declarou uma váriavel com este nome! 🕵️‍',
+                    animate: true,
+                });
+
+                return false;
+            }
         }
 
         return true;

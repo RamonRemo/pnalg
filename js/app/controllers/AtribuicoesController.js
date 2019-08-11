@@ -105,7 +105,7 @@ class AtribuicoesController {
         if (this._inputNome == "Escolher...") {
 
             bootbox.alert({
-                message: 'Qual é a váriavel para atribuir o valor? 🤷‍🤷‍',
+                message: 'Qual é a váriavel para atribuir o valor? 🤷‍♂️ 🤷‍',
                 animate: true,
             });
 
@@ -115,7 +115,7 @@ class AtribuicoesController {
         if (!this._inputValor.value) {
 
             bootbox.alert({
-                message: 'Qual é o valor para atribuição? 🤷‍🤷‍',
+                message: 'Qual é o valor para atribuição? 🤷‍♂️🤷‍',
                 animate: true,
             });
 

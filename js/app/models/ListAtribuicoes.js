@@ -21,5 +21,4 @@ class ListAtribuicoes {
 
         return [].concat(this._atribuicoes);
     }
-
 }

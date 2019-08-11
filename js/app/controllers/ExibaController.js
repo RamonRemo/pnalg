@@ -67,7 +67,7 @@ class ExibaController {
 
     _validacoes() {
 
-        if (!this._saidaCampo) {
+        if (!this._saidaCampo || !this._saidaCampo.value) {
 
             bootbox.alert({
                 message: 'O que iremos exibir? 🤷‍🤷‍',

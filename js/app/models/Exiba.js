@@ -7,13 +7,13 @@ class Exiba {
         Object.freeze(this);
     }
 
-    get saida(){
+    get saida() {
 
         return this._saida;
     }
 
 
-    get id(){
+    get id() {
 
         return this._id;
     }

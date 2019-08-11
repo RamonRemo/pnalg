@@ -10,7 +10,7 @@ class ListDeclaracoes {
     }
 
     apaga(id) {
-        
+
         if (id > -1) {
 
             return this._declaracoes.splice(id, 1);
@@ -21,5 +21,4 @@ class ListDeclaracoes {
 
         return [].concat(this._declaracoes);
     }
-
 }
