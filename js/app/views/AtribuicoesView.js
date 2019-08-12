@@ -18,22 +18,16 @@ class AtribuicoesView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
-        this._console(list);
+        this.console(list);
     }
 
-
-    _addRemovedor(li) {
-
-        let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="atribuicoesController.remove(event);">x</span>';
-        li.appendChild(span);
-    }
-
-    _console(list) {
+    console(list) {
 
         let code = document.querySelector('#code-atr');
 
         $('#code-atr').empty();
+
+        code.innerHTML = '<span id="comentario">//Atribuicoes</span>';
 
         let array = Object.values(list);
 
@@ -53,4 +47,12 @@ class AtribuicoesView extends View {
             });
         });
     }
+
+    _addRemovedor(li) {
+
+        let span = document.createElement('span');
+        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="atribuicoesController.remove(event);">x</span>';
+        li.appendChild(span);
+    }
+
 }

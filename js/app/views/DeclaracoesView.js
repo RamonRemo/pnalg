@@ -44,9 +44,11 @@ class DeclaracoesView extends View {
 
     _console(list) {
 
-        let code = document.querySelector('#code-body');
+        let code = document.querySelector('#code-decl');
 
-        $('#code-body').empty();
+        $('#code-decl').empty();
+
+        code.innerHTML = '<span id="comentario">//Declaracoes</span>';
 
         let array = Object.values(list);
 

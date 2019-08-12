@@ -10,12 +10,23 @@ class ListLeia {
     }
 
     apaga(id) {
+        
+        let index;
 
         if (id > -1) {
 
-            return this._leia.splice(id, 1);
+            this._leia.forEach(element => {
+
+                if (element.id == id) {
+
+                    index = this._leia.indexOf(element);
+                }
+            });
+
+            return this._leia.splice(index, 1);
         }
     }
+
 
     get leia() {
 

@@ -10,10 +10,20 @@ class ListExiba {
     }
 
     apaga(id) {
+        
+        let index;
 
         if (id > -1) {
 
-            return this._exiba.splice(id, 1);
+            this._exiba.forEach(element => {
+
+                if (element.id == id) {
+
+                    index = this._exiba.indexOf(element);
+                }
+            });
+
+            return this._exiba.splice(index, 1);
         }
     }
 

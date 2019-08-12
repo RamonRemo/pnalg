@@ -4,7 +4,7 @@ class DeclaracoesController {
 
         this._inputNome;
         this._inputTipo;
-        this._id;
+        this._id = -1;
         this._declaracao;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
@@ -16,7 +16,7 @@ class DeclaracoesController {
 
         this._inputNome = document.querySelector('#declaracoes-nome').value;
         this._inputTipo = document.querySelector('#declaracoes-tipo').value;
-        this._id = this._listDeclaracoes.declaracoes.length;
+        this._id = this._id + 1;
 
         if (!this._validacoes()) {
 

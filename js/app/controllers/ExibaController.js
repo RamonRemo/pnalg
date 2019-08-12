@@ -4,7 +4,7 @@ class ExibaController {
 
         this._saidaCampo;
         this._exiba;
-        this._id;
+        this._id = -1;
         this._inputNome;
         this._exibaView = new ExibaView();
         this._listExiba = new ListExiba();
@@ -40,7 +40,7 @@ class ExibaController {
             return;
         }
 
-        this._id = document.getElementById('exiba').children.length;
+        this._id = this._id + 1;
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 

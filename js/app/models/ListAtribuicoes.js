@@ -10,12 +10,23 @@ class ListAtribuicoes {
     }
 
     apaga(id) {
+        
+        let index;
 
         if (id > -1) {
 
-            return this._atribuicoes.splice(id, 1);
+            this._atribuicoes.forEach(element => {
+
+                if (element.id == id) {
+
+                    index = this._atribuicoes.indexOf(element);
+                }
+            });
+
+            return this._atribuicoes.splice(index, 1);
         }
     }
+
 
     get declaracoes() {
 

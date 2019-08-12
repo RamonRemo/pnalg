@@ -5,7 +5,7 @@ class AtribuicoesController {
         this._inputNome;
         this._inputTipo;
         this._inputValor;
-        this._id;
+        this._id = -1;
         this._listAtribuicoes = new ListAtribuicoes();
         this._atribuicoesView = new AtribuicoesView();
     }
@@ -18,7 +18,7 @@ class AtribuicoesController {
         this._inputNome = campo.options[campo.selectedIndex].text;
         this._inputTipo = campo.options[campo.selectedIndex].value;
         this._inputValor = this._getValor();
-        this._id = document.getElementById('atribuicoes').children.length;
+        this._id = this._id + 1;
 
         if (!this._validacoes()) {
 
@@ -42,6 +42,7 @@ class AtribuicoesController {
         li.parentNode.removeChild(li);
 
         this._listAtribuicoes.apaga(li.id);
+        this._atribuicoesView.console(this._listAtribuicoes);
     }
 
     abreForm(event) {

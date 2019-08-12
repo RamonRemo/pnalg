@@ -10,10 +10,20 @@ class ListDeclaracoes {
     }
 
     apaga(id) {
+        
+        let index;
 
         if (id > -1) {
 
-            return this._declaracoes.splice(id, 1);
+            this._declaracoes.forEach(element => {
+
+                if (element.id == id) {
+
+                    index = this._declaracoes.indexOf(element);
+                }
+            });
+
+            return this._declaracoes.splice(index, 1);
         }
     }
 

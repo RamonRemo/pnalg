@@ -5,7 +5,7 @@ class LeiaController {
         this._leia;
         this._inputNome;
         this._inputTipo;
-        this._id;
+        this._id = -1;
         this._leiaView = new LeiaView();
         this._listLeia = new ListLeia();
     }
@@ -17,7 +17,7 @@ class LeiaController {
         let campo = document.querySelector('#leia-variavel');
         this._inputNome = campo.options[campo.selectedIndex].text;
         this._inputTipo = campo.options[campo.selectedIndex].value;
-        this._id = document.getElementById('leia').children.length;
+        this._id = this._id + 1;
     }
 
     adiciona(event) {

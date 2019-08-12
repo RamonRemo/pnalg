@@ -8,7 +8,7 @@ class SeController {
         this._var2_nome;
         this._var2_tipo;
         this._relacional;
-        this._id;
+        this._id = -1;
         this._seView = new SeView();
         this._listSe = new ListSe();
     }
@@ -58,7 +58,7 @@ class SeController {
 
         this._relacional = relacional.options[relacional.selectedIndex].text;
 
-        this._id = document.getElementById('se').children.length;
+        this._id = this._id + 1;
     }
 
     _newSe() {
