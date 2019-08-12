@@ -20,6 +20,8 @@ class View {
 
         var select = document.getElementById(campo);
 
+        select.innerHTML = '<option selected>Escolher...</option>';
+
         let array = Object.values(list);
 
         if (array[0].length == 0) {
@@ -27,7 +29,6 @@ class View {
             return;
         }
 
-        select.innerHTML = '<option selected>Escolher...</option>';
 
         array.forEach(objetos => {
             objetos.forEach(element => {

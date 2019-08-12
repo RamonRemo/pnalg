@@ -5,7 +5,7 @@ class AtribuicoesView extends View {
         super(elemento);
     }
 
-    template(model) {
+    template(model, list) {
         let $ = document.querySelector.bind(document);
         let ul = $('#atribuicoes');
 
@@ -18,6 +18,7 @@ class AtribuicoesView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
+        this._console(list);
     }
 
 
@@ -26,5 +27,30 @@ class AtribuicoesView extends View {
         let span = document.createElement('span');
         span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="atribuicoesController.remove(event);">x</span>';
         li.appendChild(span);
+    }
+
+    _console(list) {
+
+        let code = document.querySelector('#code-atr');
+
+        $('#code-atr').empty();
+
+        let array = Object.values(list);
+
+        if (array[0].length == 0) {
+
+            return;
+        }
+
+        array.forEach(objetos => {
+            objetos.forEach(element => {
+
+                let span = document.createElement('span');
+
+                span.innerHTML = (`${element._nome} <− ${element._valor};`);
+
+                code.appendChild(span);
+            });
+        });
     }
 }

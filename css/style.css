@@ -111,3 +111,23 @@ ul {
     color: #007cc6;
     text-align: center;
 }
+
+/* -------------------- Simular --------------------*/
+
+h3 {
+    text-align: center;
+}
+
+#code-body span {
+    display: block;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    color: #007cc6;
+}
+
+#code-atr span {
+    display: block;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    color: #007cc6;
+}

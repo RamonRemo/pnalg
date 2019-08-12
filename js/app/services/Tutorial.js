@@ -1,5 +1,7 @@
 $(function () {
+
     let introguide = introJs();
+    
     introguide.setOptions({
         steps: [
             {
@@ -29,5 +31,6 @@ $(function () {
             }
         ]
     });
+
     introguide.start();
 });
