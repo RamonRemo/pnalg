@@ -23,9 +23,9 @@ class AtribuicoesView extends View {
 
     console(list) {
 
-        let code = document.querySelector('#code-atr');
+        let code = document.querySelector('#code-atribuicao');
 
-        $('#code-atr').empty();
+        $('#code-atribuicao').empty();
 
         code.innerHTML = '<span id="comentario">//Atribuicoes</span>';
 
@@ -41,7 +41,7 @@ class AtribuicoesView extends View {
 
                 let span = document.createElement('span');
 
-                span.innerHTML = (`${element._nome} <− ${element._valor};`);
+                span.innerHTML = (`${element.nome} <− ${element.valor};`);
 
                 code.appendChild(span);
             });

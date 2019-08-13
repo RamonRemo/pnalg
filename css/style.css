@@ -120,11 +120,12 @@ h3 {
 
 code span {
     display: flex;
-    padding-bottom: 2;
-    padding-left: 20px;
+    padding-bottom: 0;
+    padding-left: 25px;
     color: #007cc6;
 }
 
-#comentario{
+#comentario {
+    margin-top: 10px;
     color: #29b100;
 }

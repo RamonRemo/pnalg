@@ -34,7 +34,7 @@ class LeiaController {
         this._leia = this._newLeia();
         this._listLeia.add(this._leia);
 
-        this._leiaView.update(this._leia);
+        this._leiaView.update(this._leia, this._listLeia);
 
         $('#modalLeia').modal('hide');
     }
@@ -47,6 +47,7 @@ class LeiaController {
         li.parentNode.removeChild(li);
 
         this._listLeia.apaga(li.id);
+        this._leiaView.console(this._listLeia);
     }
 
     _newLeia() {

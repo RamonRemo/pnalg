@@ -44,7 +44,7 @@ class ExibaController {
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 
-        this._exibaView.update(this._exiba);
+        this._exibaView.update(this._exiba, this._listExiba);
         this._limpaForm();
 
         $('#modalExiba').modal('hide');
@@ -58,6 +58,7 @@ class ExibaController {
         li.parentNode.removeChild(li);
 
         this._listExiba.apaga(li.id);
+        this._exibaView.console(this._listExiba);
     }
 
     _newExiba() {

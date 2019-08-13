@@ -5,7 +5,7 @@ class ExibaView extends View {
         super(elemento);
     }
 
-    template(model) {
+    template(model, list) {
 
         let ul = document.querySelector("#exiba");
 
@@ -18,6 +18,34 @@ class ExibaView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
+        this.console(list);
+    }
+
+    console(list) {
+
+        let code = document.querySelector('#code-exiba');
+
+        $('#code-exiba').empty();
+
+        code.innerHTML = '<span id="comentario">//Exiba</span>';
+
+        let array = Object.values(list);
+
+        if (array[0].length == 0) {
+
+            return;
+        }
+
+        array.forEach(objetos => {
+            objetos.forEach(element => {
+
+                let span = document.createElement('span');
+
+                span.innerHTML = (`escreval(${element.saida});`);
+
+                code.appendChild(span);
+            });
+        });
     }
 
     _addRemovedor(li) {

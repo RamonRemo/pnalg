@@ -49,6 +49,7 @@ function valida(data, nodeCopy) {
 
         case 'componente-declare':
             addUl(nodeCopy, 'declaracoes');
+            addCode('code-declaracao');
             document.getElementById(data).remove();
             return true;
 
@@ -58,11 +59,13 @@ function valida(data, nodeCopy) {
                 return false;
             }
             addUl(nodeCopy, 'leia');
+            addCode('code-leia');
             document.getElementById(data).remove();
             return true;
 
         case 'componente-exiba':
             addUl(nodeCopy, 'exiba');
+            addCode('code-exiba');
             document.getElementById(data).remove();
             return true;
 
@@ -72,6 +75,7 @@ function valida(data, nodeCopy) {
                 return false;
             }
             addUl(nodeCopy, 'atribuicoes');
+            addCode('code-atribuicao');
             document.getElementById(data).remove();
             return true;
 
@@ -81,6 +85,7 @@ function valida(data, nodeCopy) {
                 return false;
             }
             addUl(nodeCopy, 'se');
+            addCode('code-se');
             document.getElementById(data).remove();
             return true;
 
@@ -95,4 +100,11 @@ function addUl(nodeCopy, nome) {
     ul.setAttribute('id', nome);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
     nodeCopy.appendChild(ul);
+}
+
+function addCode(nome) {
+    let araeCodigo = document.querySelector('#area-codigo');
+    var code = document.createElement('code');
+    code.setAttribute('id', nome);
+    araeCodigo.appendChild(code);
 }

@@ -5,7 +5,7 @@ class LeiaView extends View {
         super(elemento);
     }
 
-    template(model) {
+    template(model, list) {
 
         let ul = document.querySelector('#leia');
 
@@ -18,6 +18,34 @@ class LeiaView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
+        this.console(list);
+    }
+
+    console(list) {
+
+        let code = document.querySelector('#code-leia');
+
+        $('#code-leia').empty();
+
+        code.innerHTML = '<span id="comentario">//Leia</span>';
+
+        let array = Object.values(list);
+
+        if (array[0].length == 0) {
+
+            return;
+        }
+
+        array.forEach(objetos => {
+            objetos.forEach(element => {
+
+                let span = document.createElement('span');
+
+                span.innerHTML = (`leia(${element.nome});`);
+
+                code.appendChild(span);
+            });
+        });
     }
 
     _addRemovedor(li) {

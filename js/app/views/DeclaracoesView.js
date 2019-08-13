@@ -44,9 +44,9 @@ class DeclaracoesView extends View {
 
     _console(list) {
 
-        let code = document.querySelector('#code-decl');
+        let code = document.querySelector('#code-declaracao');
 
-        $('#code-decl').empty();
+        $('#code-declaracao').empty();
 
         code.innerHTML = '<span id="comentario">//Declaracoes</span>';
 
@@ -62,7 +62,7 @@ class DeclaracoesView extends View {
 
                 let span = document.createElement('span');
 
-                span.innerHTML = (`${element._tipo} : ${element._nome};`);
+                span.innerHTML = (`${element.tipo} : ${element.nome};`);
 
                 code.appendChild(span);
             });
