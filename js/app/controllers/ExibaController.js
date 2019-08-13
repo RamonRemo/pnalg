@@ -2,7 +2,7 @@ class ExibaController {
 
     constructor() {
 
-        this._saidaCampo;
+        this._saidaCampo = null;
         this._exiba;
         this._id = -1;
         this._inputNome;
@@ -14,7 +14,7 @@ class ExibaController {
 
         event.preventDefault();
         this._saidaCampo = document.querySelector('#exiba-saida')
-        this._saidaCampo.innerHTML = "\"" + event.target.value + "\"";
+        this._saidaCampo.innerHTML = `"${event.target.value}"`;
     }
 
     addVar(event) {
@@ -28,7 +28,15 @@ class ExibaController {
             return;
         }
 
-        this._saidaCampo.innerHTML = this._saidaCampo.value + ',' + this._inputNome;
+        if (!this._saidaCampo) {
+
+            this._saidaCampo = document.querySelector('#exiba-saida')
+            this._saidaCampo.innerHTML = this._inputNome;
+        } else {
+
+            this._saidaCampo.innerHTML = this._saidaCampo.value + ',' + this._inputNome;
+        }
+
     }
 
     adiciona(event) {
@@ -84,6 +92,7 @@ class ExibaController {
     _limpaForm() {
 
         this._saidaCampo.innerHTML = '';
+        this._saidaCampo = null;
         Utils.focus('modalExiba', 'exiba-texto');
     }
 }
