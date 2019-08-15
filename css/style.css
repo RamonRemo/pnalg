@@ -129,3 +129,7 @@ code span {
     margin-top: 10px;
     color: #29b100;
 }
+
+#ul-dicas{
+    list-style-type: circle;
+}

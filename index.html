@@ -11,12 +11,13 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css' />
     <!-- Meu CSS -->
     <link rel='stylesheet' href='css/style.css' type='text/css' />
+    <link rel='stylesheet' href='css/introjs-flattener.css' type='text/css' />
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <nav class='navbar fixed-top navbar-dark bg-dark' id='step0'>
+        <nav class='navbar fixed-top navbar-dark bg-dark'>
             <a class='navbar-brand' href='index.html' id='cpnalg'>
                 <img src='img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'>
                 CPNAlg
@@ -25,7 +26,7 @@
     </header>
     <main>
         <section>
-            <div class='row'>
+            <div class='row' id='step0'>
                 <!-- Componentes -->
                 <div id='step1' class='col tracado'>
                     <div class='mt-4' data-id='components'>
@@ -69,7 +70,7 @@
                 <div id='step3' class='col tracado'>
                     <div class='area container section mt-3'>
                         <pre>
-                            <h3>Portugol</h3>
+                            <h3 id='step4'>Portugol</h3>
                             <code>
 Inicio
 <div id='area-codigo'></div>
@@ -78,7 +79,7 @@ Fim
                         </pre>
                     </div>
                     <div class='d-flex align-items-end d-flex justify-content-center'>
-                        <button id='step4' type='button' class='btn btn-success mb-2 btn-lg btn-block'>
+                        <button id='step5' type='button' class='btn btn-success mb-2 btn-lg btn-block'>
                             Simular
                         </button>
                     </div>
@@ -173,6 +174,7 @@ Fim
     <!-- JavaScript -->
     <script src='js/app/services/ModalLinks.js'></script>
     <script src='js/app/services/Tutorial.js' type='text/javascript'></script>
+    <script src='js/app/services/Dicas.js' type='text/javascript'></script>
     <script src='js/app/services/DragAndDrop.js' type='text/javascript'></script>
     <script src='js/app/utils/Utils.js' type='text/javascript'></script>
     <script src='js/app/views/View.js' type='text/javascript'></script>

@@ -27,7 +27,7 @@ class ExibaView extends View {
 
         $('#code-exiba').empty();
 
-        code.innerHTML = '<span id="comentario">//Exiba</span>';
+        code.innerHTML = '<span id="comentario">//Exibicao</span>';
 
         let array = Object.values(list);
 

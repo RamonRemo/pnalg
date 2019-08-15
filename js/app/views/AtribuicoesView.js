@@ -27,7 +27,7 @@ class AtribuicoesView extends View {
 
         $('#code-atribuicao').empty();
 
-        code.innerHTML = '<span id="comentario">//Atribuicoes</span>';
+        code.innerHTML = '<span id="comentario">//Atribuicoes de valores</span>';
 
         let array = Object.values(list);
 

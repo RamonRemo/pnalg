@@ -13,9 +13,11 @@ function dragStartHandler(ev) {
 function dropHandler(ev) {
 
     ev.preventDefault();
+
     let data = ev.dataTransfer.getData('text');
 
     if (document.getElementById(data) == null) {
+
         return;
     }
 
@@ -23,6 +25,7 @@ function dropHandler(ev) {
     nodeCopy.className = 'componente';
 
     if (!valida(data, nodeCopy)) {
+
         return;
     }
 
@@ -48,46 +51,19 @@ function valida(data, nodeCopy) {
     switch (nodeCopy.id) {
 
         case 'componente-declare':
-            addUl(nodeCopy, 'declaracoes');
-            addCode('code-declaracao');
-            document.getElementById(data).remove();
-            return true;
+            return declare(nodeCopy, data);
 
         case 'componente-leia':
-            if (listVariavel.length == '0') {
-                bootbox.alert('Declare ao menos uma variável!');
-                return false;
-            }
-            addUl(nodeCopy, 'leia');
-            addCode('code-leia');
-            document.getElementById(data).remove();
-            return true;
+            return leia(nodeCopy, data, listVariavel);
 
         case 'componente-exiba':
-            addUl(nodeCopy, 'exiba');
-            addCode('code-exiba');
-            document.getElementById(data).remove();
-            return true;
+            return exiba(nodeCopy, data);
 
         case 'componente-atribuicao':
-            if (listVariavel.length == '0') {
-                bootbox.alert('Declare ao menos uma variável!');
-                return false;
-            }
-            addUl(nodeCopy, 'atribuicoes');
-            addCode('code-atribuicao');
-            document.getElementById(data).remove();
-            return true;
+            return atribuicao(nodeCopy, data, listVariavel);
 
         case 'componente-se':
-            if (listVariavel.length == '0') {
-                bootbox.alert('Declare ao menos uma variável!');
-                return false;
-            }
-            addUl(nodeCopy, 'se');
-            addCode('code-se');
-            document.getElementById(data).remove();
-            return true;
+            return se(nodeCopy, data, listVariavel);
 
         default:
             document.getElementById(data).remove();
@@ -95,16 +71,81 @@ function valida(data, nodeCopy) {
     }
 }
 
+
+function declare(nodeCopy, data) {
+
+    addUl(nodeCopy, 'declaracoes');
+    addCode('code-declaracao');
+    document.getElementById(data).remove();
+
+    return true;
+}
+
+function leia(nodeCopy, data, listVariavel) {
+
+    if (listVariavel.length == '0') {
+        bootbox.alert('Declare ao menos uma variável!');
+        return false;
+    }
+
+    addUl(nodeCopy, 'leia');
+    addCode('code-leia');
+    document.getElementById(data).remove();
+
+    return true;
+}
+
+function exiba(nodeCopy, data) {
+
+    addUl(nodeCopy, 'exiba');
+    addCode('code-exiba');
+    document.getElementById(data).remove();
+
+    return true;
+}
+
+function atribuicao(nodeCopy, data, listVariavel) {
+
+    if (listVariavel.length == '0') {
+        bootbox.alert('Declare ao menos uma variável!');
+        return false;
+    }
+
+    addUl(nodeCopy, 'atribuicoes');
+    addCode('code-atribuicao');
+    document.getElementById(data).remove();
+
+    return true;
+}
+
+function se(nodeCopy, data, listVariavel) {
+
+    if (listVariavel.length == '0') {
+        bootbox.alert('Declare ao menos uma variável!');
+        return false;
+    }
+
+    addUl(nodeCopy, 'se');
+    addCode('code-se');
+    document.getElementById(data).remove();
+
+    return true;
+}
+
 function addUl(nodeCopy, nome) {
-    var ul = document.createElement('ul');
+
+    let ul = document.createElement('ul');
     ul.setAttribute('id', nome);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
+
     nodeCopy.appendChild(ul);
 }
 
 function addCode(nome) {
+
     let araeCodigo = document.querySelector('#area-codigo');
-    var code = document.createElement('code');
+    let code = document.createElement('code');
     code.setAttribute('id', nome);
+
     araeCodigo.appendChild(code);
 }
