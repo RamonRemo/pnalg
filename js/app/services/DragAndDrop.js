@@ -149,3 +149,15 @@ function addCode(nome) {
 
     araeCodigo.appendChild(code);
 }
+
+function h() {
+    if (target.data('id') === 'area') {
+        let data = ev.dataTransfer.getData('text');
+        let element = document.getElementById(data);
+        let elemento = Utils.elementDeclare();
+        componente = document.getElementById('components-drop');
+        componente.insertAdjacentHTML('beforeend', elemento);
+        element.remove();
+        return;
+    }
+}
