@@ -26,9 +26,12 @@ class ExibaView extends View {
         let code = document.querySelector('#code-exiba');
 
         $('#code-exiba').empty();
-
-        code.innerHTML = '<span id="comentario">//Exibicao</span>';
-
+        
+        if (list._exiba.length != 0) {
+            
+            code.innerHTML = '<span id="comentario">//Exibicao</span>';
+        }
+        
         let array = Object.values(list);
 
         if (array[0].length == 0) {

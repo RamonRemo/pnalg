@@ -27,7 +27,10 @@ class LeiaView extends View {
 
         $('#code-leia').empty();
 
-        code.innerHTML = '<span id="comentario">//Leitura de variaveis</span>';
+        if (list._leia.length != 0) {
+            
+            code.innerHTML = '<span id="comentario">//Leitura de variaveis</span>';
+        }
 
         let array = Object.values(list);
 

@@ -48,7 +48,10 @@ class DeclaracoesView extends View {
 
         $('#code-declaracao').empty();
 
-        code.innerHTML = '<span id="comentario">//Declaracoes de variaveis</span>';
+        if (list._declaracoes.length != 0) {
+            
+            code.innerHTML = '<span id="comentario">//Declaracoes de variaveis</span>';
+        }
 
         let array = Object.values(list);
 
