@@ -1,10 +1,11 @@
+var dragID;
+var dropID;
+
 function dragStartHandler(ev) {
 
     let target = $(ev.target).closest('[data-id]');
 
-    if (target.data('id') != 'components') {
-        return;
-    }
+    dragID = target.data('id');
 
     ev.dataTransfer.setData('text', ev.target.id);
     ev.dataTransfer.effectAllowed = 'copy';
@@ -16,20 +17,30 @@ function dropHandler(ev) {
 
     let data = ev.dataTransfer.getData('text');
 
+    let target = $(ev.target).closest('[data-id]');
+    dropID = target.data('id');
+
+    if (!removeElement(data)) {
+
+        return;
+    }
+
     if (document.getElementById(data) == null) {
 
         return;
     }
 
+
     let nodeCopy = document.getElementById(data).cloneNode(true);
     nodeCopy.className = 'componente';
 
-    if (!valida(data, nodeCopy)) {
+    let id = document.querySelectorAll('#target button').length;
+
+    if (!valida(id, nodeCopy)) {
 
         return;
     }
 
-    let id = document.querySelectorAll('#target button').length;
     nodeCopy.id = data + '-' + id;
 
     let modal = nodeCopy.childNodes[1];
@@ -44,98 +55,92 @@ function dragoverHandler(ev) {
 }
 
 
-function valida(data, nodeCopy) {
+function valida(id, nodeCopy) {
 
     let listVariavel = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
 
         case 'componente-declare':
-            return declare(nodeCopy, data);
+            return declare(id, nodeCopy);
 
         case 'componente-leia':
-            return leia(nodeCopy, data, listVariavel);
+            return leia(id, nodeCopy, listVariavel);
 
         case 'componente-exiba':
-            return exiba(nodeCopy, data);
+            return exiba(id, nodeCopy);
 
         case 'componente-atribuicao':
-            return atribuicao(nodeCopy, data, listVariavel);
+            return atribuicao(id, nodeCopy, listVariavel);
 
         case 'componente-se':
-            return se(nodeCopy, data, listVariavel);
+            return se(id, nodeCopy, listVariavel);
 
         default:
-            document.getElementById(data).remove();
             return true;
     }
 }
 
 
-function declare(nodeCopy, data) {
+function declare(id, nodeCopy) {
 
-    addUl(nodeCopy, 'declaracoes');
+    addUl(id, nodeCopy, 'declaracoes');
     addCode('code-declaracao');
-    document.getElementById(data).remove();
 
     return true;
 }
 
-function leia(nodeCopy, data, listVariavel) {
+function leia(id, nodeCopy, listVariavel) {
 
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return false;
     }
 
-    addUl(nodeCopy, 'leia');
+    addUl(id, nodeCopy, 'leia');
     addCode('code-leia');
-    document.getElementById(data).remove();
 
     return true;
 }
 
-function exiba(nodeCopy, data) {
+function exiba(id, nodeCopy) {
 
-    addUl(nodeCopy, 'exiba');
+    addUl(id, nodeCopy, 'exiba');
     addCode('code-exiba');
-    document.getElementById(data).remove();
 
     return true;
 }
 
-function atribuicao(nodeCopy, data, listVariavel) {
+function atribuicao(id, nodeCopy, listVariavel) {
 
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return false;
     }
 
-    addUl(nodeCopy, 'atribuicoes');
+    addUl(id, nodeCopy, 'atribuicoes');
     addCode('code-atribuicao');
-    document.getElementById(data).remove();
 
     return true;
 }
 
-function se(nodeCopy, data, listVariavel) {
+function se(id, nodeCopy, listVariavel) {
 
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return false;
     }
 
-    addUl(nodeCopy, 'se');
+    addUl(id, nodeCopy, 'se');
     addCode('code-se');
-    document.getElementById(data).remove();
 
     return true;
 }
 
-function addUl(nodeCopy, nome) {
+function addUl(id, nodeCopy, nome) {
 
     let ul = document.createElement('ul');
-    ul.setAttribute('id', nome);
+    ul.setAttribute('id', `${nome}-${id}`);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
 
     nodeCopy.appendChild(ul);
@@ -150,14 +155,25 @@ function addCode(nome) {
     araeCodigo.appendChild(code);
 }
 
-function h() {
-    if (target.data('id') === 'area') {
-        let data = ev.dataTransfer.getData('text');
-        let element = document.getElementById(data);
-        let elemento = Utils.elementDeclare();
-        componente = document.getElementById('components-drop');
-        componente.insertAdjacentHTML('beforeend', elemento);
-        element.remove();
-        return;
+function removeElement(data) {
+
+    if (dragID === 'components' && dropID === 'area') {
+
+        return true;
     }
+
+    if (dragID === 'area' && dropID === 'area') {
+
+        return false;
+    }
+
+    if (dragID === 'components' && dropID === 'components') {
+
+        return false;
+    }
+
+    let element = document.getElementById(data);
+    element.remove();
+
+    return false;
 }

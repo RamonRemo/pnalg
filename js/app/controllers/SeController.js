@@ -9,8 +9,20 @@ class SeController {
         this._var2_tipo;
         this._relacional;
         this._id = -1;
+        this._ul;
         this._seView = new SeView();
         this._listSe = new ListSe();
+    }
+
+    setId(event) {
+
+        event.preventDefault();
+
+        try {
+            this._ul = event.target.parentElement.children[1];
+        } catch{
+            return;
+        }
     }
 
     adiciona(event) {
@@ -27,7 +39,7 @@ class SeController {
         this._se = this._newSe();
         this._listSe.add(this._se);
 
-        this._seView.update(this._se);
+        this._seView.update(this._se, this._ul);
 
         $('#modalSe').modal('hide');
     }

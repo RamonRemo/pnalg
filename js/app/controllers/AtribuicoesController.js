@@ -6,8 +6,20 @@ class AtribuicoesController {
         this._inputTipo;
         this._inputValor;
         this._id = -1;
+        this._ul
         this._listAtribuicoes = new ListAtribuicoes();
         this._atribuicoesView = new AtribuicoesView();
+    }
+
+    setId(event) {
+
+        event.preventDefault();
+
+        try {
+            this._ul = event.target.parentElement.children[1];
+        } catch{
+            return;
+        }
     }
 
     adiciona(event) {
@@ -28,7 +40,7 @@ class AtribuicoesController {
         let atribuicao = this._newAtribuicoes();
         this._listAtribuicoes.add(atribuicao);
 
-        this._atribuicoesView.update(atribuicao, this._listAtribuicoes);
+        this._atribuicoesView.update(atribuicao, this._listAtribuicoes, this._ul);
         this._limpaForm();
 
         $('#modalAtribuicao').modal('hide');

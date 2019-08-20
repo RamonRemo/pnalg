@@ -6,8 +6,20 @@ class DeclaracoesController {
         this._inputTipo;
         this._id = -1;
         this._declaracao;
+        this._ul;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
+    }
+
+    setId(event) {
+
+        event.preventDefault();
+
+        try {
+            this._ul = event.target.parentElement.children[1];
+        } catch{
+            return;
+        }
     }
 
     adiciona(event) {
@@ -25,7 +37,7 @@ class DeclaracoesController {
 
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
-        this._declaracoesView.update(this._declaracao, this._listDeclaracoes);
+        this._declaracoesView.update(this._declaracao, this._listDeclaracoes, this._ul);
         this._limpaForm();
 
         $('#modalDeclare').modal('hide');

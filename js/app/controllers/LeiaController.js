@@ -6,8 +6,20 @@ class LeiaController {
         this._inputNome;
         this._inputTipo;
         this._id = -1;
+        this._ul;
         this._leiaView = new LeiaView();
         this._listLeia = new ListLeia();
+    }
+
+    setId(event) {
+
+        event.preventDefault();
+
+        try {
+            this._ul = event.target.parentElement.children[1];
+        } catch{
+            return;
+        }
     }
 
     addVar(event) {
@@ -34,7 +46,7 @@ class LeiaController {
         this._leia = this._newLeia();
         this._listLeia.add(this._leia);
 
-        this._leiaView.update(this._leia, this._listLeia);
+        this._leiaView.update(this._leia, this._listLeia, this._ul);
 
         $('#modalLeia').modal('hide');
     }

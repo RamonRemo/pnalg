@@ -5,9 +5,7 @@ class ExibaView extends View {
         super(elemento);
     }
 
-    template(model, list) {
-
-        let ul = document.querySelector("#exiba");
+    template(model, list, ul) {
 
         let li = document.createElement('li');
         li.id = model.id;

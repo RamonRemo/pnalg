@@ -5,10 +5,8 @@ class DeclaracoesView extends View {
         super(elemento);
     }
 
-    template(model, list) {
-
-        let ul = document.querySelector('#declaracoes');
-
+    template(model, list, ul) {
+        
         let li = document.createElement('li');
         li.id = model.id;
         li.className = 'var componente-variavel-li d-flex justify-content-between align-items-center';
@@ -49,7 +47,7 @@ class DeclaracoesView extends View {
         $('#code-declaracao').empty();
 
         if (list._declaracoes.length != 0) {
-            
+
             code.innerHTML = '<span id="comentario">//Declaracoes de variaveis</span>';
         }
 

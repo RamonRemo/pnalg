@@ -10,8 +10,8 @@ class View {
         throw new Error('O método template deve ser implementado');
     }
 
-    update(model, list) {
-        this.template(model, list);
+    update(model, list, ul) {
+        this.template(model, list, ul);
     }
 
     static updateOptions(list, campo) {

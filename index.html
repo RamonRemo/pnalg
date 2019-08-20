@@ -28,32 +28,34 @@
         <section>
             <div class='row'>
                 <!-- Componentes -->
-                <div id='step1' class='col tracado'>
+                <div id='step1' class='col tracado' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
                     <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
                         <div id='componente-declare' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-declare' type='button' class='list-group-item btn'
-                                data-target='#modalDeclare'>Declare</button>
+                                data-target='#modalDeclare'
+                                onclick='declaracoesController.setId(event)'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
                         <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-leia' type='button' class='list-group-item btn'
-                                data-target='#modalLeia'>Leia</button>
+                            <button id='btn-leia' type='button' class='list-group-item btn' data-target='#modalLeia'
+                                onclick='leiaController.setId(event)'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
                         <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-exiba' type='button' class='list-group-item btn'
-                                data-target='#modalExiba'>Exiba</button>
+                            <button id='btn-exiba' type='button' class='list-group-item btn' data-target='#modalExiba'
+                                onclick='exibaController.setId(event)'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
                         <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-atribuicao' type='button' class='list-group-item btn'
-                                data-target='#modalAtribuicao'>Atribuição</button>
+                                data-target='#modalAtribuicao'
+                                onclick='atribuicoesController.setId(event)'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
                         <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-se' type='button' class='list-group-item btn'
-                                data-target='#modalSe'>Se</button>
+                            <button id='btn-se' type='button' class='list-group-item btn' data-target='#modalSe'
+                                onclick='seController.setId(event)'>Se</button>
                         </div>
                         <!-- Componente Fim Se -->
                         <div id='componente-fim-se' ondragstart='dragStartHandler(event);' draggable='true'>

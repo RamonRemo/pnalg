@@ -5,9 +5,7 @@ class SeView extends View {
         super(elemento);
     }
 
-    template(model) {
-
-        let ul = document.querySelector('#se');
+    template(model, ul) {
 
         let li = document.createElement('li');
         li.id = model.id;

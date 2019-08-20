@@ -6,8 +6,20 @@ class ExibaController {
         this._exiba;
         this._id = -1;
         this._inputNome;
+        this._ul;
         this._exibaView = new ExibaView();
         this._listExiba = new ListExiba();
+    }
+
+    setId(event) {
+
+        event.preventDefault();
+
+        try {
+            this._ul = event.target.parentElement.children[1];
+        } catch{
+            return;
+        }
     }
 
     captura(event) {
@@ -52,7 +64,7 @@ class ExibaController {
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 
-        this._exibaView.update(this._exiba, this._listExiba);
+        this._exibaView.update(this._exiba, this._listExiba, this._ul);
         this._limpaForm();
 
         $('#modalExiba').modal('hide');
