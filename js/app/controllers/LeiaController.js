@@ -62,6 +62,18 @@ class LeiaController {
         this._leiaView.console(this._listLeia);
     }
 
+    removeAll(elemento, qtd) {
+
+        for (let index = 0; index < qtd; index++) {
+
+            let li = elemento.lastChild.firstChild;
+
+            li.remove();
+            this._listLeia.apaga(li.id);
+            this._leiaView.console(this._listLeia);
+        }
+    }
+
     _newLeia() {
 
         return new Leia(this._inputNome, this._inputTipo, this._id);

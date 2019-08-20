@@ -148,11 +148,11 @@ function addUl(id, nodeCopy, nome) {
 
 function addCode(nome) {
 
-    let araeCodigo = document.querySelector('#area-codigo');
+    let areaCodigo = document.querySelector('#area-codigo');
     let code = document.createElement('code');
     code.setAttribute('id', nome);
 
-    araeCodigo.appendChild(code);
+    areaCodigo.appendChild(code);
 }
 
 function removeElement(data) {
@@ -172,8 +172,51 @@ function removeElement(data) {
         return false;
     }
 
-    let element = document.getElementById(data);
-    element.remove();
+
+    let elemento = document.getElementById(data);
+    let qtd = elemento.lastChild.childNodes.length;
+
+    regex(data, elemento, qtd);
+    elemento.remove();
 
     return false;
+}
+
+
+function regex(str, elemento, qtd) {
+    const declare = /componente-declare-\d/;
+    const leia = /componente-leia-\d/;
+    const exiba = /componente-exiba-\d/;
+    const atribuicao = /componente-atribuicao-\d/;
+    const se = /componente-se-\d/;
+
+    if (declare.test(str)) {
+
+        declaracoesController.removeAll(elemento, qtd);
+        return;
+    }
+
+    if (leia.test(str)) {
+
+        leiaController.removeAll(elemento, qtd);
+        return;
+    }
+
+    if (exiba.test(str)) {
+
+        exibaController.removeAll(elemento, qtd);
+        return;
+    }
+
+    if (atribuicao.test(str)) {
+        
+        atribuicoesController.removeAll(elemento, qtd);
+        return;
+    }
+
+    if (se.test(str)) {
+
+        seController.removeAll(elemento, qtd);
+        return;
+    }
 }

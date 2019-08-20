@@ -81,6 +81,18 @@ class ExibaController {
         this._exibaView.console(this._listExiba);
     }
 
+    removeAll(elemento, qtd) {
+        
+        for (let index = 0; index < qtd; index++) {
+            
+            let li = elemento.lastChild.firstChild;
+
+            li.remove();
+            this._listExiba.apaga(li.id);
+            this._exibaView.console(this._listExiba);
+        }
+    }
+
     _newExiba() {
 
         return new Exiba(this._saidaCampo.value, this._id);

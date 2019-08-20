@@ -57,6 +57,18 @@ class AtribuicoesController {
         this._atribuicoesView.console(this._listAtribuicoes);
     }
 
+    removeAll(elemento, qtd) {
+
+        for (let index = 0; index < qtd; index++) {
+
+            let li = elemento.lastChild.firstChild;
+
+            li.remove();
+            this._listAtribuicoes.apaga(li.id);
+            this._atribuicoesView.console(this._listAtribuicoes);
+        }
+    }
+
     abreForm(event) {
 
         event.preventDefault();

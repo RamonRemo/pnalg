@@ -54,6 +54,18 @@ class DeclaracoesController {
         this._declaracoesView.atualizaOptions(this._listDeclaracoes);
     }
 
+    removeAll(elemento, qtd) {
+
+        for (let index = 0; index < qtd; index++) {
+
+            let li = elemento.lastChild.firstChild;
+
+            li.remove();
+            this._listDeclaracoes.apaga(li.id);
+            this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+        }
+    }
+
     _newDeclaracoes() {
 
         return new Declaracoes(this._inputNome, this._inputTipo, this._id);

@@ -54,6 +54,17 @@ class SeController {
         this._listSe.apaga(li.id);
     }
 
+    removeAll(elemento, qtd) {
+
+        for (let index = 0; index < qtd; index++) {
+
+            let li = elemento.lastChild.firstChild;
+
+            li.remove();
+            this._listSe.apaga(li.id);
+        }
+    }
+
     _setaVar() {
 
         let campo = document.querySelector('#se-variavel');
