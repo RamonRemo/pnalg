@@ -11,7 +11,7 @@ class SeView extends View {
         li.id = model.id;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`se ${model.var1_nome} ${model.relacionais} ${model.var2_nome} entao`);
+        let obj = document.createTextNode(`se (${model.var1_nome} ${model.relacionais} ${model.var2_nome}) entao`);
         li.appendChild(obj);
         ul.appendChild(li);
 

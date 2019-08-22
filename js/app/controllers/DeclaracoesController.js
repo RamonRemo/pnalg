@@ -7,6 +7,7 @@ class DeclaracoesController {
         this._id = -1;
         this._declaracao;
         this._ul;
+        this._ulSe = null;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
     }
@@ -20,6 +21,11 @@ class DeclaracoesController {
         } catch{
             return;
         }
+    }
+
+    setIdComponenteSe() {
+
+        this._ulSe = seController._ul;
     }
 
     adiciona(event) {
@@ -37,7 +43,7 @@ class DeclaracoesController {
 
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
-        this._declaracoesView.update(this._declaracao, this._listDeclaracoes, this._ul);
+        this._declaracoesView.update(this._declaracao, this._listDeclaracoes, this._ul, this._ulSe);
         this._limpaForm();
 
         $('#modalDeclare').modal('hide');

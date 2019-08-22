@@ -7,6 +7,7 @@ class ExibaController {
         this._id = -1;
         this._inputNome;
         this._ul;
+        this._ulSe;
         this._exibaView = new ExibaView();
         this._listExiba = new ListExiba();
     }
@@ -20,6 +21,12 @@ class ExibaController {
         } catch{
             return;
         }
+    }
+
+    setIdComponenteSe() {
+
+        this._ulSe = seController._ul;
+        addCode('code-exiba');
     }
 
     captura(event) {
@@ -64,7 +71,7 @@ class ExibaController {
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 
-        this._exibaView.update(this._exiba, this._listExiba, this._ul);
+        this._exibaView.update(this._exiba, this._listExiba, this._ul, this._ulSe);
         this._limpaForm();
 
         $('#modalExiba').modal('hide');

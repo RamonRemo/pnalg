@@ -5,7 +5,7 @@ class ExibaView extends View {
         super(elemento);
     }
 
-    template(model, list, ul) {
+    template(model, list, ul, ulSe) {
 
         let li = document.createElement('li');
         li.id = model.id;
@@ -13,7 +13,14 @@ class ExibaView extends View {
 
         let obj = document.createTextNode(`escreval(${model.saida});`);
         li.appendChild(obj);
-        ul.appendChild(li);
+        
+        if (ulSe) {
+
+            ulSe.appendChild(li);
+        } else {
+
+            ul.appendChild(li);
+        }
 
         this._addRemovedor(li);
         this.console(list);

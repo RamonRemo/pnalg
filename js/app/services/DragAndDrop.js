@@ -20,7 +20,7 @@ function dropHandler(ev) {
     let target = $(ev.target).closest('[data-id]');
     dropID = target.data('id');
 
-    if (!removeElement(data)) {
+    if (removeElement(data)) {
 
         return;
     }
@@ -131,7 +131,11 @@ function se(id, nodeCopy, listVariavel) {
         return false;
     }
 
-    addUl(id, nodeCopy, 'se');
+    let se = nodeCopy.childNodes[3];
+    se.className = 'area-se';
+
+    $('#salva-alteracoes').find('.btn').removeAttr('disabled');
+    addUlSe(id, nodeCopy, 'se');
     addCode('code-se');
 
     return true;
@@ -142,8 +146,16 @@ function addUl(id, nodeCopy, nome) {
     let ul = document.createElement('ul');
     ul.setAttribute('id', `${nome}-${id}`);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
-
     nodeCopy.appendChild(ul);
+}
+
+function addUlSe(id, nodeCopy, nome) {
+
+    let ul = document.createElement('ul');
+    ul.setAttribute('id', `${nome}-${id}`);
+    ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
+    let div = nodeCopy.childNodes[3];
+    div.appendChild(ul);
 }
 
 function addCode(nome) {
@@ -159,31 +171,31 @@ function removeElement(data) {
 
     if (dragID === 'components' && dropID === 'area') {
 
-        return true;
+        return false;
     }
 
     if (dragID === 'area' && dropID === 'area') {
 
-        return false;
+        return true;
     }
 
     if (dragID === 'components' && dropID === 'components') {
 
-        return false;
+        return true;
     }
 
 
     let elemento = document.getElementById(data);
     let qtd = elemento.lastChild.childNodes.length;
 
-    regex(data, elemento, qtd);
+    removeList(data, elemento, qtd);
     elemento.remove();
 
-    return false;
+    return true;
 }
 
 
-function regex(str, elemento, qtd) {
+function removeList(str, elemento, qtd) {
     const declare = /componente-declare-\d/;
     const leia = /componente-leia-\d/;
     const exiba = /componente-exiba-\d/;
@@ -209,12 +221,22 @@ function regex(str, elemento, qtd) {
     }
 
     if (atribuicao.test(str)) {
-        
+
         atribuicoesController.removeAll(elemento, qtd);
         return;
     }
 
     if (se.test(str)) {
+
+
+        let span = $(`#${elemento.id}`).find('#area-se').find('.badge');
+
+        let array = $.makeArray(span);
+
+        array.forEach(element => {
+
+            $(element).trigger('click');
+        });
 
         seController.removeAll(elemento, qtd);
         return;

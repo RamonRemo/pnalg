@@ -130,6 +130,19 @@ code span {
     color: #29b100;
 }
 
-#ul-dicas{
+#ul-dicas {
     list-style-type: circle;
+    width: 310px;
+}
+
+.area-se {
+    width: 80%;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: auto;
+    border: 0.7px solid #bbbbbbd7;
+    border-style: dotted;
 }

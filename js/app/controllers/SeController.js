@@ -40,8 +40,6 @@ class SeController {
         this._listSe.add(this._se);
 
         this._seView.update(this._se, this._ul);
-
-        $('#modalSe').modal('hide');
     }
 
     remove(event) {
@@ -65,6 +63,16 @@ class SeController {
         }
     }
 
+    habilitaButtons(event) {
+
+        event.preventDefault();
+
+        $(event.target).attr('disabled', 'disabled');
+        $('#open-modal').find('.btn').removeAttr('disabled');
+
+        this.adiciona(event);
+    }
+
     _setaVar() {
 
         let campo = document.querySelector('#se-variavel');
@@ -86,7 +94,11 @@ class SeController {
 
     _newSe() {
 
-        return new Se(this._var1_nome, this._var1_tipo, this._var2_nome, this._var2_tipo, this._relacional, this._id);
+        return new Se(
+            this._var1_nome, this._var1_tipo,
+            this._var2_nome, this._var2_tipo,
+            this._relacional, this._id, this._ul
+        );
     }
 
     _validacoes() {

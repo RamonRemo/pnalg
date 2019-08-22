@@ -5,8 +5,8 @@ class DeclaracoesView extends View {
         super(elemento);
     }
 
-    template(model, list, ul) {
-        
+    template(model, list, ul, ulSe) {
+
         let li = document.createElement('li');
         li.id = model.id;
         li.className = 'var componente-variavel-li d-flex justify-content-between align-items-center';
@@ -14,7 +14,14 @@ class DeclaracoesView extends View {
         let obj = document.createTextNode(`${model.tipo} : ${model.nome};`);
 
         li.appendChild(obj);
-        ul.appendChild(li);
+
+        if (ulSe) {
+            
+            ulSe.appendChild(li);
+        } else {
+
+            ul.appendChild(li);
+        }
 
         this._addRemovedor(li);
         this.atualizaOptions(list);
