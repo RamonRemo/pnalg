@@ -86,6 +86,11 @@ ul {
     box-shadow: 7px 7px 5px rgba(190, 190, 190, 0.76);
 }
 
+#ul-dicas {
+    list-style-type: circle;
+    width: 310px;
+}
+
 /* -------------------- Variaveis "Declare" --------------------*/
 .componente-variavel-ul {
     margin: auto;
@@ -112,6 +117,22 @@ ul {
     text-align: center;
 }
 
+
+.area-se {
+    width: 80%;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: auto;
+    border: 0.7px solid #007cc6;
+}
+
+.btn-fim-se {
+    margin-top: 0;
+}
+
 /* -------------------- Simular --------------------*/
 
 h3 {
@@ -128,21 +149,4 @@ code span {
 #comentario {
     margin-top: 10px;
     color: #29b100;
-}
-
-#ul-dicas {
-    list-style-type: circle;
-    width: 310px;
-}
-
-.area-se {
-    width: 80%;
-    height: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    overflow: auto;
-    border: 0.7px solid #bbbbbbd7;
-    border-style: dotted;
 }

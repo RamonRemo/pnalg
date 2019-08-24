@@ -8,6 +8,7 @@ class DeclaracoesController {
         this._declaracao;
         this._ul;
         this._ulSe = null;
+        this._idCode = null;
         this._declaracoesView = new DeclaracoesView();
         this._listDeclaracoes = new ListDeclaracoes();
     }
@@ -43,7 +44,15 @@ class DeclaracoesController {
 
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
-        this._declaracoesView.update(this._declaracao, this._listDeclaracoes, this._ul, this._ulSe);
+
+        console.log(this._idCode);
+        this._declaracoesView.update(
+            this._declaracao,
+            this._listDeclaracoes,
+            this._ul,
+            this._ulSe,
+            this._idCode);
+
         this._limpaForm();
 
         $('#modalDeclare').modal('hide');
@@ -57,18 +66,19 @@ class DeclaracoesController {
         li.parentNode.removeChild(li);
 
         this._listDeclaracoes.apaga(li.id);
-        this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+        this._declaracoesView.atualizaOptions(this._listDeclaracoes, this._idCode);
     }
 
     removeAll(elemento, qtd) {
 
         for (let index = 0; index < qtd; index++) {
 
+            console.log("elemento", elemento.lastChild.firstChild);
             let li = elemento.lastChild.firstChild;
 
             li.remove();
             this._listDeclaracoes.apaga(li.id);
-            this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+            this._declaracoesView.atualizaOptions(this._listDeclaracoes, this._idCode);
         }
     }
 
@@ -137,6 +147,7 @@ class DeclaracoesController {
 
     _limpaForm() {
 
+        this._ulSe = null;
         document.querySelector('#declaracoes-nome').value = '';
         Utils.focus('modalDeclare', 'declaracoes-nome');
     }

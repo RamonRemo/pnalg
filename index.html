@@ -33,28 +33,26 @@
                         <!-- Componente Declare -->
                         <div id='componente-declare' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-declare' type='button' class='list-group-item btn'
-                                data-target='#modalDeclare'
                                 onclick='declaracoesController.setId(event)'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
                         <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-leia' type='button' class='list-group-item btn' data-target='#modalLeia'
+                            <button id='btn-leia' type='button' class='list-group-item btn'
                                 onclick='leiaController.setId(event)'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
                         <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-exiba' type='button' class='list-group-item btn' data-target='#modalExiba'
+                            <button id='btn-exiba' type='button' class='list-group-item btn'
                                 onclick='exibaController.setId(event)'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
                         <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-atribuicao' type='button' class='list-group-item btn'
-                                data-target='#modalAtribuicao'
                                 onclick='atribuicoesController.setId(event)'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
                         <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-se' type='button' class='list-group-item btn' data-target='#modalSe'
+                            <button id='btn-se' type='button' class='list-group-item btn'
                                 onclick='seController.setId(event)'>Se</button>
                             <div id='area-se'> </div>
                             <button id='btn-fim-se' type='button' class='list-group-item btn'>Fim se</button>
@@ -176,6 +174,7 @@ Fim
     <script src='js/app/services/Tutorial.js' type='text/javascript'></script>
     <script src='js/app/services/Dicas.js' type='text/javascript'></script>
     <script src='js/app/services/DragAndDrop.js' type='text/javascript'></script>
+    <script src='js/app/services/DragAndDropUtils.js' type='text/javascript'></script>
     <script src='js/app/utils/Utils.js' type='text/javascript'></script>
     <script src='js/app/views/View.js' type='text/javascript'></script>
     <script src='js/app/models/Declaracoes.js' type='text/javascript'></script>

@@ -5,7 +5,7 @@ class DeclaracoesView extends View {
         super(elemento);
     }
 
-    template(model, list, ul, ulSe) {
+    template(model, list, ul, ulSe, idCode) {
 
         let li = document.createElement('li');
         li.id = model.id;
@@ -16,7 +16,7 @@ class DeclaracoesView extends View {
         li.appendChild(obj);
 
         if (ulSe) {
-            
+
             ulSe.appendChild(li);
         } else {
 
@@ -24,12 +24,12 @@ class DeclaracoesView extends View {
         }
 
         this._addRemovedor(li);
-        this.atualizaOptions(list);
+        this.atualizaOptions(list, idCode);
 
-        this._console(list);
+        this._console(list, idCode);
     }
 
-    atualizaOptions(list) {
+    atualizaOptions(list, idCode) {
 
         View.updateOptions(list, 'atribuicao-nome');
         View.updateOptions(list, 'exiba-variavel');
@@ -37,7 +37,7 @@ class DeclaracoesView extends View {
         View.updateOptions(list, 'se-variavel');
         View.updateOptions(list, 'se-variavel-secundaria');
 
-        this._console(list);
+        this._console(list, idCode);
     }
 
     _addRemovedor(li) {
@@ -47,11 +47,12 @@ class DeclaracoesView extends View {
         li.appendChild(div);
     }
 
-    _console(list) {
+    _console(list, idCode) {
 
-        let code = document.querySelector('#code-declaracao');
+        console.log(idCode);
+        let code = document.querySelector(`#${idCode}`);
 
-        $('#code-declaracao').empty();
+        $(`#${idCode}`).empty();
 
         if (list._declaracoes.length != 0) {
 
