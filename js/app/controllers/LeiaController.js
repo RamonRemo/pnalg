@@ -32,6 +32,11 @@ class LeiaController {
 
         this._ulSe = seController._ul;
         addCode('code-leia');
+
+        let li = this._ulSe.children[0];
+
+        let elemento = Utils.getElement(seController._listSe, li.id);
+        this._idCode = elemento.idCode;
     }
 
     addVar(event) {
@@ -63,6 +68,7 @@ class LeiaController {
             this._idCode
         );
 
+        this._ulSe = null;
         $('#modalLeia').modal('hide');
     }
 
@@ -73,8 +79,10 @@ class LeiaController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
-        let elemento = Utils.getElement(this._listLeia, li.id);
-        this._listLeia.apaga(li.id);
+        let id = Utils.getNumber(li.id);
+        let elemento = Utils.getElement(this._listLeia, id);
+
+        this._listLeia.apaga(id);
         this._leiaView._consoleRemove(elemento);
     }
 

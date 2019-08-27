@@ -32,6 +32,11 @@ class ExibaController {
 
         this._ulSe = seController._ul;
         addCode('code-exiba');
+
+        let li = this._ulSe.children[0];
+
+        let elemento = Utils.getElement(seController._listSe, li.id);
+        this._idCode = elemento.idCode;
     }
 
     captura(event) {
@@ -49,7 +54,7 @@ class ExibaController {
         this._inputNome = campo.options[campo.selectedIndex].text;
 
         if (this._inputNome == "Escolher...") {
-            
+
             return;
         }
 
@@ -96,8 +101,10 @@ class ExibaController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
-        let elemento = Utils.getElement(this._listExiba, li.id);
-        this._listExiba.apaga(li.id);
+        let id = Utils.getNumber(li.id);
+        let elemento = Utils.getElement(this._listExiba, id);
+        this._listExiba.apaga(id);
+
         this._exibaView._consoleRemove(elemento);
     }
 
@@ -111,7 +118,8 @@ class ExibaController {
             li = elemento.lastChild.firstChild;
 
             li.remove();
-            this._listExiba.apaga(li.id);
+            let id = Utils.getNumber(li.id);
+            this._listExiba.apaga(id);
         }
     }
 
@@ -137,6 +145,7 @@ class ExibaController {
 
     _limpaForm() {
 
+        this._ulSe = null;
         this._saidaCampo.innerHTML = '';
         this._saidaCampo = null;
         Utils.focus('modalExiba', 'exiba-texto');

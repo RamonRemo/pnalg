@@ -58,7 +58,8 @@ class DeclaracoesController {
             this._listDeclaracoes,
             this._ul,
             this._ulSe,
-            this._idCode);
+            this._idCode
+        );
 
         this._limpaForm();
 
@@ -72,8 +73,9 @@ class DeclaracoesController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
-        let elemento = Utils.getElement(this._listDeclaracoes, li.id);
-        this._listDeclaracoes.apaga(li.id);
+        let id = Utils.getNumber(li.id);
+        let elemento = Utils.getElement(this._listDeclaracoes, id);
+        this._listDeclaracoes.apaga(id);
 
         this._declaracoesView.atualizaOptions(this._listDeclaracoes);
         this._declaracoesView._consoleRemove(elemento);
@@ -87,8 +89,9 @@ class DeclaracoesController {
         for (let index = 0; index < qtd; index++) {
 
             li = elemento.lastChild.firstChild;
+            let id = Utils.getNumber(li.id);
 
-            this._listDeclaracoes.apaga(li.id);
+            this._listDeclaracoes.apaga(id);
             this._declaracoesView.atualizaOptions(this._listDeclaracoes);
             li.remove();
         }

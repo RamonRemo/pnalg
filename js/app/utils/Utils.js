@@ -29,4 +29,10 @@ class Utils {
 
         return variavel;
     }
+
+    static getNumber(string) {
+
+        var numsStr = string.replace(/[^0-9]/g, '');
+        return parseInt(numsStr);
+    }
 }

@@ -8,7 +8,7 @@ class LeiaView extends View {
     template(model, ul, ulSe, idCode) {
 
         let li = document.createElement('li');
-        li.id = model.id;
+        li.id = `leiaCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`leia(${model.nome});`);
@@ -17,13 +17,15 @@ class LeiaView extends View {
         if (ulSe) {
 
             ulSe.appendChild(li);
+            this._addRemovedor(li);
+            super.consoleAddSe(idCode, ulSe);
+
         } else {
 
             ul.appendChild(li);
+            this._addRemovedor(li);
+            this._consoleAdd(idCode, ul);
         }
-
-        this._addRemovedor(li);
-        this._consoleAdd(idCode, ul);
     }
 
     _consoleAdd(idCode, ul) {
@@ -62,10 +64,11 @@ class LeiaView extends View {
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
-        for (let item of code) {
-            if (item.id == id) {
+        for (let codes of code) {
 
-                item.remove();
+            if (codes.id == `leiaCode-${id}`) {
+
+                codes.remove();
             }
         }
     }
@@ -82,7 +85,7 @@ class LeiaView extends View {
                     return;
                 }
 
-                if (element.id == li.id) {
+                if (`leiaCode-${element.id}` == li.id) {
 
                     let code = element.idCode;
 

@@ -21,13 +21,12 @@ class SeView extends View {
 
     _consoleAdd(idCode, ul) {
 
-        console.log(ul);
         let code = document.querySelector(`#${idCode}`);
 
         $(`#${idCode}`).empty();
 
         let arrayLi = ul.children;
-        console.log(arrayLi);
+
         if (arrayLi.length != 0) {
 
             code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';

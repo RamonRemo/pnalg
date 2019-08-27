@@ -42,4 +42,47 @@ class View {
             });
         });
     }
+
+    consoleAddSe(idCode, ul) {
+
+        let code = document.querySelector(`#${idCode}`);
+
+        $(`#${idCode}`).empty();
+
+        let arrayLi = ul.children;
+        console.log(arrayLi);
+        if (arrayLi.length != 0) {
+
+            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
+        }
+
+        if (arrayLi.length == 0) {
+
+            return;
+        }
+
+        let index = 0;
+        for (let element of arrayLi) {
+            let texto = ($(element).text());
+
+            let variavel = texto.substr(0, (texto.length - 1));
+
+            let span = document.createElement('span');
+            span.id = element.id;
+
+            if (index > 0) {
+                span.className = 'identeSe';
+            }
+
+            span.innerHTML = (`${variavel}`);
+
+            code.appendChild(span);
+            index++;
+        }
+
+        let span = document.createElement('span');
+        span.innerHTML = ('<span>fimse</span>');
+        span.className = 'fimse';
+        code.appendChild(span);
+    }
 }

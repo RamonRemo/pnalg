@@ -31,6 +31,11 @@ class AtribuicoesController {
 
         this._ulSe = seController._ul;
         addCode('code-atribuicao');
+
+        let li = this._ulSe.children[0];
+
+        let elemento = Utils.getElement(seController._listSe, li.id);
+        this._idCode = elemento.idCode;
     }
 
     adiciona(event) {
@@ -69,9 +74,11 @@ class AtribuicoesController {
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
+        let id = Utils.getNumber(li.id);
 
-        let elemento = Utils.getElement(this._listAtribuicoes, li.id);
-        this._listAtribuicoes.apaga(li.id);
+        let elemento = Utils.getElement(this._listAtribuicoes, id);
+        this._listAtribuicoes.apaga(id);
+
         this._atribuicoesView._consoleRemove(elemento);
     }
 
@@ -85,7 +92,8 @@ class AtribuicoesController {
             li = elemento.lastChild.firstChild;
 
             li.remove();
-            this._listAtribuicoes.apaga(li.id);
+            let id = Utils.getNumber(li.id);
+            this._listAtribuicoes.apaga(id);
         }
     }
 
@@ -177,7 +185,8 @@ class AtribuicoesController {
     }
 
     _limpaForm() {
-
+        
+        this._ulSe = null;
         this._inputValor.value = '';
         Utils.focus('modalAtribuicao', 'atribuicao-nome');
     }

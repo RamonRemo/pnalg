@@ -8,19 +8,18 @@ class DeclaracoesView extends View {
     template(model, list, ul, ulSe, idCode) {
 
         let li = document.createElement('li');
-        li.id = model.id;
+        li.id = `declareCode-${model.id}`;
         li.className = 'var componente-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.tipo} : ${model.nome};`);
-
         li.appendChild(obj);
 
         if (ulSe) {
 
             ulSe.appendChild(li);
-            this.atualizaOptions(list);
             this._addRemovedor(li);
-            this._consoleSe(idCode, ulSe);
+            super.consoleAddSe(idCode, ulSe);
+            this.atualizaOptions(list);
 
         } else {
 
@@ -77,56 +76,17 @@ class DeclaracoesView extends View {
         }
     }
 
-    _consoleSe(idCode, ul) {
-
-        let code = document.querySelector(`#${idCode}`);
-
-        $(`#${idCode}`).empty();
-
-        let arrayLi = ul.children;
-
-        if (arrayLi.length != 0) {
-
-            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
-        }
-
-        if (arrayLi.length == 0) {
-
-            return;
-        }
-
-        for (let index = 0; index < arrayLi.length; index++) {
-            let texto = ($(arrayLi[index]).text());
-            let variavel = texto.substr(0, (texto.length - 1));
-
-            let span = document.createElement('span');
-            span.id = arrayLi[index].id;
-
-            if (index > 0) {
-                span.className = 'identeSe';
-            }
-
-            span.innerHTML = (`${variavel}`);
-
-            code.appendChild(span);
-        }
-
-        let span = document.createElement('span');
-        span.innerHTML = ('<span>fimse</span>');
-        span.className = 'fimse';
-        code.appendChild(span);
-    }
-
     _consoleRemove(element) {
 
         let idCode = element.idCode;
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
-        for (let item of code) {
-            if (item.id == id) {
+        for (let codes of code) {
 
-                item.remove();
+            if (codes.id == `declareCode-${id}`) {
+
+                codes.remove();
             }
         }
     }
@@ -143,7 +103,7 @@ class DeclaracoesView extends View {
                     return;
                 }
 
-                if (element.id == li.id) {
+                if (`declareCode-${element.id}` == li.id) {
 
                     let code = element.idCode;
 
