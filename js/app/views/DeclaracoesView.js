@@ -18,26 +18,26 @@ class DeclaracoesView extends View {
         if (ulSe) {
 
             ulSe.appendChild(li);
+            this.atualizaOptions(list);
+            this._addRemovedor(li);
+            this._consoleSe(idCode, ulSe);
+
         } else {
 
             ul.appendChild(li);
+            this.atualizaOptions(list);
+            this._addRemovedor(li);
+            this._consoleAdd(idCode, ul);
         }
-
-        this._addRemovedor(li);
-        this.atualizaOptions(list, idCode);
-
-        this._console(list, idCode);
     }
 
-    atualizaOptions(list, idCode) {
+    atualizaOptions(list) {
 
-        View.updateOptions(list, 'atribuicao-nome');
-        View.updateOptions(list, 'exiba-variavel');
-        View.updateOptions(list, 'leia-variavel');
-        View.updateOptions(list, 'se-variavel');
-        View.updateOptions(list, 'se-variavel-secundaria');
-
-        this._console(list, idCode);
+        super.updateOptions(list, 'atribuicao-nome');
+        super.updateOptions(list, 'exiba-variavel');
+        super.updateOptions(list, 'leia-variavel');
+        super.updateOptions(list, 'se-variavel');
+        super.updateOptions(list, 'se-variavel-secundaria');
     }
 
     _addRemovedor(li) {
@@ -47,33 +47,108 @@ class DeclaracoesView extends View {
         li.appendChild(div);
     }
 
-    _console(list, idCode) {
+    _consoleAdd(idCode, ul) {
 
-        console.log(idCode);
         let code = document.querySelector(`#${idCode}`);
 
         $(`#${idCode}`).empty();
 
-        if (list._declaracoes.length != 0) {
+        let arrayLi = ul.children;
 
-            code.innerHTML = '<span id="comentario">//Declaracoes de variaveis</span>';
+        if (arrayLi.length != 0) {
+
+            code.innerHTML = '<span class="comentario">//Declaracoes de variaveis</span>';
         }
 
-        let array = Object.values(list);
-
-        if (array[0].length == 0) {
+        if (arrayLi.length == 0) {
 
             return;
         }
 
+        for (let item of arrayLi) {
+            let texto = ($(item).text());
+            let variavel = texto.substr(0, (texto.length - 1));
+
+            let span = document.createElement('span');
+            span.id = item.id;
+            span.innerHTML = (`${variavel}`);
+
+            code.appendChild(span);
+        }
+    }
+
+    _consoleSe(idCode, ul) {
+
+        let code = document.querySelector(`#${idCode}`);
+
+        $(`#${idCode}`).empty();
+
+        let arrayLi = ul.children;
+
+        if (arrayLi.length != 0) {
+
+            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
+        }
+
+        if (arrayLi.length == 0) {
+
+            return;
+        }
+
+        for (let index = 0; index < arrayLi.length; index++) {
+            let texto = ($(arrayLi[index]).text());
+            let variavel = texto.substr(0, (texto.length - 1));
+
+            let span = document.createElement('span');
+            span.id = arrayLi[index].id;
+
+            if (index > 0) {
+                span.className = 'identeSe';
+            }
+
+            span.innerHTML = (`${variavel}`);
+
+            code.appendChild(span);
+        }
+
+        let span = document.createElement('span');
+        span.innerHTML = ('<span>fimse</span>');
+        span.className = 'fimse';
+        code.appendChild(span);
+    }
+
+    _consoleRemove(element) {
+
+        let idCode = element.idCode;
+        let id = element.id;
+        let code = $(`#${idCode}`).find('span');
+
+        for (let item of code) {
+            if (item.id == id) {
+
+                item.remove();
+            }
+        }
+    }
+
+    _consoleRemoveAll(list, li) {
+
+        let array = Object.values(list);
+
         array.forEach(objetos => {
             objetos.forEach(element => {
 
-                let span = document.createElement('span');
+                if (li == null) {
 
-                span.innerHTML = (`${element.tipo} : ${element.nome};`);
+                    return;
+                }
 
-                code.appendChild(span);
+                if (element.id == li.id) {
+
+                    let code = element.idCode;
+
+                    $(`#${code}`).empty();
+                }
             });
         });
     }

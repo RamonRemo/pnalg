@@ -19,6 +19,10 @@ class DeclaracoesController {
 
         try {
             this._ul = event.target.parentElement.children[1];
+            let li = this._ul.children[0];
+
+            let elemento = Utils.getElement(this._listDeclaracoes, li.id);
+            this._idCode = elemento.idCode;
         } catch{
             return;
         }
@@ -27,6 +31,10 @@ class DeclaracoesController {
     setIdComponenteSe() {
 
         this._ulSe = seController._ul;
+        let li = this._ulSe.children[0];
+
+        let elemento = Utils.getElement(seController._listSe, li.id);
+        this._idCode = elemento.idCode;
     }
 
     adiciona(event) {
@@ -45,7 +53,6 @@ class DeclaracoesController {
         this._declaracao = this._newDeclaracoes();
         this._listDeclaracoes.add(this._declaracao);
 
-        console.log(this._idCode);
         this._declaracoesView.update(
             this._declaracao,
             this._listDeclaracoes,
@@ -65,26 +72,31 @@ class DeclaracoesController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
+        let elemento = Utils.getElement(this._listDeclaracoes, li.id);
         this._listDeclaracoes.apaga(li.id);
-        this._declaracoesView.atualizaOptions(this._listDeclaracoes, this._idCode);
+
+        this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+        this._declaracoesView._consoleRemove(elemento);
     }
 
     removeAll(elemento, qtd) {
 
+        let li = elemento.lastChild.firstChild;
+        this._declaracoesView._consoleRemoveAll(this._listDeclaracoes, li);
+
         for (let index = 0; index < qtd; index++) {
 
-            console.log("elemento", elemento.lastChild.firstChild);
-            let li = elemento.lastChild.firstChild;
+            li = elemento.lastChild.firstChild;
 
-            li.remove();
             this._listDeclaracoes.apaga(li.id);
-            this._declaracoesView.atualizaOptions(this._listDeclaracoes, this._idCode);
+            this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+            li.remove();
         }
     }
 
     _newDeclaracoes() {
 
-        return new Declaracoes(this._inputNome, this._inputTipo, this._id);
+        return new Declaracoes(this._inputNome, this._inputTipo, this._id, this._idCode);
     }
 
     _validacoes() {

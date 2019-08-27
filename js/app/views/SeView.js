@@ -5,7 +5,7 @@ class SeView extends View {
         super(elemento);
     }
 
-    template(model, ul) {
+    template(model, ul, idCode) {
 
         let li = document.createElement('li');
         li.id = model.id;
@@ -16,6 +16,52 @@ class SeView extends View {
         ul.appendChild(li);
 
         this._addRemovedor(li);
+        this._consoleAdd(idCode, ul);
+    }
+
+    _consoleAdd(idCode, ul) {
+
+        console.log(ul);
+        let code = document.querySelector(`#${idCode}`);
+
+        $(`#${idCode}`).empty();
+
+        let arrayLi = ul.children;
+        console.log(arrayLi);
+        if (arrayLi.length != 0) {
+
+            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
+        }
+
+        if (arrayLi.length == 0) {
+
+            return;
+        }
+
+        for (let item of arrayLi) {
+            let texto = ($(item).text());
+            let variavel = texto.substr(0, (texto.length - 1));
+
+            let span = document.createElement('span');
+            span.id = item.id;
+            span.innerHTML = (`${variavel}`);
+
+            code.appendChild(span);
+        }
+    }
+
+    _consoleRemove(element) {
+
+        let idCode = element.idCode;
+        let id = element.id;
+        let code = $(`#${idCode}`).find('span');
+
+        for (let item of code) {
+            if (item.id == id) {
+
+                item.remove();
+            }
+        }
     }
 
     _addRemovedor(li) {

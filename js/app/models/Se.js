@@ -1,6 +1,6 @@
 class Se {
 
-    constructor(var1_nome, var1_tipo, var2_nome, var2_tipo, relacionais, id, ul) {
+    constructor(var1_nome, var1_tipo, var2_nome, var2_tipo, relacionais, id, ul, idCode) {
 
         this._var1_nome = var1_nome;
         this._var1_tipo = var1_tipo;
@@ -9,6 +9,7 @@ class Se {
         this._relacionais = relacionais;
         this._id = id;
         this._ul = ul;
+        this._idCode = idCode;
         Object.freeze(this);
     }
 
@@ -45,5 +46,10 @@ class Se {
     get ul() {
 
         return this._ul;
+    }
+
+    get idCode() {
+
+        return this._idCode;
     }
 }

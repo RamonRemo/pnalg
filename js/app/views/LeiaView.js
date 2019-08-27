@@ -5,7 +5,7 @@ class LeiaView extends View {
         super(elemento);
     }
 
-    template(model, list, ul, ulSe) {
+    template(model, ul, ulSe, idCode) {
 
         let li = document.createElement('li');
         li.id = model.id;
@@ -13,7 +13,7 @@ class LeiaView extends View {
 
         let obj = document.createTextNode(`leia(${model.nome});`);
         li.appendChild(obj);
-        
+
         if (ulSe) {
 
             ulSe.appendChild(li);
@@ -23,35 +23,71 @@ class LeiaView extends View {
         }
 
         this._addRemovedor(li);
-        this.console(list);
+        this._consoleAdd(idCode, ul);
     }
 
-    console(list) {
+    _consoleAdd(idCode, ul) {
 
-        let code = document.querySelector('#code-leia');
+        let code = document.querySelector(`#${idCode}`);
 
-        $('#code-leia').empty();
+        $(`#${idCode}`).empty();
 
-        if (list._leia.length != 0) {
-            
-            code.innerHTML = '<span id="comentario">//Leitura de variaveis</span>';
+        let arrayLi = ul.children;
+
+        if (arrayLi.length != 0) {
+
+            code.innerHTML = '<span class="comentario">//Leitura de variaveis</span>';
         }
 
-        let array = Object.values(list);
-
-        if (array[0].length == 0) {
+        if (arrayLi.length == 0) {
 
             return;
         }
 
+        for (let item of arrayLi) {
+            let texto = ($(item).text());
+            let variavel = texto.substr(0, (texto.length - 1));
+
+            let span = document.createElement('span');
+            span.id = item.id;
+            span.innerHTML = (`${variavel}`);
+
+            code.appendChild(span);
+        }
+    }
+
+    _consoleRemove(element) {
+
+        let idCode = element.idCode;
+        let id = element.id;
+        let code = $(`#${idCode}`).find('span');
+
+        for (let item of code) {
+            if (item.id == id) {
+
+                item.remove();
+            }
+        }
+    }
+
+    _consoleRemoveAll(list, li) {
+
+        let array = Object.values(list);
+
         array.forEach(objetos => {
             objetos.forEach(element => {
 
-                let span = document.createElement('span');
+                if (li == null) {
 
-                span.innerHTML = (`leia(${element.nome});`);
+                    return;
+                }
 
-                code.appendChild(span);
+                if (element.id == li.id) {
+
+                    let code = element.idCode;
+
+                    $(`#${code}`).empty();
+                }
             });
         });
     }

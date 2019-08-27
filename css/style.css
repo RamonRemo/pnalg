@@ -146,7 +146,15 @@ code span {
     color: #007cc6;
 }
 
-#comentario {
+.comentario {
     margin-top: 10px;
     color: #29b100;
+}
+
+.identeSe {
+    padding-left: 45px;
+}
+
+.fimse {
+    padding-left: 0;
 }

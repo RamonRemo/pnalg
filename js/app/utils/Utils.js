@@ -11,4 +11,22 @@ class Utils {
             $(`#${campo}`).focus();
         });
     }
+
+    static getElement(list, id) {
+
+        let array = Object.values(list);
+        let variavel;
+
+        array.forEach(objetos => {
+            objetos.forEach(element => {
+
+                if (element.id == id) {
+
+                    variavel = element;
+                }
+            });
+        });
+
+        return variavel;
+    }
 }

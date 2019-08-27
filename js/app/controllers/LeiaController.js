@@ -8,6 +8,7 @@ class LeiaController {
         this._id = -1;
         this._ul;
         this._ulSe;
+        this._idCode = null;
         this._leiaView = new LeiaView();
         this._listLeia = new ListLeia();
     }
@@ -18,6 +19,10 @@ class LeiaController {
 
         try {
             this._ul = event.target.parentElement.children[1];
+            let li = this._ul.children[0];
+
+            let elemento = Utils.getElement(this._listLeia, li.id);
+            this._idCode = elemento.idCode;
         } catch{
             return;
         }
@@ -48,12 +53,15 @@ class LeiaController {
             return;
         }
 
-        console.log(this._inputNome);
-
         this._leia = this._newLeia();
         this._listLeia.add(this._leia);
 
-        this._leiaView.update(this._leia, this._listLeia, this._ul, this._ulSe);
+        this._leiaView.update(
+            this._leia,
+            this._ul,
+            this._ulSe,
+            this._idCode
+        );
 
         $('#modalLeia').modal('hide');
     }
@@ -65,25 +73,33 @@ class LeiaController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
+        let elemento = Utils.getElement(this._listLeia, li.id);
         this._listLeia.apaga(li.id);
-        this._leiaView.console(this._listLeia);
+        this._leiaView._consoleRemove(elemento);
     }
 
     removeAll(elemento, qtd) {
 
+        let li = elemento.lastChild.firstChild;
+        this._leiaView._consoleRemoveAll(this._listLeia, li);
+
         for (let index = 0; index < qtd; index++) {
 
-            let li = elemento.lastChild.firstChild;
+            li = elemento.lastChild.firstChild;
 
             li.remove();
             this._listLeia.apaga(li.id);
-            this._leiaView.console(this._listLeia);
         }
     }
 
     _newLeia() {
 
-        return new Leia(this._inputNome, this._inputTipo, this._id);
+        return new Leia(
+            this._inputNome,
+            this._inputTipo,
+            this._id,
+            this._idCode
+        );
     }
 
     _validacoes() {

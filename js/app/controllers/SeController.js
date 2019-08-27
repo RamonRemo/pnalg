@@ -10,6 +10,7 @@ class SeController {
         this._relacional;
         this._id = -1;
         this._ul;
+        this._idCode = null;
         this._seView = new SeView();
         this._listSe = new ListSe();
     }
@@ -20,6 +21,10 @@ class SeController {
 
         try {
             this._ul = event.target.parentElement.children[1];
+            let li = this._ul.children[0];
+
+            let elemento = Utils.getElement(this._listSe, li.id);
+            this._idCode = elemento.idCode;
         } catch{
             return;
         }
@@ -39,7 +44,7 @@ class SeController {
         this._se = this._newSe();
         this._listSe.add(this._se);
 
-        this._seView.update(this._se, this._ul);
+        this._seView.update(this._se, this._ul, this._idCode);
     }
 
     remove(event) {
@@ -47,20 +52,12 @@ class SeController {
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
+
         li.parentNode.removeChild(li);
 
+        let elemento = Utils.getElement(this._listSe, li.id);
         this._listSe.apaga(li.id);
-    }
-
-    removeAll(elemento, qtd) {
-
-        for (let index = 0; index < qtd; index++) {
-
-            let li = elemento.lastChild.firstChild;
-
-            li.remove();
-            this._listSe.apaga(li.id);
-        }
+        this._seView._consoleRemove(elemento);
     }
 
     habilitaButtons(event) {
@@ -95,9 +92,14 @@ class SeController {
     _newSe() {
 
         return new Se(
-            this._var1_nome, this._var1_tipo,
-            this._var2_nome, this._var2_tipo,
-            this._relacional, this._id, this._ul
+            this._var1_nome,
+            this._var1_tipo,
+            this._var2_nome,
+            this._var2_tipo,
+            this._relacional,
+            this._id,
+            this._ul,
+            this._idCode
         );
     }
 

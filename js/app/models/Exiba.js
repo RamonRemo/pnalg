@@ -1,9 +1,10 @@
 class Exiba {
 
-    constructor(saida, id) {
+    constructor(saida, id, idCode) {
 
         this._saida = saida;
         this._id = id;
+        this._idCode = idCode;
         Object.freeze(this);
     }
 
@@ -16,5 +17,10 @@ class Exiba {
     get id() {
 
         return this._id;
+    }
+
+    get idCode() {
+
+        return this._idCode;
     }
 }

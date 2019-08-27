@@ -103,20 +103,20 @@ function removeElement(data, dragID, dropID) {
 
 
     let elemento = document.getElementById(data);
-    let qtd = elemento.lastChild.childNodes.length;
-
-    removeList(data, elemento, qtd);
+    
+    removeList(data, elemento);
     elemento.remove();
 
     return true;
 }
 
-function removeList(str, elemento, qtd) {
+function removeList(str, elemento) {
     const declare = /componente-declare-\d/;
     const leia = /componente-leia-\d/;
     const exiba = /componente-exiba-\d/;
     const atribuicao = /componente-atribuicao-\d/;
     const se = /componente-se-\d/;
+    let qtd = elemento.lastChild.childNodes.length;
 
     if (declare.test(str)) {
 
@@ -144,7 +144,6 @@ function removeList(str, elemento, qtd) {
 
     if (se.test(str)) {
 
-
         let span = $(`#${elemento.id}`).find('#area-se').find('.badge');
 
         let array = $.makeArray(span);
@@ -154,7 +153,6 @@ function removeList(str, elemento, qtd) {
             $(element).trigger('click');
         });
 
-        seController.removeAll(elemento, qtd);
         return;
     }
 }

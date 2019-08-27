@@ -14,7 +14,7 @@ class View {
         this.template(model, list, ul, ulSe, idCode);
     }
 
-    static updateOptions(list, campo) {
+    updateOptions(list, campo) {
 
         $(`#${campo}`).empty();
 

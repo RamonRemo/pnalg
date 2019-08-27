@@ -8,6 +8,7 @@ class AtribuicoesController {
         this._id = -1;
         this._ul;
         this._ulSe = null;
+        this._idCode = null;
         this._listAtribuicoes = new ListAtribuicoes();
         this._atribuicoesView = new AtribuicoesView();
     }
@@ -18,6 +19,9 @@ class AtribuicoesController {
 
         try {
             this._ul = event.target.parentElement.children[1];
+            let li = this._ul.children[0];
+            let elemento = Utils.getElement(this._listAtribuicoes, li.id);
+            this._idCode = elemento.idCode;
         } catch{
             return;
         }
@@ -47,7 +51,13 @@ class AtribuicoesController {
         let atribuicao = this._newAtribuicoes();
         this._listAtribuicoes.add(atribuicao);
 
-        this._atribuicoesView.update(atribuicao, this._listAtribuicoes, this._ul, this._ulSe);
+        this._atribuicoesView.update(
+            atribuicao,
+            this._ul,
+            this._ulSe,
+            this._idCode
+        );
+
         this._limpaForm();
 
         $('#modalAtribuicao').modal('hide');
@@ -60,19 +70,22 @@ class AtribuicoesController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
+        let elemento = Utils.getElement(this._listAtribuicoes, li.id);
         this._listAtribuicoes.apaga(li.id);
-        this._atribuicoesView.console(this._listAtribuicoes);
+        this._atribuicoesView._consoleRemove(elemento);
     }
 
     removeAll(elemento, qtd) {
 
+        let li = elemento.lastChild.firstChild;
+        this._atribuicoesView._consoleRemoveAll(this._listAtribuicoes, li);
+
         for (let index = 0; index < qtd; index++) {
 
-            let li = elemento.lastChild.firstChild;
+            li = elemento.lastChild.firstChild;
 
             li.remove();
             this._listAtribuicoes.apaga(li.id);
-            this._atribuicoesView.console(this._listAtribuicoes);
         }
     }
 
@@ -129,7 +142,13 @@ class AtribuicoesController {
 
     _newAtribuicoes() {
 
-        return new Atribuicoes(this._inputNome, this._inputTipo, this._inputValor.value, this._id);
+        return new Atribuicoes(
+            this._inputNome,
+            this._inputTipo,
+            this._inputValor.value,
+            this._id,
+            this._idCode
+        );
     }
 
     _validacoes() {

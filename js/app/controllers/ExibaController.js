@@ -8,6 +8,7 @@ class ExibaController {
         this._inputNome;
         this._ul;
         this._ulSe;
+        this._idCode = null;
         this._exibaView = new ExibaView();
         this._listExiba = new ListExiba();
     }
@@ -18,6 +19,10 @@ class ExibaController {
 
         try {
             this._ul = event.target.parentElement.children[1];
+            let li = this._ul.children[0];
+
+            let elemento = Utils.getElement(this._listExiba, li.id);
+            this._idCode = elemento.idCode;
         } catch{
             return;
         }
@@ -44,6 +49,7 @@ class ExibaController {
         this._inputNome = campo.options[campo.selectedIndex].text;
 
         if (this._inputNome == "Escolher...") {
+            
             return;
         }
 
@@ -71,7 +77,13 @@ class ExibaController {
         this._exiba = this._newExiba();
         this._listExiba.add(this._exiba);
 
-        this._exibaView.update(this._exiba, this._listExiba, this._ul, this._ulSe);
+        this._exibaView.update(
+            this._exiba,
+            this._ul,
+            this._ulSe,
+            this._idCode
+        );
+
         this._limpaForm();
 
         $('#modalExiba').modal('hide');
@@ -84,25 +96,28 @@ class ExibaController {
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
+        let elemento = Utils.getElement(this._listExiba, li.id);
         this._listExiba.apaga(li.id);
-        this._exibaView.console(this._listExiba);
+        this._exibaView._consoleRemove(elemento);
     }
 
     removeAll(elemento, qtd) {
-        
+
+        let li = elemento.lastChild.firstChild;
+        this._exibaView._consoleRemoveAll(this._listExiba, li);
+
         for (let index = 0; index < qtd; index++) {
-            
-            let li = elemento.lastChild.firstChild;
+
+            li = elemento.lastChild.firstChild;
 
             li.remove();
             this._listExiba.apaga(li.id);
-            this._exibaView.console(this._listExiba);
         }
     }
 
     _newExiba() {
 
-        return new Exiba(this._saidaCampo.value, this._id);
+        return new Exiba(this._saidaCampo.value, this._id, this._idCode);
     }
 
     _validacoes() {
