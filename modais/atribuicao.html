@@ -1,8 +1,8 @@
-<form id='form-atribuicao' onsubmit='atribuicoesController.adiciona(event)'>
+<form id='form-atribuicao' onsubmit='assignmentsController.toSave(event)'>
     <div class='form-group'>
         <label for='atribuicao-nome'>Variaveis Declaras</label>
         <select id='atribuicao-nome' class='atribuicao-nome form-control'
-            onclick='atribuicoesController.abreForm(event)'>
+            onclick='assignmentsController.openForm(event)'>
         </select>
     </div>
     <div id='inteiro' class='form-group atribuicao mt-3'>

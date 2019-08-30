@@ -48,7 +48,7 @@
                         <!-- Componente Atribuicao -->
                         <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-atribuicao' type='button' class='list-group-item btn'
-                            onclick='atribuicoesController.setId(event)'>Atribuição</button>
+                                onclick='assignmentsController.setId(event)'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
                         <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
@@ -177,22 +177,27 @@ Fim
     <script src='js/app/services/DragAndDropUtils.js' type='text/javascript'></script>
     <script src='js/app/utils/Utils.js' type='text/javascript'></script>
     <script src='js/app/views/View.js' type='text/javascript'></script>
+
     <script src='js/app/models/Declaracoes.js' type='text/javascript'></script>
     <script src='js/app/controllers/DeclaracoesController.js' type='text/javascript'></script>
     <script src='js/app/models/ListDeclaracoes.js' type='text/javascript'></script>
     <script src='js/app/views/DeclaracoesView.js' type='text/javascript'></script>
-    <script src='js/app/models/Atribuicoes.js' type='text/javascript'></script>
-    <script src='js/app/controllers/AtribuicoesController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListAtribuicoes.js' type='text/javascript'></script>
-    <script src='js/app/views/AtribuicoesView.js' type='text/javascript'></script>
+
+    <script src='js/app/models/Assignment.js' type='text/javascript'></script>
+    <script src='js/app/controllers/AssignmentsController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListAssignments.js' type='text/javascript'></script>
+    <script src='js/app/views/ViewAssignments.js' type='text/javascript'></script>
+
     <script src='js/app/models/Exiba.js' type='text/javascript'></script>
     <script src='js/app/controllers/ExibaController.js' type='text/javascript'></script>
     <script src='js/app/models/ListExiba.js' type='text/javascript'></script>
     <script src='js/app/views/ExibaView.js' type='text/javascript'></script>
+
     <script src='js/app/models/Leia.js' type='text/javascript'></script>
     <script src='js/app/controllers/LeiaController.js' type='text/javascript'></script>
     <script src='js/app/models/ListLeia.js' type='text/javascript'></script>
     <script src='js/app/views/LeiaView.js' type='text/javascript'></script>
+
     <script src='js/app/models/Se.js' type='text/javascript'></script>
     <script src='js/app/controllers/SeController.js' type='text/javascript'></script>
     <script src='js/app/models/ListSe.js' type='text/javascript'></script>
@@ -200,7 +205,7 @@ Fim
 
     <script>
         var declaracoesController = new DeclaracoesController();
-        var atribuicoesController = new AtribuicoesController();
+        var assignmentsController = new AssignmentsController();
         var exibaController = new ExibaController();
         var leiaController = new LeiaController();
         var seController = new SeController();

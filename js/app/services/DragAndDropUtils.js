@@ -1,6 +1,5 @@
 
 function declare(id, nodeCopy) {
-
     addUl(id, nodeCopy, 'declaracoes');
     let idCode = addCode(id, 'code-declaracao');
     declaracoesController._idCode = idCode;
@@ -9,7 +8,6 @@ function declare(id, nodeCopy) {
 }
 
 function leia(id, nodeCopy, listVariavel) {
-
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
@@ -23,7 +21,6 @@ function leia(id, nodeCopy, listVariavel) {
 }
 
 function exiba(id, nodeCopy) {
-
     addUl(id, nodeCopy, 'exiba');
     let idCode = addCode(id, 'code-exiba');
     exibaController._idCode = idCode;
@@ -31,8 +28,7 @@ function exiba(id, nodeCopy) {
     return '#modalExiba';
 }
 
-function atribuicao(id, nodeCopy, listVariavel) {
-
+function assignment(id, nodeCopy, listVariavel) {
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
@@ -40,13 +36,12 @@ function atribuicao(id, nodeCopy, listVariavel) {
 
     addUl(id, nodeCopy, 'atribuicoes');
     let idCode = addCode(id, 'code-atribuicao');
-    atribuicoesController._idCode = idCode;
+    assignmentsController._idCode = idCode;
 
     return '#modalAtribuicao';
 }
 
 function se(id, nodeCopy, listVariavel) {
-
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
@@ -66,10 +61,10 @@ function se(id, nodeCopy, listVariavel) {
 }
 
 function addUl(id, nodeCopy, nome) {
-
     let ul = document.createElement('ul');
     ul.setAttribute('id', `${nome}-${id}`);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
+
     nodeCopy.appendChild(ul);
 }
 
@@ -85,25 +80,20 @@ function addCode(id, nome) {
 }
 
 function removeElement(data, dragID, dropID) {
-
     if (dragID === 'components' && dropID === 'area') {
-
         return false;
     }
 
     if (dragID === 'area' && dropID === 'area') {
-
         return true;
     }
 
     if (dragID === 'components' && dropID === 'components') {
-
         return true;
     }
 
 
     let elemento = document.getElementById(data);
-    
     removeList(data, elemento);
     elemento.remove();
 
@@ -119,37 +109,30 @@ function removeList(str, elemento) {
     let qtd = elemento.lastChild.childNodes.length;
 
     if (declare.test(str)) {
-
         declaracoesController.removeAll(elemento, qtd);
         return;
     }
 
     if (leia.test(str)) {
-
         leiaController.removeAll(elemento, qtd);
         return;
     }
 
     if (exiba.test(str)) {
-
         exibaController.removeAll(elemento, qtd);
         return;
     }
 
     if (atribuicao.test(str)) {
-
-        atribuicoesController.removeAll(elemento, qtd);
+        assignmentsController.removeAll(elemento, qtd);
         return;
     }
 
     if (se.test(str)) {
-
         let span = $(`#${elemento.id}`).find('#area-se').find('.badge');
-
         let array = $.makeArray(span);
 
         array.forEach(element => {
-
             $(element).trigger('click');
         });
 

@@ -1,10 +1,9 @@
 
 function dragStartHandler(ev) {
-
     let target = $(ev.target).closest('[data-id]');
 
     let dragID = target.data('id');
-    
+
     ev.dataTransfer.setData('text', ev.target.id);
     ev.dataTransfer.setData('dragID', dragID);
 
@@ -12,22 +11,19 @@ function dragStartHandler(ev) {
 }
 
 function dropHandler(ev) {
-
     ev.preventDefault();
 
     let data = ev.dataTransfer.getData('text');
     let dragID = ev.dataTransfer.getData('dragID');
-    
+
     let target = $(ev.target).closest('[data-id]');
     let dropID = target.data('id');
 
     if (removeElement(data, dragID, dropID)) {
-
         return;
     }
 
     if (document.getElementById(data) == null) {
-
         return;
     }
 
@@ -37,10 +33,9 @@ function dropHandler(ev) {
 
     let id = document.querySelectorAll('#target button').length;
 
-    idModal = valida(id, nodeCopy);
+    idModal = validate(id, nodeCopy);
 
     if (!idModal) {
-
         return;
     }
 
@@ -54,13 +49,11 @@ function dropHandler(ev) {
 }
 
 function dragoverHandler(ev) {
-
     ev.preventDefault();
 }
 
 
-function valida(id, nodeCopy) {
-
+function validate(id, nodeCopy) {
     let listVariavel = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
@@ -75,7 +68,7 @@ function valida(id, nodeCopy) {
             return exiba(id, nodeCopy);
 
         case 'componente-atribuicao':
-            return atribuicao(id, nodeCopy, listVariavel);
+            return assignment(id, nodeCopy, listVariavel);
 
         case 'componente-se':
             return se(id, nodeCopy, listVariavel);
