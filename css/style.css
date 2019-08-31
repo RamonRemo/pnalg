@@ -184,3 +184,13 @@ code span {
 .petris {
     margin: 0;
 }
+
+#container {
+    width: 500px;
+    height: 600px;
+    overflow: auto;
+}
+
+canvas {
+    display: block;
+}
