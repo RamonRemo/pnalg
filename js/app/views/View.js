@@ -15,28 +15,23 @@ class View {
     }
 
     updateOptions(list, campo) {
-
         $(`#${campo}`).empty();
 
         var select = document.getElementById(campo);
-
         select.innerHTML = '<option selected>Escolher...</option>';
 
         let array = Object.values(list);
 
         if (array[0].length == 0) {
-
             return;
         }
 
-
         array.forEach(objetos => {
             objetos.forEach(element => {
-
                 let option = document.createElement('option');
 
-                option.text = element._nome
-                option.value = element._tipo;
+                option.text = element.name
+                option.value = element.type;
 
                 select.appendChild(option);
             });

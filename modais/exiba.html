@@ -1,12 +1,12 @@
-<form id='form-exiba' onsubmit='exibaController.adiciona(event)'>
+<form id='form-exiba' onsubmit='showOffController.toSave(event)'>
     <div class='form-group'>
         <label for='exiba-texto'>Exiba um texto</label>
         <input id='exiba-texto' class='form-control' type='text' placeholder='aceita cadeias de caractere' autofocus
-            onkeyup='exibaController.captura(event)'>
+            onkeyup='showOffController.catch(event)'>
     </div>
     <div class='form-group mt-3'>
         <label for='exiba-variavel'>Variaveis Declaras</label>
-        <select id='exiba-variavel' class='form-control' onclick='exibaController.addVar(event)'>
+        <select id='exiba-variavel' class='form-control' onclick='showOffController.addVar(event)'>
             <option selected>Escolher...</option>
         </select>
     </div>

@@ -23,7 +23,7 @@ class ListDeclarations {
         }
     }
 
-    get declaracoes() {
+    get declaration() {
         return [].concat(this._declaration);
     }
 }

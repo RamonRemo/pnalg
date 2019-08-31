@@ -1,35 +1,36 @@
-class ExibaView extends View {
+class ViewShowOff extends View {
 
-    constructor(elemento) {
-
-        super(elemento);
+    constructor(element) {
+        super(element);
     }
 
     template(model, ul, ulSe, idCode) {
-
         let li = document.createElement('li');
         li.id = `exibaCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`escreval(${model.saida});`);
+        let obj = document.createTextNode(`escreval(${model.output});`);
         li.appendChild(obj);
 
         if (ulSe) {
-
             ulSe.appendChild(li);
-            this._addRemovedor(li);
+            this._addDeleteButton(li);
             super.consoleAddSe(idCode, ulSe);
-
         } else {
-
             ul.appendChild(li);
-            this._addRemovedor(li);
-            this._consoleAdd(idCode, ul);
+            this._addDeleteButton(li);
+            this._codeAdd(idCode, ul);
         }
     }
 
-    _consoleAdd(idCode, ul) {
+    _addDeleteButton(li) {
+        let div = document.createElement('div');
+        div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="showOffController.remove(event);">x</span>';
 
+        li.appendChild(div);
+    }
+
+    _codeAdd(idCode, ul) {
         let code = document.querySelector(`#${idCode}`);
 
         $(`#${idCode}`).empty();
@@ -37,12 +38,10 @@ class ExibaView extends View {
         let arrayLi = ul.children;
 
         if (arrayLi.length != 0) {
-
             code.innerHTML = '<span class="comentario">//Exibicao</span>';
         }
 
         if (arrayLi.length == 0) {
-
             return;
         }
 
@@ -58,47 +57,33 @@ class ExibaView extends View {
         }
     }
 
-    _consoleRemove(element) {
-
+    _codeRemove(element) {
         let idCode = element.idCode;
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
         for (let codes of code) {
-
             if (codes.id == `exibaCode-${id}`) {
-
                 codes.remove();
             }
         }
     }
 
-    _consoleRemoveAll(list, li) {
-
+    _codeRemoveAll(list, li) {
         let array = Object.values(list);
 
         array.forEach(objetos => {
             objetos.forEach(element => {
 
                 if (li == null) {
-
                     return;
                 }
 
                 if (`exibaCode-${element.id}` == li.id) {
-
                     let code = element.idCode;
-
                     $(`#${code}`).empty();
                 }
             });
         });
-    }
-
-    _addRemovedor(li) {
-
-        let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="exibaController.remove(event);">x</span>';
-        li.appendChild(div);
     }
 }

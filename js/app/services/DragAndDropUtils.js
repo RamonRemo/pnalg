@@ -7,6 +7,14 @@ function declaration(id, nodeCopy) {
     return '#modalDeclare';
 }
 
+function showOff(id, nodeCopy) {
+    addUl(id, nodeCopy, 'exiba');
+    let idCode = addCode(id, 'code-exiba');
+    showOffController._idCode = idCode;
+
+    return '#modalExiba';
+}
+
 function leia(id, nodeCopy, listVariavel) {
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
@@ -18,14 +26,6 @@ function leia(id, nodeCopy, listVariavel) {
     leiaController._idCode = idCode;
 
     return '#modalLeia';
-}
-
-function exiba(id, nodeCopy) {
-    addUl(id, nodeCopy, 'exiba');
-    let idCode = addCode(id, 'code-exiba');
-    exibaController._idCode = idCode;
-
-    return '#modalExiba';
 }
 
 function assignment(id, nodeCopy, listVariavel) {
@@ -119,7 +119,7 @@ function removeList(str, elemento) {
     }
 
     if (exiba.test(str)) {
-        exibaController.removeAll(elemento, qtd);
+        showOffController.removeAll(elemento, qtd);
         return;
     }
 

@@ -1,26 +1,21 @@
-class Exiba {
+class ShowOff {
 
-    constructor(saida, id, idCode) {
-
-        this._saida = saida;
+    constructor(output, id, idCode) {
+        this._output = output;
         this._id = id;
         this._idCode = idCode;
         Object.freeze(this);
     }
 
-    get saida() {
-
-        return this._saida;
+    get output() {
+        return this._output;
     }
 
-
     get id() {
-
         return this._id;
     }
 
     get idCode() {
-
         return this._idCode;
     }
 }

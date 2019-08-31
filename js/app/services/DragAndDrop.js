@@ -65,7 +65,7 @@ function validate(id, nodeCopy) {
             return leia(id, nodeCopy, listVariavel);
 
         case 'componente-exiba':
-            return exiba(id, nodeCopy);
+            return showOff(id, nodeCopy);
 
         case 'componente-atribuicao':
             return assignment(id, nodeCopy, listVariavel);
