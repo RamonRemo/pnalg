@@ -5,4 +5,11 @@ $(document).ready(function () {
     $('#body-exiba').load('modais/showOff.html');
     $('#body-leia').load('modais/read.html');
     $('#body-se').load('modais/if.html');
+    $('#body-rede').load('modais/petris.html');
+});
+
+
+$('#step5').click(function () {
+    $('.petris-code').html('');
+    $('.petris-code').append($('#areaCode').html());
 });

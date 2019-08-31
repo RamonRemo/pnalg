@@ -158,3 +158,29 @@ code span {
 .fimse {
     padding-left: 0;
 }
+
+/* -------------------- Petris --------------------*/
+
+@media (min-width: 576px) {
+    #modalRede .modal-dialog {
+        max-width: none;
+    }
+}
+
+#modalRede .modal-dialog {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#modalRede .modal-content {
+    height: 100%;
+    min-height: 100%;
+    height: auto;
+    border-radius: 0;
+}
+
+.petris-modal {
+    margin-top: 0;
+}
