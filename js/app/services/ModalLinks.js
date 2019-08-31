@@ -10,6 +10,6 @@ $(document).ready(function () {
 
 
 $('#step5').click(function () {
-    $('.petris-code').html('');
-    $('.petris-code').append($('#areaCode').html());
+    $('#petris-code').html('');
+    $('#petris-code').append($('#areaCode').html());
 });
