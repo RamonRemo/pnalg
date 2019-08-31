@@ -71,6 +71,6 @@ function validate(id, nodeCopy) {
             return assignment(id, nodeCopy, listVariavel);
 
         case 'componente-se':
-            return se(id, nodeCopy, listVariavel);
+            return iff(id, nodeCopy, listVariavel);
     }
 }

@@ -53,7 +53,7 @@
                         <!-- Componente Se -->
                         <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-se' type='button' class='list-group-item btn'
-                                onclick='seController.setId(event)'>Se</button>
+                                onclick='ifController.setId(event)'>Se</button>
                             <div id='area-se'> </div>
                             <button id='btn-fim-se' type='button' class='list-group-item btn'>Fim se</button>
                         </div>
@@ -198,17 +198,17 @@ Fim
     <script src='js/app/models/ListRead.js' type='text/javascript'></script>
     <script src='js/app/views/ViewRead.js' type='text/javascript'></script>
 
-    <script src='js/app/models/Se.js' type='text/javascript'></script>
-    <script src='js/app/controllers/SeController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListSe.js' type='text/javascript'></script>
-    <script src='js/app/views/SeView.js' type='text/javascript'></script>
+    <script src='js/app/models/If.js' type='text/javascript'></script>
+    <script src='js/app/controllers/IfController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListIf.js' type='text/javascript'></script>
+    <script src='js/app/views/ViewIf.js' type='text/javascript'></script>
 
     <script>
         var declarationController = new DeclarationController();
         var assignmentController = new AssignmentController();
         var showOffController = new ShowOffController();
         var readController = new ReadController();
-        var seController = new SeController();
+        var ifController = new IfController();
     </script>
 </body>
 

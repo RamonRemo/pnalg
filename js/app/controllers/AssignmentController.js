@@ -28,11 +28,11 @@ class AssignmentController {
     }
 
     arrowIdComponentSE() {
-        this._ulSe = seController._ul;
+        this._ulSe = ifController._ul;
         addCode('code-atribuicao');
 
         let li = this._ulSe.children[0];
-        let element = Utils.getElement(seController._listSe, li.id);
+        let element = Utils.getElement(ifController._listIf, li.id);
 
         this._idCode = element.idCode;
     }

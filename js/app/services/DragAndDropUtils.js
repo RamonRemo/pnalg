@@ -41,7 +41,7 @@ function assignment(id, nodeCopy, listVariavel) {
     return '#modalAtribuicao';
 }
 
-function se(id, nodeCopy, listVariavel) {
+function iff(id, nodeCopy, listVariavel) {
     if (listVariavel.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
@@ -55,7 +55,7 @@ function se(id, nodeCopy, listVariavel) {
     $('#salva-alteracoes').find('.btn').removeAttr('disabled');
 
     let idCode = addCode(id, 'code-se');
-    seController._idCode = idCode;
+    ifController._idCode = idCode;
 
     return '#modalSe';
 }

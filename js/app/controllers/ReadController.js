@@ -28,12 +28,12 @@ class ReadController {
     }
 
     arrowIdComponentSE() {
-        this._ulSe = seController._ul;
+        this._ulSe = ifController._ul;
         addCode('code-leia');
 
         let li = this._ulSe.children[0];
 
-        let elemento = Utils.getElement(seController._listSe, li.id);
+        let elemento = Utils.getElement(ifController._listIf, li.id);
         this._idCode = elemento.idCode;
     }
 
