@@ -46,12 +46,12 @@ class ViewAssignments extends View {
         }
 
         for (let item of arrayLi) {
-            let texto = ($(item).text());
-            let variavel = texto.substr(0, (texto.length - 1));
+            let text = ($(item).text());
+            let variable = text.substr(0, (text.length - 1));
 
             let span = document.createElement('span');
             span.id = item.id;
-            span.innerHTML = (`${variavel}`);
+            span.innerHTML = (`${variable}`);
 
             code.appendChild(span);
         }

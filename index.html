@@ -38,7 +38,7 @@
                         <!-- Componente Leia -->
                         <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
                             <button id='btn-leia' type='button' class='list-group-item btn'
-                                onclick='leiaController.setId(event)'>Leia</button>
+                                onclick='readController.setId(event)'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
                         <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
@@ -193,10 +193,10 @@ Fim
     <script src='js/app/models/ListShowOff.js' type='text/javascript'></script>
     <script src='js/app/views/ViewShowOff.js' type='text/javascript'></script>
 
-    <script src='js/app/models/Leia.js' type='text/javascript'></script>
-    <script src='js/app/controllers/LeiaController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListLeia.js' type='text/javascript'></script>
-    <script src='js/app/views/LeiaView.js' type='text/javascript'></script>
+    <script src='js/app/models/Read.js' type='text/javascript'></script>
+    <script src='js/app/controllers/ReadController.js' type='text/javascript'></script>
+    <script src='js/app/models/ListRead.js' type='text/javascript'></script>
+    <script src='js/app/views/ViewRead.js' type='text/javascript'></script>
 
     <script src='js/app/models/Se.js' type='text/javascript'></script>
     <script src='js/app/controllers/SeController.js' type='text/javascript'></script>
@@ -207,7 +207,7 @@ Fim
         var declarationController = new DeclarationController();
         var assignmentController = new AssignmentController();
         var showOffController = new ShowOffController();
-        var leiaController = new LeiaController();
+        var readController = new ReadController();
         var seController = new SeController();
     </script>
 </body>

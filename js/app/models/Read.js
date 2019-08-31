@@ -1,31 +1,26 @@
-class Leia {
+class Read {
 
-    constructor(nome, tipo, id, idCode) {
-
-        this._nome = nome;
-        this._tipo = tipo;
+    constructor(name, type, id, idCode) {
+        this._name = name;
+        this._type = type;
         this._id = id;
         this._idCode = idCode;
         Object.freeze(this);
     }
 
-    get nome() {
-
-        return this._nome;
+    get name() {
+        return this._name;
     }
 
-    get tipo() {
-
-        return this._tipo;
+    get type() {
+        return this._type;
     }
 
     get id() {
-
         return this._id;
     }
 
     get idCode() {
-
         return this._idCode;
     }
 }

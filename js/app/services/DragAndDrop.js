@@ -62,7 +62,7 @@ function validate(id, nodeCopy) {
             return declaration(id, nodeCopy);
 
         case 'componente-leia':
-            return leia(id, nodeCopy, listVariavel);
+            return read(id, nodeCopy, listVariavel);
 
         case 'componente-exiba':
             return showOff(id, nodeCopy);

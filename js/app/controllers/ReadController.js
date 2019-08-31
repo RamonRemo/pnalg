@@ -1,35 +1,33 @@
-class LeiaController {
+class ReadController {
 
     constructor() {
-
-        this._leia;
-        this._inputNome;
-        this._inputTipo;
+        this._read;
+        this._inputName;
+        this._inputType;
         this._id = -1;
         this._ul;
         this._ulSe;
         this._idCode = null;
-        this._leiaView = new LeiaView();
-        this._listLeia = new ListLeia();
+        this._viewRead = new ViewRead();
+        this._listRead = new ListRead();
     }
 
     setId(event) {
-
         event.preventDefault();
 
         try {
+
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-
-            let elemento = Utils.getElement(this._listLeia, li.id);
+            let elemento = Utils.getElement(this._listRead, li.id);
             this._idCode = elemento.idCode;
+
         } catch{
             return;
         }
     }
 
-    setIdComponenteSe() {
-
+    arrowIdComponentSE() {
         this._ulSe = seController._ul;
         addCode('code-leia');
 
@@ -40,80 +38,73 @@ class LeiaController {
     }
 
     addVar(event) {
-
         event.preventDefault();
 
-        let campo = document.querySelector('#leia-variavel');
-        this._inputNome = campo.options[campo.selectedIndex].text;
-        this._inputTipo = campo.options[campo.selectedIndex].value;
+        let field = document.querySelector('#leia-variavel');
+        this._inputName = field.options[field.selectedIndex].text;
+        this._inputType = field.options[field.selectedIndex].value;
         this._id = this._id + 1;
     }
 
-    adiciona(event) {
-
+    toSave(event) {
         event.preventDefault();
 
-        if (!this._validacoes()) {
-
+        if (!this._validations()) {
             return;
         }
 
-        this._leia = this._newLeia();
-        this._listLeia.add(this._leia);
+        this._read = this._newRead();
+        this._listRead.add(this._read);
 
-        this._leiaView.update(
-            this._leia,
+        this._viewRead.update(
+            this._read,
             this._ul,
             this._ulSe,
             this._idCode
         );
 
         this._ulSe = null;
+
         $('#modalLeia').modal('hide');
     }
 
     remove(event) {
-
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
         let id = Utils.getNumber(li.id);
-        let elemento = Utils.getElement(this._listLeia, id);
+        let element = Utils.getElement(this._listRead, id);
 
-        this._listLeia.apaga(id);
-        this._leiaView._consoleRemove(elemento);
+        this._listRead.remove(id);
+        this._viewRead._codeRemove(element);
     }
 
-    removeAll(elemento, qtd) {
+    removeAll(element, amount) {
+        let li = element.lastChild.firstChild;
+        this._viewRead._codeRemoveAll(this._listRead, li);
 
-        let li = elemento.lastChild.firstChild;
-        this._leiaView._consoleRemoveAll(this._listLeia, li);
-
-        for (let index = 0; index < qtd; index++) {
-
-            li = elemento.lastChild.firstChild;
+        for (let index = 0; index < amount; index++) {
+            li = element.lastChild.firstChild;
+            this._listRead.remove(li.id);
 
             li.remove();
-            this._listLeia.apaga(li.id);
         }
     }
 
-    _newLeia() {
-
-        return new Leia(
-            this._inputNome,
-            this._inputTipo,
+    _newRead() {
+        return new Read(
+            this._inputName,
+            this._inputType,
             this._id,
             this._idCode
         );
     }
 
-    _validacoes() {
+    _validations() {
 
-        if (this._inputNome == null || this._inputNome == "Escolher...") {
-
+        if (this._inputName == null || this._inputName == "Escolher...") {
             bootbox.alert({
                 message: 'Qual é a váriavel para leitura?  🤷‍♂️ 🤷‍',
                 animate: true,

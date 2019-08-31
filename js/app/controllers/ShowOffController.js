@@ -46,8 +46,8 @@ class ShowOffController {
     addVar(event) {
         event.preventDefault();
 
-        let campo = document.querySelector('#exiba-variavel');
-        this._inputName = campo.options[campo.selectedIndex].text;
+        let field = document.querySelector('#exiba-variavel');
+        this._inputName = field.options[field.selectedIndex].text;
 
         if (this._inputName == "Escolher...") {
             return;
