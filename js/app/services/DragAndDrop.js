@@ -54,7 +54,7 @@ function dragoverHandler(ev) {
 
 
 function validate(id, nodeCopy) {
-    let listVariavel = document.querySelectorAll('.var');
+    let listVariable = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
 
@@ -62,15 +62,15 @@ function validate(id, nodeCopy) {
             return declaration(id, nodeCopy);
 
         case 'componente-leia':
-            return read(id, nodeCopy, listVariavel);
+            return read(id, nodeCopy, listVariable);
 
         case 'componente-exiba':
             return showOff(id, nodeCopy);
 
         case 'componente-atribuicao':
-            return assignment(id, nodeCopy, listVariavel);
+            return assignment(id, nodeCopy, listVariable);
 
         case 'componente-se':
-            return iff(id, nodeCopy, listVariavel);
+            return iff(id, nodeCopy, listVariable);
     }
 }

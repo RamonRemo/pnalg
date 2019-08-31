@@ -70,13 +70,15 @@ class AssignmentController {
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
-        li.parentNode.removeChild(li);
+        let ul = li.parentNode;
+
+        ul.removeChild(li);
         let id = Utils.getNumber(li.id);
 
         let element = Utils.getElement(this._listAssignments, id);
         this._listAssignments.remove(id);
 
-        this._viewAssignments._codeRemove(element);
+        this._viewAssignments._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {

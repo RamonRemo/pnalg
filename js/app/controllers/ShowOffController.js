@@ -89,13 +89,14 @@ class ShowOffController {
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
-        li.parentNode.removeChild(li);
+        let ul = li.parentNode;
 
+        ul.removeChild(li);
         let id = Utils.getNumber(li.id);
         let element = Utils.getElement(this._listShowOff, id);
+        
         this._listShowOff.remove(id);
-
-        this._viewShowOff._codeRemove(element);
+        this._viewShowOff._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {

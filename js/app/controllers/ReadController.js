@@ -72,13 +72,14 @@ class ReadController {
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
-        li.parentNode.removeChild(li);
+        let ul = li.parentNode;
 
+        ul.removeChild(li);
         let id = Utils.getNumber(li.id);
         let element = Utils.getElement(this._listRead, id);
 
         this._listRead.remove(id);
-        this._viewRead._codeRemove(element);
+        this._viewRead._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {

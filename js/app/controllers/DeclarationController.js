@@ -67,14 +67,16 @@ class DeclarationController {
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
-        li.parentNode.removeChild(li);
+        let ul = li.parentNode;
 
+        ul.removeChild(li);
         let id = Utils.getNumber(li.id);
+
         let element = Utils.getElement(this._listDeclaration, id);
         this._listDeclaration.remove(id);
 
         this._viewDeclaration.updateOptions(this._listDeclaration);
-        this._viewDeclaration._codeRemove(element);
+        this._viewDeclaration._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {

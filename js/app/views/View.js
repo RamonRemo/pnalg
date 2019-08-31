@@ -1,12 +1,10 @@
 class View {
 
-    constructor(elemento) {
-
-        this._elemento = elemento;
+    constructor(element) {
+        this._element = element;
     }
 
     template() {
-
         throw new Error('O método template deve ser implementado');
     }
 
@@ -14,10 +12,10 @@ class View {
         this.template(model, list, ul, ulSe, idCode);
     }
 
-    updateOptions(list, campo) {
-        $(`#${campo}`).empty();
+    updateOptions(list, field) {
+        $(`#${field}`).empty();
 
-        var select = document.getElementById(campo);
+        var select = document.getElementById(field);
         select.innerHTML = '<option selected>Escolher...</option>';
 
         let array = Object.values(list);
@@ -38,29 +36,25 @@ class View {
         });
     }
 
-    consoleAddSe(idCode, ul) {
-
+    codeAddIf(idCode, ul) {
         let code = document.querySelector(`#${idCode}`);
 
         $(`#${idCode}`).empty();
 
         let arrayLi = ul.children;
-        console.log(arrayLi);
-        if (arrayLi.length != 0) {
 
+        if (arrayLi.length != 0) {
             code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
         }
 
         if (arrayLi.length == 0) {
-
             return;
         }
 
         let index = 0;
         for (let element of arrayLi) {
-            let texto = ($(element).text());
-
-            let variavel = texto.substr(0, (texto.length - 1));
+            let text = ($(element).text());
+            let variable = text.substr(0, (text.length - 1));
 
             let span = document.createElement('span');
             span.id = element.id;
@@ -69,7 +63,7 @@ class View {
                 span.className = 'identeSe';
             }
 
-            span.innerHTML = (`${variavel}`);
+            span.innerHTML = (`${variable}`);
 
             code.appendChild(span);
             index++;
@@ -80,4 +74,39 @@ class View {
         span.className = 'fimse';
         code.appendChild(span);
     }
+
+    codeRemove(element, name, amount) {
+        let idCode = element.idCode;
+        let id = element.id;
+        let code = $(`#${idCode}`).find('span');
+
+        if (amount == 0) {
+            $(`#${idCode}`).empty();
+        }
+
+        for (let codes of code) {
+            if (codes.id == `${name}-${id}`) {
+                codes.remove();
+            }
+        }
+    }
+
+    codeRemoveAll(list, li, name) {
+        let array = Object.values(list);
+
+        array.forEach(objetos => {
+            objetos.forEach(element => {
+
+                if (li == null) {
+                    return;
+                }
+
+                if (`${name}-${element.id}` == li.id) {
+                    let code = element.idCode;
+                    $(`#${code}`).empty();
+                }
+            });
+        });
+    }
+
 }

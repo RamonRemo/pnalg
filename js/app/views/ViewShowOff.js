@@ -15,7 +15,7 @@ class ViewShowOff extends View {
         if (ulSe) {
             ulSe.appendChild(li);
             this._addDeleteButton(li);
-            super.consoleAddSe(idCode, ulSe);
+            super.codeAddIf(idCode, ulSe);
         } else {
             ul.appendChild(li);
             this._addDeleteButton(li);
@@ -57,33 +57,12 @@ class ViewShowOff extends View {
         }
     }
 
-    _codeRemove(element) {
-        let idCode = element.idCode;
-        let id = element.id;
-        let code = $(`#${idCode}`).find('span');
-
-        for (let codes of code) {
-            if (codes.id == `exibaCode-${id}`) {
-                codes.remove();
-            }
-        }
+    _codeRemove(element, ul) {
+        let amount = ul.children.length;
+        super.codeRemove(element, 'exibaCode', amount);
     }
 
     _codeRemoveAll(list, li) {
-        let array = Object.values(list);
-
-        array.forEach(objetos => {
-            objetos.forEach(element => {
-
-                if (li == null) {
-                    return;
-                }
-
-                if (`exibaCode-${element.id}` == li.id) {
-                    let code = element.idCode;
-                    $(`#${code}`).empty();
-                }
-            });
-        });
+        super.codeRemoveAll(list, li, 'exibaCode');
     }
 }

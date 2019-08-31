@@ -16,7 +16,7 @@ class ViewDeclaration extends View {
             this.updateOptions(list);
             ulSe.appendChild(li);
             this._addDeleteButton(li);
-            super.consoleAddSe(idCode, ulSe);
+            super.codeAddIf(idCode, ulSe);
         } else {
             this.updateOptions(list);
             ul.appendChild(li);
@@ -67,33 +67,12 @@ class ViewDeclaration extends View {
         }
     }
 
-    _codeRemove(element) {
-        let idCode = element.idCode;
-        let id = element.id;
-        let code = $(`#${idCode}`).find('span');
-
-        for (let codes of code) {
-            if (codes.id == `declareCode-${id}`) {
-                codes.remove();
-            }
-        }
+    _codeRemove(element, ul) {
+        let amount = ul.children.length;
+        super.codeRemove(element, 'declareCode', amount);
     }
 
     _codeRemoveAll(list, li) {
-        let array = Object.values(list);
-
-        array.forEach(objetos => {
-            objetos.forEach(element => {
-
-                if (li == null) {
-                    return;
-                }
-
-                if (`declareCode-${element.id}` == li.id) {
-                    let code = element.idCode;
-                    $(`#${code}`).empty();
-                }
-            });
-        });
+        super.codeRemoveAll(list, li, 'declareCode');
     }
 }

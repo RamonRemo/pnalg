@@ -15,8 +15,8 @@ function showOff(id, nodeCopy) {
     return '#modalExiba';
 }
 
-function read(id, nodeCopy, listVariavel) {
-    if (listVariavel.length == '0') {
+function read(id, nodeCopy, listVariable) {
+    if (listVariable.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }
@@ -28,8 +28,8 @@ function read(id, nodeCopy, listVariavel) {
     return '#modalLeia';
 }
 
-function assignment(id, nodeCopy, listVariavel) {
-    if (listVariavel.length == '0') {
+function assignment(id, nodeCopy, listVariable) {
+    if (listVariable.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }
@@ -41,8 +41,8 @@ function assignment(id, nodeCopy, listVariavel) {
     return '#modalAtribuicao';
 }
 
-function iff(id, nodeCopy, listVariavel) {
-    if (listVariavel.length == '0') {
+function iff(id, nodeCopy, listVariable) {
+    if (listVariable.length == '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }
@@ -60,21 +60,20 @@ function iff(id, nodeCopy, listVariavel) {
     return '#modalSe';
 }
 
-function addUl(id, nodeCopy, nome) {
+function addUl(id, nodeCopy, name) {
     let ul = document.createElement('ul');
-    ul.setAttribute('id', `${nome}-${id}`);
+    ul.setAttribute('id', `${name}-${id}`);
     ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
 
     nodeCopy.appendChild(ul);
 }
 
-function addCode(id, nome) {
-
-    let areaCodigo = document.querySelector('#area-codigo');
+function addCode(id, name) {
+    let codeArea = document.querySelector('#area-codigo');
     let code = document.createElement('code');
-    code.setAttribute('id', `${nome}-${id}`);
+    code.setAttribute('id', `${name}-${id}`);
 
-    areaCodigo.appendChild(code);
+    codeArea.appendChild(code);
 
     return code.id;
 }
@@ -93,43 +92,43 @@ function removeElement(data, dragID, dropID) {
     }
 
 
-    let elemento = document.getElementById(data);
-    removeList(data, elemento);
-    elemento.remove();
+    let element = document.getElementById(data);
+    removeList(data, element);
+    element.remove();
 
     return true;
 }
 
-function removeList(str, elemento) {
+function removeList(str, element) {
     const declare = /componente-declare-\d/;
     const leia = /componente-leia-\d/;
     const exiba = /componente-exiba-\d/;
     const atribuicao = /componente-atribuicao-\d/;
     const se = /componente-se-\d/;
-    let qtd = elemento.lastChild.childNodes.length;
+    let qtd = element.lastChild.childNodes.length;
 
     if (declare.test(str)) {
-        declarationController.removeAll(elemento, qtd);
+        declarationController.removeAll(element, qtd);
         return;
     }
 
     if (leia.test(str)) {
-        readController.removeAll(elemento, qtd);
+        readController.removeAll(element, qtd);
         return;
     }
 
     if (exiba.test(str)) {
-        showOffController.removeAll(elemento, qtd);
+        showOffController.removeAll(element, qtd);
         return;
     }
 
     if (atribuicao.test(str)) {
-        assignmentController.removeAll(elemento, qtd);
+        assignmentController.removeAll(element, qtd);
         return;
     }
 
     if (se.test(str)) {
-        let span = $(`#${elemento.id}`).find('#area-se').find('.badge');
+        let span = $(`#${element.id}`).find('#area-se').find('.badge');
         let array = $.makeArray(span);
 
         array.forEach(element => {
