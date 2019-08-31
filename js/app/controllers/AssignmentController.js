@@ -1,4 +1,4 @@
-class AssignmentsController {
+class AssignmentController {
 
     constructor() {
         this._inputName;
@@ -76,19 +76,19 @@ class AssignmentsController {
         let element = Utils.getElement(this._listAssignments, id);
         this._listAssignments.remove(id);
 
-        this._viewAssignments._consoleRemove(element);
+        this._viewAssignments._codeRemove(element);
     }
 
     removeAll(element, amount) {
         let li = element.lastChild.firstChild;
-        this._viewAssignments._consoleRemoveAll(this._listAssignments, li);
+        this._viewAssignments._codeRemoveAll(this._listAssignments, li);
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
-            li.remove();
-
             let id = Utils.getNumber(li.id);
             this._listAssignments.remove(id);
+
+            li.remove();
         }
     }
 

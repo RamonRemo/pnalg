@@ -1,16 +1,15 @@
-class DeclaracoesController {
+class DeclarationController {
 
     constructor() {
-
-        this._inputNome;
-        this._inputTipo;
+        this._inputName;
+        this._inputType;
+        this._declaration;
         this._id = -1;
-        this._declaracao;
         this._ul;
         this._ulSe = null;
         this._idCode = null;
-        this._declaracoesView = new DeclaracoesView();
-        this._listDeclaracoes = new ListDeclaracoes();
+        this._viewDeclaration = new ViewDeclaration();
+        this._listDeclaration = new ListDeclarations();
     }
 
     setId(event) {
@@ -18,18 +17,18 @@ class DeclaracoesController {
         event.preventDefault();
 
         try {
+
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-
-            let elemento = Utils.getElement(this._listDeclaracoes, li.id);
+            let elemento = Utils.getElement(this._listDeclaration, li.id);
             this._idCode = elemento.idCode;
+
         } catch{
             return;
         }
     }
 
-    setIdComponenteSe() {
-
+    arrowIdComponentSE() {
         this._ulSe = seController._ul;
         let li = this._ulSe.children[0];
 
@@ -37,78 +36,76 @@ class DeclaracoesController {
         this._idCode = elemento.idCode;
     }
 
-    adiciona(event) {
-
+    toSave(event) {
         event.preventDefault();
 
-        this._inputNome = document.querySelector('#declaracoes-nome').value;
-        this._inputTipo = document.querySelector('#declaracoes-tipo').value;
+        this._inputName = document.querySelector('#declaracoes-nome').value;
+        this._inputType = document.querySelector('#declaracoes-tipo').value;
         this._id = this._id + 1;
 
-        if (!this._validacoes()) {
-
+        if (!this._validations()) {
             return;
         }
 
-        this._declaracao = this._newDeclaracoes();
-        this._listDeclaracoes.add(this._declaracao);
+        this._declaration = this._newDeclaration();
+        this._listDeclaration.add(this._declaration);
 
-        this._declaracoesView.update(
-            this._declaracao,
-            this._listDeclaracoes,
+        this._viewDeclaration.update(
+            this._declaration,
+            this._listDeclaration,
             this._ul,
             this._ulSe,
             this._idCode
         );
 
-        this._limpaForm();
+        this._cleanForm();
 
         $('#modalDeclare').modal('hide');
     }
 
     remove(event) {
-
         event.preventDefault();
 
         let li = event.target.parentNode.parentNode;
         li.parentNode.removeChild(li);
 
         let id = Utils.getNumber(li.id);
-        let elemento = Utils.getElement(this._listDeclaracoes, id);
-        this._listDeclaracoes.apaga(id);
+        let element = Utils.getElement(this._listDeclaration, id);
+        this._listDeclaration.remove(id);
 
-        this._declaracoesView.atualizaOptions(this._listDeclaracoes);
-        this._declaracoesView._consoleRemove(elemento);
+        this._viewDeclaration.updateOptions(this._listDeclaration);
+        this._viewDeclaration._codeRemove(element);
     }
 
-    removeAll(elemento, qtd) {
+    removeAll(element, amount) {
+        let li = element.lastChild.firstChild;
+        this._viewDeclaration._codeRemoveAll(this._listDeclaration, li);
 
-        let li = elemento.lastChild.firstChild;
-        this._declaracoesView._consoleRemoveAll(this._listDeclaracoes, li);
-
-        for (let index = 0; index < qtd; index++) {
-
-            li = elemento.lastChild.firstChild;
+        for (let index = 0; index < amount; index++) {
+            li = element.lastChild.firstChild;
             let id = Utils.getNumber(li.id);
 
-            this._listDeclaracoes.apaga(id);
-            this._declaracoesView.atualizaOptions(this._listDeclaracoes);
+            this._listDeclaration.remove(id);
+            this._viewDeclaration.updateOptions(this._listDeclaration);
+
             li.remove();
         }
     }
 
-    _newDeclaracoes() {
-
-        return new Declaracoes(this._inputNome, this._inputTipo, this._id, this._idCode);
+    _newDeclaration() {
+        return new Declaration(
+            this._inputName,
+            this._inputType,
+            this._id,
+            this._idCode
+        );
     }
 
-    _validacoes() {
-
+    _validations() {
         const regex = /\W/;
         const isDigit = /^\d+$/;
 
-        if (isDigit.test(this._inputNome[0])) {
-
+        if (isDigit.test(this._inputName[0])) {
             bootbox.alert({
                 message: 'O nome da variavel não pode ser iniciada com um número! 👨‍🏫',
             });
@@ -116,17 +113,15 @@ class DeclaracoesController {
             return false;
         }
 
-        if (regex.test(this._inputNome)) {
-
+        if (regex.test(this._inputName)) {
             bootbox.alert({
                 message: 'Todo nome deve ser composto apenas por letras, números e sublinhado ( ‘_’ ) 🤓',
             });
 
-            this._inputNome = this._inputNome.replace(/[^a-z0-9_]/gi, '');
+            this._inputName = this._inputName.replace(/[^a-z0-9_]/gi, '');
         }
 
-        if (this._inputTipo == "Escolher...") {
-
+        if (this._inputType == "Escolher...") {
             bootbox.alert({
                 message: 'Escolha o tipo da variavel! 🧐',
                 animate: true,
@@ -135,19 +130,16 @@ class DeclaracoesController {
             return false;
         }
 
-        let array = Object.values(this._listDeclaracoes);
-
+        let array = Object.values(this._listDeclaration);
         if (array[0].length > 0) {
 
             $.each(array, function (idx, obj) {
                 $.each(obj, function (idx, declaracoes) {
-
                     array.push(declaracoes.nome);
                 });
             });
 
-            if (array.indexOf(this._inputNome, 0) != -1) {
-
+            if (array.indexOf(this._inputName, 0) != -1) {
                 bootbox.alert({
                     message: 'Você já declarou uma váriavel com este nome! 🕵️‍',
                     animate: true,
@@ -160,10 +152,10 @@ class DeclaracoesController {
         return true;
     }
 
-    _limpaForm() {
-
+    _cleanForm() {
         this._ulSe = null;
         document.querySelector('#declaracoes-nome').value = '';
+
         Utils.focus('modalDeclare', 'declaracoes-nome');
     }
 }

@@ -1,11 +1,10 @@
 class ViewAssignments extends View {
 
-    constructor(elemento) {
-        super(elemento);
+    constructor(element) {
+        super(element);
     }
 
     template(model, ul, ulSe, idCode) {
-
         let li = document.createElement('li');
         li.id = `atribuiCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
@@ -15,16 +14,23 @@ class ViewAssignments extends View {
 
         if (ulSe) {
             ulSe.appendChild(li);
-            this._addRemovedor(li);
+            this._addDeleteButton(li);
             super.consoleAddSe(idCode, ulSe);
         } else {
             ul.appendChild(li);
-            this._addRemovedor(li);
-            this._consoleAdd(idCode, ul);
+            this._addDeleteButton(li);
+            this._codeAdd(idCode, ul);
         }
     }
 
-    _consoleAdd(idCode, ul) {
+    _addDeleteButton(li) {
+        let span = document.createElement('span');
+        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="assignmentsController.remove(event);">x</span>';
+
+        li.appendChild(span);
+    }
+
+    _codeAdd(idCode, ul) {
         let code = document.querySelector(`#${idCode}`);
 
         $(`#${idCode}`).empty();
@@ -51,7 +57,7 @@ class ViewAssignments extends View {
         }
     }
 
-    _consoleRemove(element) {
+    _codeRemove(element) {
         let idCode = element.idCode;
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
@@ -63,7 +69,7 @@ class ViewAssignments extends View {
         }
     }
 
-    _consoleRemoveAll(list, li) {
+    _codeRemoveAll(list, li) {
         let array = Object.values(list);
 
         array.forEach(objetos => {
@@ -80,12 +86,4 @@ class ViewAssignments extends View {
             });
         });
     }
-
-    _addRemovedor(li) {
-        let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="assignmentsController.remove(event);">x</span>';
-
-        li.appendChild(span);
-    }
-
 }

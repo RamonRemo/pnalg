@@ -59,7 +59,7 @@ function validate(id, nodeCopy) {
     switch (nodeCopy.id) {
 
         case 'componente-declare':
-            return declare(id, nodeCopy);
+            return declaration(id, nodeCopy);
 
         case 'componente-leia':
             return leia(id, nodeCopy, listVariavel);

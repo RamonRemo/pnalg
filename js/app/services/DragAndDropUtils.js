@@ -1,8 +1,8 @@
 
-function declare(id, nodeCopy) {
+function declaration(id, nodeCopy) {
     addUl(id, nodeCopy, 'declaracoes');
     let idCode = addCode(id, 'code-declaracao');
-    declaracoesController._idCode = idCode;
+    declarationController._idCode = idCode;
 
     return '#modalDeclare';
 }
@@ -36,7 +36,7 @@ function assignment(id, nodeCopy, listVariavel) {
 
     addUl(id, nodeCopy, 'atribuicoes');
     let idCode = addCode(id, 'code-atribuicao');
-    assignmentsController._idCode = idCode;
+    assignmentController._idCode = idCode;
 
     return '#modalAtribuicao';
 }
@@ -109,7 +109,7 @@ function removeList(str, elemento) {
     let qtd = elemento.lastChild.childNodes.length;
 
     if (declare.test(str)) {
-        declaracoesController.removeAll(elemento, qtd);
+        declarationController.removeAll(elemento, qtd);
         return;
     }
 
@@ -124,7 +124,7 @@ function removeList(str, elemento) {
     }
 
     if (atribuicao.test(str)) {
-        assignmentsController.removeAll(elemento, qtd);
+        assignmentController.removeAll(elemento, qtd);
         return;
     }
 
