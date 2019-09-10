@@ -1,17 +1,19 @@
 function petrisNetwork(event) {
     event.preventDefault();
 
+    var aux;
+    var height = 176;
+    
     let element = document.querySelector('#area-codigo').children.length;
     let canvas = document.querySelector('canvas');
 
-    console.log(document.querySelector('#area-codigo').children);
-    console.log(element);
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     if (canvas.getContext) {
-        let height = 176;
-        for (let i = 1; i < (element + 1); i++) {
-            let aux = newState(height);
 
+        for (let i = 1; i < (element + 1); i++) {
+            newState();
             height = aux + 225;
 
             if (i < element) {
@@ -21,7 +23,7 @@ function petrisNetwork(event) {
         }
     }
 
-    function newState(height) {
+    function newState() {
         let ctx = canvas.getContext('2d');
 
         let circle = new Path2D();
@@ -43,7 +45,7 @@ function petrisNetwork(event) {
         ctx.stroke(circle);
         ctx.stroke(rectangle);
 
-        return height;
+        aux = height;
     }
 
     function newArrow(height) {

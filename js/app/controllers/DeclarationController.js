@@ -136,8 +136,8 @@ class DeclarationController {
         if (array[0].length > 0) {
 
             $.each(array, function (idx, obj) {
-                $.each(obj, function (idx, declaracoes) {
-                    array.push(declaracoes.nome);
+                $.each(obj, function (idx, declaration) {
+                    array.push(declaration.name);
                 });
             });
 
