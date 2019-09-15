@@ -1,10 +1,9 @@
-$(function () {
+$(function() {
 
     let introguide = introJs();
 
     introguide.setOptions({
-        steps: [
-            {
+        steps: [{
                 element: '#step0',
                 intro: 'Esta visita guiada explicará a interface do sistema CPNAlg. <br> <br> Use as teclas de seta para navegar ou pressione ESC para sair do tour imediatamente. 👨🏽‍🏫',
                 position: 'top'

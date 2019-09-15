@@ -16,13 +16,11 @@ class AssignmentController {
         event.preventDefault();
 
         try {
-
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
             let element = Utils.getElement(this._listAssignments, li.id);
             this._idCode = element.idCode;
-
-        } catch{
+        } catch {
             return;
         }
     }

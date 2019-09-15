@@ -19,8 +19,7 @@
     <header>
         <nav class='navbar fixed-top navbar-dark bg-dark' id='step0'>
             <a class='navbar-brand' href='index.html' id='cpnalg'>
-                <img src='img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'>
-                CPNAlg
+                <img src='img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'> CPNAlg
             </a>
         </nav>
     </header>
@@ -32,28 +31,23 @@
                     <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
                         <div id='componente-declare' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-declare' type='button' class='list-group-item btn'
-                                onclick='declarationController.setId(event)'>Declare</button>
+                            <button id='btn-declare' type='button' class='list-group-item btn' onclick='declarationController.setId(event)'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
                         <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-leia' type='button' class='list-group-item btn'
-                                onclick='readController.setId(event)'>Leia</button>
+                            <button id='btn-leia' type='button' class='list-group-item btn' onclick='readController.setId(event)'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
                         <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-exiba' type='button' class='list-group-item btn'
-                                onclick='showOffController.setId(event)'>Exiba</button>
+                            <button id='btn-exiba' type='button' class='list-group-item btn' onclick='showOffController.setId(event)'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
                         <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-atribuicao' type='button' class='list-group-item btn'
-                                onclick='assignmentController.setId(event)'>Atribuição</button>
+                            <button id='btn-atribuicao' type='button' class='list-group-item btn' onclick='assignmentController.setId(event)'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
                         <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-se' type='button' class='list-group-item btn'
-                                onclick='ifController.setId(event)'>Se</button>
+                            <button id='btn-se' type='button' class='list-group-item btn' onclick='ifController.setId(event)'>Se</button>
                             <div id='area-se'> </div>
                             <button id='btn-fim-se' type='button' class='list-group-item btn'>Fim se</button>
                         </div>
@@ -79,8 +73,7 @@ Fim
                         </div>
                     </div>
                     <div class='d-flex align-items-end d-flex justify-content-center'>
-                        <button id='step5' type='button' class='btn btn-success mb-2 btn-lg btn-block'
-                            data-toggle='modal' data-target='#modalRede' onclick="petrisNetwork(event)">
+                        <button id='step5' type='button' class='btn btn-success mb-2 btn-lg btn-block' data-toggle='modal' data-target='#modalRede' onclick="petrisNetwork(event)">
                             Simular
                         </button>
                     </div>
@@ -105,8 +98,7 @@ Fim
     </div>
 
     <!-- Modal Atribuicao -->
-    <div id='modalAtribuicao' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalAtribuicao'
-        aria-hidden='true'>
+    <div id='modalAtribuicao' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalAtribuicao' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>

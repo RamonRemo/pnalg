@@ -81,7 +81,7 @@ class View {
         let code = $(`#${idCode}`).find('span');
 
         if (amount == 0) {
-            $(`#${idCode}`).empty();
+            $(`#${idCode}`).remove();
         }
 
         for (let codes of code) {
@@ -103,7 +103,7 @@ class View {
 
                 if (`${name}-${element.id}` == li.id) {
                     let code = element.idCode;
-                    $(`#${code}`).empty();
+                    $(`#${code}`).remove();
                 }
             });
         });

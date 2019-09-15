@@ -1,4 +1,3 @@
-
 function declaration(id, nodeCopy) {
     addUl(id, nodeCopy, 'declaracoes');
     let idCode = addCode(id, 'code-declaracao');
@@ -91,6 +90,9 @@ function removeElement(data, dragID, dropID) {
         return true;
     }
 
+    if (dragID === 'components' && !dropID) {
+        return true;
+    }
 
     let element = document.getElementById(data);
     removeList(data, element);

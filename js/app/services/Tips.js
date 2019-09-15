@@ -1,10 +1,9 @@
-$(function () {
+$(function() {
 
     let dicas = introJs();
 
     dicas.setOptions({
-        hints: [
-            {
+        hints: [{
                 element: '#componente-declare',
                 hint: `Declaração de variáveis: <br><br>
                     <ul id='ul-dicas'>

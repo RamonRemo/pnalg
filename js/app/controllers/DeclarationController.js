@@ -23,7 +23,7 @@ class DeclarationController {
             let elemento = Utils.getElement(this._listDeclaration, li.id);
             this._idCode = elemento.idCode;
 
-        } catch{
+        } catch {
             return;
         }
     }
@@ -135,8 +135,8 @@ class DeclarationController {
         let array = Object.values(this._listDeclaration);
         if (array[0].length > 0) {
 
-            $.each(array, function (idx, obj) {
-                $.each(obj, function (idx, declaration) {
+            $.each(array, function(idx, obj) {
+                $.each(obj, function(idx, declaration) {
                     array.push(declaration.name);
                 });
             });

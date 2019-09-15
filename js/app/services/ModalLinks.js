@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     $('#body-declaracao').load('modais/declaration.html');
     $('#body-atribuicao').load('modais/assignment.html');
@@ -8,8 +8,7 @@ $(document).ready(function () {
     $('#body-rede').load('modais/petris.html');
 });
 
-
-$('#step5').click(function () {
+$('#step5').click(function() {
     $('#petris-code').html('');
     $('#petris-code').append($('#areaCode').html());
 });

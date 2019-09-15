@@ -24,7 +24,7 @@ class IfController {
             let elemento = Utils.getElement(this._listIf, li.id);
             this._idCode = elemento.idCode;
 
-        } catch{
+        } catch {
             return;
         }
     }

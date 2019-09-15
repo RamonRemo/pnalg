@@ -1,4 +1,3 @@
-
 function dragStartHandler(ev) {
     let target = $(ev.target).closest('[data-id]');
 

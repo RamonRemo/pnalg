@@ -22,7 +22,7 @@ class ShowOffController {
             let elemento = Utils.getElement(this._listShowOff, li.id);
             this._idCode = elemento.idCode;
 
-        } catch{
+        } catch {
             return;
         }
     }
@@ -37,7 +37,7 @@ class ShowOffController {
         this._idCode = elemento.idCode;
     }
 
-    catch(event) {
+    catch (event) {
         event.preventDefault();
         this._outputField = document.querySelector('#exiba-saida')
         this._outputField.innerHTML = `"${event.target.value}"`;
@@ -94,7 +94,7 @@ class ShowOffController {
         ul.removeChild(li);
         let id = Utils.getNumber(li.id);
         let element = Utils.getElement(this._listShowOff, id);
-        
+
         this._listShowOff.remove(id);
         this._viewShowOff._codeRemove(element, ul);
     }

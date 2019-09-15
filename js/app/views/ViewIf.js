@@ -20,7 +20,7 @@ class ViewIf extends View {
     _addDeleteButton(li) {
         let div = document.createElement('div');
         div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="ifController.remove(event);">x</span>';
-        
+
         li.appendChild(div);
     }
 

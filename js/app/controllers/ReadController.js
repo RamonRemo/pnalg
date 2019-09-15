@@ -22,7 +22,7 @@ class ReadController {
             let elemento = Utils.getElement(this._listRead, li.id);
             this._idCode = elemento.idCode;
 
-        } catch{
+        } catch {
             return;
         }
     }
