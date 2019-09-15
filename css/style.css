@@ -25,6 +25,7 @@
     background-color: #f5f5f5;
 }
 
+
 /* -------------------- Gerais --------------------*/
 
 #cpnalg {
@@ -91,7 +92,13 @@ ul {
     width: 310px;
 }
 
+.excluir:hover {
+    background-color: #005d92;
+}
+
+
 /* -------------------- Variaveis "Declare" --------------------*/
+
 .componente-variavel-ul {
     margin: auto;
     width: 80%;
@@ -104,11 +111,13 @@ ul {
     padding: 6px;
 }
 
+
 /* -------------------- Atribuição --------------------*/
 
 .atribuicao {
     display: none;
 }
+
 
 /* -------------------- Se --------------------*/
 
@@ -116,7 +125,6 @@ ul {
     color: #007cc6;
     text-align: center;
 }
-
 
 .area-se {
     width: 80%;
@@ -132,6 +140,7 @@ ul {
 .btn-fim-se {
     margin-top: 0;
 }
+
 
 /* -------------------- Simular --------------------*/
 
@@ -158,6 +167,7 @@ code span {
 .fimse {
     padding-left: 0;
 }
+
 
 /* -------------------- Petris --------------------*/
 
@@ -194,4 +204,29 @@ code span {
 canvas {
     display: block;
     background-color: white;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 55px;
+}
+
+.fa-play,
+.fa-pause {
+    background-color: #007cc6;
+    color: white;
+}
+
+.fa-play,
+.fa-pause {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.fa-play:hover,
+.fa-pause:hover {
+    background-color: #005d92;
 }

@@ -25,7 +25,7 @@ class ViewRead extends View {
 
     _addDeleteButton(li) {
         let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="readController.remove(event);">x</span>';
+        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="readController.remove(event);">x</span>';
 
         li.appendChild(div);
     }

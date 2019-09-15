@@ -54,7 +54,7 @@ function petrisNetwork(event) {
         ctx.stroke();
 
         let rectangle = new Path2D();
-        rectangle.rect(225, y, 100, 25);
+        rectangle.rect(227, y, 100, 25);
 
         newMessage(ctx, message);
 
@@ -87,6 +87,7 @@ function petrisNetwork(event) {
             case 'SE':
                 ctx.fillText(message, 265.5, (y + 17.2));
                 break;
+
             default:
                 break;
         }

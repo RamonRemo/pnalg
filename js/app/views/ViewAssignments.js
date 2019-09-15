@@ -25,7 +25,7 @@ class ViewAssignments extends View {
 
     _addDeleteButton(li) {
         let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill" onclick="assignmentController.remove(event);">x</span>';
+        span.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="assignmentController.remove(event);">x</span>';
 
         li.appendChild(span);
     }

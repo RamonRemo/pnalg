@@ -25,7 +25,7 @@ class ViewShowOff extends View {
 
     _addDeleteButton(li) {
         let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill" onclick="showOffController.remove(event);">x</span>';
+        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="showOffController.remove(event);">x</span>';
 
         li.appendChild(div);
     }
