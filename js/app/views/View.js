@@ -72,6 +72,7 @@ class View {
         let span = document.createElement('span');
         span.innerHTML = ('<span>fimse</span>');
         span.className = 'fimse';
+        span.id = 'fimse';
         code.appendChild(span);
     }
 

@@ -6,12 +6,9 @@ function petrisNetwork(event) {
     var amount = 0;
     var height = 0;
     var y = 176;
+    var flag = false;
 
-    let elements = document.querySelector('#area-codigo').children;
-    for (element of elements) {
-        arrayElements.push(element.children);
-        amount += element.children.length - 1;
-    }
+    captureOfVariables();
 
     arrayElements.forEach(element => {
         for (value of element) {
@@ -26,70 +23,37 @@ function petrisNetwork(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     if (canvas.getContext) {
-        for (let i = 1; i < (amount + 1); i++) {
+        for (let i = 1; i < (amount + 2); i++) {
             var message = arrayMessage[i - 1];
-            newState(message);
+            var variablesIF = newState(message);
 
             y = height + 225;
             if (i < amount) {
-                newArrow(height);
+                if (variablesIF) {
+                    newArrowIF(height);
+                } else {
+                    newArrow(height);
+                }
             }
         }
     }
 
     function newState(message) {
-        let ctx = canvas.getContext('2d');
+        if (message == "SE") {
+            flag = true;
+        }
 
-        let circle = new Path2D();
-        circle.moveTo(300, (y - 101));
-        circle.arc(275, (y - 101), 25, 0, 2 * Math.PI);
+        if (message == 'FIMSE') {
+            flag = false;
+            return;
+        }
 
-        ctx.fillRect(275, (y - 76), 1, 70);
-
-        ctx.beginPath();
-        ctx.moveTo(275, (y - 2));
-        ctx.lineTo(265, (y - 16));
-        ctx.moveTo(277, (y - 2));
-        ctx.lineTo(285, (y - 16));
-        ctx.stroke();
-
-        let rectangle = new Path2D();
-        rectangle.rect(227, y, 100, 25);
-
-        newMessage(ctx, message);
-
-        ctx.stroke(circle);
-        ctx.stroke(rectangle);
-
-        height = y;
-    }
-
-    function newMessage(ctx, message) {
-        ctx.font = '10pt Arial';
-        ctx.fillStyle = 'black';
-        switch (message) {
-            case 'DECLARE':
-                ctx.fillText(message, 243.5, (y + 17.2));
-                break;
-
-            case 'ATRIBUICAO':
-                ctx.fillText(message, 235.5, (y + 17.2));
-                break;
-
-            case 'LEIA':
-                ctx.fillText(message, 259.5, (y + 17.2));
-                break;
-
-            case 'EXIBA':
-                ctx.fillText(message, 257.5, (y + 17.2));
-                break;
-
-            case 'SE':
-                ctx.fillText(message, 265.5, (y + 17.2));
-                break;
-
-            default:
-                break;
+        if (!flag) {
+            newStateOfVariables(message);
+            return false;
+        } else {
+            newStateOfVariablesIF(message);
+            return true;
         }
     }
 
@@ -104,5 +68,179 @@ function petrisNetwork(event) {
         ctx.moveTo(275, (y + 98));
         ctx.lineTo(285, (y + 85));
         ctx.stroke();
+    }
+
+    function newArrowIF(y) {
+        let ctx = canvas.getContext('2d');
+
+        ctx.fillRect(190, (y + 25), 1, 70);
+        ctx.beginPath();
+        ctx.moveTo(190, (y + 98));
+        ctx.lineTo(180, (y + 85));
+        ctx.moveTo(190, (y + 98));
+        ctx.lineTo(200, (y + 85));
+        ctx.stroke();
+    }
+
+    function newStateOfVariables(message) {
+        let ctx = canvas.getContext('2d');
+
+        let circle = newCircle();
+        newArrow();
+        let rectangle = newRectangle();
+
+        ctx.stroke(circle);
+        ctx.stroke(rectangle);
+
+        height = y;
+
+        function newCircle() {
+            let circle = new Path2D();
+            circle.moveTo(300, (y - 101));
+            circle.arc(275, (y - 101), 25, 0, 2 * Math.PI);
+
+            return circle;
+        }
+
+        function newArrow() {
+            ctx.fillRect(275, (y - 76), 1, 70);
+            ctx.beginPath();
+            ctx.moveTo(275, (y - 2));
+            ctx.lineTo(265, (y - 16));
+            ctx.moveTo(277, (y - 2));
+            ctx.lineTo(285, (y - 16));
+            ctx.stroke();
+        }
+
+        function newRectangle() {
+            let rectangle = new Path2D();
+            rectangle.rect(227, y, 100, 25);
+            newMessage(ctx, message, 275);
+
+            return rectangle;
+        }
+    }
+
+    function newStateOfVariablesIF(message) {
+        let ctx = canvas.getContext('2d');
+        let circle;
+
+        if (message == 'SE') {
+            circle = newCircle();
+            newArrowFunctionIf();
+        } else {
+            circle = newCircleIF()
+            newArrow();
+        }
+
+        let rectangle = newRectangle();
+
+        ctx.stroke(circle);
+        ctx.stroke(rectangle);
+
+        height = y;
+
+        function newCircle() {
+            let circle = new Path2D();
+            circle.moveTo(300, (y - 101));
+            circle.arc(275, (y - 101), 25, 0, 2 * Math.PI);
+
+            return circle;
+        }
+
+        function newArrowFunctionIf() {
+            ctx.fillRect(275, (y - 76), 1, 10);
+
+            ctx.beginPath();
+            ctx.moveTo(275, (y - 66));
+            ctx.lineTo(355, (y - 66));
+            ctx.moveTo(355, (y - 66));
+            ctx.lineTo(355, (y - 10));
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(355, (y - 2));
+            ctx.lineTo(345, (y - 16));
+            ctx.moveTo(355, (y - 2));
+            ctx.lineTo(365, (y - 16));
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(275, (y - 66));
+            ctx.lineTo(190, (y - 66));
+            ctx.moveTo(190, (y - 66));
+            ctx.lineTo(190, (y - 10));
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(190, (y - 2));
+            ctx.lineTo(180, (y - 16));
+            ctx.moveTo(190, (y - 2));
+            ctx.lineTo(200, (y - 16));
+            ctx.stroke();
+        }
+
+        function newArrow() {
+            ctx.fillRect(190, (y - 76), 1, 70);
+            ctx.beginPath();
+            ctx.moveTo(190, (y - 2));
+            ctx.lineTo(180, (y - 16));
+            ctx.moveTo(190, (y - 2));
+            ctx.lineTo(200, (y - 16));
+            ctx.stroke();
+        }
+
+        function newCircleIF() {
+            let circle = new Path2D();
+            circle.moveTo(215, (y - 101));
+            circle.arc(190, (y - 101), 25, 0, 2 * Math.PI);
+
+            return circle;
+        }
+
+        function newRectangle() {
+            let rectangle = new Path2D();
+            rectangle.rect(142, y, 100, 25);
+            newMessage(ctx, message, 190);
+
+            return rectangle;
+        }
+    }
+
+    function captureOfVariables() {
+        let elements = document.querySelector('#area-codigo').children;
+        for (element of elements) {
+            arrayElements.push(element.children);
+            amount += element.children.length - 1;
+        }
+    }
+
+    function newMessage(ctx, message, x) {
+        ctx.font = '10pt Arial';
+        ctx.fillStyle = 'black';
+        switch (message) {
+            case 'DECLARE':
+                ctx.fillText(message, (x - 31.5), (y + 17.2));
+                break;
+
+            case 'ATRIBUICAO':
+                ctx.fillText(message, (x - 39.5), (y + 17.2));
+                break;
+
+            case 'LEIA':
+                ctx.fillText(message, (x - 15.5), (y + 17.2));
+                break;
+
+            case 'EXIBA':
+                ctx.fillText(message, (x - 17.5), (y + 17.2));
+                break;
+
+            case 'SE':
+                ctx.fillText(message, (x - 9.5), (y + 17.2));
+                break;
+
+            default:
+                break;
+        }
     }
 }

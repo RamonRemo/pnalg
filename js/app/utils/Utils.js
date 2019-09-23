@@ -36,6 +36,7 @@ class Utils {
         const exiba = /exibaCode-\d/;
         const atribuicao = /atribuiCode-\d/;
         const se = /\d/;
+        const codeSe = /fimse/;
 
         if (declare.test(str)) {
             return 'DECLARE';
@@ -55,6 +56,10 @@ class Utils {
 
         if (se.test(str)) {
             return 'SE';
+        }
+
+        if (codeSe.test(str)) {
+            return 'FIMSE';
         }
 
         return null;
