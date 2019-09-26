@@ -7,6 +7,10 @@ function petrisNetwork(event) {
     var y = 176;
     var flag = false;
     var ifnot = 0;
+
+    let canvas = document.querySelector('canvas');
+    const context = canvas.getContext('2d');
+
     captureOfVariables();
 
     arrayElements.forEach(element => {
@@ -17,8 +21,6 @@ function petrisNetwork(event) {
         }
     });
 
-    let canvas = document.querySelector('canvas');
-    const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     var amount = arrayMessage.length;
@@ -305,4 +307,10 @@ function petrisNetwork(event) {
         ctx.lineTo(275, (h + 34));
         ctx.stroke();
     }
+}
+
+function startNetwork() {
+    let canvas = document.querySelector('canvas');
+    const context = canvas.getContext('2d');
+    petrisNetworkAnimation(canvas, context);
 }
