@@ -3,15 +3,17 @@ var arrayMessage = [];
 function petrisNetwork(event) {
     event.preventDefault();
 
-    var arrayElements = [];
-    var height = 0;
-    var y = 176;
-    var flag = false;
-    var startingPositionIfNot = 0;
-    var depth = 0;
+    let arrayElements = [];
+    arrayMessage = [];
+    let height = 0;
+    let y = 176;
+    let flag = false;
+    let startingPositionIfNot = 0;
+    let depth = 0;
 
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     captureOfVariables();
 
@@ -23,7 +25,6 @@ function petrisNetwork(event) {
         }
     });
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
 
     var amount = arrayMessage.length;
 
