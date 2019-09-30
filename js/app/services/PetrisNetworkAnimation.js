@@ -8,8 +8,13 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length; i++) {
         setTimeout(function timer() {
+            if (arrayMessage[i] === 'FIMSE') {
+                flag = false;
+                return;
+            }
+
             refreshScreen(arrayMessage[i]);
-        }, i * 2000);
+        }, i * 1500);
     }
 
     function refreshScreen(message) {
@@ -17,14 +22,10 @@ function petrisNetworkAnimation(arrayMessage) {
             flag = true;
 
             cleanScreen(270);
+            cleanScreen(185);
             stateTransition(275, y, 5);
 
             y = y + 225;
-            return;
-        }
-
-        if (message === 'FIMSE') {
-            flag = false;
             return;
         }
 

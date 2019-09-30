@@ -46,6 +46,7 @@ function petrisNetwork(event) {
                     if (arrayMessage[i + 1] === 'FIMSE') {
                         newArrowEndIF(height);
                         drawArrowComponentIfNot(startingPositionIfNot, depth);
+                        depth = 0;
                     } else {
                         newArrowIF(height);
                         depth++;
