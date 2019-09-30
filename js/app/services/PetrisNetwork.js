@@ -1,12 +1,14 @@
+var arrayMessage = [];
+
 function petrisNetwork(event) {
     event.preventDefault();
 
     var arrayElements = [];
-    var arrayMessage = [];
     var height = 0;
     var y = 176;
     var flag = false;
-    var ifnot = 0;
+    var startingPositionIfNot = 0;
+    var depth = 0;
 
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
@@ -44,10 +46,10 @@ function petrisNetwork(event) {
                 if (variablesIF) {
                     if (arrayMessage[i + 1] === 'FIMSE') {
                         newArrowEndIF(height);
-                        newArrowIfNo(ifnot, count);
+                        drawArrowComponentIfNot(startingPositionIfNot, depth);
                     } else {
                         newArrowIF(height);
-                        var count = height + 225;
+                        depth++;
                     }
                 } else {
                     if (variablesIF == false) {
@@ -81,7 +83,9 @@ function petrisNetwork(event) {
         let ctx = canvas.getContext('2d');
 
         let circle = newCircle();
+
         newArrow();
+
         let rectangle = newRectangle();
 
         ctx.stroke(circle);
@@ -91,6 +95,7 @@ function petrisNetwork(event) {
 
         function newCircle() {
             let circle = new Path2D();
+
             circle.moveTo(300, (y - 101));
             circle.arc(275, (y - 101), 25, 0, 2 * Math.PI);
 
@@ -99,17 +104,21 @@ function petrisNetwork(event) {
 
         function newArrow() {
             ctx.fillRect(275, (y - 76), 1, 70);
+
             ctx.beginPath();
             ctx.moveTo(275, (y - 2));
             ctx.lineTo(265, (y - 16));
             ctx.moveTo(277, (y - 2));
             ctx.lineTo(285, (y - 16));
             ctx.stroke();
+            ctx.closePath();
         }
 
         function newRectangle() {
             let rectangle = new Path2D();
+
             rectangle.rect(227, y, 100, 25);
+
             newMessage(ctx, message, 275);
 
             return rectangle;
@@ -137,6 +146,7 @@ function petrisNetwork(event) {
 
         function newCircle() {
             let circle = new Path2D();
+
             circle.moveTo(300, (y - 101));
             circle.arc(275, (y - 101), 25, 0, 2 * Math.PI);
 
@@ -152,6 +162,7 @@ function petrisNetwork(event) {
             ctx.moveTo(355, (y - 66));
             ctx.lineTo(355, (y - 10));
             ctx.stroke();
+            ctx.closePath();
 
             ctx.beginPath();
             ctx.moveTo(355, (y - 2));
@@ -159,6 +170,7 @@ function petrisNetwork(event) {
             ctx.moveTo(355, (y - 2));
             ctx.lineTo(365, (y - 16));
             ctx.stroke();
+            ctx.closePath();
 
             ctx.beginPath();
             ctx.moveTo(275, (y - 66));
@@ -166,6 +178,7 @@ function petrisNetwork(event) {
             ctx.moveTo(190, (y - 66));
             ctx.lineTo(190, (y - 10));
             ctx.stroke();
+            ctx.closePath();
 
             ctx.beginPath();
             ctx.moveTo(190, (y - 2));
@@ -173,6 +186,9 @@ function petrisNetwork(event) {
             ctx.moveTo(190, (y - 2));
             ctx.lineTo(200, (y - 16));
             ctx.stroke();
+            ctx.closePath();
+
+            startingPositionIfNot = y + 25;
 
             let rectangleIfNo = newRectangleIfNo();
             ctx.stroke(rectangleIfNo);
@@ -180,16 +196,19 @@ function petrisNetwork(event) {
 
         function newArrow() {
             ctx.fillRect(190, (y - 76), 1, 70);
+
             ctx.beginPath();
             ctx.moveTo(190, (y - 2));
             ctx.lineTo(180, (y - 16));
             ctx.moveTo(190, (y - 2));
             ctx.lineTo(200, (y - 16));
             ctx.stroke();
+            ctx.closePath();
         }
 
         function newCircleIF() {
             let circle = new Path2D();
+
             circle.moveTo(215, (y - 101));
             circle.arc(190, (y - 101), 25, 0, 2 * Math.PI);
 
@@ -198,7 +217,9 @@ function petrisNetwork(event) {
 
         function newRectangle() {
             let rectangle = new Path2D();
+
             rectangle.rect(142, y, 100, 25);
+
             newMessage(ctx, message, 190);
 
             return rectangle;
@@ -206,9 +227,11 @@ function petrisNetwork(event) {
 
         function newRectangleIfNo() {
             let rectangle = new Path2D();
+
             rectangle.rect(307, y, 100, 25);
+
             newMessage(ctx, "SE NAO", 355);
-            ifnot = y + 25;
+
             return rectangle;
         }
     }
@@ -264,13 +287,16 @@ function petrisNetwork(event) {
 
     function newArrowIF(y) {
         let ctx = canvas.getContext('2d');
+
         ctx.fillRect(190, (y + 25), 1, 70);
+
         ctx.beginPath();
         ctx.moveTo(190, (y + 98));
         ctx.lineTo(180, (y + 85));
         ctx.moveTo(190, (y + 98));
         ctx.lineTo(200, (y + 85));
         ctx.stroke();
+        ctx.closePath();
     }
 
     function newArrowEndIF(y) {
@@ -285,6 +311,7 @@ function petrisNetwork(event) {
         ctx.moveTo(275, (y + 34));
         ctx.lineTo(275, (y + 34));
         ctx.stroke();
+        ctx.closePath();
 
         ctx.beginPath();
         ctx.moveTo(275, (y + 98));
@@ -292,25 +319,30 @@ function petrisNetwork(event) {
         ctx.moveTo(275, (y + 98));
         ctx.lineTo(285, (y + 85));
         ctx.stroke();
+        ctx.closePath();
     }
 
-    function newArrowIfNo(y, h) {
+    function drawArrowComponentIfNot(y, h) {
         let ctx = canvas.getContext('2d');
-        console.log(h)
-        console.log(y)
-        ctx.fillRect(355, y, 1, (h - 392));
+
+        if (h > 1) {
+            h = h * 229;
+        } else {
+            h = h * 234;
+        }
+
+        ctx.fillRect(355, y, 1, h);
 
         ctx.beginPath();
-        ctx.moveTo(355, (h + 34));
-        ctx.lineTo(275, (h + 34));
-        ctx.moveTo(275, (h + 34));
-        ctx.lineTo(275, (h + 34));
+        ctx.moveTo(355, (y + h));
+        ctx.lineTo(275, (y + h));
+        ctx.moveTo(275, (y + h));
+        ctx.lineTo(275, (y + h));
         ctx.stroke();
+        ctx.closePath();
     }
 }
 
 function startNetwork() {
-    let canvas = document.querySelector('canvas');
-    const context = canvas.getContext('2d');
-    petrisNetworkAnimation(canvas, context);
+    petrisNetworkAnimation(arrayMessage);
 }
