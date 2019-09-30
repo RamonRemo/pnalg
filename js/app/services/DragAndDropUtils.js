@@ -15,7 +15,7 @@ function showOff(id, nodeCopy) {
 }
 
 function read(id, nodeCopy, listVariable) {
-    if (listVariable.length == '0') {
+    if (listVariable.length === '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }
@@ -28,7 +28,7 @@ function read(id, nodeCopy, listVariable) {
 }
 
 function assignment(id, nodeCopy, listVariable) {
-    if (listVariable.length == '0') {
+    if (listVariable.length === '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }
@@ -41,7 +41,7 @@ function assignment(id, nodeCopy, listVariable) {
 }
 
 function iff(id, nodeCopy, listVariable) {
-    if (listVariable.length == '0') {
+    if (listVariable.length === '0') {
         bootbox.alert('Declare ao menos uma variável!');
         return null;
     }

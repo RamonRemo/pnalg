@@ -1,7 +1,7 @@
 function petrisNetworkAnimation(arrayMessage) {
-    var y = 75;
-    var height = 75;
-    var flag = false;
+    let y = 75;
+    let height = 75;
+    let flag = false;
 
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');

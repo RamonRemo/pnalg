@@ -47,11 +47,11 @@ class ViewDeclaration extends View {
 
         let arrayLi = ul.children;
 
-        if (arrayLi.length != 0) {
+        if (arrayLi.length !== '0') {
             code.innerHTML = '<span class="comentario">//Declaracoes de variaveis</span>';
         }
 
-        if (arrayLi.length == 0) {
+        if (arrayLi.length === '0') {
             return;
         }
 

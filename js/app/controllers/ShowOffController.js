@@ -49,7 +49,7 @@ class ShowOffController {
         let field = document.querySelector('#exiba-variavel');
         this._inputName = field.options[field.selectedIndex].text;
 
-        if (this._inputName == "Escolher...") {
+        if (this._inputName === "Escolher...") {
             return;
         }
 

@@ -123,7 +123,7 @@ class DeclarationController {
             this._inputName = this._inputName.replace(/[^a-z0-9_]/gi, '');
         }
 
-        if (this._inputType == "Escolher...") {
+        if (this._inputType === "Escolher...") {
             bootbox.alert({
                 message: 'Escolha o tipo da variavel! 🧐',
                 animate: true,

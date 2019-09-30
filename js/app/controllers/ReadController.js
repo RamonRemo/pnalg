@@ -105,7 +105,7 @@ class ReadController {
 
     _validations() {
 
-        if (this._inputName == null || this._inputName == "Escolher...") {
+        if (this._inputName == null || this._inputName === "Escolher...") {
             bootbox.alert({
                 message: 'Qual é a váriavel para leitura?  🤷‍♂️ 🤷‍',
                 animate: true,

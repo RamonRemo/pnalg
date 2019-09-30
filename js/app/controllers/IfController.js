@@ -98,9 +98,9 @@ class IfController {
     }
 
     _validations() {
-        if ((this._var1_name == null || this._var1_name == "Escolher...") ||
-            (this._var2_name == null || this._var2_name == "Escolher...") ||
-            (this._conditional == null || this._conditional == "Escolher...")) {
+        if ((this._var1_name == null || this._var1_name === "Escolher...") ||
+            (this._var2_name == null || this._var2_name === "Escolher...") ||
+            (this._conditional == null || this._conditional === "Escolher...")) {
 
             bootbox.alert({
                 message: 'O que iremos comparar? 🤷‍🤷‍',

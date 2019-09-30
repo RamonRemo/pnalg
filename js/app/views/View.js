@@ -15,12 +15,12 @@ class View {
     updateOptions(list, field) {
         $(`#${field}`).empty();
 
-        var select = document.getElementById(field);
+        let select = document.getElementById(field);
         select.innerHTML = '<option selected>Escolher...</option>';
 
         let array = Object.values(list);
 
-        if (array[0].length == 0) {
+        if (array[0].length === '0') {
             return;
         }
 
@@ -47,7 +47,7 @@ class View {
             code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
         }
 
-        if (arrayLi.length == 0) {
+        if (arrayLi.length === 0) {
             return;
         }
 
@@ -81,12 +81,12 @@ class View {
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
-        if (amount == 0) {
+        if (amount === '0') {
             $(`#${idCode}`).remove();
         }
 
         for (let codes of code) {
-            if (codes.id == `${name}-${id}`) {
+            if (codes.id === `${name}-${id}`) {
                 codes.remove();
             }
         }
@@ -102,7 +102,7 @@ class View {
                     return;
                 }
 
-                if (`${name}-${element.id}` == li.id) {
+                if (`${name}-${element.id}` === li.id) {
                     let code = element.idCode;
                     $(`#${code}`).remove();
                 }

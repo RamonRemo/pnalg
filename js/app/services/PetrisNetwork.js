@@ -13,6 +13,7 @@ function petrisNetwork(event) {
 
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
+
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     captureOfVariables();
@@ -25,25 +26,22 @@ function petrisNetwork(event) {
         }
     });
 
-
-    var amount = arrayMessage.length;
-
     if (canvas.getContext) {
-        for (let i = 0; i <= amount; i++) {
-            var message = arrayMessage[i];
+        for (let i = 0; i <= arrayMessage.length; i++) {
+            let message = arrayMessage[i];
 
             if (!message) {
                 return;
             }
 
-            var variablesIF = newState(message);
+            let variablesIF = newState(message);
             y = height + 225;
 
             if (!arrayMessage[i + 1]) {
                 return;
             }
 
-            if (i < amount) {
+            if (i < arrayMessage.length) {
                 if (variablesIF) {
                     if (arrayMessage[i + 1] === 'FIMSE') {
                         newArrowEndIF(height);
@@ -53,7 +51,7 @@ function petrisNetwork(event) {
                         depth++;
                     }
                 } else {
-                    if (variablesIF == false) {
+                    if (variablesIF === false) {
                         newArrow(height);
                     }
                 }
@@ -130,7 +128,7 @@ function petrisNetwork(event) {
         let ctx = canvas.getContext('2d');
         let circle;
 
-        if (message == 'SE') {
+        if (message === 'SE') {
             circle = newCircle();
             newArrowFunctionIf();
         } else {

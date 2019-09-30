@@ -26,7 +26,7 @@ class Utils {
     }
 
     static getNumber(string) {
-        var numsStr = string.replace(/[^0-9]/g, '');
+        let numsStr = string.replace(/[^0-9]/g, '');
         return parseInt(numsStr);
     }
 
