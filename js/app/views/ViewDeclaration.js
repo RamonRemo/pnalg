@@ -60,7 +60,7 @@ class ViewDeclaration extends View {
             let variable = text.substr(0, (text.length - 1));
 
             let span = document.createElement('span');
-            span.id = item.id;
+            span.id = `${item.id}-log`;
             span.innerHTML = (`${variable}`);
 
             code.appendChild(span);

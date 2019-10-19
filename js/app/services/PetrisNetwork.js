@@ -18,14 +18,6 @@ function petrisNetwork(event) {
 
     captureOfVariables();
 
-    arrayElements.forEach(element => {
-        for (value of element) {
-            if (Utils.regexTest(value.id)) {
-                arrayMessage.push(Utils.regexTest(value.id));
-            }
-        }
-    });
-
     if (canvas.getContext) {
         for (let i = 0; i <= arrayMessage.length; i++) {
             let message = arrayMessage[i];
@@ -241,6 +233,16 @@ function petrisNetwork(event) {
         for (element of elements) {
             arrayElements.push(element.children);
         }
+
+        arrayElements.forEach(element => {
+            for (value of element) {
+                if (Utils.regexTest(value.id)) {
+                    if (Utils.regexTest(value.id) != null) {
+                        arrayMessage.push(Utils.regexTest(value.id));
+                    }
+                }
+            }
+        });
     }
 
     function newMessage(ctx, message, x) {

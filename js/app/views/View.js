@@ -86,7 +86,7 @@ class View {
         }
 
         for (let codes of code) {
-            if (codes.id === `${name}-${id}`) {
+            if (codes.id === `${name}-${id}-log`) {
                 codes.remove();
             }
         }

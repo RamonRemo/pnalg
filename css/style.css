@@ -230,3 +230,8 @@ canvas {
 .fa-pause:hover {
     background-color: #005d92;
 }
+
+.tracer {
+    background-color: rgba(247, 91, 91, 0.678);
+    color: white;
+}

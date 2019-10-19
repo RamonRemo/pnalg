@@ -1,3 +1,6 @@
+var arrayElements = [];
+var arrayElementsId = [];
+
 function petrisNetworkAnimation(arrayMessage) {
     let y = 75;
     let height = 75;
@@ -6,6 +9,8 @@ function petrisNetworkAnimation(arrayMessage) {
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
 
+    captureOfVariables();
+
     for (let i = 0; i < arrayMessage.length; i++) {
         setTimeout(function timer() {
             if (arrayMessage[i] === 'FIMSE') {
@@ -13,11 +18,19 @@ function petrisNetworkAnimation(arrayMessage) {
                 return;
             }
 
-            refreshScreen(arrayMessage[i]);
+            let component = document.querySelector(`#${arrayElementsId[i]}`);
+            if (i !== 0) {
+                document.querySelector(`#${arrayElementsId[i-1]}`).classList.remove('tracer');
+            }
+
+            refreshScreen(arrayMessage[i], component);
         }, i * 1500);
     }
 
-    function refreshScreen(message) {
+    function refreshScreen(message, component) {
+        console.log(component);
+        component.classList.add("tracer");
+
         if (message === "SE") {
             flag = true;
 
@@ -54,4 +67,23 @@ function petrisNetworkAnimation(arrayMessage) {
     function cleanScreen(x) {
         context.clearRect(x, height - 5, 10, 10);
     }
+}
+
+function captureOfVariables() {
+    let elements = $('#area-codigo-simulador').children();
+    for (element of elements) {
+        arrayElements.push(element);
+    }
+
+    defineIdElement();
+}
+
+function defineIdElement() {
+    arrayElements.forEach(element => {
+        if (Utils.regexTest(element.id)) {
+            if (Utils.regexTest(element.id) != null) {
+                arrayElementsId.push(element.id);
+            }
+        }
+    });
 }

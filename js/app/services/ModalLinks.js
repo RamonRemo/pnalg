@@ -9,6 +9,13 @@ $(document).ready(function() {
 });
 
 $('#step5').click(function() {
-    $('#petris-code').html('');
-    $('#petris-code').append($('#areaCode').html());
+    $('#area-codigo-simulador').html('');
+
+    let petris = $('#area-codigo');
+    let elements = petris.children().children();
+    for (element of elements) {
+        var clone = element.cloneNode(true);
+        clone.id = `${element.id}-petri`
+        $('#area-codigo-simulador').append(clone).hmtl;
+    }
 });

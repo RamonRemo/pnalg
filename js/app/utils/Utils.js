@@ -31,10 +31,45 @@ class Utils {
     }
 
     static regexTest(str) {
-        const declare = /declareCode-\d/;
-        const leia = /leiaCode-\d/;
-        const exiba = /exibaCode-\d/;
-        const atribuicao = /atribuiCode-\d/;
+        const declare = /declareCode-\d-log/;
+        const leia = /leiaCode-\d-log/;
+        const exiba = /exibaCode-\d-log/;
+        const atribuicao = /atribuiCode-\d-log/;
+        const se = /\d/;
+        const codeSe = /fimse/;
+
+        if (declare.test(str)) {
+            return 'DECLARE';
+        }
+
+        if (leia.test(str)) {
+            return 'LEIA';
+        }
+
+        if (exiba.test(str)) {
+            return 'EXIBA';
+        }
+
+        if (atribuicao.test(str)) {
+            return 'ATRIBUICAO';
+        }
+
+        if (se.test(str)) {
+            return 'SE';
+        }
+
+        if (codeSe.test(str)) {
+            return 'FIMSE';
+        }
+
+        return null;
+    }
+
+    static regexTestPetri(str) {
+        const declare = /declareCode-\d-log-petri/;
+        const leia = /leiaCode-\d-log-petri/;
+        const exiba = /exibaCode-\d-log-petri/;
+        const atribuicao = /atribuiCode-\d-log-petri/;
         const se = /\d/;
         const codeSe = /fimse/;
 
