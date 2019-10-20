@@ -16,7 +16,7 @@ class Utils {
 
         array.forEach(objetos => {
             objetos.forEach(element => {
-                if (element.id == id) {
+                if (element.id == Utils.getNumber(id)) {
                     variable = element;
                 }
             });
@@ -26,7 +26,7 @@ class Utils {
     }
 
     static getNumber(string) {
-        let numsStr = string.replace(/[^0-9]/g, '');
+        let numsStr = string.toString().replace(/[^0-9]/g, '');
         return parseInt(numsStr);
     }
 
@@ -35,7 +35,7 @@ class Utils {
         const leia = /leiaCode-\d-log/;
         const exiba = /exibaCode-\d-log/;
         const atribuicao = /atribuiCode-\d-log/;
-        const se = /\d/;
+        const se = /ifCode-\d-log/;
         const codeSe = /fimse/;
 
         if (declare.test(str)) {
@@ -70,8 +70,8 @@ class Utils {
         const leia = /leiaCode-\d-log-petri/;
         const exiba = /exibaCode-\d-log-petri/;
         const atribuicao = /atribuiCode-\d-log-petri/;
-        const se = /\d/;
-        const codeSe = /fimse/;
+        const se = /ifCode-\d-petri/;
+        const codeSe = /fimse-petri/;
 
         if (declare.test(str)) {
             return 'DECLARE';

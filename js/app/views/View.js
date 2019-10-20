@@ -57,7 +57,7 @@ class View {
             let variable = text.substr(0, (text.length - 1));
 
             let span = document.createElement('span');
-            span.id = element.id;
+            span.id = `${element.id}-log`;
 
             if (index > 0) {
                 span.className = 'identeSe';
@@ -77,8 +77,11 @@ class View {
     }
 
     codeRemove(element, name, amount) {
+        console.log(element)
+        console.log(name)
+        console.log(amount)
         let idCode = element.idCode;
-        let id = element.id;
+        let id = `${element.id}-log`;
         let code = $(`#${idCode}`).find('span');
 
         if (amount === '0') {
@@ -86,7 +89,7 @@ class View {
         }
 
         for (let codes of code) {
-            if (codes.id === `${name}-${id}-log`) {
+            if (codes.id === `${name}-${id}`) {
                 codes.remove();
             }
         }

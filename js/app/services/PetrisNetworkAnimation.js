@@ -20,7 +20,7 @@ function petrisNetworkAnimation(arrayMessage) {
 
             let component = document.querySelector(`#${arrayElementsId[i]}`);
             if (i !== 0) {
-                document.querySelector(`#${arrayElementsId[i-1]}`).classList.remove('tracer');
+                document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
             }
 
             refreshScreen(arrayMessage[i], component);
@@ -28,7 +28,10 @@ function petrisNetworkAnimation(arrayMessage) {
     }
 
     function refreshScreen(message, component) {
-        console.log(component);
+        if (component.classList.contains('fimse')) {
+            component.classList.remove('fimse');
+        }
+
         component.classList.add("tracer");
 
         if (message === "SE") {
@@ -80,10 +83,8 @@ function captureOfVariables() {
 
 function defineIdElement() {
     arrayElements.forEach(element => {
-        if (Utils.regexTest(element.id)) {
-            if (Utils.regexTest(element.id) != null) {
-                arrayElementsId.push(element.id);
-            }
+        if (Utils.regexTestPetri(element.id)) {
+            arrayElementsId.push(element.id);
         }
     });
 }

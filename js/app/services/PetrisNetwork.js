@@ -237,9 +237,7 @@ function petrisNetwork(event) {
         arrayElements.forEach(element => {
             for (value of element) {
                 if (Utils.regexTest(value.id)) {
-                    if (Utils.regexTest(value.id) != null) {
-                        arrayMessage.push(Utils.regexTest(value.id));
-                    }
+                    arrayMessage.push(Utils.regexTest(value.id));
                 }
             }
         });

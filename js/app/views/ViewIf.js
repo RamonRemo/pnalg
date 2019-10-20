@@ -6,7 +6,7 @@ class ViewIf extends View {
 
     template(model, ul, idCode) {
         let li = document.createElement('li');
-        li.id = model.id;
+        li.id = `ifCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`se (${model.var1_name} ${model.conditional} ${model.var2_name}) entao`);
@@ -53,6 +53,7 @@ class ViewIf extends View {
 
     _codeRemove(element) {
         let idCode = element.idCode;
+
         let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
