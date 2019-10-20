@@ -228,21 +228,6 @@ function petrisNetwork(event) {
         }
     }
 
-    function captureOfVariables() {
-        let elements = document.querySelector('#area-codigo').children;
-        for (element of elements) {
-            arrayElements.push(element.children);
-        }
-
-        arrayElements.forEach(element => {
-            for (value of element) {
-                if (Utils.regexTest(value.id)) {
-                    arrayMessage.push(Utils.regexTest(value.id));
-                }
-            }
-        });
-    }
-
     function newMessage(ctx, message, x) {
         ctx.font = '10pt Arial';
         ctx.fillStyle = 'black';
@@ -341,6 +326,21 @@ function petrisNetwork(event) {
         ctx.stroke();
         ctx.closePath();
     }
+}
+
+function captureOfVariables() {
+    let elements = document.querySelector('#area-codigo').children;
+    for (element of elements) {
+        arrayElements.push(element.children);
+    }
+
+    arrayElements.forEach(element => {
+        for (value of element) {
+            if (Utils.regexTest(value.id)) {
+                arrayMessage.push(Utils.regexTest(value.id));
+            }
+        }
+    });
 }
 
 function startNetwork() {

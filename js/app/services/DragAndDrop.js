@@ -26,7 +26,6 @@ function dropHandler(ev) {
         return;
     }
 
-
     let nodeCopy = document.getElementById(data).cloneNode(true);
     nodeCopy.className = 'componente';
 
@@ -38,7 +37,7 @@ function dropHandler(ev) {
         return;
     }
 
-    nodeCopy.id = data + '-' + id;
+    nodeCopy.id = `${data}-${id}`;
 
     let modal = nodeCopy.childNodes[1];
     modal.dataset.toggle = 'modal';
@@ -50,7 +49,6 @@ function dropHandler(ev) {
 function dragoverHandler(ev) {
     ev.preventDefault();
 }
-
 
 function validate(id, nodeCopy) {
     let listVariable = document.querySelectorAll('.var');

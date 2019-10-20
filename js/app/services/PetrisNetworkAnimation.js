@@ -18,12 +18,13 @@ function petrisNetworkAnimation(arrayMessage) {
                 return;
             }
 
-            let component = document.querySelector(`#${arrayElementsId[i]}`);
             if (i !== 0) {
                 document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
             }
 
+            let component = document.querySelector(`#${arrayElementsId[i]}`);
             refreshScreen(arrayMessage[i], component);
+
         }, i * 1500);
     }
 
@@ -78,10 +79,6 @@ function captureOfVariables() {
         arrayElements.push(element);
     }
 
-    defineIdElement();
-}
-
-function defineIdElement() {
     arrayElements.forEach(element => {
         if (Utils.regexTestPetri(element.id)) {
             arrayElementsId.push(element.id);

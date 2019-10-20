@@ -52,6 +52,7 @@ class View {
         }
 
         let index = 0;
+
         for (let element of arrayLi) {
             let text = ($(element).text());
             let variable = text.substr(0, (text.length - 1));
@@ -73,13 +74,11 @@ class View {
         span.innerHTML = ('<span>fimse</span>');
         span.className = 'fimse';
         span.id = 'fimse';
+
         code.appendChild(span);
     }
 
     codeRemove(element, name, amount) {
-        console.log(element)
-        console.log(name)
-        console.log(amount)
         let idCode = element.idCode;
         let id = `${element.id}-log`;
         let code = $(`#${idCode}`).find('span');
@@ -112,5 +111,4 @@ class View {
             });
         });
     }
-
 }
