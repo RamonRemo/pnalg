@@ -1,7 +1,6 @@
-var arrayElements = [];
-var arrayElementsId = [];
-
 function petrisNetworkAnimation(arrayMessage) {
+    let arrayElements = [];
+    let arrayElementsId = [];
     let y = 75;
     let height = 75;
     let flag = false;
@@ -71,17 +70,18 @@ function petrisNetworkAnimation(arrayMessage) {
     function cleanScreen(x) {
         context.clearRect(x, height - 5, 10, 10);
     }
-}
 
-function captureOfVariables() {
-    let elements = $('#area-codigo-simulador').children();
-    for (element of elements) {
-        arrayElements.push(element);
-    }
+    function captureOfVariables() {
+        let elements = $('#area-codigo-simulador').children();
 
-    arrayElements.forEach(element => {
-        if (Utils.regexTestPetri(element.id)) {
-            arrayElementsId.push(element.id);
+        for (element of elements) {
+            arrayElements.push(element);
         }
-    });
+
+        arrayElements.forEach(element => {
+            if (Utils.regexTestPetri(element.id)) {
+                arrayElementsId.push(element.id);
+            }
+        });
+    }
 }

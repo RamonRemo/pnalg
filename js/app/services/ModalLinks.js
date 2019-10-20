@@ -14,7 +14,7 @@ $('#step5').click(function() {
     let elements = petris.children().children();
 
     for (element of elements) {
-        var clone = element.cloneNode(true);
+        let clone = element.cloneNode(true);
         clone.id = `${element.id}-petri`
 
         $('#area-codigo-simulador').append(clone).hmtl;

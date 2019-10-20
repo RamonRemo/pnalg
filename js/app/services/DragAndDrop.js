@@ -54,7 +54,6 @@ function validate(id, nodeCopy) {
     let listVariable = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
-
         case 'componente-declare':
             return declaration(id, nodeCopy);
 
