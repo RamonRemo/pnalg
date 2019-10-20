@@ -57,6 +57,13 @@ class IfController {
 
         let element = Utils.getElement(this._listIf, li.id);
         this._listIf.apaga(li.id);
+
+        let amount = this._listIf._if.length;
+
+        if (amount === 0) {
+            ul.parentNode.remove();
+        }
+
         this._viewIf._codeRemove(element);
     }
 

@@ -31,11 +31,11 @@ class ViewIf extends View {
 
         let arrayLi = ul.children;
 
-        if (arrayLi.length !== '0') {
+        if (arrayLi.length !== 0) {
             code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
         }
 
-        if (arrayLi.length === '0') {
+        if (arrayLi.length === 0) {
             return;
         }
 

@@ -79,6 +79,13 @@ class ReadController {
         let element = Utils.getElement(this._listRead, id);
 
         this._listRead.remove(id);
+
+        let amount = this._listRead._read.length;
+
+        if (amount === 0) {
+            ul.parentNode.remove();
+        }
+
         this._viewRead._codeRemove(element, ul);
     }
 

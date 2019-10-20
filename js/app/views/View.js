@@ -20,7 +20,7 @@ class View {
 
         let array = Object.values(list);
 
-        if (array[0].length === '0') {
+        if (array[0].length === 0) {
             return;
         }
 
@@ -81,15 +81,15 @@ class View {
     codeRemove(element, name, amount) {
         let idCode = element.idCode;
         let id = `${element.id}-log`;
-        let code = $(`#${idCode}`).find('span');
+        let codes = $(`#${idCode}`).find('span');
 
-        if (amount === '0') {
+        if (amount === 0) {
             $(`#${idCode}`).remove();
         }
 
-        for (let codes of code) {
-            if (codes.id === `${name}-${id}`) {
-                codes.remove();
+        for (let code of codes) {
+            if (code.id === `${name}-${id}`) {
+                code.remove();
             }
         }
     }
