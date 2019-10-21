@@ -28,6 +28,8 @@ function petrisNetworkAnimation(arrayMessage) {
     }
 
     function refreshScreen(message, component) {
+        pageScroll(height);
+
         if (component.classList.contains('fimse')) {
             component.classList.remove('fimse');
         }
@@ -68,7 +70,7 @@ function petrisNetworkAnimation(arrayMessage) {
     }
 
     function cleanScreen(x) {
-        context.clearRect(x, height - 5, 10, 10);
+        context.clearRect(x - 2, height - 8, 16, 16);
     }
 
     function captureOfVariables() {
@@ -84,4 +86,8 @@ function petrisNetworkAnimation(arrayMessage) {
             }
         });
     }
+}
+
+function pageScroll(height) {
+    $('#container').animate({ scrollTop: height - 20 }, 1000);
 }
