@@ -5,27 +5,30 @@ $(function() {
     introguide.setOptions({
         steps: [{
                 element: '#step0',
-                intro: 'Esta visita guiada explicará a interface do sistema CPNAlg. <br> <br> Use as teclas de seta para navegar ou pressione ESC para sair do tour imediatamente. 👨🏽‍🏫',
+                intro: `Esta visita guiada explicará a interface do sistema CPNAlg. <br> <br> 
+                Use as teclas de seta para navegar ou pressione ESC para sair do tour imediatamente. 👨🏽‍🏫`,
                 position: 'top'
             },
             {
                 element: '#step1',
-                intro: 'Definir texto explicativo para area com foco',
+                intro: `Nesta área temos todos os componentes arrastáveis para criação de redes de petri 
+                e algoritmos em pseudocódigo. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step2',
-                intro: 'Definir texto explicativo para area com foco',
+                intro: `Nesta área podemos soltar os componentes da área anterior, clicando nos componentes
+                um formulário será apresentado, inserindo as informações necessárias neste, fazemos a transcrição do formulário em pseudocódigo. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step3',
-                intro: 'Definir texto explicativo para area com foco',
+                intro: `Nesta área sera apresentado a transcrição do formulário em pseudocódigo. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step4',
-                intro: 'É uma pseudolinguaguem que permite ao programador pensar no problema em si e não no equipamento que irá executar o algoritmo',
+                intro: 'Portugol é uma pseudolinguaguem que permite ao programador pensar no problema em si e não no equipamento que irá executar o algoritmo. 👨🏽‍🏫',
                 position: 'left'
             },
             {
