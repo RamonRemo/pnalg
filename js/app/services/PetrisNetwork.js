@@ -15,7 +15,7 @@ function petrisNetwork(event) {
     const context = canvas.getContext('2d');
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    var downscaleFactor = 0.88;
+    let downscaleFactor = 0.88;
     context.scale(downscaleFactor, downscaleFactor);
 
     captureOfVariables();

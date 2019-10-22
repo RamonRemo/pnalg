@@ -12,16 +12,17 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length; i++) {
         setTimeout(function timer() {
-            if (arrayMessage[i] === 'FIMSE') {
-                flag = false;
-                return;
-            }
-
             if (i !== 0) {
                 document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
             }
 
             let component = document.querySelector(`#${arrayElementsId[i]}`);
+
+            if (arrayMessage[i] === 'FIMSE') {
+                flag = false;
+                return;
+            }
+
             refreshScreen(arrayMessage[i], component);
 
         }, i * 1500);
@@ -29,10 +30,6 @@ function petrisNetworkAnimation(arrayMessage) {
 
     function refreshScreen(message, component) {
         pageScroll(height);
-
-        if (component.classList.contains('fimse')) {
-            component.classList.remove('fimse');
-        }
 
         component.classList.add("tracer");
 

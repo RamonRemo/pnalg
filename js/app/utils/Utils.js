@@ -70,8 +70,8 @@ class Utils {
         const leia = /leiaCode-\d-log-petri/;
         const exiba = /exibaCode-\d-log-petri/;
         const atribuicao = /atribuiCode-\d-log-petri/;
-        const se = /ifCode-\d-petri/;
-        const codeSe = /fimse-petri/;
+        const se = /ifCode-\d-log-petri/;
+        const fimse = /fimse-petri/;
 
         if (declare.test(str)) {
             return 'DECLARE';
@@ -93,7 +93,7 @@ class Utils {
             return 'SE';
         }
 
-        if (codeSe.test(str)) {
+        if (fimse.test(str)) {
             return 'FIMSE';
         }
 
