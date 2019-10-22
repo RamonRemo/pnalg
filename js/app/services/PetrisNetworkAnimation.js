@@ -10,13 +10,18 @@ function petrisNetworkAnimation(arrayMessage) {
 
     captureOfVariables();
 
-    for (let i = 0; i < arrayMessage.length; i++) {
+    for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
             if (i !== 0) {
                 document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
             }
 
             let component = document.querySelector(`#${arrayElementsId[i]}`);
+
+            if (!arrayMessage[i]) {
+                clearStateWithoutTrasition();
+                return;
+            }
 
             if (arrayMessage[i] === 'FIMSE') {
                 flag = false;
@@ -41,6 +46,7 @@ function petrisNetworkAnimation(arrayMessage) {
             stateTransition(275, y, 5);
 
             y = y + 225;
+
             return;
         }
 
@@ -55,6 +61,16 @@ function petrisNetworkAnimation(arrayMessage) {
         }
 
         y = y + 225;
+    }
+
+    function clearStateWithoutTrasition() {
+        if (!flag) {
+            cleanScreen(185);
+            cleanScreen(270);
+        } else {
+            cleanScreen(270);
+            cleanScreen(185);
+        }
     }
 
     function stateTransition(x, y, raio) {
