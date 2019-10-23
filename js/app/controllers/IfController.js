@@ -53,17 +53,23 @@ class IfController {
 
         let li = event.target.parentNode.parentNode;
 
-        li.parentNode.removeChild(li);
-
         let element = Utils.getElement(this._listIf, li.id);
-        this._listIf.apaga(li.id);
+        this._listIf.apaga(element.id);
 
-        let amount = this._listIf._if.length;
+        let div = li.parentNode.children;
+        let array = $.makeArray(div);
+        array = array.splice(1, array.length - 1);
 
-        if (amount === 0) {
-            ul.parentNode.remove();
-        }
+        array.forEach(list => {
+            let div = $.makeArray(list.children);
 
+            div.forEach(element => {
+                let span = element.children;
+                $(span).trigger('click');
+            });
+        });
+
+        li.parentNode.removeChild(li);
         this._viewIf._codeRemove(element);
     }
 

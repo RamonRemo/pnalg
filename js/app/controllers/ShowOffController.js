@@ -97,12 +97,6 @@ class ShowOffController {
 
         this._listShowOff.remove(id);
 
-        let amount = this._listShowOff._showOff.length;
-
-        if (amount === 0) {
-            ul.parentNode.remove();
-        }
-
         this._viewShowOff._codeRemove(element, ul);
     }
 

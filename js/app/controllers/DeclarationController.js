@@ -75,11 +75,6 @@ class DeclarationController {
         let element = Utils.getElement(this._listDeclaration, id);
         this._listDeclaration.remove(id);
 
-        let amount = this._listDeclaration._declaration.length;
-
-        if (amount === 0) {
-            ul.parentNode.remove();
-        }
 
         this._viewDeclaration.updateOptions(this._listDeclaration);
         this._viewDeclaration._codeRemove(element, ul);

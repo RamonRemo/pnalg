@@ -53,14 +53,8 @@ class ViewIf extends View {
 
     _codeRemove(element) {
         let idCode = element.idCode;
-
-        let id = element.id;
         let code = $(`#${idCode}`).find('span');
 
-        for (let item of code) {
-            if (item.id == id) {
-                item.remove();
-            }
-        }
+        code.remove();
     }
 }

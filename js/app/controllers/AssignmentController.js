@@ -74,13 +74,7 @@ class AssignmentController {
         let id = Utils.getNumber(li.id);
 
         let element = Utils.getElement(this._listAssignments, id);
-        this._listAssignments.remove(id);
-
-        let amount = this._listAssignments._assignments.length;
-
-        if (amount === 0) {
-            ul.parentNode.remove();
-        }
+        this._listAssignments.remove(element.id);
 
         this._viewAssignments._codeRemove(element, ul);
     }
