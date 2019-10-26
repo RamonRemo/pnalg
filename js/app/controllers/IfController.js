@@ -56,8 +56,8 @@ class IfController {
         let element = Utils.getElement(this._listIf, li.id);
         this._listIf.apaga(element.id);
 
-        let div = li.parentNode.children;
-        let array = $.makeArray(div);
+        let spans = li.parentNode.children;
+        let array = $.makeArray(spans);
         array = array.splice(1, array.length - 1);
 
         array.forEach(list => {
@@ -69,7 +69,9 @@ class IfController {
             });
         });
 
-        li.parentNode.removeChild(li);
+        let node = li.parentNode.parentNode;
+        node.parentNode.removeChild(node);
+
         this._viewIf._codeRemove(element);
     }
 

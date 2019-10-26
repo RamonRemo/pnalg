@@ -59,6 +59,12 @@ class ViewRead extends View {
 
     _codeRemove(element, ul) {
         let amount = ul.children.length;
+
+        if (amount === 0) {
+            let node = ul.parentNode;
+            node.parentNode.removeChild(node);
+        }
+
         super.codeRemove(element, 'leiaCode', amount);
     }
 
