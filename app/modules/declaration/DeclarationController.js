@@ -8,8 +8,8 @@ class DeclarationController {
         this._ul;
         this._ulSe = null;
         this._idCode = null;
-        this._viewDeclaration = new ViewDeclaration();
         this._listDeclaration = new ListDeclarations();
+        this._directiveDeclaration = new DirectiveDeclaration();
     }
 
     setId(event) {
@@ -50,7 +50,7 @@ class DeclarationController {
         this._declaration = this._newDeclaration();
         this._listDeclaration.add(this._declaration);
 
-        this._viewDeclaration.update(
+        this._directiveDeclaration.update(
             this._declaration,
             this._listDeclaration,
             this._ul,
@@ -76,20 +76,20 @@ class DeclarationController {
         this._listDeclaration.remove(id);
 
 
-        this._viewDeclaration.updateOptions(this._listDeclaration);
-        this._viewDeclaration._codeRemove(element, ul);
+        this._directiveDeclaration.updateOptions(this._listDeclaration);
+        this._directiveDeclaration._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {
         let li = element.lastChild.firstChild;
-        this._viewDeclaration._codeRemoveAll(this._listDeclaration, li);
+        this._directiveDeclaration._codeRemoveAll(this._listDeclaration, li);
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
             let id = Utils.getNumber(li.id);
 
             this._listDeclaration.remove(id);
-            this._viewDeclaration.updateOptions(this._listDeclaration);
+            this._directiveDeclaration.updateOptions(this._listDeclaration);
 
             li.remove();
         }

@@ -1,4 +1,4 @@
-class View {
+class Directive {
 
     constructor(element) {
         this._element = element;

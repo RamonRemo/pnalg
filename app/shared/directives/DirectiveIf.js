@@ -1,4 +1,4 @@
-class ViewIf extends View {
+class DirectiveIf extends Directive {
 
     constructor(element) {
         super(element);

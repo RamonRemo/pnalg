@@ -8,8 +8,8 @@ class ShowOffController {
         this._ul;
         this._ulSe;
         this._idCode = null;
-        this._viewShowOff = new ViewShowOff();
         this._listShowOff = new ListShowOff();
+        this._directiveShowOff = new DirectiveShowOff();
     }
 
     setId(event) {
@@ -73,7 +73,7 @@ class ShowOffController {
         this._showOff = this._newShowOff();
         this._listShowOff.add(this._showOff);
 
-        this._viewShowOff.update(
+        this._directiveShowOff.update(
             this._showOff,
             this._ul,
             this._ulSe,
@@ -97,13 +97,13 @@ class ShowOffController {
 
         this._listShowOff.remove(id);
 
-        this._viewShowOff._codeRemove(element, ul);
+        this._directiveShowOff._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {
 
         let li = element.lastChild.firstChild;
-        this._viewShowOff._codeRemoveAll(this._listShowOff, li);
+        this._directiveShowOff._codeRemoveAll(this._listShowOff, li);
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;

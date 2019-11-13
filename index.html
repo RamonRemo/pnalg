@@ -4,15 +4,15 @@
 <head>
     <meta charset='utf-8' />
     <title>CPNAlg</title>
-    <link rel='shortcut icon' href='img/icon.png' type='image/x-icon' />
+    <link rel='shortcut icon' href='app/img/icon.png' type='image/x-icon' />
 
     <!-- CSS  externo-->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Meu CSS -->
-    <link rel='stylesheet' href='css/style.css' type='text/css' />
-    <link rel='stylesheet' href='css/introjs-flattener.css' type='text/css' />
+    <link rel='stylesheet' href='app/css/style.css' type='text/css' />
+    <link rel='stylesheet' href='app/css/introjs-flattener.css' type='text/css' />
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <header>
         <nav class='navbar fixed-top navbar-dark bg-dark' id='step0'>
             <a class='navbar-brand' href='index.html' id='cpnalg'>
-                <img src='img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'> CPNAlg
+                <img src='app/img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'> CPNAlg
             </a>
         </nav>
     </header>
@@ -181,40 +181,41 @@ Fim
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
 
     <!-- JavaScript -->
-    <script src='js/app/services/ModalLinks.js'></script>
-    <script src='js/app/services/Introguide.js' type='text/javascript'></script>
-    <script src='js/app/services/Tips.js' type='text/javascript'></script>
-    <script src='js/app/services/DragAndDrop.js' type='text/javascript'></script>
-    <script src='js/app/services/DragAndDropUtils.js' type='text/javascript'></script>
-    <script src='js/app/utils/Utils.js' type='text/javascript'></script>
-    <script src='js/app/views/View.js' type='text/javascript'></script>
-    <script src='js/app/services/PetrisNetwork.js' type='text/javascript'></script>
-    <script src='js/app/services/PetrisNetworkAnimation.js' type='text/javascript'></script>
+    <script src='app/pipes/ModalLinks.js'></script>
 
-    <script src='js/app/models/Declaration.js' type='text/javascript'></script>
-    <script src='js/app/controllers/DeclarationController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListDeclarations.js' type='text/javascript'></script>
-    <script src='js/app/views/ViewDeclaration.js' type='text/javascript'></script>
+    <script src='app/services/Introguide.js' type='text/javascript'></script>
+    <script src='app/services/Tips.js' type='text/javascript'></script>
+    <script src='app/services/DragAndDrop.js' type='text/javascript'></script>
 
-    <script src='js/app/models/Assignment.js' type='text/javascript'></script>
-    <script src='js/app/controllers/AssignmentController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListAssignments.js' type='text/javascript'></script>
-    <script src='js/app/views/ViewAssignments.js' type='text/javascript'></script>
+    <script src='app/utils/DragAndDropUtils.js' type='text/javascript'></script>
+    <script src='app/utils/Utils.js' type='text/javascript'></script>
 
-    <script src='js/app/models/ShowOff.js' type='text/javascript'></script>
-    <script src='js/app/controllers/ShowOffController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListShowOff.js' type='text/javascript'></script>
-    <script src='js/app/views/ViewShowOff.js' type='text/javascript'></script>
+    <script src='app/modules/petris-network/PetrisNetwork.js' type='text/javascript'></script>
+    <script src='app/modules/petris-network/PetrisNetworkAnimation.js' type='text/javascript'></script>
+    <script src='app/modules/declaration/DeclarationController.js' type='text/javascript'></script>
+    <script src='app/modules/assignment/AssignmentController.js' type='text/javascript'></script>
+    <script src='app/modules/show-off/ShowOffController.js' type='text/javascript'></script>
+    <script src='app/modules/read/ReadController.js' type='text/javascript'></script>
+    <script src='app/modules/if/IfController.js' type='text/javascript'></script>
 
-    <script src='js/app/models/Read.js' type='text/javascript'></script>
-    <script src='js/app/controllers/ReadController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListRead.js' type='text/javascript'></script>
-    <script src='js/app/views/ViewRead.js' type='text/javascript'></script>
+    <script src='app/shared/models/Declaration.js' type='text/javascript'></script>
+    <script src='app/shared/models/Assignment.js' type='text/javascript'></script>
+    <script src='app/shared/models/ShowOff.js' type='text/javascript'></script>
+    <script src='app/shared/models/Read.js' type='text/javascript'></script>
+    <script src='app/shared/models/If.js' type='text/javascript'></script>
 
-    <script src='js/app/models/If.js' type='text/javascript'></script>
-    <script src='js/app/controllers/IfController.js' type='text/javascript'></script>
-    <script src='js/app/models/ListIf.js' type='text/javascript'></script>
-    <script src='js/app/views/ViewIf.js' type='text/javascript'></script>
+    <script src='app/shared/data/ListAssignments.js' type='text/javascript'></script>
+    <script src='app/shared/data/ListDeclarations.js' type='text/javascript'></script>
+    <script src='app/shared/data/ListShowOff.js' type='text/javascript'></script>
+    <script src='app/shared/data/ListRead.js' type='text/javascript'></script>
+    <script src='app/shared/data/ListIf.js' type='text/javascript'></script>
+
+    <script src='app/shared/directives/Directive.js' type='text/javascript'></script>
+    <script src='app/shared/directives/DirectiveDeclaration.js' type='text/javascript'></script>
+    <script src='app/shared/directives/DirectiveShowOff.js' type='text/javascript'></script>
+    <script src='app/shared/directives/DirectiveAssignments.js' type='text/javascript'></script>
+    <script src='app/shared/directives/DirectiveRead.js' type='text/javascript'></script>
+    <script src='app/shared/directives/DirectiveIf.js' type='text/javascript'></script>
 
     <script>
         var declarationController = new DeclarationController();

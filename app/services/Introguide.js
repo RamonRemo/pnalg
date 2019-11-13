@@ -42,7 +42,6 @@ $(function() {
         prevLabel: "Anterior",
         skipLabel: "Pular",
         doneLabel: "Concluir"
-
     });
 
     introguide.start();

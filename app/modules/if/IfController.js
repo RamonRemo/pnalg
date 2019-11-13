@@ -10,8 +10,8 @@ class IfController {
         this._ul;
         this._id = -1;
         this._idCode = null;
-        this._viewIf = new ViewIf();
         this._listIf = new ListIf();
+        this._directiveIf = new DirectiveIf();
     }
 
     setId(event) {
@@ -41,7 +41,7 @@ class IfController {
         this._if = this._newIf();
         this._listIf.add(this._if);
 
-        this._viewIf.update(
+        this._directiveIf.update(
             this._if,
             this._ul,
             this._idCode
@@ -72,7 +72,7 @@ class IfController {
         let node = li.parentNode.parentNode;
         node.parentNode.removeChild(node);
 
-        this._viewIf._codeRemove(element);
+        this._directiveIf._codeRemove(element);
     }
 
     enableButtons(event) {

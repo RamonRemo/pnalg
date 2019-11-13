@@ -74,7 +74,6 @@ $(function() {
 
         hintPosition: 'middle-right',
         hintButtonLabel: "Concluir"
-
     });
 
     dicas.addHints();

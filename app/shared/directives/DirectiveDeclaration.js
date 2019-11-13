@@ -1,4 +1,4 @@
-class ViewDeclaration extends View {
+class DirectiveDeclaration extends Directive {
 
     constructor(element) {
         super(element);

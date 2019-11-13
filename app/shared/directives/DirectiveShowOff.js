@@ -1,4 +1,4 @@
-class ViewShowOff extends View {
+class DirectiveShowOff extends Directive {
 
     constructor(element) {
         super(element);

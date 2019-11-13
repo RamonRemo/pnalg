@@ -8,8 +8,8 @@ class ReadController {
         this._ul;
         this._ulSe;
         this._idCode = null;
-        this._viewRead = new ViewRead();
         this._listRead = new ListRead();
+        this._directiveRead = new DirectiveRead();
     }
 
     setId(event) {
@@ -56,7 +56,7 @@ class ReadController {
         this._read = this._newRead();
         this._listRead.add(this._read);
 
-        this._viewRead.update(
+        this._directiveRead.update(
             this._read,
             this._ul,
             this._ulSe,
@@ -80,12 +80,12 @@ class ReadController {
 
         this._listRead.remove(id);
 
-        this._viewRead._codeRemove(element, ul);
+        this._directiveRead._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {
         let li = element.lastChild.firstChild;
-        this._viewRead._codeRemoveAll(this._listRead, li);
+        this._directiveRead._codeRemoveAll(this._listRead, li);
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;

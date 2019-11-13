@@ -1,4 +1,4 @@
-class ViewAssignments extends View {
+class DirectiveRead extends Directive {
 
     constructor(element) {
         super(element);
@@ -6,10 +6,10 @@ class ViewAssignments extends View {
 
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
-        li.id = `atribuiCode-${model.id}`;
+        li.id = `leiaCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`${model.name} <− ${model.value};`);
+        let obj = document.createTextNode(`leia(${model.name});`);
         li.appendChild(obj);
 
         if (ulSe) {
@@ -24,10 +24,10 @@ class ViewAssignments extends View {
     }
 
     _addDeleteButton(li) {
-        let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="assignmentController.remove(event);">x</span>';
+        let div = document.createElement('div');
+        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="readController.remove(event);">x</span>';
 
-        li.appendChild(span);
+        li.appendChild(div);
     }
 
     _codeAdd(idCode, ul) {
@@ -38,7 +38,7 @@ class ViewAssignments extends View {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Atribuicoes de valores</span>';
+            code.innerHTML = '<span class="comentario">//Leitura de variaveis</span>';
         }
 
         if (arrayLi.length === 0) {
@@ -65,10 +65,10 @@ class ViewAssignments extends View {
             node.parentNode.removeChild(node);
         }
 
-        super.codeRemove(element, 'atribuiCode', amount);
+        super.codeRemove(element, 'leiaCode', amount);
     }
 
     _codeRemoveAll(list, li) {
-        super.codeRemoveAll(list, li, 'atribuiCode');
+        super.codeRemoveAll(list, li, 'leiaCode');
     }
 }

@@ -9,7 +9,7 @@ class AssignmentController {
         this._ulSe = null;
         this._idCode = null;
         this._listAssignments = new ListAssignments();
-        this._viewAssignments = new ViewAssignments();
+        this._directiveAssignments = new DirectiveAssignments();
     }
 
     setId(event) {
@@ -52,7 +52,7 @@ class AssignmentController {
         let assignment = this._newAssignments();
         this._listAssignments.add(assignment);
 
-        this._viewAssignments.update(
+        this._directiveAssignments.update(
             assignment,
             this._ul,
             this._ulSe,
@@ -76,12 +76,12 @@ class AssignmentController {
         let element = Utils.getElement(this._listAssignments, id);
         this._listAssignments.remove(element.id);
 
-        this._viewAssignments._codeRemove(element, ul);
+        this._directiveAssignments._codeRemove(element, ul);
     }
 
     removeAll(element, amount) {
         let li = element.lastChild.firstChild;
-        this._viewAssignments._codeRemoveAll(this._listAssignments, li);
+        this._directiveAssignments._codeRemoveAll(this._listAssignments, li);
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;

@@ -233,6 +233,7 @@ function petrisNetwork(event) {
     function newMessage(ctx, message, x) {
         ctx.font = '10pt Arial';
         ctx.fillStyle = 'black';
+
         switch (message) {
             case 'DECLARE':
                 ctx.fillText(message, (x - 31.5), (y + 17.2));
