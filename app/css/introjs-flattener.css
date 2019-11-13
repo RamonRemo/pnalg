@@ -1,15 +1,3 @@
-.introjs-helperNumberLayer {
-    font-family: tahoma, Arial, verdana, sans-serif;
-    font-size: 14px;
-    text-shadow: none;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    border: 2px solid #ecf0f1;
-    border-radius: 50%;
-    background: #e74c3c;
-}
-
 .introjs-helperLayer {
     position: absolute;
     z-index: 9999998;
@@ -22,6 +10,43 @@
     -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+}
+
+.introjs-hint-dot {
+    box-sizing: content-box;
+    border: 10px solid rgba(146, 146, 146, 0.36);
+    background: transparent;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    height: 50px;
+    width: 50px;
+    -webkit-animation: introjspulse 3s ease-out;
+    -moz-animation: introjspulse 3s ease-out;
+    animation: introjspulse 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    z-index: 1;
+    opacity: 0;
+}
+
+.introjs-hint-pulse {
+    display: none !important;
+}
+
+.introjs-hint {
+    box-sizing: content-box;
+    position: absolute;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url('https://img.icons8.com/offices/30/000000/help.png');
+    background-repeat: no-repeat;
 }
 
 .introjs-tooltip {
@@ -56,7 +81,9 @@
     border-radius: 0 .2em .2em 0;
 }
 
-.introjs-button:hover,
+.introjs-prevbutton:hover,
+.introjs-nextbutton:hover,
+.introjs-skipbutton:hover,
 .introjs-button:focus {
     background: #343a40;
     color: #fff;

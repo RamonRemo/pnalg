@@ -5,35 +5,32 @@ $(function() {
     introguide.setOptions({
         steps: [{
                 element: '#step0',
-                intro: `Esta visita guiada explicará a interface do sistema CPNAlg. <br> <br> 
-                Use as teclas de seta para navegar ou pressione ESC para sair do tour imediatamente. 👨🏽‍🏫`,
+                intro: `Use as teclas ⇨ e ⇦ para navegar ou pressione ESC para sair 
+                        do AJUDA imediatamente. 👨🏽‍🏫`,
                 position: 'top'
             },
             {
                 element: '#step1',
-                intro: `Nesta área temos todos os componentes arrastáveis para criação de redes de petri 
-                e algoritmos em pseudocódigo. 👨🏽‍🏫`,
+                intro: `Na <b>ÁREA 1</b> temos todos os componentes arrastáveis para criação 
+                        do algoritmo e de seu modelo. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step2',
-                intro: `Nesta área podemos soltar os componentes da área anterior, clicando nos componentes
-                um formulário será apresentado, inserindo as informações necessárias neste, fazemos a transcrição do formulário em pseudocódigo. 👨🏽‍🏫`,
+                intro: `Na <b>ÁREA 2</b> será construído o algoritmo. Tal construção é feita 
+                        arrastando-se os comandos da <b>ÁREA 1</b> para a <b>ÁREA 2</b>. <br><br>Para excluir 
+                        os comandos, deve-se arrastá-los de volta da <b>ÁREA 2</b> para a <b>ÁREA 1</b>. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step3',
-                intro: `Nesta área sera apresentado a transcrição do formulário em pseudocódigo. 👨🏽‍🏫`,
+                intro: `Na <b>ÁREA 3</b> será mostrado o algoritmo gerado. 👨🏽‍🏫`,
                 position: 'right'
             },
             {
                 element: '#step4',
-                intro: 'Portugol é uma pseudolinguaguem que permite ao programador pensar no problema em si e não no equipamento que irá executar o algoritmo. 👨🏽‍🏫',
-                position: 'left'
-            },
-            {
-                element: '#step5',
-                intro: 'Clique em "Simular" para visualizar graficamente a estrutura e funcionamento do algoritmo. <br> <br> Utilizamos a Rede de Petri para que você possa entender melhor o funcionamento de um algoritmo.',
+                intro: `Ao clicar neste botão, será mostrado o algoritmo e seu respectivo 
+                        modelo para a realização de simulações. 👨🏽‍🏫`,
                 position: 'top'
             }
         ],
@@ -41,7 +38,8 @@ $(function() {
         nextLabel: "Próximo",
         prevLabel: "Anterior",
         skipLabel: "Pular",
-        doneLabel: "Concluir"
+        doneLabel: "Concluir",
+        showStepNumbers: false
     });
 
     introguide.start();

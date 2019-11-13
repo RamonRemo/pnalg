@@ -89,7 +89,8 @@ ul {
 
 #ul-dicas {
     list-style-type: circle;
-    width: 310px;
+    width: 300px;
+    margin-bottom: -20px;
 }
 
 .excluir:hover {
