@@ -140,6 +140,7 @@ ul {
 
 .btn-fim-se {
     margin-top: 0;
+    pointer-events: none;
 }
 
 

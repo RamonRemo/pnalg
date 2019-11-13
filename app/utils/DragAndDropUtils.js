@@ -47,9 +47,13 @@ function iff(id, nodeCopy, listVariable) {
     }
 
     let se = nodeCopy.childNodes[3];
-    let fimSe = nodeCopy.childNodes[5];
     se.className = 'area-se';
-    fimSe.className = 'list-group-item btn btn-fim-se';
+
+    let fimse = document.createElement('button');
+    fimse.id = 'btn-fim-se'
+    fimse.className = 'list-group-item btn btn-fim-se'
+    fimse.textContent = 'Fim se';
+    nodeCopy.appendChild(fimse);
 
     $('#salva-alteracoes').find('.btn').removeAttr('disabled');
 
