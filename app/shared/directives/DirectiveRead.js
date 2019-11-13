@@ -9,7 +9,7 @@ class DirectiveRead extends Directive {
         li.id = `leiaCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`leia(${model.name});`);
+        let obj = document.createTextNode(`LEIA(${model.name});`);
         li.appendChild(obj);
 
         if (ulSe) {

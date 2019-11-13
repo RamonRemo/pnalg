@@ -9,7 +9,7 @@ class DirectiveIf extends Directive {
         li.id = `ifCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`se (${model.var1_name} ${model.conditional} ${model.var2_name}) entao`);
+        let obj = document.createTextNode(`SE (${model.var1_name} ${model.conditional} ${model.var2_name}) entao`);
         li.appendChild(obj);
         ul.appendChild(li);
 

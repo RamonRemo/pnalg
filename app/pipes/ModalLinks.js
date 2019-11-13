@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('#body-rede').load('app/modules/petris-network/Petris.html');
 });
 
-$('#step5').click(function() {
+$('#step4').click(function() {
     $('#area-codigo-simulador').html('');
 
     let petris = $('#area-codigo');

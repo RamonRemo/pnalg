@@ -71,7 +71,7 @@ class Directive {
         }
 
         let span = document.createElement('span');
-        span.innerHTML = ('<span>fimse</span>');
+        span.innerHTML = ('<span>FIMSE</span>');
         span.className = 'fimse';
         span.id = 'fimse';
 

@@ -9,7 +9,7 @@ class DirectiveShowOff extends Directive {
         li.id = `exibaCode-${model.id}`;
         li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
 
-        let obj = document.createTextNode(`escreval(${model.output});`);
+        let obj = document.createTextNode(`ESCREVAL(${model.output});`);
         li.appendChild(obj);
 
         if (ulSe) {
