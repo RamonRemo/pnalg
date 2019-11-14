@@ -20,3 +20,13 @@ $('#step4').click(function() {
         $('#area-codigo-simulador').append(clone).hmtl;
     }
 });
+
+$('#step4').on("click", function() {
+    var spinner = $('.loading-spinner');
+    spinner.addClass('active');
+
+    setTimeout(function() {
+        spinner.removeClass('active');
+        $('#modalRede').modal({ show: true })
+    }, 3000);
+});
