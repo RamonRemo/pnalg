@@ -3,24 +3,27 @@ var arrayMessage = [];
 function petrisNetwork(event) {
     event.preventDefault();
 
-    let arrayElements = [];
     arrayMessage = [];
+    let arrayElements = [];
     let height = 0;
     let y = 176;
     let flag = false;
     let startingPositionIfNot = 0;
     let depth = 0;
-
-    let canvas = document.querySelector('canvas');
-    const context = canvas.getContext('2d');
-
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    let context = null;
+    let canvas = null;
     let downscaleFactor = 0.88;
+
+    canvas = document.querySelector('canvas');
+    context = canvas.getContext('2d');
+
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.scale(downscaleFactor, downscaleFactor);
 
     captureOfVariables();
 
-    if (canvas.getContext) {
+    if (context) {
         for (let i = 0; i <= arrayMessage.length; i++) {
             let message = arrayMessage[i];
 
@@ -74,16 +77,14 @@ function petrisNetwork(event) {
     }
 
     function newStateOfVariables(message) {
-        let ctx = canvas.getContext('2d');
-
         let circle = newCircle();
 
         newArrow();
 
         let rectangle = newRectangle();
 
-        ctx.stroke(circle);
-        ctx.stroke(rectangle);
+        context.stroke(circle);
+        context.stroke(rectangle);
 
         height = y;
 
@@ -97,15 +98,15 @@ function petrisNetwork(event) {
         }
 
         function newArrow() {
-            ctx.fillRect(275, (y - 76), 1, 70);
+            context.fillRect(275, (y - 76), 1, 70);
 
-            ctx.beginPath();
-            ctx.moveTo(275, (y - 2));
-            ctx.lineTo(265, (y - 16));
-            ctx.moveTo(277, (y - 2));
-            ctx.lineTo(285, (y - 16));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(275, (y - 2));
+            context.lineTo(265, (y - 16));
+            context.moveTo(277, (y - 2));
+            context.lineTo(285, (y - 16));
+            context.stroke();
+            context.closePath();
         }
 
         function newRectangle() {
@@ -113,14 +114,13 @@ function petrisNetwork(event) {
 
             rectangle.rect(227, y, 100, 25);
 
-            newMessage(ctx, message, 275);
+            newMessage(context, message, 275);
 
             return rectangle;
         }
     }
 
     function newStateOfVariablesIF(message) {
-        let ctx = canvas.getContext('2d');
         let circle;
 
         if (message === 'SE') {
@@ -133,8 +133,8 @@ function petrisNetwork(event) {
 
         let rectangle = newRectangle();
 
-        ctx.stroke(circle);
-        ctx.stroke(rectangle);
+        context.stroke(circle);
+        context.stroke(rectangle);
 
         height = y;
 
@@ -148,56 +148,56 @@ function petrisNetwork(event) {
         }
 
         function newArrowFunctionIf() {
-            ctx.fillRect(275, (y - 76), 1, 10);
+            context.fillRect(275, (y - 76), 1, 10);
 
-            ctx.beginPath();
-            ctx.moveTo(275, (y - 66));
-            ctx.lineTo(355, (y - 66));
-            ctx.moveTo(355, (y - 66));
-            ctx.lineTo(355, (y - 10));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(275, (y - 66));
+            context.lineTo(355, (y - 66));
+            context.moveTo(355, (y - 66));
+            context.lineTo(355, (y - 10));
+            context.stroke();
+            context.closePath();
 
-            ctx.beginPath();
-            ctx.moveTo(355, (y - 2));
-            ctx.lineTo(345, (y - 16));
-            ctx.moveTo(355, (y - 2));
-            ctx.lineTo(365, (y - 16));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(355, (y - 2));
+            context.lineTo(345, (y - 16));
+            context.moveTo(355, (y - 2));
+            context.lineTo(365, (y - 16));
+            context.stroke();
+            context.closePath();
 
-            ctx.beginPath();
-            ctx.moveTo(275, (y - 66));
-            ctx.lineTo(190, (y - 66));
-            ctx.moveTo(190, (y - 66));
-            ctx.lineTo(190, (y - 10));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(275, (y - 66));
+            context.lineTo(190, (y - 66));
+            context.moveTo(190, (y - 66));
+            context.lineTo(190, (y - 10));
+            context.stroke();
+            context.closePath();
 
-            ctx.beginPath();
-            ctx.moveTo(190, (y - 2));
-            ctx.lineTo(180, (y - 16));
-            ctx.moveTo(190, (y - 2));
-            ctx.lineTo(200, (y - 16));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(190, (y - 2));
+            context.lineTo(180, (y - 16));
+            context.moveTo(190, (y - 2));
+            context.lineTo(200, (y - 16));
+            context.stroke();
+            context.closePath();
 
             startingPositionIfNot = y + 25;
 
             let rectangleIfNo = newRectangleIfNo();
-            ctx.stroke(rectangleIfNo);
+            context.stroke(rectangleIfNo);
         }
 
         function newArrow() {
-            ctx.fillRect(190, (y - 76), 1, 70);
+            context.fillRect(190, (y - 76), 1, 70);
 
-            ctx.beginPath();
-            ctx.moveTo(190, (y - 2));
-            ctx.lineTo(180, (y - 16));
-            ctx.moveTo(190, (y - 2));
-            ctx.lineTo(200, (y - 16));
-            ctx.stroke();
-            ctx.closePath();
+            context.beginPath();
+            context.moveTo(190, (y - 2));
+            context.lineTo(180, (y - 16));
+            context.moveTo(190, (y - 2));
+            context.lineTo(200, (y - 16));
+            context.stroke();
+            context.closePath();
         }
 
         function newCircleIF() {
@@ -214,7 +214,7 @@ function petrisNetwork(event) {
 
             rectangle.rect(142, y, 100, 25);
 
-            newMessage(ctx, message, 190);
+            newMessage(context, message, 190);
 
             return rectangle;
         }
@@ -224,110 +224,103 @@ function petrisNetwork(event) {
 
             rectangle.rect(307, y, 100, 25);
 
-            newMessage(ctx, "SE NAO", 355);
+            newMessage(context, "SE NAO", 355);
 
             return rectangle;
         }
     }
 
-    function newMessage(ctx, message, x) {
-        ctx.font = '10pt Arial';
-        ctx.fillStyle = 'black';
+    function newMessage(context, message, x) {
+        context.font = '10pt Arial';
+        context.fillStyle = 'black';
 
         switch (message) {
             case 'DECLARE':
-                ctx.fillText(message, (x - 31.5), (y + 17.2));
+                context.fillText(message, (x - 31.5), (y + 17.2));
                 break;
 
             case 'ATRIBUICAO':
-                ctx.fillText(message, (x - 39.5), (y + 17.2));
+                context.fillText(message, (x - 39.5), (y + 17.2));
                 break;
 
             case 'LEIA':
-                ctx.fillText(message, (x - 15.5), (y + 17.2));
+                context.fillText(message, (x - 15.5), (y + 17.2));
                 break;
 
             case 'EXIBA':
-                ctx.fillText(message, (x - 17.5), (y + 17.2));
+                context.fillText(message, (x - 17.5), (y + 17.2));
                 break;
 
             case 'SE':
-                ctx.fillText(message, (x - 9.5), (y + 17.2));
+                context.fillText(message, (x - 9.5), (y + 17.2));
                 break;
 
             default:
-                ctx.fillText(message, (x - 22), (y + 17.2));
+                context.fillText(message, (x - 22), (y + 17.2));
                 break;
         }
     }
 
     function newArrow(y) {
-        let ctx = canvas.getContext('2d');
-        ctx.fillRect(275, (y + 25), 1, 70);
+        context.fillRect(275, (y + 25), 1, 70);
 
-        ctx.beginPath();
-        ctx.moveTo(275, (y + 98));
-        ctx.lineTo(265, (y + 85));
-        ctx.moveTo(275, (y + 98));
-        ctx.lineTo(285, (y + 85));
-        ctx.stroke();
+        context.beginPath();
+        context.moveTo(275, (y + 98));
+        context.lineTo(265, (y + 85));
+        context.moveTo(275, (y + 98));
+        context.lineTo(285, (y + 85));
+        context.stroke();
     }
 
     function newArrowIF(y) {
-        let ctx = canvas.getContext('2d');
+        context.fillRect(190, (y + 25), 1, 70);
 
-        ctx.fillRect(190, (y + 25), 1, 70);
-
-        ctx.beginPath();
-        ctx.moveTo(190, (y + 98));
-        ctx.lineTo(180, (y + 85));
-        ctx.moveTo(190, (y + 98));
-        ctx.lineTo(200, (y + 85));
-        ctx.stroke();
-        ctx.closePath();
+        context.beginPath();
+        context.moveTo(190, (y + 98));
+        context.lineTo(180, (y + 85));
+        context.moveTo(190, (y + 98));
+        context.lineTo(200, (y + 85));
+        context.stroke();
+        context.closePath();
     }
 
     function newArrowEndIF(y) {
-        let ctx = canvas.getContext('2d');
+        context.fillRect(190, (y + 24), 1, 10);
+        context.fillRect(275, (y + 34), 1, 60);
 
-        ctx.fillRect(190, (y + 24), 1, 10);
-        ctx.fillRect(275, (y + 34), 1, 60);
+        context.beginPath();
+        context.moveTo(190, (y + 34));
+        context.lineTo(275, (y + 34));
+        context.moveTo(275, (y + 34));
+        context.lineTo(275, (y + 34));
+        context.stroke();
+        context.closePath();
 
-        ctx.beginPath();
-        ctx.moveTo(190, (y + 34));
-        ctx.lineTo(275, (y + 34));
-        ctx.moveTo(275, (y + 34));
-        ctx.lineTo(275, (y + 34));
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.moveTo(275, (y + 98));
-        ctx.lineTo(265, (y + 85));
-        ctx.moveTo(275, (y + 98));
-        ctx.lineTo(285, (y + 85));
-        ctx.stroke();
-        ctx.closePath();
+        context.beginPath();
+        context.moveTo(275, (y + 98));
+        context.lineTo(265, (y + 85));
+        context.moveTo(275, (y + 98));
+        context.lineTo(285, (y + 85));
+        context.stroke();
+        context.closePath();
     }
 
     function drawArrowComponentIfNot(y, h) {
-        let ctx = canvas.getContext('2d');
-
         if (h > 1) {
             h = h * 229;
         } else {
             h = h * 234;
         }
 
-        ctx.fillRect(355, y, 1, h);
+        context.fillRect(355, y, 1, h);
 
-        ctx.beginPath();
-        ctx.moveTo(355, (y + h));
-        ctx.lineTo(275, (y + h));
-        ctx.moveTo(275, (y + h));
-        ctx.lineTo(275, (y + h));
-        ctx.stroke();
-        ctx.closePath();
+        context.beginPath();
+        context.moveTo(355, (y + h));
+        context.lineTo(275, (y + h));
+        context.moveTo(275, (y + h));
+        context.lineTo(275, (y + h));
+        context.stroke();
+        context.closePath();
     }
 
     function captureOfVariables() {
