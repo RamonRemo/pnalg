@@ -13,20 +13,36 @@ $('#step4').click(function() {
     let petris = $('#area-codigo');
     let elements = petris.children().children();
 
+    if (elements.length === 0) {
+        alert();
+        return;
+    }
+
     for (element of elements) {
         let clone = element.cloneNode(true);
-        clone.id = `${element.id}-petri`
+        clone.id = `${element.id}-petri`;
 
         $('#area-codigo-simulador').append(clone).hmtl;
     }
+
+    loading();
 });
 
-$('#step4').on("click", function() {
+function loading() {
     var spinner = $('.loading-spinner');
     spinner.addClass('active');
 
     setTimeout(function() {
         spinner.removeClass('active');
-        $('#modalRede').modal({ show: true })
-    }, 3000);
-});
+        $('#modalRede').modal({ show: true });
+    }, 1500);
+}
+
+function alert() {
+    swal({
+        title: "Atenção",
+        text: "Não há dados para criar o modelo!",
+        icon: "warning",
+        closeOnConfirm: false
+    });
+}

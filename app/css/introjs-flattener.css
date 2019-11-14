@@ -45,7 +45,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background-image: url('https://img.icons8.com/offices/30/000000/help.png');
+    background-image: url("/app/img/help.png");
     background-repeat: no-repeat;
 }
 
