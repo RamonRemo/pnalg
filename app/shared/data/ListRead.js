@@ -23,7 +23,6 @@ class ListRead {
         }
     }
 
-
     get read() {
         return [].concat(this._read);
     }

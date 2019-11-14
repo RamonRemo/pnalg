@@ -3,6 +3,7 @@ function petrisNetworkAnimation(arrayMessage) {
     let arrayElementsId = [];
     let y = 75;
     let height = 75;
+    let animationY = 75;
     let flag = false;
 
     let canvas = document.querySelector('canvas');
@@ -13,6 +14,8 @@ function petrisNetworkAnimation(arrayMessage) {
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
             if (i !== 0) {
+                pageScroll(animationY);
+                animationY = animationY + 187;
                 document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
             }
 
@@ -34,8 +37,6 @@ function petrisNetworkAnimation(arrayMessage) {
     }
 
     function refreshScreen(message, component) {
-        pageScroll(height);
-
         component.classList.add("tracer");
 
         if (message === "SE") {
@@ -102,5 +103,5 @@ function petrisNetworkAnimation(arrayMessage) {
 }
 
 function pageScroll(height) {
-    $('#container').animate({ scrollTop: height - 20 }, 1000);
+    $('#container').animate({ scrollTop: height }, 1000);
 }

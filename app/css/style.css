@@ -150,6 +150,22 @@ h3 {
     text-align: center;
 }
 
+.column-left {
+    margin-top: 15px;
+    width: 50%;
+    height: 30px;
+    float: left;
+    text-align: center;
+}
+
+.column-right {
+    margin-top: 15px;
+    width: 50%;
+    height: 30px;
+    float: right;
+    text-align: center;
+}
+
 code span {
     display: flex;
     padding-bottom: 0;
@@ -209,15 +225,12 @@ canvas {
 }
 
 .player {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-top: 55px;
+    padding-top: 40px;
 }
 
+.fa-step-backward,
 .fa-play,
-.fa-pause {
+.fa-step-forward {
     background-color: #007cc6;
     color: white;
 }

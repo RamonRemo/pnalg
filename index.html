@@ -22,6 +22,9 @@
             <a class='navbar-brand' href='index.html' id='cpnalg'>
                 <img src='app/img/icon.png' width='30' height='30' class='d-inline-block align-top' alt='CPNAlg'> CPNAlg
             </a>
+            <button class="btn btn-outline-primary my-2 my-sm-1" onclick="introguide(event)">
+                <i class="fa fa-info-circle fa-1x" aria-hidden="true"></i>
+            </button>
         </nav>
     </header>
     <main>
@@ -63,7 +66,7 @@
                     <div id='areaCode'>
                         <div class='area container section mt-3'>
                             <pre>
-                            <h3>Portugol</h3>
+                            <h3>Algoritmo</h3>
                             <code>
 Inicio
 <div id='area-codigo'></div>
@@ -162,10 +165,18 @@ Fim
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <h5 class='modal-title'>Rede de Petri</h5>
+                    <h4 class='modal-title'>Simulações</h4>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Fechar'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
+                </div>
+                <div class="container">
+                    <div class="column-left">
+                        <h4 id='step4'>Portugol</h4>
+                    </div>
+                    <div class="column-right">
+                        <h4>Rede de Petri Colorida</h4>
+                    </div>
                 </div>
                 <div id='body-rede' class="modal-body"></div>
             </div>
