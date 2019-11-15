@@ -5,7 +5,7 @@ function petrisNetwork(event) {
 
     arrayMessage = [];
     let arrayElements = [];
-    let height = 0;
+    let height = 176;
     let y = 176;
     let flag = false;
     let startingPositionIfNot = 0;
@@ -23,38 +23,40 @@ function petrisNetwork(event) {
 
     captureOfVariables();
 
-    if (context) {
-        for (let i = 0; i <= arrayMessage.length; i++) {
-            let message = arrayMessage[i];
+    if (!context) {
+        return;
+    }
 
-            if (!message) {
-                return;
-            }
-
-            let variablesIF = newState(message);
-            y = height + 225;
-
-            if (!arrayMessage[i + 1]) {
-                return;
-            }
-
-            if (i < arrayMessage.length) {
-                if (variablesIF) {
-                    if (arrayMessage[i + 1] === 'FIMSE') {
-                        newArrowEndIF(height);
-                        drawArrowComponentIfNot(startingPositionIfNot, depth);
-                        depth = 0;
-                    } else {
-                        newArrowIF(height);
-                        depth++;
-                    }
-                } else {
-                    if (variablesIF === false) {
-                        newArrow(height);
-                    }
-                }
-            }
+    for (let i = 0; i <= arrayMessage.length; i++) {
+        if (!arrayMessage[i]) {
+            continue;
         }
+
+        let variablesIF = newState(arrayMessage[i]);
+        y = height + 225;
+
+        if (!arrayMessage[i + 1]) {
+            continue;
+        }
+
+        if (!variablesIF) {
+            if (variablesIF === false) {
+                newArrow(height);
+            }
+
+            continue;
+        }
+
+        if (arrayMessage[i + 1] === 'FIMSE') {
+            newArrowEndIF(height);
+            drawArrowComponentIfNot(startingPositionIfNot, depth);
+            depth = 0;
+
+            continue;
+        }
+
+        newArrowIF(height);
+        depth++;
     }
 
     function newState(message) {
@@ -67,23 +69,23 @@ function petrisNetwork(event) {
             return;
         }
 
-        if (!flag) {
-            newStateOfVariables(message);
-            return false;
-        } else {
+        if (flag) {
             newStateOfVariablesIF(message);
             return true;
         }
+
+        newStateOfVariables(message);
+
+        return false;
     }
 
     function newStateOfVariables(message) {
         let circle = newCircle();
+        context.stroke(circle);
 
         newArrow();
 
         let rectangle = newRectangle();
-
-        context.stroke(circle);
         context.stroke(rectangle);
 
         height = y;
@@ -255,8 +257,12 @@ function petrisNetwork(event) {
                 context.fillText(message, (x - 9.5), (y + 17.2));
                 break;
 
+            case 'FIM':
+                context.fillText(message, (x - 9.5), (y + 17.2));
+                break;
+
             default:
-                context.fillText(message, (x - 22), (y + 17.2));
+                context.fillText(message, (x - 20), (y + 17.2));
                 break;
         }
     }
@@ -330,6 +336,8 @@ function petrisNetwork(event) {
             arrayElements.push(element.children);
         }
 
+        arrayMessage.push("INICIO");
+
         arrayElements.forEach(element => {
             for (value of element) {
                 if (Utils.regexTest(value.id)) {
@@ -337,6 +345,8 @@ function petrisNetwork(event) {
                 }
             }
         });
+
+        arrayMessage.push("FIM");
     }
 }
 

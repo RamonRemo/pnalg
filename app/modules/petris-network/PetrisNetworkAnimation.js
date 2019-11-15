@@ -13,16 +13,14 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
-            if (i !== 0) {
+            if (i > 1) {
                 pageScroll(animationY);
-                animationY = animationY + 187;
-                document.querySelector(`#${arrayElementsId[i - 1]}`).classList.remove('tracer');
+                animationY = animationY + 190;
+                clearStateWithoutTrasition();
+                document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
             }
 
-            let component = document.querySelector(`#${arrayElementsId[i]}`);
-
             if (!arrayMessage[i]) {
-                clearStateWithoutTrasition();
                 return;
             }
 
@@ -31,14 +29,17 @@ function petrisNetworkAnimation(arrayMessage) {
                 return;
             }
 
-            refreshScreen(arrayMessage[i], component);
+            if (i > 0 && i != arrayMessage.length - 1) {
+                let component = document.querySelector(`#${arrayElementsId[i-1]}`);
+                component.classList.add("tracer");
+            }
+
+            refreshScreen(arrayMessage[i]);
 
         }, i * 1500);
     }
 
-    function refreshScreen(message, component) {
-        component.classList.add("tracer");
-
+    function refreshScreen(message) {
         if (message === "SE") {
             flag = true;
 
@@ -99,6 +100,8 @@ function petrisNetworkAnimation(arrayMessage) {
                 arrayElementsId.push(element.id);
             }
         });
+
+        console.log(arrayElementsId)
     }
 }
 
