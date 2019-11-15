@@ -64,22 +64,21 @@ function petrisNetwork(event) {
             return;
         }
 
-        if (flag) {
-            if (message === "SE") {
-                y = StateComponent.newStateComponentIf(y, context, message);
-                height = y;
+        if (!flag) {
+            y = StateComponent.newStateComponent(y, context, message);
+            return false;
+        }
 
-                return true;
-            }
-
-            y = StateComponent.newStateInternalCommandsIf(y, context, message);
+        if (message === "SE") {
+            y = StateComponent.newStateComponentIf(y, context, message);
+            height = y;
 
             return true;
         }
 
-        y = StateComponent.newStateComponent(y, context, message);
+        y = StateComponent.newStateInternalCommandsIf(y, context, message);
 
-        return false;
+        return true;
     }
 
     function captureOfVariables() {

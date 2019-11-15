@@ -2,7 +2,7 @@ function petrisNetworkAnimation(arrayMessage) {
     let arrayElements = [];
     let arrayElementsId = [];
     let y = 50;
-    let height = 50;
+    let clearY = 0;
     let animationY = 50;
     let flag = false;
 
@@ -13,25 +13,29 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
-            if (i >= arrayMessage.lengt) {
-                clearStateWithoutTrasition();
+            if (i == arrayMessage.lengt) {
+                clearStateWithoutTrasition(clearY);
+                return;
+            }
+
+            if (arrayMessage[i] === 'FIMSE') {
+                clearStateWithoutTrasition(clearY);
+                document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
+                y = y - 25;
+                flag = false;
+
+                return;
+            }
+
+            if (!arrayMessage[i]) {
+                clearStateWithoutTrasition(clearY);
                 return;
             }
 
             if (i > 1) {
                 pageScroll(animationY);
                 animationY = animationY + 175;
-                clearStateWithoutTrasition();
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
-            }
-
-            if (!arrayMessage[i]) {
-                return;
-            }
-
-            if (arrayMessage[i] === 'FIMSE') {
-                flag = false;
-                return;
             }
 
             if (i > 0 && i != arrayMessage.length - 1) {
@@ -40,7 +44,6 @@ function petrisNetworkAnimation(arrayMessage) {
             }
 
             refreshScreen(arrayMessage[i]);
-
         }, i * 1500);
     }
 
@@ -48,32 +51,45 @@ function petrisNetworkAnimation(arrayMessage) {
         if (message === "SE") {
             flag = true;
 
-            cleanScreen(270);
-            cleanScreen(185);
-            y = stateTransition(275, y + 175, 5);
+            cleanScreen(270, clearY);
+            cleanScreen(185, clearY);
+
+            stateTransition(275, y, 5);
+            clearY = y;
+            y = y + 163;
 
             return;
         }
 
-        if (!flag) {
-            cleanScreen(185);
-            cleanScreen(270);
-            y = stateTransition(275, y + 175, 5);
-        } else {
-            cleanScreen(270);
-            cleanScreen(185);
-            y = stateTransition(190, y + 175, 5);
+        if (flag) {
+            cleanScreen(270, clearY);
+            cleanScreen(185, clearY);
+
+            stateTransition(190, y, 5);
+            clearY = y;
+            y = y + 175;
+
+            return;
         }
+
+        cleanScreen(270, clearY);
+        cleanScreen(185, clearY);
+
+        stateTransition(275, y, 5);
+        clearY = y;
+        y = y + 175;
     }
 
-    function clearStateWithoutTrasition() {
+    function clearStateWithoutTrasition(clearY) {
         if (!flag) {
-            cleanScreen(185);
-            cleanScreen(270);
-        } else {
-            cleanScreen(270);
-            cleanScreen(185);
+            cleanScreen(185, clearY);
+            cleanScreen(270, clearY);
+
+            return;
         }
+
+        cleanScreen(270, clearY);
+        cleanScreen(185, clearY);
     }
 
     function stateTransition(x, y, raio) {
@@ -83,12 +99,10 @@ function petrisNetworkAnimation(arrayMessage) {
         context.fill();
         context.fillStyle = 'black';
         context.closePath();
-
-        return y;
     }
 
-    function cleanScreen(x) {
-        context.clearRect(x - 2, y, 16, 16);
+    function cleanScreen(x, clearY) {
+        context.clearRect(x - 2, clearY - 10, 16, 16);
     }
 
     function captureOfVariables() {
