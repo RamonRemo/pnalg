@@ -30,6 +30,22 @@ class Utils {
         return parseInt(numsStr);
     }
 
+    static arithmeticOperation(x, y, operation) {
+        switch (operation) {
+            case 'sum':
+                return x + y;
+
+            case 'subtraction':
+                return x - y;
+
+            case 'multiplication':
+                return x * y;
+
+            default:
+                return x / y;
+        }
+    }
+
     static regexTest(str) {
         const declare = /declareCode-\d-log/;
         const leia = /leiaCode-\d-log/;

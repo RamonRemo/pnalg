@@ -1,9 +1,9 @@
 function petrisNetworkAnimation(arrayMessage) {
     let arrayElements = [];
     let arrayElementsId = [];
-    let y = 75;
-    let height = 75;
-    let animationY = 75;
+    let y = 50;
+    let height = 50;
+    let animationY = 50;
     let flag = false;
 
     let canvas = document.querySelector('canvas');
@@ -13,9 +13,14 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
+            if (i >= arrayMessage.lengt) {
+                clearStateWithoutTrasition();
+                return;
+            }
+
             if (i > 1) {
                 pageScroll(animationY);
-                animationY = animationY + 190;
+                animationY = animationY + 175;
                 clearStateWithoutTrasition();
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
             }
@@ -45,9 +50,7 @@ function petrisNetworkAnimation(arrayMessage) {
 
             cleanScreen(270);
             cleanScreen(185);
-            stateTransition(275, y, 5);
-
-            y = y + 225;
+            y = stateTransition(275, y + 175, 5);
 
             return;
         }
@@ -55,14 +58,12 @@ function petrisNetworkAnimation(arrayMessage) {
         if (!flag) {
             cleanScreen(185);
             cleanScreen(270);
-            stateTransition(275, y, 5);
+            y = stateTransition(275, y + 175, 5);
         } else {
             cleanScreen(270);
             cleanScreen(185);
-            stateTransition(190, y, 5);
+            y = stateTransition(190, y + 175, 5);
         }
-
-        y = y + 225;
     }
 
     function clearStateWithoutTrasition() {
@@ -80,12 +81,14 @@ function petrisNetworkAnimation(arrayMessage) {
         context.fillStyle = 'red';
         context.arc(x, y, raio, 0, 2 * Math.PI);
         context.fill();
+        context.fillStyle = 'black';
         context.closePath();
-        height = y;
+
+        return y;
     }
 
     function cleanScreen(x) {
-        context.clearRect(x - 2, height - 8, 16, 16);
+        context.clearRect(x - 2, y, 16, 16);
     }
 
     function captureOfVariables() {
@@ -100,8 +103,6 @@ function petrisNetworkAnimation(arrayMessage) {
                 arrayElementsId.push(element.id);
             }
         });
-
-        console.log(arrayElementsId)
     }
 }
 
