@@ -55,7 +55,7 @@ function petrisNetwork(event) {
     }
 
     function newState(message) {
-        if (message === "SE") {
+        if (message === 'SE') {
             flag = true;
         }
 
@@ -69,7 +69,7 @@ function petrisNetwork(event) {
             return false;
         }
 
-        if (message === "SE") {
+        if (message === 'SE') {
             y = StateComponent.newStateComponentIf(y, context, message);
             height = y;
 
@@ -88,7 +88,7 @@ function petrisNetwork(event) {
             arrayElements.push(element.children);
         }
 
-        arrayMessage.push("INICIO");
+        arrayMessage.push('INICIO');
 
         arrayElements.forEach(element => {
             for (value of element) {
@@ -98,7 +98,7 @@ function petrisNetwork(event) {
             }
         });
 
-        arrayMessage.push("FIM");
+        arrayMessage.push('FIM');
     }
 }
 

@@ -40,9 +40,9 @@ function loading() {
 
 function alert() {
     swal({
-        title: "Atenção",
-        text: "Não há dados para criar o modelo!",
-        icon: "warning",
+        title: 'Atenção',
+        text: 'Não há dados para criar o modelo!',
+        icon: 'warning',
         closeOnConfirm: false
     });
 }

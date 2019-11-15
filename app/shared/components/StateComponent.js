@@ -14,11 +14,11 @@ class StateComponent {
     static newStateComponentIf(y, context, message) {
         y = this._newCircle(300, y, context, 275);
 
-        this._parallelLine(297, y + 12.5, context, "sum");
+        this._parallelLine(297, y + 12.5, context, 'sum');
         let tmp = this.newArrow(360, y - 12.5, context);
-        tmp = this._newRectangle(307, tmp, context, "SE NÃO");
+        tmp = this._newRectangle(307, tmp, context, 'SE NÃO');
 
-        this._parallelLine(253, y + 12.5, context, "subtraction");
+        this._parallelLine(253, y + 12.5, context, 'subtraction');
         y = this.newArrow(190, y - 12.5, context);
         y = this._newRectangle(142, y, context, message);
 

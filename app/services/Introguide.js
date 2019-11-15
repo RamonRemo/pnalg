@@ -37,10 +37,10 @@ function introguide(event) {
             }
         ],
 
-        nextLabel: "Próximo",
-        prevLabel: "Anterior",
-        skipLabel: "Pular",
-        doneLabel: "Concluir",
+        nextLabel: 'Próximo',
+        prevLabel: 'Anterior',
+        skipLabel: 'Pular',
+        doneLabel: 'Concluir',
         showStepNumbers: false
     });
 

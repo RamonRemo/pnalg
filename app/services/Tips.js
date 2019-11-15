@@ -53,7 +53,7 @@ $(function() {
         ],
 
         hintPosition: 'middle-right',
-        hintButtonLabel: "Fechar"
+        hintButtonLabel: 'Fechar'
     });
 
     dicas.addHints();

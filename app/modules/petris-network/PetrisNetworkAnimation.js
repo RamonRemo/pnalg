@@ -13,34 +13,30 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
-            if (i == arrayMessage.lengt) {
-                clearStateWithoutTrasition(clearY);
+            if (!arrayMessage[i]) {
+                AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
                 return;
             }
 
             if (arrayMessage[i] === 'FIMSE') {
-                clearStateWithoutTrasition(clearY);
+                AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
+
                 y = y - 25;
                 flag = false;
 
                 return;
             }
 
-            if (!arrayMessage[i]) {
-                clearStateWithoutTrasition(clearY);
-                return;
-            }
-
             if (i > 1) {
-                pageScroll(animationY);
+                AnimationComponent.pageScroll(animationY);
                 animationY = animationY + 175;
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
             }
 
             if (i > 0 && i != arrayMessage.length - 1) {
                 let component = document.querySelector(`#${arrayElementsId[i-1]}`);
-                component.classList.add("tracer");
+                component.classList.add('tracer');
             }
 
             refreshScreen(arrayMessage[i]);
@@ -48,13 +44,13 @@ function petrisNetworkAnimation(arrayMessage) {
     }
 
     function refreshScreen(message) {
-        if (message === "SE") {
+        if (message === 'SE') {
             flag = true;
 
-            cleanScreen(270, clearY);
-            cleanScreen(185, clearY);
+            AnimationComponent.cleanScreen(270, clearY, context);
+            AnimationComponent.cleanScreen(185, clearY, context);
+            AnimationComponent.stateTransition(275, y, 5, context);
 
-            stateTransition(275, y, 5);
             clearY = y;
             y = y + 163;
 
@@ -62,47 +58,22 @@ function petrisNetworkAnimation(arrayMessage) {
         }
 
         if (flag) {
-            cleanScreen(270, clearY);
-            cleanScreen(185, clearY);
+            AnimationComponent.cleanScreen(270, clearY, context);
+            AnimationComponent.cleanScreen(185, clearY, context);
+            AnimationComponent.stateTransition(190, y, 5, context);
 
-            stateTransition(190, y, 5);
             clearY = y;
             y = y + 175;
 
             return;
         }
 
-        cleanScreen(270, clearY);
-        cleanScreen(185, clearY);
+        AnimationComponent.cleanScreen(270, clearY, context);
+        AnimationComponent.cleanScreen(185, clearY, context);
+        AnimationComponent.stateTransition(275, y, 5, context);
 
-        stateTransition(275, y, 5);
         clearY = y;
         y = y + 175;
-    }
-
-    function clearStateWithoutTrasition(clearY) {
-        if (!flag) {
-            cleanScreen(185, clearY);
-            cleanScreen(270, clearY);
-
-            return;
-        }
-
-        cleanScreen(270, clearY);
-        cleanScreen(185, clearY);
-    }
-
-    function stateTransition(x, y, raio) {
-        context.beginPath();
-        context.fillStyle = 'red';
-        context.arc(x, y, raio, 0, 2 * Math.PI);
-        context.fill();
-        context.fillStyle = 'black';
-        context.closePath();
-    }
-
-    function cleanScreen(x, clearY) {
-        context.clearRect(x - 2, clearY - 10, 16, 16);
     }
 
     function captureOfVariables() {
@@ -118,8 +89,4 @@ function petrisNetworkAnimation(arrayMessage) {
             }
         });
     }
-}
-
-function pageScroll(height) {
-    $('#container').animate({ scrollTop: height }, 1000);
 }
