@@ -3,7 +3,7 @@ function petrisNetworkAnimation(arrayMessage) {
     let arrayElementsId = [];
     let y = 50;
     let clearY = 0;
-    let animationY = 50;
+    let height = 0;
     let flag = false;
 
     let canvas = document.querySelector('canvas');
@@ -13,6 +13,11 @@ function petrisNetworkAnimation(arrayMessage) {
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
         setTimeout(function timer() {
+            if (i % 2 == 0) {
+                AnimationComponent.pageScroll(height);
+                height = height + 225;
+            }
+
             if (!arrayMessage[i]) {
                 AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
                 return;
@@ -29,8 +34,6 @@ function petrisNetworkAnimation(arrayMessage) {
             }
 
             if (i > 1) {
-                AnimationComponent.pageScroll(animationY);
-                animationY = animationY + 175;
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
             }
 

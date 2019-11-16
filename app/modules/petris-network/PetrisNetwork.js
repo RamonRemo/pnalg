@@ -57,6 +57,11 @@ function petrisNetwork(event) {
     function newState(message) {
         if (message === 'SE') {
             flag = true;
+
+            y = StateComponent.newStateComponentIf(y, context, message);
+            height = y;
+
+            return true;
         }
 
         if (message === 'FIMSE') {
@@ -67,13 +72,6 @@ function petrisNetwork(event) {
         if (!flag) {
             y = StateComponent.newStateComponent(y, context, message);
             return false;
-        }
-
-        if (message === 'SE') {
-            y = StateComponent.newStateComponentIf(y, context, message);
-            height = y;
-
-            return true;
         }
 
         y = StateComponent.newStateInternalCommandsIf(y, context, message);
