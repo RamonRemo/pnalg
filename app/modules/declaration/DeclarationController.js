@@ -134,15 +134,15 @@ class DeclarationController {
         }
 
         let array = Object.values(this._listDeclaration);
-        if (array[0].length > 0) {
 
+        if (array[0].length > 0) {
             $.each(array, function(idx, obj) {
                 $.each(obj, function(idx, declaration) {
-                    array.push(declaration.name);
+                    array.push(declaration.name.toLowerCase());
                 });
             });
 
-            if (array.indexOf(this._inputName, 0) != -1) {
+            if (array.indexOf(this._inputName.toLowerCase(), 0) != -1) {
                 bootbox.alert({
                     message: 'Você já declarou uma váriavel com este nome! 🕵️‍',
                     animate: true,

@@ -186,6 +186,10 @@ code span {
     padding-left: 0;
 }
 
+.code-petri {
+    height: 450px;
+}
+
 
 /* -------------------- Petris --------------------*/
 
