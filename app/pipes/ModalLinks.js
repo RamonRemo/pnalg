@@ -34,6 +34,7 @@ function loading() {
 
     setTimeout(function() {
         spinner.removeClass('active');
+        document.querySelector('tbody').innerHTML = '';
         $('#modalRede').modal({ show: true });
     }, 1500);
 }

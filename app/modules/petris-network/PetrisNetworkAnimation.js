@@ -9,6 +9,8 @@ function petrisNetworkAnimation(arrayMessage) {
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
 
+    document.querySelector('tbody').innerHTML = '';
+
     captureOfVariables();
 
     for (let i = 0; i < arrayMessage.length + 1; i++) {
@@ -35,6 +37,7 @@ function petrisNetworkAnimation(arrayMessage) {
 
             if (i > 1) {
                 document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
+                PetriStracking.stracking(arrayElementsId[i - 2]);
             }
 
             if (i > 0 && i != arrayMessage.length - 1) {

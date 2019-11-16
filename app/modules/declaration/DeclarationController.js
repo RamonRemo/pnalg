@@ -157,8 +157,8 @@ class DeclarationController {
 
     _cleanForm() {
         this._ulSe = null;
-        document.querySelector('#declaracoes-nome').value = '';
 
+        document.querySelector('#declaracoes-nome').value = '';
         Utils.focus('modalDeclare', 'declaracoes-nome');
     }
 }

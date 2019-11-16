@@ -85,6 +85,7 @@ class AssignmentController {
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
+
             let id = Utils.getNumber(li.id);
             this._listAssignments.remove(id);
 
