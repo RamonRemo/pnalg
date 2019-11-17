@@ -1,4 +1,4 @@
-function petrisNetworkAnimation(arrayMessage) {
+function petrisNetworkAnimation(arrayCommand) {
     let arrayElements = [];
     let arrayElementsId = [];
     let y = 50;
@@ -13,40 +13,69 @@ function petrisNetworkAnimation(arrayMessage) {
 
     captureOfVariables();
 
-    for (let i = 0; i < arrayMessage.length + 1; i++) {
-        setTimeout(function timer() {
-            if (i % 2 == 0) {
-                AnimationComponent.pageScroll(height);
-                height = height + 225;
+    const control = ms => {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+    const sleep = async ms => {
+        await control(ms);
+    }
+
+    animation();
+
+    async function animation() {
+        let idx = 0;
+        let result;
+
+        while (true) {
+            result = newAnimation(idx, arrayCommand[idx]);
+
+            if (result) {
+                await sleep(1500);
+                idx++;
+
+                continue;
             }
 
-            if (!arrayMessage[i]) {
-                AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
-                return;
-            }
+            break;
+        }
+    }
 
-            if (arrayMessage[i] === 'FIMSE') {
-                AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
-                document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
+    function newAnimation(idx, command) {
+        if (idx % 2 === 0 && idx < arrayCommand.length - 2) {
+            AnimationComponent.pageScroll(height);
+            height = height + 225;
+        }
 
-                y = y - 25;
-                flag = false;
+        if (!command) {
+            AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
+            return false;
+        }
 
-                return;
-            }
+        if (command === 'FIMSE') {
+            AnimationComponent.clearStateWithoutTrasition(clearY, flag, context);
+            document.querySelector(`#${arrayElementsId[idx - 2]}`).classList.remove('tracer');
 
-            if (i > 1) {
-                document.querySelector(`#${arrayElementsId[i-2]}`).classList.remove('tracer');
-                PetriStracking.stracking(arrayElementsId[i - 2]);
-            }
+            y = y - 25;
+            flag = false;
 
-            if (i > 0 && i != arrayMessage.length - 1) {
-                let component = document.querySelector(`#${arrayElementsId[i-1]}`);
-                component.classList.add('tracer');
-            }
+            return true;
+        }
 
-            refreshScreen(arrayMessage[i]);
-        }, i * 1500);
+        if (idx > 1) {
+            document.querySelector(`#${arrayElementsId[idx - 2]}`).classList.remove('tracer');
+        }
+
+        if (idx > 0 && idx < arrayCommand.length - 1) {
+            let component = document.querySelector(`#${arrayElementsId[idx - 1]}`);
+            component.classList.add('tracer');
+
+            PetriStracking.stracking(arrayElementsId[idx - 1]);
+        }
+
+        refreshScreen(command);
+
+        return true;
     }
 
     function refreshScreen(message) {

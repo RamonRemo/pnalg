@@ -5,34 +5,84 @@ class PetriStracking {
     }
 
     static stracking(comand) {
-        let str = Utils.regexTestPetri(comand);
+        let text = document.querySelector(`#${comand}`).textContent;
+        let results;
 
-        if (str === 'DECLARE') {
-            let component = document.querySelector(`#${comand}`);
+        switch (Utils.regexTestPetri(comand)) {
+            case 'DECLARE':
+                results = this._declaration(text);
+                this._createTr(results.name, results.type, results.value);
 
-            let text = component.textContent;
-            let variable = text.split(" : ");
+                break;
 
-            let type = variable[0].substr(0, (variable[0].length));
-            let name = variable[1].substr(0, (variable[1].length - 1));
+            case 'ATRIBUICAO':
+                results = this._assignment(text);
+                this._appendTr(results.name, results.value);
 
-            let tr = createTr(type, name, 'null')
-            let tbody = document.querySelector('tbody');
-            tbody.appendChild(tr);
+                break;
+
+            case 'LEIA':
+                let value = window.prompt("sometext", "defaultText");
+
+                results = this._read(text);
+                this._appendTr(results.name, value);
+
+                break;
+
+            default:
+                return;
         }
     }
-}
 
-function createTr(type, name, value) {
-    let tr = document.createElement('tr');
+    static _declaration(text) {
+        let variable = text.split(" : ");
 
-    let td = `<tr>
-                <td>${name}</td>
-                <td>${type}</td>
-                <td>${value}</td>
-            </tr>`
+        let name = variable[1].substr(0, (variable[1].length - 1));
+        let type = variable[0].substr(0, (variable[0].length));
+        let value = "null";
 
-    tr.innerHTML = td;
+        return { name, type, value };
+    }
 
-    return tr;
+    static _assignment(text) {
+        let variable = text.split(' <− ');
+
+        let name = variable[0].substr(0, (variable[0].length));
+        let value = variable[1].substr(0, (variable[1].length - 1));
+
+        return { name, value };
+    }
+
+    static _read(text) {
+        let variable = text.split('(');
+
+        let name = variable[1].substr(0, (variable[1].length - 2));
+
+        return { name };
+    }
+
+    static _createTr(name, type, value) {
+        let tr = document.createElement('tr');
+
+        let td = `<tr>
+                    <td>${name}</td>
+                    <td>${type}</td>
+                    <td>${value}</td>
+                </tr>`
+
+        tr.innerHTML = td;
+
+        let tbody = document.querySelector('tbody');
+        tbody.appendChild(tr);
+    }
+
+    static _appendTr(name, value) {
+        var tds = document.getElementsByTagName("td");
+
+        for (var i = 0; i < tds.length; i++) {
+            if (tds[i].textContent === name) {
+                tds[i + 2].textContent = value;
+            }
+        }
+    }
 }

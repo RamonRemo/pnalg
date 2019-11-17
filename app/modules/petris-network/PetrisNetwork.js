@@ -1,9 +1,9 @@
-var arrayMessage = [];
+var arrayCommand = [];
 
 function petrisNetwork(event) {
     event.preventDefault();
 
-    arrayMessage = [];
+    arrayCommand = [];
     let arrayElements = [];
     let height = 0;
     let y = 50;
@@ -25,14 +25,14 @@ function petrisNetwork(event) {
         return;
     }
 
-    for (let i = 0; i <= arrayMessage.length; i++) {
-        if (!arrayMessage[i]) {
+    for (let i = 0; i <= arrayCommand.length; i++) {
+        if (!arrayCommand[i]) {
             continue;
         }
 
-        let variablesIF = newState(arrayMessage[i]);
+        let variablesIF = newState(arrayCommand[i]);
 
-        if (!arrayMessage[i + 1]) {
+        if (!arrayCommand[i + 1]) {
             continue;
         }
 
@@ -45,7 +45,7 @@ function petrisNetwork(event) {
             continue;
         }
 
-        if (arrayMessage[i + 1] === 'FIMSE') {
+        if (arrayCommand[i + 1] === 'FIMSE') {
             y = StateComponent.newArrowEndIf(y, height, context);
             continue;
         }
@@ -86,20 +86,20 @@ function petrisNetwork(event) {
             arrayElements.push(element.children);
         }
 
-        arrayMessage.push('INICIO');
+        arrayCommand.push('INICIO');
 
         arrayElements.forEach(element => {
             for (value of element) {
                 if (Utils.regexTest(value.id)) {
-                    arrayMessage.push(Utils.regexTest(value.id));
+                    arrayCommand.push(Utils.regexTest(value.id));
                 }
             }
         });
 
-        arrayMessage.push('FIM');
+        arrayCommand.push('FIM');
     }
 }
 
 function startNetwork() {
-    petrisNetworkAnimation(arrayMessage);
+    petrisNetworkAnimation(arrayCommand);
 }
