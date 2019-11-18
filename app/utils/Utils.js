@@ -115,4 +115,12 @@ class Utils {
 
         return null;
     }
+
+    static sleep = async ms => {
+        await this._control(ms);
+    }
+
+    static _control = ms => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }

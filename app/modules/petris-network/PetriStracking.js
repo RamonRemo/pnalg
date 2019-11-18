@@ -22,9 +22,9 @@ class PetriStracking {
                 break;
 
             case 'LEIA':
-                let value = window.prompt("sometext", "defaultText");
-
                 results = this._read(text);
+                let value = this._reading(results);
+
                 this._appendTr(results.name, value);
 
                 break;
@@ -58,7 +58,9 @@ class PetriStracking {
 
         let name = variable[1].substr(0, (variable[1].length - 2));
 
-        return { name };
+        let values = this._search(name);
+
+        return values;
     }
 
     static _createTr(name, type, value) {
@@ -77,12 +79,66 @@ class PetriStracking {
     }
 
     static _appendTr(name, value) {
-        var tds = document.getElementsByTagName("td");
+        let tds = document.getElementsByTagName("td");
 
-        for (var i = 0; i < tds.length; i++) {
+        for (let i = 0; i < tds.length; i++) {
             if (tds[i].textContent === name) {
                 tds[i + 2].textContent = value;
             }
         }
+    }
+
+    static _search(name) {
+        let tds = document.getElementsByTagName("td");
+        let type = null,
+            value = null;
+
+        for (let i = 0; i < tds.length; i++) {
+            if (tds[i].textContent === name) {
+                type = tds[i + 1].textContent;
+                value = tds[i + 2].textContent;
+
+                break;
+            }
+        }
+
+        return { name, type, value };
+    }
+
+    static _reading(results) {
+        let value;
+
+        switch (results.type) {
+            case 'inteiro':
+                while (!value) {
+                    value = Number(window.prompt("Digite um valor do tipo real:", ""));
+                }
+                break;
+
+            case 'real':
+                while (!value) {
+                    value = Number(window.prompt("Digite um valor do tipo real:", ""));
+                }
+
+                break;
+
+            case 'caractere':
+                while (!value) {
+                    value = window.prompt("Digite uma valor do tipo caractere:", "");
+                }
+
+                value = `"${value}"`;
+
+                break;
+
+            case 'logico':
+                while (!value) {
+                    value = window.prompt("Digite uma valor do tipo lógico:", "");
+                }
+
+                break;
+        }
+
+        return value;
     }
 }

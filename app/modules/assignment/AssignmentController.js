@@ -124,19 +124,24 @@ class AssignmentController {
 
     _getValor() {
         let $ = document.querySelector.bind(document);
+        let input;
 
         switch (this._inputType) {
             case 'inteiro':
-                return $('#atribuicaoValorInt');
+                input = $('#atribuicaoValorInt');
+                return input.value;
 
             case 'real':
-                return $('#atribuicaoValorFloat');
+                input = $('#atribuicaoValorFloat');
+                return input.value;
 
             case 'caractere':
-                return $('#atribuicaoValorChar');
+                input = $('#atribuicaoValorChar');
+                return `"${input.value}"`;
 
             case 'logico':
-                return $('#atribuicaoValorBoolean');
+                input = $('#atribuicaoValorBoolean');
+                return input.value;
         }
     }
 
@@ -144,7 +149,7 @@ class AssignmentController {
         return new Assignment(
             this._inputName,
             this._inputType,
-            this._inputValue.value,
+            this._inputValue,
             this._idElement,
             this._idCode
         );
@@ -160,7 +165,7 @@ class AssignmentController {
             return false;
         }
 
-        if (!this._inputValue.value) {
+        if (!this._inputValue) {
             bootbox.alert({
                 message: 'Qual é o valor para atribuição? 🤷‍♂️🤷‍',
                 animate: true,
@@ -174,7 +179,7 @@ class AssignmentController {
 
     _cleanForm() {
         this._ulSe = null;
-        this._inputValue.value = '';
+        this._inputValue = '';
 
         Utils.focus('modalAtribuicao', 'atribuicao-nome');
     }

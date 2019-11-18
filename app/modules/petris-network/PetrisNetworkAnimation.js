@@ -13,14 +13,6 @@ function petrisNetworkAnimation(arrayCommand) {
 
     captureOfVariables();
 
-    const control = ms => {
-        return new Promise(resolve => setTimeout(resolve, ms))
-    }
-
-    const sleep = async ms => {
-        await control(ms);
-    }
-
     animation();
 
     async function animation() {
@@ -28,12 +20,12 @@ function petrisNetworkAnimation(arrayCommand) {
         let result;
 
         while (true) {
-            result = newAnimation(idx, arrayCommand[idx]);
+            result = await newAnimation(idx, arrayCommand[idx]).then(
+                await Utils.sleep(1500)
+            );
 
             if (result) {
-                await sleep(1500);
                 idx++;
-
                 continue;
             }
 
@@ -41,7 +33,7 @@ function petrisNetworkAnimation(arrayCommand) {
         }
     }
 
-    function newAnimation(idx, command) {
+    async function newAnimation(idx, command) {
         if (idx % 2 === 0 && idx < arrayCommand.length - 2) {
             AnimationComponent.pageScroll(height);
             height = height + 225;
@@ -63,14 +55,22 @@ function petrisNetworkAnimation(arrayCommand) {
         }
 
         if (idx > 1) {
-            document.querySelector(`#${arrayElementsId[idx - 2]}`).classList.remove('tracer');
+            document
+                .querySelector(`#${arrayElementsId[idx - 2]}`)
+                .classList.remove('tracer');
         }
 
         if (idx > 0 && idx < arrayCommand.length - 1) {
-            let component = document.querySelector(`#${arrayElementsId[idx - 1]}`);
-            component.classList.add('tracer');
+            document
+                .querySelector(`#${arrayElementsId[idx - 1]}`)
+                .classList.add('tracer');
 
+            refreshScreen(command);
+
+            await Utils.sleep(200);
             PetriStracking.stracking(arrayElementsId[idx - 1]);
+
+            return true;
         }
 
         refreshScreen(command);
