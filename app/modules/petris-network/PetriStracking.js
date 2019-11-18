@@ -4,30 +4,34 @@ async function stracking(comand) {
 
     switch (Utils.regexTestPetri(comand)) {
         case 'DECLARE':
-            results = await _declaration(text);
-            await _createTr(results.name, results.type, results.value);
+            results = _declaration(text);
+            _createTr(results.name, results.type, results.value);
 
             break;
 
         case 'ATRIBUICAO':
-            awaitresults = await _assignment(text);
-            await _appendTr(results.name, results.value);
+            awaitresults = _assignment(text);
+            _appendTr(results.name, results.value);
 
             break;
 
         case 'LEIA':
-            results = await _read(text);
+            results = _read(text);
             let value = await _reading(results);
 
-            await _appendTr(results.name, value);
+            _appendTr(results.name, value);
 
+            break;
+
+        case 'EXIBA':
+            _show(text);
             break;
 
         default:
             return;
     }
 
-    async function _declaration(text) {
+    function _declaration(text) {
         let variable = text.split(" : ");
 
         let name = variable[1].substr(0, (variable[1].length - 1));
@@ -37,7 +41,7 @@ async function stracking(comand) {
         return { name, type, value };
     }
 
-    async function _assignment(text) {
+    function _assignment(text) {
         let variable = text.split(' <− ');
 
         let name = variable[0].substr(0, (variable[0].length));
@@ -46,7 +50,7 @@ async function stracking(comand) {
         return { name, value };
     }
 
-    async function _read(text) {
+    function _read(text) {
         let variable = text.split('(');
 
         let name = variable[1].substr(0, (variable[1].length - 2));
@@ -56,7 +60,21 @@ async function stracking(comand) {
         return values;
     }
 
-    async function _createTr(name, type, value) {
+    function _show(text) {
+        let variable = text.split('(');
+        let tmp = variable[1].substr(0, (variable[1].length - 2));
+        let command = tmp.split(',');
+
+        if (command.length > 2) {
+            command.forEach(element => {
+                console.log(element);
+            });
+        }
+
+        console.log(command);
+    }
+
+    function _createTr(name, type, value) {
         let tr = document.createElement('tr');
 
         let td = `<tr>
@@ -71,7 +89,7 @@ async function stracking(comand) {
         tbody.appendChild(tr);
     }
 
-    async function _appendTr(name, value) {
+    function _appendTr(name, value) {
         let tds = document.getElementsByTagName("td");
 
         for (let i = 0; i < tds.length; i++) {
@@ -81,7 +99,7 @@ async function stracking(comand) {
         }
     }
 
-    async function _search(name) {
+    function _search(name) {
         let tds = document.getElementsByTagName("td");
         let type = null,
             value = null;
@@ -121,7 +139,7 @@ async function stracking(comand) {
             case 'caractere':
                 value = await prompt(
                     'text',
-                    'Insira um valor válido:',
+                    'Insira uma cadeia de caracteres:',
                     results.name
                 );
                 value = `"${value}"`;
