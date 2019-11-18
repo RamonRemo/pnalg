@@ -68,7 +68,7 @@ function petrisNetworkAnimation(arrayCommand) {
             refreshScreen(command);
 
             await Utils.sleep(200);
-            PetriStracking.stracking(arrayElementsId[idx - 1]);
+            await stracking(arrayElementsId[idx - 1]);
 
             return true;
         }

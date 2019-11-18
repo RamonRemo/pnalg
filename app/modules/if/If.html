@@ -36,22 +36,3 @@
         <button class='btn btn-primary' data-dismiss='modal'>Salvar</button>
     </div>
 </form>
-
-<script>
-    $(document).ready(function() {
-        $('#open-modal, button').click(function() {
-            let target = $(this).attr('data-target');
-            $(`${target}`).modal({
-                show: true
-            })
-        });
-
-        $(document).on('show.bs.modal', '.modal', function(event) {
-            let zIndex = 1040 + (10 * $('.modal:visible').length);
-            $(this).css('z-index', zIndex);
-            setTimeout(function() {
-                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
-            }, 0);
-        });
-    });
-</script>

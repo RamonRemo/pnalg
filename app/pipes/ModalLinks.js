@@ -7,6 +7,31 @@ $(document).ready(function() {
     $('#body-rede').load('app/modules/petris-network/Petris.html');
 });
 
+$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+
+$(document).ready(function() {
+    $('#open-modal, button').click(function() {
+        let target = $(this).attr('data-target');
+
+        $(`${target}`).modal({
+            show: true
+        })
+    });
+
+    $(document).on('show.bs.modal', '.modal', function(event) {
+        let zIndex = 1040 + (10 * $('.modal:visible').length);
+
+        $(this).css('z-index', zIndex);
+
+        setTimeout(function() {
+            $('.modal-backdrop')
+                .not('.modal-stack')
+                .css('z-index', zIndex - 1)
+                .addClass('modal-stack');
+        }, 0);
+    });
+});
+
 $('#step4').click(function() {
     $('#area-codigo-simulador').html('');
 
@@ -40,10 +65,10 @@ function loading() {
 }
 
 function alert() {
-    swal({
+    Swal.fire({
         title: 'Atenção',
         text: 'Não há dados para criar o modelo!',
-        icon: 'warning',
+        type: 'warning',
         closeOnConfirm: false
     });
 }

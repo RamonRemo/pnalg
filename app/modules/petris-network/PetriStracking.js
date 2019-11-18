@@ -1,40 +1,33 @@
-class PetriStracking {
+async function stracking(comand) {
+    let text = document.querySelector(`#${comand}`).textContent;
+    let results;
 
-    constructor() {
-        throw new Error('PetriStracking não pode ser instanciada');
+    switch (Utils.regexTestPetri(comand)) {
+        case 'DECLARE':
+            results = await _declaration(text);
+            await _createTr(results.name, results.type, results.value);
+
+            break;
+
+        case 'ATRIBUICAO':
+            awaitresults = await _assignment(text);
+            await _appendTr(results.name, results.value);
+
+            break;
+
+        case 'LEIA':
+            results = await _read(text);
+            let value = await _reading(results);
+
+            await _appendTr(results.name, value);
+
+            break;
+
+        default:
+            return;
     }
 
-    static stracking(comand) {
-        let text = document.querySelector(`#${comand}`).textContent;
-        let results;
-
-        switch (Utils.regexTestPetri(comand)) {
-            case 'DECLARE':
-                results = this._declaration(text);
-                this._createTr(results.name, results.type, results.value);
-
-                break;
-
-            case 'ATRIBUICAO':
-                results = this._assignment(text);
-                this._appendTr(results.name, results.value);
-
-                break;
-
-            case 'LEIA':
-                results = this._read(text);
-                let value = this._reading(results);
-
-                this._appendTr(results.name, value);
-
-                break;
-
-            default:
-                return;
-        }
-    }
-
-    static _declaration(text) {
+    async function _declaration(text) {
         let variable = text.split(" : ");
 
         let name = variable[1].substr(0, (variable[1].length - 1));
@@ -44,7 +37,7 @@ class PetriStracking {
         return { name, type, value };
     }
 
-    static _assignment(text) {
+    async function _assignment(text) {
         let variable = text.split(' <− ');
 
         let name = variable[0].substr(0, (variable[0].length));
@@ -53,24 +46,24 @@ class PetriStracking {
         return { name, value };
     }
 
-    static _read(text) {
+    async function _read(text) {
         let variable = text.split('(');
 
         let name = variable[1].substr(0, (variable[1].length - 2));
 
-        let values = this._search(name);
+        let values = _search(name);
 
         return values;
     }
 
-    static _createTr(name, type, value) {
+    async function _createTr(name, type, value) {
         let tr = document.createElement('tr');
 
         let td = `<tr>
-                    <td>${name}</td>
-                    <td>${type}</td>
-                    <td>${value}</td>
-                </tr>`
+                        <td>${name}</td>
+                        <td>${type}</td>
+                        <td>${value}</td>
+                    </tr>`
 
         tr.innerHTML = td;
 
@@ -78,7 +71,7 @@ class PetriStracking {
         tbody.appendChild(tr);
     }
 
-    static _appendTr(name, value) {
+    async function _appendTr(name, value) {
         let tds = document.getElementsByTagName("td");
 
         for (let i = 0; i < tds.length; i++) {
@@ -88,7 +81,7 @@ class PetriStracking {
         }
     }
 
-    static _search(name) {
+    async function _search(name) {
         let tds = document.getElementsByTagName("td");
         let type = null,
             value = null;
@@ -105,40 +98,63 @@ class PetriStracking {
         return { name, type, value };
     }
 
-    static _reading(results) {
+    async function _reading(results) {
         let value;
 
         switch (results.type) {
             case 'inteiro':
-                while (!value) {
-                    value = Number(window.prompt("Digite um valor do tipo real:", ""));
-                }
+                value = await prompt(
+                    'number',
+                    'Insira um valor:',
+                    results.name
+                );
                 break;
 
             case 'real':
-                while (!value) {
-                    value = Number(window.prompt("Digite um valor do tipo real:", ""));
-                }
-
+                value = await prompt(
+                    'number',
+                    'Insira um valor:',
+                    results.name
+                );
                 break;
 
             case 'caractere':
-                while (!value) {
-                    value = window.prompt("Digite uma valor do tipo caractere:", "");
-                }
-
+                value = await prompt(
+                    'text',
+                    'Insira um valor válido:',
+                    results.name
+                );
                 value = `"${value}"`;
-
                 break;
 
             case 'logico':
-                while (!value) {
-                    value = window.prompt("Digite uma valor do tipo lógico:", "");
-                }
-
+                value = await prompt(
+                    'select',
+                    '',
+                    results.name
+                );
                 break;
         }
 
         return value;
+    }
+
+    async function prompt(type, placeholder, name) {
+        let { value: data } = await Swal.fire({
+            title: `Leitura da Variável: ${name}`,
+            input: type,
+            inputPlaceholder: placeholder,
+            inputOptions: {
+                true: 'true',
+                false: 'false'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Valor Obrigatório!';
+                }
+            }
+        });
+
+        return data;
     }
 }
