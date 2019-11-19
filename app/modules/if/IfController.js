@@ -21,7 +21,7 @@ class IfController {
 
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-            let elemento = Utils.getElement(this._listIf, li.id);
+            let elemento = CommonUtils.getElement(this._listIf, li.id);
             this._idCode = elemento.idCode;
 
         } catch {
@@ -53,7 +53,7 @@ class IfController {
 
         let li = event.target.parentNode.parentNode;
 
-        let element = Utils.getElement(this._listIf, li.id);
+        let element = CommonUtils.getElement(this._listIf, li.id);
         this._listIf.apaga(element.id);
 
         let spans = li.parentNode.children;

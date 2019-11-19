@@ -2,7 +2,7 @@ async function stracking(comand) {
     let text = document.querySelector(`#${comand}`).textContent;
     let results;
 
-    switch (Utils.regexTestPetri(comand)) {
+    switch (CommonUtils.regexTestPetri(comand)) {
         case 'DECLARE':
             results = _declaration(text);
             _createTr(results.name, results.type, results.value);
@@ -10,7 +10,7 @@ async function stracking(comand) {
             break;
 
         case 'ATRIBUICAO':
-            awaitresults = _assignment(text);
+            results = _assignment(text);
             _appendTr(results.name, results.value);
 
             break;
@@ -24,7 +24,7 @@ async function stracking(comand) {
             break;
 
         case 'EXIBA':
-            _show(text);
+            await _show(text);
             break;
 
         default:
@@ -60,18 +60,31 @@ async function stracking(comand) {
         return values;
     }
 
-    function _show(text) {
+    async function _show(text) {
         let variable = text.split('(');
         let tmp = variable[1].substr(0, (variable[1].length - 2));
         let command = tmp.split(',');
+        let str;
 
-        if (command.length > 2) {
-            command.forEach(element => {
-                console.log(element);
-            });
+        if (command.length > 1) {
+            let text = CommonUtils.replaceAll(command[0], '"', "").trim();
+            let keyword = CommonUtils.replaceAll(command[1], '"', "").trim();
+
+            results = _search(keyword);
+
+            str = `${text} ${results.value}`;
+
+            await Swal.fire(str);
+
+            return;
         }
 
-        console.log(command);
+        let keyword = CommonUtils.replaceAll(command[0], '"', "").trim();
+        results = _search(keyword);
+
+        str = (results.value ? results.value : results.name);
+
+        await Swal.fire(str);
     }
 
     function _createTr(name, type, value) {
@@ -121,7 +134,7 @@ async function stracking(comand) {
 
         switch (results.type) {
             case 'inteiro':
-                value = await prompt(
+                value = await promptWindow(
                     'number',
                     'Insira um valor:',
                     results.name
@@ -129,7 +142,7 @@ async function stracking(comand) {
                 break;
 
             case 'real':
-                value = await prompt(
+                value = await promptWindow(
                     'number',
                     'Insira um valor:',
                     results.name
@@ -137,7 +150,7 @@ async function stracking(comand) {
                 break;
 
             case 'caractere':
-                value = await prompt(
+                value = await promptWindow(
                     'text',
                     'Insira uma cadeia de caracteres:',
                     results.name
@@ -146,7 +159,7 @@ async function stracking(comand) {
                 break;
 
             case 'logico':
-                value = await prompt(
+                value = await promptWindow(
                     'select',
                     '',
                     results.name
@@ -157,7 +170,26 @@ async function stracking(comand) {
         return value;
     }
 
-    async function prompt(type, placeholder, name) {
+    async function promptWindow(type, placeholder, name) {
+        let { value: data } = await Swal.fire({
+            title: `Leitura da Variável: ${name}`,
+            input: type,
+            inputPlaceholder: placeholder,
+            inputOptions: {
+                true: 'true',
+                false: 'false'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Valor Obrigatório!';
+                }
+            }
+        });
+
+        return data;
+    }
+
+    async function promptWindow(type, placeholder, name) {
         let { value: data } = await Swal.fire({
             title: `Leitura da Variável: ${name}`,
             input: type,

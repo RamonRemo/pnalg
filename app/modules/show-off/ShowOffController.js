@@ -4,6 +4,7 @@ class ShowOffController {
         this._outputField = null;
         this._showOff;
         this._inputName;
+        this._text;
         this._id = -1;
         this._ul;
         this._ulSe;
@@ -18,7 +19,7 @@ class ShowOffController {
         try {
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-            let elemento = Utils.getElement(this._listShowOff, li.id);
+            let elemento = CommonUtils.getElement(this._listShowOff, li.id);
             this._idCode = elemento.idCode;
         } catch {
             return;
@@ -31,18 +32,29 @@ class ShowOffController {
 
         let li = this._ulSe.children[0];
 
-        let elemento = Utils.getElement(ifController._listIf, li.id);
+        let elemento = CommonUtils.getElement(ifController._listIf, li.id);
         this._idCode = elemento.idCode;
     }
 
     catch (event) {
         event.preventDefault();
-        this._outputField = document.querySelector('#exiba-saida')
-        this._outputField.innerHTML = `'${event.target.value}'`;
+
+        this._outputField = document.querySelector('#exiba-saida');
+
+        if (!event.target.value) {
+            this._text = null;
+            return;
+        }
+
+        this._text = `"${event.target.value}"`;
+        this._outputField.innerHTML = this._text;
     }
 
     addVar(event) {
         event.preventDefault();
+
+        this._outputField = document.querySelector('#exiba-saida');
+        this._outputField.innerHTML = ' ';
 
         let field = document.querySelector('#exiba-variavel');
         this._inputName = field.options[field.selectedIndex].text;
@@ -57,7 +69,12 @@ class ShowOffController {
             return;
         }
 
-        this._outputField.innerHTML = this._outputField.value + ',' + this._inputName;
+        if (this._text) {
+            this._outputField.innerHTML = `${this._text}, ${this._inputName}`;
+            return;
+        }
+
+        this._outputField.innerHTML = this._inputName;
     }
 
     toSave(event) {
@@ -90,8 +107,8 @@ class ShowOffController {
         let ul = li.parentNode;
 
         ul.removeChild(li);
-        let id = Utils.getNumber(li.id);
-        let element = Utils.getElement(this._listShowOff, id);
+        let id = CommonUtils.getNumber(li.id);
+        let element = CommonUtils.getElement(this._listShowOff, id);
 
         this._listShowOff.remove(id);
 
@@ -105,7 +122,7 @@ class ShowOffController {
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
 
-            let id = Utils.getNumber(li.id);
+            let id = CommonUtils.getNumber(li.id);
             this._listShowOff.remove(id);
 
             li.remove();
@@ -138,6 +155,6 @@ class ShowOffController {
         this._outputField.innerHTML = '';
         this._outputField = null;
 
-        Utils.focus('modalExiba', 'exiba-texto');
+        CommonUtils.focus('modalExiba', 'exiba-texto');
     }
 }

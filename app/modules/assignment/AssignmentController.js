@@ -18,7 +18,7 @@ class AssignmentController {
         try {
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-            let element = Utils.getElement(this._listAssignments, li.id);
+            let element = CommonUtils.getElement(this._listAssignments, li.id);
             this._idCode = element.idCode;
         } catch {
             return;
@@ -30,7 +30,7 @@ class AssignmentController {
         addCode('code-atribuicao');
 
         let li = this._ulSe.children[0];
-        let element = Utils.getElement(ifController._listIf, li.id);
+        let element = CommonUtils.getElement(ifController._listIf, li.id);
 
         this._idCode = element.idCode;
     }
@@ -71,9 +71,9 @@ class AssignmentController {
         let ul = li.parentNode;
 
         ul.removeChild(li);
-        let id = Utils.getNumber(li.id);
+        let id = CommonUtils.getNumber(li.id);
 
-        let element = Utils.getElement(this._listAssignments, id);
+        let element = CommonUtils.getElement(this._listAssignments, id);
         this._listAssignments.remove(element.id);
 
         this._directiveAssignments._codeRemove(element, ul);
@@ -86,7 +86,7 @@ class AssignmentController {
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
 
-            let id = Utils.getNumber(li.id);
+            let id = CommonUtils.getNumber(li.id);
             this._listAssignments.remove(id);
 
             li.remove();
@@ -181,7 +181,7 @@ class AssignmentController {
         this._ulSe = null;
         this._inputValue = '';
 
-        Utils.focus('modalAtribuicao', 'atribuicao-nome');
+        CommonUtils.focus('modalAtribuicao', 'atribuicao-nome');
     }
 
     _dysplayNone(type) {

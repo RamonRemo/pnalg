@@ -20,7 +20,7 @@ class DeclarationController {
 
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-            let elemento = Utils.getElement(this._listDeclaration, li.id);
+            let elemento = CommonUtils.getElement(this._listDeclaration, li.id);
             this._idCode = elemento.idCode;
 
         } catch {
@@ -32,7 +32,7 @@ class DeclarationController {
         this._ulSe = ifController._ul;
         let li = this._ulSe.children[0];
 
-        let elemento = Utils.getElement(ifController._listIf, li.id);
+        let elemento = CommonUtils.getElement(ifController._listIf, li.id);
         this._idCode = elemento.idCode;
     }
 
@@ -70,9 +70,9 @@ class DeclarationController {
         let ul = li.parentNode;
 
         ul.removeChild(li);
-        let id = Utils.getNumber(li.id);
+        let id = CommonUtils.getNumber(li.id);
 
-        let element = Utils.getElement(this._listDeclaration, id);
+        let element = CommonUtils.getElement(this._listDeclaration, id);
         this._listDeclaration.remove(id);
 
 
@@ -86,7 +86,7 @@ class DeclarationController {
 
         for (let index = 0; index < amount; index++) {
             li = element.lastChild.firstChild;
-            let id = Utils.getNumber(li.id);
+            let id = CommonUtils.getNumber(li.id);
 
             this._listDeclaration.remove(id);
             this._directiveDeclaration.updateOptions(this._listDeclaration);
@@ -159,6 +159,6 @@ class DeclarationController {
         this._ulSe = null;
 
         document.querySelector('#declaracoes-nome').value = '';
-        Utils.focus('modalDeclare', 'declaracoes-nome');
+        CommonUtils.focus('modalDeclare', 'declaracoes-nome');
     }
 }

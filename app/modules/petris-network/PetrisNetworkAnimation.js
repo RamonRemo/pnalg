@@ -21,7 +21,7 @@ function petrisNetworkAnimation(arrayCommand) {
 
         while (true) {
             result = await newAnimation(idx, arrayCommand[idx]).then(
-                await Utils.sleep(1500)
+                await CommonUtils.sleep(1500)
             );
 
             if (result) {
@@ -67,7 +67,7 @@ function petrisNetworkAnimation(arrayCommand) {
 
             refreshScreen(command);
 
-            await Utils.sleep(200);
+            await CommonUtils.sleep(200);
             await stracking(arrayElementsId[idx - 1]);
 
             return true;
@@ -119,7 +119,7 @@ function petrisNetworkAnimation(arrayCommand) {
         }
 
         arrayElements.forEach(element => {
-            if (Utils.regexTestPetri(element.id)) {
+            if (CommonUtils.regexTestPetri(element.id)) {
                 arrayElementsId.push(element.id);
             }
         });

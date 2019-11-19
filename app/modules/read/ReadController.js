@@ -19,7 +19,7 @@ class ReadController {
 
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
-            let elemento = Utils.getElement(this._listRead, li.id);
+            let elemento = CommonUtils.getElement(this._listRead, li.id);
             this._idCode = elemento.idCode;
 
         } catch {
@@ -33,7 +33,7 @@ class ReadController {
 
         let li = this._ulSe.children[0];
 
-        let elemento = Utils.getElement(ifController._listIf, li.id);
+        let elemento = CommonUtils.getElement(ifController._listIf, li.id);
         this._idCode = elemento.idCode;
     }
 
@@ -75,8 +75,8 @@ class ReadController {
         let ul = li.parentNode;
 
         ul.removeChild(li);
-        let id = Utils.getNumber(li.id);
-        let element = Utils.getElement(this._listRead, id);
+        let id = CommonUtils.getNumber(li.id);
+        let element = CommonUtils.getElement(this._listRead, id);
 
         this._listRead.remove(id);
 

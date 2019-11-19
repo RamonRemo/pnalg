@@ -90,8 +90,8 @@ function petrisNetwork(event) {
 
         arrayElements.forEach(element => {
             for (value of element) {
-                if (Utils.regexTest(value.id)) {
-                    arrayCommand.push(Utils.regexTest(value.id));
+                if (CommonUtils.regexTest(value.id)) {
+                    arrayCommand.push(CommonUtils.regexTest(value.id));
                 }
             }
         });

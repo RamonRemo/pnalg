@@ -1,7 +1,7 @@
-class Utils {
+class CommonUtils {
 
     constructor() {
-        throw new Error('Utils não pode ser instanciada');
+        throw new Error('CommonUtils não pode ser instanciada');
     }
 
     static focus(id, campo) {
@@ -16,13 +16,17 @@ class Utils {
 
         array.forEach(objetos => {
             objetos.forEach(element => {
-                if (element.id == Utils.getNumber(id)) {
+                if (element.id == CommonUtils.getNumber(id)) {
                     variable = element;
                 }
             });
         });
 
         return variable;
+    }
+
+    static replaceAll(str, find, replace) {
+        return str.replace(new RegExp(find, 'g'), replace);
     }
 
     static getNumber(string) {

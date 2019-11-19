@@ -95,7 +95,7 @@ class StateComponent {
     }
 
     static _parallelLine(x, y, context, operation) {
-        let valueX = Utils.arithmeticOperation(x, 63, operation);
+        let valueX = CommonUtils.arithmeticOperation(x, 63, operation);
 
         context.beginPath();
         context.moveTo(x, y - 25);
