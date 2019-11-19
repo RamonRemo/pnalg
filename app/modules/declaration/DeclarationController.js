@@ -13,22 +13,19 @@ class DeclarationController {
     }
 
     setId(event) {
-
         event.preventDefault();
 
         try {
-
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
             let elemento = CommonUtils.getElement(this._listDeclaration, li.id);
             this._idCode = elemento.idCode;
-
         } catch {
             return;
         }
     }
 
-    arrowIdComponentSE() {
+    enterComponentIdIf() {
         this._ulSe = ifController._ul;
         let li = this._ulSe.children[0];
 
@@ -60,7 +57,7 @@ class DeclarationController {
 
         this._cleanForm();
 
-        $('#modalDeclare').modal('hide');
+        $('#modal-declaration').modal('hide');
     }
 
     remove(event) {
@@ -159,6 +156,6 @@ class DeclarationController {
         this._ulSe = null;
 
         document.querySelector('#declaracoes-nome').value = '';
-        CommonUtils.focus('modalDeclare', 'declaracoes-nome');
+        CommonUtils.focus('modal-declaration', 'declaracoes-nome');
     }
 }

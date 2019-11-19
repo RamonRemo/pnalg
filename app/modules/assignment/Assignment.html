@@ -1,24 +1,24 @@
-<form id='form-atribuicao' onsubmit='assignmentController.toSave(event)'>
+<form onsubmit='assignmentController.toSave(event)'>
     <div class='form-group'>
-        <label for='atribuicao-nome'>Variaveis Declaras</label>
-        <select id='atribuicao-nome' class='atribuicao-nome form-control' onclick='assignmentController.openForm(event)'>
+        <label for='assignment-name'>Variaveis Declaras</label>
+        <select id='assignment-name' class='assignment-name form-control' onclick='assignmentController.openForm(event)'>
         </select>
     </div>
-    <div id='inteiro' class='form-group atribuicao mt-3'>
-        <label for='atribuicaoValorInt'>Tipo de Dados Inteiro</label>
-        <input id='atribuicaoValorInt' class='form-control' type='number' placeholder='aceita números inteiros'>
+    <div id='inteiro' class='form-group assignment mt-3'>
+        <label for='assignment-value-int'>Tipo de Dados Inteiro</label>
+        <input id='assignment-value-int' class='form-control' type='number' placeholder='aceita números inteiros'>
     </div>
-    <div id='real' class='form-group atribuicao mt-3'>
-        <label for='atribuicaoValorFloat'>Tipo de Dados Real</label>
-        <input id='atribuicaoValorFloat' class='form-control' type='number' step='0.1' placeholder='aceita números decimais'>
+    <div id='real' class='form-group assignment mt-3'>
+        <label for='assignment-value-float'>Tipo de Dados Real</label>
+        <input id='assignment-value-float' class='form-control' type='number' step='0.1' placeholder='aceita números decimais'>
     </div>
-    <div id='caractere' class='form-group atribuicao mt-3'>
-        <label for='atribuicaoValorChar'>Tipo de Dados Caractere</label>
-        <input id='atribuicaoValorChar' class='form-control' type='text' placeholder='aceita cadeias de caractere'>
+    <div id='caractere' class='form-group assignment mt-3'>
+        <label for='assignment-value-char'>Tipo de Dados Caractere</label>
+        <input id='assignment-value-char' class='form-control' type='text' placeholder='aceita cadeias de caractere'>
     </div>
-    <div id='logico' class='form-group atribuicao mt-3'>
-        <label for='atribuicaoValorBoolean'>Tipo de Dados Lógico</label>
-        <select id='atribuicaoValorBoolean' class='form-control'>
+    <div id='logico' class='form-group assignment mt-3'>
+        <label for='assignment-value-boolean'>Tipo de Dados Lógico</label>
+        <select id='assignment-value-boolean' class='form-control'>
             <option>true</option>
             <option>false</option>
         </select>

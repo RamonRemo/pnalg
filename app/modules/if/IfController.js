@@ -18,12 +18,10 @@ class IfController {
         event.preventDefault();
 
         try {
-
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
             let elemento = CommonUtils.getElement(this._listIf, li.id);
             this._idCode = elemento.idCode;
-
         } catch {
             return;
         }
@@ -32,7 +30,7 @@ class IfController {
     toSave(event) {
         event.preventDefault();
 
-        this._setaVar();
+        this._insertVariable();
 
         if (!this._validations()) {
             return;
@@ -84,16 +82,16 @@ class IfController {
         this.toSave(event);
     }
 
-    _setaVar() {
-        let field = document.querySelector('#se-variavel');
+    _insertVariable() {
+        let field = document.querySelector('#variable-if');
         this._var1_name = field.options[field.selectedIndex].text;
         this._var1_type = field.options[field.selectedIndex].value;
 
-        let field2 = document.querySelector('#se-variavel-secundaria');
+        let field2 = document.querySelector('#if-secondary-variable');
         this._var2_name = field2.options[field2.selectedIndex].text;
         this._var2_type = field2.options[field2.selectedIndex].value;
 
-        let conditional = document.querySelector('#se-relacionais');
+        let conditional = document.querySelector('#if-relational');
         this._conditional = conditional.options[conditional.selectedIndex].text;
 
         this._id = this._id + 1;

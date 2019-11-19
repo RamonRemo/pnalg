@@ -3,7 +3,7 @@ function declaration(id, nodeCopy) {
     let idCode = addCode(id, 'code-declaracao');
     declarationController._idCode = idCode;
 
-    return '#modalDeclare';
+    return '#modal-declaration';
 }
 
 function showOff(id, nodeCopy) {
@@ -11,7 +11,7 @@ function showOff(id, nodeCopy) {
     let idCode = addCode(id, 'code-exiba');
     showOffController._idCode = idCode;
 
-    return '#modalExiba';
+    return '#modal-display';
 }
 
 function read(id, nodeCopy, listVariable) {
@@ -24,7 +24,7 @@ function read(id, nodeCopy, listVariable) {
     let idCode = addCode(id, 'code-leia');
     readController._idCode = idCode;
 
-    return '#modalLeia';
+    return '#modal-read';
 }
 
 function assignment(id, nodeCopy, listVariable) {
@@ -34,10 +34,10 @@ function assignment(id, nodeCopy, listVariable) {
     }
 
     addUl(id, nodeCopy, 'atribuicoes');
-    let idCode = addCode(id, 'code-atribuicao');
+    let idCode = addCode(id, 'code-assignment');
     assignmentController._idCode = idCode;
 
-    return '#modalAtribuicao';
+    return '#modal-assignment';
 }
 
 function iff(id, nodeCopy, listVariable) {
@@ -47,7 +47,7 @@ function iff(id, nodeCopy, listVariable) {
     }
 
     let se = nodeCopy.childNodes[3];
-    se.className = 'area-se';
+    se.className = 'area-if';
 
     let fimse = document.createElement('button');
     fimse.id = 'btn-fim-se'
@@ -55,24 +55,24 @@ function iff(id, nodeCopy, listVariable) {
     fimse.textContent = 'Fim se';
     nodeCopy.appendChild(fimse);
 
-    $('#salva-alteracoes').find('.btn').removeAttr('disabled');
+    $('#save-changes').find('.btn').removeAttr('disabled');
 
     let idCode = addCode(id, 'code-se');
     ifController._idCode = idCode;
 
-    return '#modalSe';
+    return '#modal-conditional-deviation';
 }
 
 function addUl(id, nodeCopy, name) {
     let ul = document.createElement('ul');
     ul.setAttribute('id', `${name}-${id}`);
-    ul.className = 'list-group list-group-flush mt-2 componente-variavel-ul';
+    ul.className = 'list-group list-group-flush mt-2 component-variavel-ul';
 
     nodeCopy.appendChild(ul);
 }
 
 function addCode(id, name) {
-    let codeArea = document.querySelector('#area-codigo');
+    let codeArea = document.querySelector('#pseudocode-area');
     let code = document.createElement('code');
     code.setAttribute('id', `${name}-${id}`);
 
@@ -106,11 +106,11 @@ function removeElement(data, dragID, dropID) {
 }
 
 function removeList(str, element) {
-    const declare = /componente-declare-\d/;
-    const leia = /componente-leia-\d/;
-    const exiba = /componente-exiba-\d/;
-    const atribuicao = /componente-atribuicao-\d/;
-    const se = /componente-se-\d/;
+    const declare = /declaration-component-\d/;
+    const leia = /reading-component-\d/;
+    const exiba = /display-component-\d/;
+    const assignment = /attribution-component-\d/;
+    const se = /conditional-branch-component-\d/;
     let qtd = element.lastChild.childNodes.length;
 
     if (declare.test(str)) {
@@ -128,13 +128,13 @@ function removeList(str, element) {
         return;
     }
 
-    if (atribuicao.test(str)) {
+    if (assignment.test(str)) {
         assignmentController.removeAll(element, qtd);
         return;
     }
 
     if (se.test(str)) {
-        let span = $(`#${element.id}`).find('#area-se').find('.badge');
+        let span = $(`#${element.id}`).find('#area-if').find('.badge');
         let array = $.makeArray(span);
 
         array.forEach(element => {

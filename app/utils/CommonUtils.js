@@ -51,10 +51,10 @@ class CommonUtils {
     }
 
     static regexTest(str) {
-        const declare = /declareCode-\d-log/;
+        const declare = /declaration-code-\d-log/;
         const leia = /leiaCode-\d-log/;
         const exiba = /exibaCode-\d-log/;
-        const atribuicao = /atribuiCode-\d-log/;
+        const assignment = /atribuiCode-\d-log/;
         const se = /ifCode-\d-log/;
         const codeSe = /fimse/;
 
@@ -70,7 +70,7 @@ class CommonUtils {
             return 'EXIBA';
         }
 
-        if (atribuicao.test(str)) {
+        if (assignment.test(str)) {
             return 'ATRIBUICAO';
         }
 
@@ -86,10 +86,10 @@ class CommonUtils {
     }
 
     static regexTestPetri(str) {
-        const declare = /declareCode-\d-log-petri/;
+        const declare = /declaration-code-\d-log-petri/;
         const leia = /leiaCode-\d-log-petri/;
         const exiba = /exibaCode-\d-log-petri/;
-        const atribuicao = /atribuiCode-\d-log-petri/;
+        const assignment = /atribuiCode-\d-log-petri/;
         const se = /ifCode-\d-log-petri/;
         const fimse = /fimse-petri/;
 
@@ -105,7 +105,7 @@ class CommonUtils {
             return 'EXIBA';
         }
 
-        if (atribuicao.test(str)) {
+        if (assignment.test(str)) {
             return 'ATRIBUICAO';
         }
 

@@ -1,4 +1,5 @@
 class AnimationComponent {
+
     constructor() {
         throw new Error('AnimationComponent não pode ser instanciada');
     }

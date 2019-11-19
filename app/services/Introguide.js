@@ -1,5 +1,4 @@
 function introguide(event) {
-
     event.preventDefault()
 
     let introguide = introJs();

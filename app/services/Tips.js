@@ -1,10 +1,9 @@
 $(function() {
-
     let dicas = introJs();
 
     dicas.setOptions({
         hints: [{
-                element: '#componente-declare',
+                element: '#declaration-component',
                 hint: `Declaração de variáveis: <br>
                     <ul id='ul-dicas'>
                         <li>
@@ -13,7 +12,7 @@ $(function() {
                     </ul>`
             },
             {
-                element: '#componente-leia',
+                element: '#reading-component',
                 hint: `Entrada de Dados: <br>
                     <ul id='ul-dicas'>
                         <li>
@@ -22,7 +21,7 @@ $(function() {
                     </ul>`
             },
             {
-                element: '#componente-exiba',
+                element: '#display-component',
                 hint: `Saída de Dados: <br>
                     <ul id='ul-dicas'>
                         <li>
@@ -31,7 +30,7 @@ $(function() {
                     </ul>`
             },
             {
-                element: '#componente-atribuicao',
+                element: '#attribution-component',
                 hint: `Atribuição ( ⇦ ):<br>
                     <ul id='ul-dicas'>
                         <li>
@@ -40,7 +39,7 @@ $(function() {
                     </ul>`
             },
             {
-                element: '#componente-se',
+                element: '#conditional-branch-component',
                 hint: `Comando Condicional SE:<br>
                     <ul id='ul-dicas'>
                         <li>

@@ -7,7 +7,7 @@ class DirectiveAssignments extends Directive {
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
         li.id = `atribuiCode-${model.id}`;
-        li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
+        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.name} <− ${model.value};`);
         li.appendChild(obj);
@@ -25,7 +25,7 @@ class DirectiveAssignments extends Directive {
 
     _addDeleteButton(li) {
         let span = document.createElement('span');
-        span.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="assignmentController.remove(event);">x</span>';
+        span.innerHTML = '<span class="badge badge-primary badge-pill delete" onclick="assignmentController.remove(event);">x</span>';
 
         li.appendChild(span);
     }

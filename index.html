@@ -33,45 +33,45 @@
         <section>
             <div class='row'>
                 <!-- Componentes -->
-                <div id='step1' class='col tracado' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
+                <div id='step1' class='col strokes' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
                     <div class='mt-4' data-id='components'>
                         <!-- Componente Declare -->
-                        <div id='componente-declare' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-declare' type='button' class='list-group-item btn' onclick='declarationController.setId(event)'>Declare</button>
+                        <div id='declaration-component' ondragstart='dragStartHandler(event);' draggable='true'>
+                            <button type='button' class='list-group-item btn' onclick='declarationController.setId(event)'>Declare</button>
                         </div>
                         <!-- Componente Leia -->
-                        <div id='componente-leia' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-leia' type='button' class='list-group-item btn' onclick='readController.setId(event)'>Leia</button>
+                        <div id='reading-component' ondragstart='dragStartHandler(event);' draggable='true'>
+                            <button type='button' class='list-group-item btn' onclick='readController.setId(event)'>Leia</button>
                         </div>
                         <!-- Componente Exiba -->
-                        <div id='componente-exiba' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-exiba' type='button' class='list-group-item btn' onclick='showOffController.setId(event)'>Exiba</button>
+                        <div id='display-component' ondragstart='dragStartHandler(event);' draggable='true'>
+                            <button type='button' class='list-group-item btn' onclick='showOffController.setId(event)'>Exiba</button>
                         </div>
                         <!-- Componente Atribuicao -->
-                        <div id='componente-atribuicao' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-atribuicao' type='button' class='list-group-item btn' onclick='assignmentController.setId(event)'>Atribuição</button>
+                        <div id='attribution-component' ondragstart='dragStartHandler(event);' draggable='true'>
+                            <button type='button' class='list-group-item btn' onclick='assignmentController.setId(event)'>Atribuição</button>
                         </div>
                         <!-- Componente Se -->
-                        <div id='componente-se' ondragstart='dragStartHandler(event);' draggable='true'>
-                            <button id='btn-se' type='button' class='list-group-item btn' onclick='ifController.setId(event)'>Se</button>
-                            <div id='area-se'> </div>
+                        <div id='conditional-branch-component' ondragstart='dragStartHandler(event);' draggable='true'>
+                            <button type='button' class='list-group-item btn' onclick='ifController.setId(event)'>Se</button>
+                            <div id='area-if'> </div>
                         </div>
                     </div>
                 </div>
                 <!-- Area -->
-                <div id='step2' class='col tracado' data-id='area'>
+                <div id='step2' class='col strokes' data-id='area'>
                     <div id='target' class='area' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
                     </div>
                 </div>
                 <!-- Run -->
-                <div id='step3' class='col tracado'>
-                    <div id='areaCode'>
+                <div id='step3' class='col strokes'>
+                    <div id='area-code'>
                         <div class='area container section mt-3'>
                             <pre>
                             <h3>Algoritmo</h3>
                             <code>
 Inicio
-<div id='area-codigo'></div>
+<div id='pseudocode-area'></div>
 Fim
                             </code>
                         </pre>
@@ -88,7 +88,7 @@ Fim
     </main>
 
     <!-- Modal Declare -->
-    <div id='modalDeclare' class='modal fade' role='dialog' aria-labelledby='modalDeclare' aria-hidden='true'>
+    <div id='modal-declaration' class='modal fade' role='dialog' aria-labelledby='modal-declaration' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -97,13 +97,13 @@ Fim
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div id='body-declaracao' class='modal-body'></div>
+                <div id='declaration-body' class='modal-body'></div>
             </div>
         </div>
     </div>
 
     <!-- Modal Atribuicao -->
-    <div id='modalAtribuicao' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalAtribuicao' aria-hidden='true'>
+    <div id='modal-assignment' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modal-assignment' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -112,13 +112,13 @@ Fim
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div id='body-atribuicao' class='modal-body'></div>
+                <div id='body-assignment' class='modal-body'></div>
             </div>
         </div>
     </div>
 
     <!-- Modal Exiba -->
-    <div id='modalExiba' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalExiba' aria-hidden='true'>
+    <div id='modal-display' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modal-display' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -127,13 +127,13 @@ Fim
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div id='body-exiba' class='modal-body'></div>
+                <div id='body-display' class='modal-body'></div>
             </div>
         </div>
     </div>
 
     <!-- Modal Leia -->
-    <div id='modalLeia' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalLeia' aria-hidden='true'>
+    <div id='modal-read' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modal-read' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -142,13 +142,13 @@ Fim
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div id='body-leia' class='modal-body'></div>
+                <div id='body-read' class='modal-body'></div>
             </div>
         </div>
     </div>
 
     <!-- Modal Se -->
-    <div id='modalSe' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalSe' aria-hidden='true'>
+    <div id='modal-conditional-deviation' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modal-conditional-deviation' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -157,13 +157,13 @@ Fim
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div id='body-se' class='modal-body'></div>
+                <div id='body-conditional-deviation' class='modal-body'></div>
             </div>
         </div>
     </div>
 
     <!-- Modal Rede de Petri -->
-    <div id='modalRede' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modalRede' aria-hidden='true'>
+    <div id='modal-petri-net' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='modal-petri-net' aria-hidden='true'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -180,7 +180,7 @@ Fim
                         <h4>Rede de Petri Colorida</h4>
                     </div>
                 </div>
-                <div id='body-rede' class='modal-body'></div>
+                <div id='body-petri-net' class='modal-body'></div>
             </div>
         </div>
     </div>
@@ -199,14 +199,14 @@ Fim
     <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js'></script>
 
     <!-- JavaScript -->
-    <script src='app/pipes/ModalLinks.js'></script>
-
     <script src='app/services/Introguide.js' type='text/javascript'></script>
     <script src='app/services/Tips.js' type='text/javascript'></script>
     <script src='app/services/DragAndDrop.js' type='text/javascript'></script>
 
     <script src='app/utils/DragAndDropUtils.js' type='text/javascript'></script>
     <script src='app/utils/CommonUtils.js' type='text/javascript'></script>
+
+    <script src='app/pipes/ModalLinks.js'></script>
 
     <script src='app/modules/petris-network/PetrisNetwork.js' type='text/javascript'></script>
     <script src='app/modules/petris-network/PetrisNetworkAnimation.js' type='text/javascript'></script>

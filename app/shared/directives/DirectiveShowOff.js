@@ -7,7 +7,7 @@ class DirectiveShowOff extends Directive {
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
         li.id = `exibaCode-${model.id}`;
-        li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
+        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`ESCREVAL(${model.output});`);
         li.appendChild(obj);
@@ -16,16 +16,18 @@ class DirectiveShowOff extends Directive {
             ulSe.appendChild(li);
             this._addDeleteButton(li);
             super.codeAddIf(idCode, ulSe);
-        } else {
-            ul.appendChild(li);
-            this._addDeleteButton(li);
-            this._codeAdd(idCode, ul);
+
+            return;
         }
+
+        ul.appendChild(li);
+        this._addDeleteButton(li);
+        this._codeAdd(idCode, ul);
     }
 
     _addDeleteButton(li) {
         let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="showOffController.remove(event);">x</span>';
+        div.innerHTML = '<span class="badge badge-primary badge-pill delete" onclick="showOffController.remove(event);">x</span>';
 
         li.appendChild(div);
     }

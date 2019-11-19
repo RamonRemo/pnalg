@@ -16,18 +16,16 @@ class ReadController {
         event.preventDefault();
 
         try {
-
             this._ul = event.target.parentElement.children[1];
             let li = this._ul.children[0];
             let elemento = CommonUtils.getElement(this._listRead, li.id);
             this._idCode = elemento.idCode;
-
         } catch {
             return;
         }
     }
 
-    arrowIdComponentSE() {
+    enterComponentIdIf() {
         this._ulSe = ifController._ul;
         addCode('code-leia');
 
@@ -40,7 +38,7 @@ class ReadController {
     addVar(event) {
         event.preventDefault();
 
-        let field = document.querySelector('#leia-variavel');
+        let field = document.querySelector('#read-variable');
         this._inputName = field.options[field.selectedIndex].text;
         this._inputType = field.options[field.selectedIndex].value;
         this._id = this._id + 1;
@@ -65,7 +63,7 @@ class ReadController {
 
         this._ulSe = null;
 
-        $('#modalLeia').modal('hide');
+        $('#modal-read').modal('hide');
     }
 
     remove(event) {
@@ -105,7 +103,6 @@ class ReadController {
     }
 
     _validations() {
-
         if (this._inputName == null || this._inputName === 'Escolher...') {
             bootbox.alert({
                 message: 'Qual é a váriavel para leitura?  🤷‍♂️ 🤷‍',

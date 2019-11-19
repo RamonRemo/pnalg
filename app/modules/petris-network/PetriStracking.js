@@ -139,6 +139,7 @@ async function stracking(comand) {
                     'Insira um valor:',
                     results.name
                 );
+
                 break;
 
             case 'real':
@@ -147,6 +148,7 @@ async function stracking(comand) {
                     'Insira um valor:',
                     results.name
                 );
+
                 break;
 
             case 'caractere':
@@ -156,6 +158,7 @@ async function stracking(comand) {
                     results.name
                 );
                 value = `"${value}"`;
+
                 break;
 
             case 'logico':
@@ -164,29 +167,11 @@ async function stracking(comand) {
                     '',
                     results.name
                 );
+
                 break;
         }
 
         return value;
-    }
-
-    async function promptWindow(type, placeholder, name) {
-        let { value: data } = await Swal.fire({
-            title: `Leitura da Variável: ${name}`,
-            input: type,
-            inputPlaceholder: placeholder,
-            inputOptions: {
-                true: 'true',
-                false: 'false'
-            },
-            inputValidator: (value) => {
-                if (!value) {
-                    return 'Valor Obrigatório!';
-                }
-            }
-        });
-
-        return data;
     }
 
     async function promptWindow(type, placeholder, name) {

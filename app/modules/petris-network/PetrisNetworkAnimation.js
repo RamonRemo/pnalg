@@ -112,7 +112,7 @@ function petrisNetworkAnimation(arrayCommand) {
     }
 
     function captureOfVariables() {
-        let elements = $('#area-codigo-simulador').children();
+        let elements = $('#pseudocode-area-simulation').children();
 
         for (element of elements) {
             arrayElements.push(element);

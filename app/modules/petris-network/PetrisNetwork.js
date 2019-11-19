@@ -80,7 +80,7 @@ function petrisNetwork(event) {
     }
 
     function captureOfVariables() {
-        let elements = document.querySelector('#area-codigo').children;
+        let elements = document.querySelector('#pseudocode-area').children;
 
         for (element of elements) {
             arrayElements.push(element.children);

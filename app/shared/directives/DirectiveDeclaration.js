@@ -6,8 +6,8 @@ class DirectiveDeclaration extends Directive {
 
     template(model, list, ul, ulSe, idCode) {
         let li = document.createElement('li');
-        li.id = `declareCode-${model.id}`;
-        li.className = 'var componente-variavel-li d-flex justify-content-between align-items-center';
+        li.id = `declaration-code-${model.id}`;
+        li.className = 'var component-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.type} : ${model.name};`);
         li.appendChild(obj);
@@ -17,25 +17,27 @@ class DirectiveDeclaration extends Directive {
             ulSe.appendChild(li);
             this._addDeleteButton(li);
             super.codeAddIf(idCode, ulSe);
-        } else {
-            this.updateOptions(list);
-            ul.appendChild(li);
-            this._addDeleteButton(li);
-            this._codeAdd(idCode, ul);
+
+            return;
         }
+
+        this.updateOptions(list);
+        ul.appendChild(li);
+        this._addDeleteButton(li);
+        this._codeAdd(idCode, ul);
     }
 
     updateOptions(list) {
-        super.updateOptions(list, 'atribuicao-nome');
-        super.updateOptions(list, 'exiba-variavel');
-        super.updateOptions(list, 'leia-variavel');
-        super.updateOptions(list, 'se-variavel');
-        super.updateOptions(list, 'se-variavel-secundaria');
+        super.updateOptions(list, 'assignment-name');
+        super.updateOptions(list, 'display-variable');
+        super.updateOptions(list, 'read-variable');
+        super.updateOptions(list, 'variable-if');
+        super.updateOptions(list, 'if-secondary-variable');
     }
 
     _addDeleteButton(li) {
         let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="declarationController.remove(event);">x</span>';
+        div.innerHTML = '<span class="badge badge-primary badge-pill delete" onclick="declarationController.remove(event);">x</span>';
 
         li.appendChild(div);
     }
@@ -75,10 +77,10 @@ class DirectiveDeclaration extends Directive {
             node.parentNode.removeChild(node);
         }
 
-        super.codeRemove(element, 'declareCode', amount);
+        super.codeRemove(element, 'declaration-code', amount);
     }
 
     _codeRemoveAll(list, li) {
-        super.codeRemoveAll(list, li, 'declareCode');
+        super.codeRemoveAll(list, li, 'declaration-code');
     }
 }

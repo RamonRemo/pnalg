@@ -46,7 +46,7 @@ ul {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.tracado {
+.strokes {
     border: 0.7px solid #bbbbbbd7;
     border-style: dotted;
     margin: 1.3px;
@@ -79,7 +79,7 @@ ul {
     margin-top: 10px;
 }
 
-.componente {
+.component {
     background-color: white;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -93,19 +93,19 @@ ul {
     margin-bottom: -20px;
 }
 
-.excluir:hover {
+.delete:hover {
     background-color: #005d92;
 }
 
 
 /* -------------------- Variaveis 'Declare' --------------------*/
 
-.componente-variavel-ul {
+.component-variavel-ul {
     margin: auto;
     width: 80%;
 }
 
-.componente-variavel-li {
+.component-variavel-li {
     border: 0.7px solid #007cc6;
     border-radius: 5px;
     margin-bottom: 2px;
@@ -115,19 +115,19 @@ ul {
 
 /* -------------------- Atribuição --------------------*/
 
-.atribuicao {
+.assignment {
     display: none;
 }
 
 
 /* -------------------- Se --------------------*/
 
-.relacionais {
+.relational {
     color: #007cc6;
     text-align: center;
 }
 
-.area-se {
+.area-if {
     width: 80%;
     height: 100px;
     display: block;
@@ -202,19 +202,19 @@ code span {
 /* -------------------- Petris --------------------*/
 
 @media (min-width: 576px) {
-    #modalRede .modal-dialog {
+    #modal-petri-net .modal-dialog {
         max-width: none;
     }
 }
 
-#modalRede .modal-dialog {
+#modal-petri-net .modal-dialog {
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
 }
 
-#modalRede .modal-content {
+#modal-petri-net .modal-content {
     height: 100%;
     min-height: 100%;
     height: auto;

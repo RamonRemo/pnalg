@@ -27,7 +27,7 @@ function dropHandler(ev) {
     }
 
     let nodeCopy = document.getElementById(data).cloneNode(true);
-    nodeCopy.className = 'componente';
+    nodeCopy.className = 'component';
 
     let id = document.querySelectorAll('#target button').length;
 
@@ -54,19 +54,19 @@ function validate(id, nodeCopy) {
     let listVariable = document.querySelectorAll('.var');
 
     switch (nodeCopy.id) {
-        case 'componente-declare':
+        case 'declaration-component':
             return declaration(id, nodeCopy);
 
-        case 'componente-leia':
+        case 'reading-component':
             return read(id, nodeCopy, listVariable);
 
-        case 'componente-exiba':
+        case 'display-component':
             return showOff(id, nodeCopy);
 
-        case 'componente-atribuicao':
+        case 'attribution-component':
             return assignment(id, nodeCopy, listVariable);
 
-        case 'componente-se':
+        case 'conditional-branch-component':
             return iff(id, nodeCopy, listVariable);
     }
 }

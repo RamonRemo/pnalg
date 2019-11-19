@@ -1,15 +1,15 @@
-<form id='form-exiba' onsubmit='showOffController.toSave(event)'>
+<form onsubmit='showOffController.toSave(event)'>
     <div class='form-group'>
         <label for='exiba-texto'>Exiba um texto</label>
         <input id='exiba-texto' class='form-control' type='text' placeholder='aceita cadeias de caractere' autofocus onkeyup='showOffController.catch(event)'>
     </div>
     <div class='form-group mt-3'>
-        <label for='exiba-variavel'>Variaveis Declaras</label>
-        <select id='exiba-variavel' class='form-control' onclick='showOffController.addVar(event)'>
+        <label for='display-variable'>Variaveis Declaras</label>
+        <select id='display-variable' class='form-control' onclick='showOffController.addVar(event)'>
             <option selected>Escolher...</option>
         </select>
     </div>
-    <textarea id='exiba-saida' class='form-control' type='text' readonly rows='1'></textarea>
+    <textarea id='show-off' class='form-control' type='text' readonly rows='1'></textarea>
     <div class='modal-footer'>
         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
         <button class='btn btn-primary' type='submit'>Salvar</button>

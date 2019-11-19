@@ -1,4 +1,5 @@
 class StateComponent {
+
     constructor() {
         throw new Error('StateComponent não pode ser instanciada');
     }

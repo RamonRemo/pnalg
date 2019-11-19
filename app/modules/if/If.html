@@ -1,38 +1,60 @@
-<form id='form-se' onsubmit='ifController.toSve(event)'>
+<form onsubmit='ifController.toSave(event)'>
     <div class='form-row'>
         <div class='col'>
-            <select id='se-variavel' class='form-control'>
+            <select id='variable-if' class='form-control'>
                 <option selected>Escolher...</option>
-            </select>
-        </div>
-        <div id='se-relacionais-declarada' class='col'>
-            <select id='se-relacionais' class='custom-select mr-sm-2'>
-                <option selected>Escolher...</option>
-                <option class='relacionais'>&ne;</option>
-                <option class='relacionais'>==</option>
-                <option class='relacionais'>&gt;</option>
-                <option class='relacionais'>&lt;</option>
-                <option class='relacionais'>&le;</option>
-                <option class='relacionais'>&ge;</option>
             </select>
         </div>
         <div class='col'>
-            <select id='se-variavel-secundaria' class='form-control'>
+            <select id='if-relational' class='custom-select mr-sm-2'>
+                <option selected>Escolher...</option>
+                <option class='relational'>&ne;</option>
+                <option class='relational'>==</option>
+                <option class='relational'>&gt;</option>
+                <option class='relational'>&lt;</option>
+                <option class='relational'>&le;</option>
+                <option class='relational'>&ge;</option>
+            </select>
+        </div>
+        <div class='col'>
+            <select id='if-secondary-variable' class='form-control'>
                 <option selected>Escolher...</option>
             </select>
         </div>
     </div>
-    <div id='salva-alteracoes' class='mt-3'>
+    <div id='save-changes' class='mt-3'>
         <button class='btn btn-primary' onclick='ifController.enableButtons(event)'>Salvar Alterações</button>
     </div>
     <div class='form-group mt-3' id='open-modal'>
-        <button type='button' class='btn btn-outline-primary' data-target='#modalDeclare' onclick='declarationController.arrowIdComponentSE(event)' disabled='disabled'>Declarar</button>
-        <button type='button' class='btn btn-outline-primary' data-target='#modalLeia' onclick='readController.arrowIdComponentSE(event)' disabled='disabled'>Ler</button>
-        <button type='button' class='btn btn-outline-primary' data-target='#modalExiba' onclick='showOffController.arrowIdComponentSE(event)' disabled='disabled'>Exibir</button>
-        <button type='button' class='btn btn-outline-primary' data-target='#modalAtribuicao' onclick='assignmentController.arrowIdComponentSE(event)' disabled='disabled'>Atribuir</button>
+        <button type='button' class='btn btn-outline-primary' data-target='#modal-declaration' onclick='declarationController.enterComponentIdIf(event)' disabled='disabled'>Declarar</button>
+        <button type='button' class='btn btn-outline-primary' data-target='#modal-read' onclick='readController.enterComponentIdIf(event)' disabled='disabled'>Ler</button>
+        <button type='button' class='btn btn-outline-primary' data-target='#modal-display' onclick='showOffController.enterComponentIdIf(event)' disabled='disabled'>Exibir</button>
+        <button type='button' class='btn btn-outline-primary' data-target='#modal-assignment' onclick='assignmentController.enterComponentIdIf(event)' disabled='disabled'>Atribuir</button>
     </div>
     <div class='modal-footer mt-3'>
         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
         <button class='btn btn-primary' data-dismiss='modal'>Salvar</button>
     </div>
 </form>
+
+<script>
+    $(document).ready(function() {
+        $('#open-modal, button').click(function() {
+            let target = $(this).attr('data-target');
+
+            $(`${target}`).modal({
+                show: true
+            })
+        });
+
+        $(document).on('show.bs.modal', '.modal', function(event) {
+            let zIndex = 1040 + (10 * $('.modal:visible').length);
+
+            $(this).css('z-index', zIndex);
+
+            setTimeout(function() {
+                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+            }, 0);
+        });
+    });
+</script>

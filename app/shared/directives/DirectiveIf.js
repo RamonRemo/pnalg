@@ -7,7 +7,7 @@ class DirectiveIf extends Directive {
     template(model, ul, idCode) {
         let li = document.createElement('li');
         li.id = `ifCode-${model.id}`;
-        li.className = 'componente-variavel-li d-flex justify-content-between align-items-center';
+        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`SE (${model.var1_name} ${model.conditional} ${model.var2_name}) ENTAO`);
         li.appendChild(obj);
@@ -19,7 +19,7 @@ class DirectiveIf extends Directive {
 
     _addDeleteButton(li) {
         let div = document.createElement('div');
-        div.innerHTML = '<span class="badge badge-primary badge-pill excluir" onclick="ifController.remove(event);">x</span>';
+        div.innerHTML = '<span class="badge badge-primary badge-pill delete" onclick="ifController.remove(event);">x</span>';
 
         li.appendChild(div);
     }

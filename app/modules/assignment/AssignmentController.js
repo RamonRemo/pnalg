@@ -25,9 +25,9 @@ class AssignmentController {
         }
     }
 
-    arrowIdComponentSE() {
+    enterComponentIdIf() {
         this._ulSe = ifController._ul;
-        addCode('code-atribuicao');
+        addCode('code-assignment');
 
         let li = this._ulSe.children[0];
         let element = CommonUtils.getElement(ifController._listIf, li.id);
@@ -38,7 +38,7 @@ class AssignmentController {
     toSave(event) {
         event.preventDefault();
 
-        let field = document.querySelector('#atribuicao-nome');
+        let field = document.querySelector('#assignment-name');
 
         this._inputName = field.options[field.selectedIndex].text;
         this._inputType = field.options[field.selectedIndex].value;
@@ -61,7 +61,7 @@ class AssignmentController {
 
         this._cleanForm();
 
-        $('#modalAtribuicao').modal('hide');
+        $('#modal-assignment').modal('hide');
     }
 
     remove(event) {
@@ -96,7 +96,7 @@ class AssignmentController {
     openForm(event) {
         event.preventDefault();
 
-        let field = document.querySelector('#atribuicao-nome');
+        let field = document.querySelector('#assignment-name');
         let type = field.options[field.selectedIndex].value;
 
         switch (type) {
@@ -128,19 +128,19 @@ class AssignmentController {
 
         switch (this._inputType) {
             case 'inteiro':
-                input = $('#atribuicaoValorInt');
+                input = $('#assignment-value-int');
                 return input.value;
 
             case 'real':
-                input = $('#atribuicaoValorFloat');
+                input = $('#assignment-value-float');
                 return input.value;
 
             case 'caractere':
-                input = $('#atribuicaoValorChar');
+                input = $('#assignment-value-char');
                 return `"${input.value}"`;
 
             case 'logico':
-                input = $('#atribuicaoValorBoolean');
+                input = $('#assignment-value-boolean');
                 return input.value;
         }
     }
@@ -181,7 +181,7 @@ class AssignmentController {
         this._ulSe = null;
         this._inputValue = '';
 
-        CommonUtils.focus('modalAtribuicao', 'atribuicao-nome');
+        CommonUtils.focus('modal-assignment', 'assignment-name');
     }
 
     _dysplayNone(type) {
