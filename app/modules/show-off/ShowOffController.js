@@ -56,7 +56,7 @@ class ShowOffController {
         this._outputField = document.querySelector('#show-off');
         this._outputField.innerHTML = ' ';
 
-        let field = document.querySelector('#edisplay-variable');
+        let field = document.querySelector('#display-variable');
         this._inputName = field.options[field.selectedIndex].text;
 
         if (this._inputName === 'Escolher...') {
@@ -155,6 +155,6 @@ class ShowOffController {
         this._outputField.innerHTML = '';
         this._outputField = null;
 
-        CommonUtils.focus('modal-display', 'exiba-texto');
+        CommonUtils.focus('modal-display', 'display-text');
     }
 }

@@ -36,8 +36,8 @@ class DeclarationController {
     toSave(event) {
         event.preventDefault();
 
-        this._inputName = document.querySelector('#declaracoes-nome').value;
-        this._inputType = document.querySelector('#declaracoes-tipo').value;
+        this._inputName = document.querySelector('#name-declarations').value;
+        this._inputType = document.querySelector('#type-declarations').value;
         this._id = this._id + 1;
 
         if (!this._validations()) {
@@ -155,7 +155,7 @@ class DeclarationController {
     _cleanForm() {
         this._ulSe = null;
 
-        document.querySelector('#declaracoes-nome').value = '';
-        CommonUtils.focus('modal-declaration', 'declaracoes-nome');
+        document.querySelector('#name-declarations').value = '';
+        CommonUtils.focus('modal-declaration', 'name-declarations');
     }
 }

@@ -51,22 +51,22 @@ class CommonUtils {
     }
 
     static regexTest(str) {
-        const declare = /declaration-code-\d-log/;
-        const leia = /leiaCode-\d-log/;
-        const exiba = /exibaCode-\d-log/;
-        const assignment = /atribuiCode-\d-log/;
-        const se = /ifCode-\d-log/;
-        const codeSe = /fimse/;
+        const declaration = /declaration-code-\d-log/;
+        const read = /read-code-\d-log/;
+        const showoff = /showoff-code-\d-log/;
+        const assignment = /assignment-code-\d-log/;
+        const _if = /if-code-\d-log/;
+        const endif = /end-if/;
 
-        if (declare.test(str)) {
+        if (declaration.test(str)) {
             return 'DECLARE';
         }
 
-        if (leia.test(str)) {
+        if (read.test(str)) {
             return 'LEIA';
         }
 
-        if (exiba.test(str)) {
+        if (showoff.test(str)) {
             return 'EXIBA';
         }
 
@@ -74,11 +74,11 @@ class CommonUtils {
             return 'ATRIBUICAO';
         }
 
-        if (se.test(str)) {
+        if (_if.test(str)) {
             return 'SE';
         }
 
-        if (codeSe.test(str)) {
+        if (endif.test(str)) {
             return 'FIMSE';
         }
 
@@ -86,22 +86,22 @@ class CommonUtils {
     }
 
     static regexTestPetri(str) {
-        const declare = /declaration-code-\d-log-petri/;
-        const leia = /leiaCode-\d-log-petri/;
-        const exiba = /exibaCode-\d-log-petri/;
-        const assignment = /atribuiCode-\d-log-petri/;
-        const se = /ifCode-\d-log-petri/;
-        const fimse = /fimse-petri/;
+        const declaration = /declaration-code-\d-log-petri/;
+        const read = /read-code-\d-log-petri/;
+        const showoff = /showoff-code-\d-log-petri/;
+        const assignment = /assignment-code-\d-log-petri/;
+        const _if = /if-code-\d-log-petri/;
+        const endif = /end-if-petri/;
 
-        if (declare.test(str)) {
+        if (declaration.test(str)) {
             return 'DECLARE';
         }
 
-        if (leia.test(str)) {
+        if (read.test(str)) {
             return 'LEIA';
         }
 
-        if (exiba.test(str)) {
+        if (showoff.test(str)) {
             return 'EXIBA';
         }
 
@@ -109,11 +109,11 @@ class CommonUtils {
             return 'ATRIBUICAO';
         }
 
-        if (se.test(str)) {
+        if (_if.test(str)) {
             return 'SE';
         }
 
-        if (fimse.test(str)) {
+        if (endif.test(str)) {
             return 'FIMSE';
         }
 

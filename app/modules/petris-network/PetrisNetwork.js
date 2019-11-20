@@ -54,27 +54,27 @@ function petrisNetwork(event) {
         y = y + 25;
     }
 
-    function newState(message) {
-        if (message === 'SE') {
+    function newState(command) {
+        if (command === 'SE') {
             flag = true;
 
-            y = StateComponent.newStateComponentIf(y, context, message);
+            y = StateComponent.newStateComponentIf(y, context, command);
             height = y;
 
             return true;
         }
 
-        if (message === 'FIMSE') {
+        if (command === 'FIMSE') {
             flag = false;
             return;
         }
 
         if (!flag) {
-            y = StateComponent.newStateComponent(y, context, message);
+            y = StateComponent.newStateComponent(y, context, command);
             return false;
         }
 
-        y = StateComponent.newStateInternalCommandsIf(y, context, message);
+        y = StateComponent.newStateInternalCommandsIf(y, context, command);
 
         return true;
     }

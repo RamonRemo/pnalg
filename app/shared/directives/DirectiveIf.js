@@ -6,8 +6,8 @@ class DirectiveIf extends Directive {
 
     template(model, ul, idCode) {
         let li = document.createElement('li');
-        li.id = `ifCode-${model.id}`;
-        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
+        li.id = `if-code-${model.id}`;
+        li.className = 'component-variable-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`SE (${model.var1_name} ${model.conditional} ${model.var2_name}) ENTAO`);
         li.appendChild(obj);
@@ -32,7 +32,7 @@ class DirectiveIf extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
+            code.innerHTML = '<span class="comment">//Desvio Condicional</span>';
         }
 
         if (arrayLi.length === 0) {

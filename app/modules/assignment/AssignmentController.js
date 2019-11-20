@@ -101,22 +101,22 @@ class AssignmentController {
 
         switch (type) {
             case 'inteiro':
-                let typeInt = document.getElementById('inteiro');
+                let typeInt = document.getElementById('integer-type');
                 this._dysplayNone(typeInt);
                 break;
 
             case 'real':
-                let typeFloat = document.getElementById('real');
+                let typeFloat = document.getElementById('float-type');
                 this._dysplayNone(typeFloat);
                 break;
 
             case 'caractere':
-                let typeChar = document.getElementById('caractere');
+                let typeChar = document.getElementById('character-type');
                 this._dysplayNone(typeChar);
                 break;
 
             case 'logico':
-                let typeBoolean = document.getElementById('logico');
+                let typeBoolean = document.getElementById('boolean-type');
                 this._dysplayNone(typeBoolean);
                 break;
         }
@@ -187,10 +187,10 @@ class AssignmentController {
     _dysplayNone(type) {
         let $ = document.querySelector.bind(document);
 
-        let typeInt = $('#inteiro');
-        let typeFloat = $('#real');
-        let typeChar = $('#caractere');
-        let typeBoolean = $('#logico');
+        let typeInt = $('#integer-type');
+        let typeFloat = $('#float-type');
+        let typeChar = $('#character-type');
+        let typeBoolean = $('#boolean-type');
 
         typeInt.style.display = 'none';
         typeFloat.style.display = 'none';

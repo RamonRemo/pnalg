@@ -87,7 +87,7 @@ ul {
     box-shadow: 7px 7px 5px rgba(190, 190, 190, 0.76);
 }
 
-#ul-dicas {
+#ul-tips {
     list-style-type: circle;
     width: 300px;
     margin-bottom: -20px;
@@ -100,12 +100,12 @@ ul {
 
 /* -------------------- Variaveis 'Declare' --------------------*/
 
-.component-variavel-ul {
+.component-variable-ul {
     margin: auto;
     width: 80%;
 }
 
-.component-variavel-li {
+.component-variable-li {
     border: 0.7px solid #007cc6;
     border-radius: 5px;
     margin-bottom: 2px;
@@ -138,7 +138,7 @@ ul {
     border: 0.7px solid #007cc6;
 }
 
-.btn-fim-se {
+.btn-end-if {
     margin-top: 0;
     pointer-events: none;
 }
@@ -173,16 +173,16 @@ code span {
     color: #007cc6;
 }
 
-.comentario {
+.comment {
     margin-top: 10px;
     color: #29b100;
 }
 
-.identeSe {
+.identify-component-if {
     padding-left: 45px;
 }
 
-.fimse {
+.end-if {
     padding-left: 0;
 }
 

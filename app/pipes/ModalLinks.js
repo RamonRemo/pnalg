@@ -7,6 +7,8 @@ $(document).ready(function() {
     $('#body-petri-net').load('app/modules/petris-network/Petris.html');
 });
 
+$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+
 $('#step4').click(function() {
     $('#pseudocode-area-simulation').html('');
 

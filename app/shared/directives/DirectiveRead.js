@@ -6,8 +6,8 @@ class DirectiveRead extends Directive {
 
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
-        li.id = `leiaCode-${model.id}`;
-        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
+        li.id = `read-code-${model.id}`;
+        li.className = 'component-variable-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`LEIA(${model.name});`);
         li.appendChild(obj);
@@ -40,7 +40,7 @@ class DirectiveRead extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Leitura de variaveis</span>';
+            code.innerHTML = '<span class="comment">//Leitura de variaveis</span>';
         }
 
         if (arrayLi.length === 0) {
@@ -67,10 +67,10 @@ class DirectiveRead extends Directive {
             node.parentNode.removeChild(node);
         }
 
-        super.codeRemove(element, 'leiaCode', amount);
+        super.codeRemove(element, 'read-code', amount);
     }
 
     _codeRemoveAll(list, li) {
-        super.codeRemoveAll(list, li, 'leiaCode');
+        super.codeRemoveAll(list, li, 'read-code');
     }
 }

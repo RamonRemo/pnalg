@@ -6,8 +6,8 @@ class DirectiveShowOff extends Directive {
 
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
-        li.id = `exibaCode-${model.id}`;
-        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
+        li.id = `showoff-code-${model.id}`;
+        li.className = 'component-variable-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`ESCREVAL(${model.output});`);
         li.appendChild(obj);
@@ -40,7 +40,7 @@ class DirectiveShowOff extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Exibicao</span>';
+            code.innerHTML = '<span class="comment">//Exibicao</span>';
         }
 
         if (arrayLi.length === 0) {
@@ -67,10 +67,10 @@ class DirectiveShowOff extends Directive {
             node.parentNode.removeChild(node);
         }
 
-        super.codeRemove(element, 'exibaCode', amount);
+        super.codeRemove(element, 'showoff-code', amount);
     }
 
     _codeRemoveAll(list, li) {
-        super.codeRemoveAll(list, li, 'exibaCode');
+        super.codeRemoveAll(list, li, 'showoff-code');
     }
 }

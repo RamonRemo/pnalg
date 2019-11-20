@@ -46,14 +46,14 @@ function iff(id, nodeCopy, listVariable) {
         return null;
     }
 
-    let se = nodeCopy.childNodes[3];
-    se.className = 'area-if';
+    let _if = nodeCopy.childNodes[3];
+    _if.className = 'area-if';
 
-    let fimse = document.createElement('button');
-    fimse.id = 'btn-fim-se'
-    fimse.className = 'list-group-item btn btn-fim-se'
-    fimse.textContent = 'Fim se';
-    nodeCopy.appendChild(fimse);
+    let endif = document.createElement('button');
+    endif.id = 'btn-end-if'
+    endif.className = 'list-group-item btn btn-end-if'
+    endif.textContent = 'Fim se';
+    nodeCopy.appendChild(endif);
 
     $('#save-changes').find('.btn').removeAttr('disabled');
 
@@ -66,7 +66,7 @@ function iff(id, nodeCopy, listVariable) {
 function addUl(id, nodeCopy, name) {
     let ul = document.createElement('ul');
     ul.setAttribute('id', `${name}-${id}`);
-    ul.className = 'list-group list-group-flush mt-2 component-variavel-ul';
+    ul.className = 'list-group list-group-flush mt-2 component-variable-ul';
 
     nodeCopy.appendChild(ul);
 }

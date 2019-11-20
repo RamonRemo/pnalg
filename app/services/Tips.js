@@ -5,7 +5,7 @@ $(function() {
         hints: [{
                 element: '#declaration-component',
                 hint: `Declaração de variáveis: <br>
-                    <ul id='ul-dicas'>
+                    <ul id='ul-tips'>
                         <li>
                             O comando <b>DECLARE</b> cria as variáveis que serão usadas no algoritmo.
                         </li>                    
@@ -14,7 +14,7 @@ $(function() {
             {
                 element: '#reading-component',
                 hint: `Entrada de Dados: <br>
-                    <ul id='ul-dicas'>
+                    <ul id='ul-tips'>
                         <li>
                             O comando <b>LEIA( )</b> faz a leitura de variáveis do usuário.
                         </li>                    
@@ -23,7 +23,7 @@ $(function() {
             {
                 element: '#display-component',
                 hint: `Saída de Dados: <br>
-                    <ul id='ul-dicas'>
+                    <ul id='ul-tips'>
                         <li>
                             O comando <b>EXIBA( )</b> mostra na tela as mensagens.
                         </li>
@@ -32,7 +32,7 @@ $(function() {
             {
                 element: '#attribution-component',
                 hint: `Atribuição ( ⇦ ):<br>
-                    <ul id='ul-dicas'>
+                    <ul id='ul-tips'>
                         <li>
                             O operador de atribuição (⇦), atribui valores para variáveis.
                         </li>
@@ -41,7 +41,7 @@ $(function() {
             {
                 element: '#conditional-branch-component',
                 hint: `Comando Condicional SE:<br>
-                    <ul id='ul-dicas'>
+                    <ul id='ul-tips'>
                         <li>
                             O comando SE faz um teste lógico. Caso o resultado seja VERDADEIRO 
                             então os comandos internos ao SE serão executados. Caso contrário, 

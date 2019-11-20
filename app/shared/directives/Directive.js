@@ -44,7 +44,7 @@ class Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length != 0) {
-            code.innerHTML = '<span class="comentario">//Desvio Condicional</span>';
+            code.innerHTML = '<span class="comment">//Desvio Condicional</span>';
         }
 
         if (arrayLi.length === 0) {
@@ -61,7 +61,7 @@ class Directive {
             span.id = `${element.id}-log`;
 
             if (index > 0) {
-                span.className = 'identeSe';
+                span.className = 'identify-component-if';
             }
 
             span.innerHTML = (`${variable}`);
@@ -72,8 +72,8 @@ class Directive {
 
         let span = document.createElement('span');
         span.innerHTML = ('<span>FIMSE</span>');
-        span.className = 'fimse';
-        span.id = 'fimse';
+        span.className = 'end-if';
+        span.id = 'end-if';
 
         code.appendChild(span);
     }

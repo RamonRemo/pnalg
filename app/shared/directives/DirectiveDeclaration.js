@@ -7,7 +7,7 @@ class DirectiveDeclaration extends Directive {
     template(model, list, ul, ulSe, idCode) {
         let li = document.createElement('li');
         li.id = `declaration-code-${model.id}`;
-        li.className = 'var component-variavel-li d-flex justify-content-between align-items-center';
+        li.className = 'var component-variable-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.type} : ${model.name};`);
         li.appendChild(obj);
@@ -50,7 +50,7 @@ class DirectiveDeclaration extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Declaracoes de variaveis</span>';
+            code.innerHTML = '<span class="comment">//Declaracoes de variaveis</span>';
         }
 
         if (arrayLi.length === 0) {

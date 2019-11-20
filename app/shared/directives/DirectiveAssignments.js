@@ -6,8 +6,8 @@ class DirectiveAssignments extends Directive {
 
     template(model, ul, ulSe, idCode) {
         let li = document.createElement('li');
-        li.id = `atribuiCode-${model.id}`;
-        li.className = 'component-variavel-li d-flex justify-content-between align-items-center';
+        li.id = `assignment-code-${model.id}`;
+        li.className = 'component-variable-li d-flex justify-content-between align-items-center';
 
         let obj = document.createTextNode(`${model.name} <− ${model.value};`);
         li.appendChild(obj);
@@ -38,7 +38,7 @@ class DirectiveAssignments extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comentario">//Atribuicoes de valores</span>';
+            code.innerHTML = '<span class="comment">//Atribuicoes de valores</span>';
         }
 
         if (arrayLi.length === 0) {
@@ -65,10 +65,10 @@ class DirectiveAssignments extends Directive {
             node.parentNode.removeChild(node);
         }
 
-        super.codeRemove(element, 'atribuiCode', amount);
+        super.codeRemove(element, 'assignment-code', amount);
     }
 
     _codeRemoveAll(list, li) {
-        super.codeRemoveAll(list, li, 'atribuiCode');
+        super.codeRemoveAll(list, li, 'assignment-code');
     }
 }
