@@ -6,26 +6,26 @@ async function stracking(comand) {
         case 'DECLARE':
             results = _declaration(text);
             _createTr(results.name, results.type, results.value);
-
-            break;
+            return true;
 
         case 'ATRIBUICAO':
             results = _assignment(text);
             _appendTr(results.name, results.value);
-
-            break;
+            return true;
 
         case 'LEIA':
             results = _read(text);
             let value = await _reading(results);
-
             _appendTr(results.name, value);
 
-            break;
+            return true;
 
         case 'EXIBA':
             await _show(text);
-            break;
+            return true;
+
+        case 'SE':
+            return await _if(text);
 
         default:
             return;
@@ -85,6 +85,31 @@ async function stracking(comand) {
         str = (results.value ? results.value : results.name);
 
         await Swal.fire(str);
+    }
+
+    async function _if(text) {
+        let variable = text.split("(");
+        variable = variable[1].split(")");
+        variable = variable[0].split(" ");
+
+        let nameOne = variable[0];
+        let conditional = variable[1];
+        let nameTwo = variable[2];
+
+        let resultsOne = _search(nameOne);
+        let resultsTwo = _search(nameTwo);
+
+        if (resultsOne.type != resultsTwo.type) {
+            await Swal.fire({
+                title: 'Atenção',
+                text: 'Variáveis de diferentes tipos!',
+                type: 'warning'
+            });
+
+            return false;
+        }
+
+        return _logicTest(resultsOne.value, resultsTwo.value, conditional);
     }
 
     function _createTr(name, type, value) {
@@ -191,5 +216,27 @@ async function stracking(comand) {
         });
 
         return data;
+    }
+
+    function _logicTest(operatorOne, operatorTwo, conditional) {
+        switch (conditional) {
+            case "≠":
+                return ((operatorOne != operatorTwo) ? true : false);
+
+            case "==":
+                return ((operatorOne === operatorTwo) ? true : false);
+
+            case ">":
+                return ((operatorOne > operatorTwo) ? true : false);
+
+            case "<":
+                return ((operatorOne < operatorTwo) ? true : false);
+
+            case "≤":
+                return ((operatorOne <= operatorTwo) ? true : false);
+
+            case "≥":
+                return ((operatorOne >= operatorTwo) ? true : false);
+        }
     }
 }

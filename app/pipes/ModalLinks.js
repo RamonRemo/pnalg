@@ -45,7 +45,6 @@ function alert() {
     Swal.fire({
         title: 'Atenção',
         text: 'Não há dados para criar o modelo!',
-        type: 'warning',
-        closeOnConfirm: false
+        type: 'warning'
     });
 }

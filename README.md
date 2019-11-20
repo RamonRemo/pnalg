@@ -15,7 +15,7 @@ Você pode obter sua cópia local do **CPNAlg** em:
 
 **1)** Neste repositório do github, usando ```git clone https://github.com/RafaelOFreitas/cpnalg.git```
 
-**2)** Para estartar um sevidor local, execute no terminal, dentro do diretório do CPNAlg: 
+**2)** Para estartar um sevidor local, execute no terminal, dentro do diretório do **CPNAlg**: 
 ```console 
 python start_server.py
 ```

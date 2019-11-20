@@ -68,7 +68,11 @@ function petrisNetworkAnimation(arrayCommand) {
             refreshScreen(command);
 
             await CommonUtils.sleep(200);
-            await stracking(arrayElementsId[idx - 1]);
+            let checker = await stracking(arrayElementsId[idx - 1]);
+
+            if (!checker) {
+                flag = false;
+            }
 
             return true;
         }
