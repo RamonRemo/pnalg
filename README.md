@@ -1,10 +1,10 @@
 # CPNAlg v1.0.0
 
-## Origem do nome:
+## Origem do nome
 
 As siglas **CPN** vem de redes de Petri coloridas do inglês Coloured Petri nets e **Alg** de algoritmo.
 
-## Introdução:
+## Introdução
 
 O **CPNAlg** é uma proposta de ferramenta para auxiliar no ensino e aprendizagem de lógica de programação utilizando
 simulações automáticas de modelos de redes de Petri Coloridas Hierárquicas.

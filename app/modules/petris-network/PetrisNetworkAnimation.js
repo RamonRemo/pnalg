@@ -5,6 +5,7 @@ function petrisNetworkAnimation(arrayCommand) {
     let clearY = 0;
     let height = 0;
     let flag = false;
+    let noSkipsConditionalDeviation = true;
 
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
@@ -50,6 +51,7 @@ function petrisNetworkAnimation(arrayCommand) {
 
             y = y - 25;
             flag = false;
+            noSkipsConditionalDeviation = true;
 
             return true;
         }
@@ -61,6 +63,11 @@ function petrisNetworkAnimation(arrayCommand) {
         }
 
         if (idx > 0 && idx < arrayCommand.length - 1) {
+            if (!noSkipsConditionalDeviation) {
+                skipState();
+                return true;
+            }
+
             document
                 .querySelector(`#${arrayElementsId[idx - 1]}`)
                 .classList.add('tracer');
@@ -68,9 +75,9 @@ function petrisNetworkAnimation(arrayCommand) {
             refreshScreen(command);
 
             await CommonUtils.sleep(200);
-            let checker = await stracking(arrayElementsId[idx - 1]);
+            noSkipsConditionalDeviation = await stracking(arrayElementsId[idx - 1]);
 
-            if (!checker) {
+            if (!noSkipsConditionalDeviation) {
                 flag = false;
             }
 
@@ -110,6 +117,14 @@ function petrisNetworkAnimation(arrayCommand) {
         AnimationComponent.cleanScreen(270, clearY, context);
         AnimationComponent.cleanScreen(185, clearY, context);
         AnimationComponent.stateTransition(275, y, 5, context);
+
+        clearY = y;
+        y = y + 175;
+    }
+
+    function skipState() {
+        AnimationComponent.cleanScreen(270, clearY, context);
+        AnimationComponent.cleanScreen(185, clearY, context);
 
         clearY = y;
         y = y + 175;
