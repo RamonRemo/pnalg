@@ -5,15 +5,17 @@ class AnimationComponent {
     }
 
     static clearStateWithoutTrasition(petri, context) {
+        let clear = petri.clearY - 10;
+
         if (!petri.flag) {
-            this.cleanScreen(185, petri.clearY, context);
-            this.cleanScreen(270, petri.clearY, context);
+            this.cleanScreen(185, clear, context);
+            this.cleanScreen(270, clear, context);
 
             return;
         }
 
-        this.cleanScreen(270, petri.clearY, context);
-        this.cleanScreen(185, petri.clearY, context);
+        this.cleanScreen(270, clear, context);
+        this.cleanScreen(185, clear, context);
     }
 
     static stateTransition(x, petri, raio, context) {

@@ -1,4 +1,5 @@
 var listPetris = new ListPetris();
+var aux;
 
 function petrisNetworkAnimation(startOrStep) {
     let canvas = document.querySelector('canvas');
@@ -15,8 +16,11 @@ function petrisNetworkAnimation(startOrStep) {
         return;
     }
 
-    step();
+    if (listPetris._petri.clearY === 0) {
+        document.querySelector('tbody').innerHTML = '';
+    }
 
+    step();
 
     async function animation() {
         let petri = new Petris(50, 0, 0, false, true, 0);
@@ -54,6 +58,7 @@ function petrisNetworkAnimation(startOrStep) {
         }
 
         if (arrayCommand.length == listPetris._petri._idx) {
+            aux = listPetris._petri.clearY;
             listPetris = new ListPetris();
             document.querySelector('tbody').innerHTML = '';
         }
@@ -63,6 +68,13 @@ function petrisNetworkAnimation(startOrStep) {
         if (idx % 2 === 0 && idx < arrayCommand.length - 2) {
             AnimationComponent.pageScroll(petri);
             petri.height = petri.height + 225;
+        }
+
+        if (command == 'INICIO') {
+            petri.clearY = aux;
+            AnimationComponent.cleanScreen(270, petri, context);
+            AnimationComponent.cleanScreen(185, petri, context);
+            petri.clearY = 0;
         }
 
         if (!command) {
@@ -110,7 +122,6 @@ function petrisNetworkAnimation(startOrStep) {
         }
 
         refreshScreen(petri, command);
-
         return true;
     }
 
