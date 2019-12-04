@@ -101,5 +101,5 @@ function petrisNetwork(event) {
 }
 
 function startNetwork() {
-    petrisNetworkAnimation(arrayCommand);
+    petrisNetworkAnimation('start');
 }

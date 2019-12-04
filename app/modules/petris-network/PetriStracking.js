@@ -6,11 +6,13 @@ async function stracking(comand) {
         case 'DECLARE':
             results = _declaration(text);
             _createTr(results.name, results.type, results.value);
+
             return true;
 
         case 'ATRIBUICAO':
             results = _assignment(text);
             _appendTr(results.name, results.value);
+
             return true;
 
         case 'LEIA':

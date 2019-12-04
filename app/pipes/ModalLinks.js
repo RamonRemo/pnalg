@@ -37,6 +37,7 @@ function loading() {
     setTimeout(function() {
         spinner.removeClass('active');
         document.querySelector('tbody').innerHTML = '';
+        listPetris = new ListPetris();
         $('#modal-petri-net').modal({ show: true });
     }, 1500);
 }
