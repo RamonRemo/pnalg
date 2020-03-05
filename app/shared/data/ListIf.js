@@ -8,7 +8,7 @@ class ListIf {
         this._iff.push(iff);
     }
 
-    apaga(id) {
+    remove(id) {
         let index;
 
         if (id > -1) {

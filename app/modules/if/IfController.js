@@ -52,7 +52,7 @@ class IfController {
         let li = event.target.parentNode.parentNode;
 
         let element = CommonUtils.getElement(this._listIf, li.id);
-        this._listIf.apaga(element.id);
+        this._listIf.remove(element.id);
 
         let spans = li.parentNode.children;
         let array = $.makeArray(spans);

@@ -141,8 +141,7 @@ async function stracking(comand) {
 
     function _search(name) {
         let tds = document.getElementsByTagName("td");
-        let type = null,
-            value = null;
+        let type = null, value = null;
 
         for (let i = 0; i < tds.length; i++) {
             if (tds[i].textContent === name) {
@@ -184,6 +183,7 @@ async function stracking(comand) {
                     'Insira uma cadeia de caracteres:',
                     results.name
                 );
+
                 value = `"${value}"`;
 
                 break;

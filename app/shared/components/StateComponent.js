@@ -6,6 +6,11 @@ class StateComponent {
 
     static newStateComponent(y, context, message) {
         y = this._newCircle(300, y, context, 275);
+
+        if (message === 'FIM') {
+            return y;
+        }
+
         y = this.newArrow(275, y, context);
         y = this._newRectangle(227, y, context, message);
 
@@ -132,10 +137,6 @@ class StateComponent {
 
             case 'SE NÃO':
                 context.fillText(message, (x + 28), y);
-                break;
-
-            case 'FIM':
-                context.fillText(message, (x + 38.5), y);
                 break;
 
             default:

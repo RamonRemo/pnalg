@@ -1,16 +1,13 @@
 var listPetris = new ListPetris();
 var aux;
 
-function petrisNetworkAnimation(startOrStep) {
+function petrisNetworkAnimation(run) {
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
+    let elementsId = getElementsId();
 
-    let arrayElementsId = captureOfVariables();
-
-    if (startOrStep == 'start') {
-        document.querySelector('tbody').innerHTML = '';
-
-        listPetris = new ListPetris();
+    if (run == 'start') {
+                listPetris = new ListPetris();
         animation();
 
         return;
@@ -30,7 +27,7 @@ function petrisNetworkAnimation(startOrStep) {
             result = await newAnimation(
                 petri,
                 petri.idx,
-                arrayCommand[petri.idx],
+                commands[petri.idx],
                 0
             );
 
@@ -49,7 +46,7 @@ function petrisNetworkAnimation(startOrStep) {
         result = await newAnimation(
             listPetris._petri,
             listPetris._petri._idx,
-            arrayCommand[listPetris._petri._idx],
+            commands[listPetris._petri._idx],
             0
         );
 
@@ -57,26 +54,28 @@ function petrisNetworkAnimation(startOrStep) {
             listPetris._petri.idx++;
         }
 
-        if (arrayCommand.length == listPetris._petri._idx) {
+        if (commands.length == listPetris._petri._idx) {
             aux = listPetris._petri.clearY;
+            
             listPetris = new ListPetris();
+
             document.querySelector('tbody').innerHTML = '';
         }
     }
 
     async function newAnimation(petri, idx, command, sleep) {
-        if (idx % 2 === 0 && idx < arrayCommand.length - 2) {
+        if (idx % 2 === 0 && idx < commands.length - 2) {
             AnimationComponent.pageScroll(petri);
             petri.height = petri.height + 225;
         }
 
-        if (command == 'INICIO') {
+        if (idx === 0) {
             petri.clearY = aux;
             AnimationComponent.cleanScreen(270, petri, context);
             AnimationComponent.cleanScreen(185, petri, context);
             petri.clearY = 0;
         }
-
+        
         if (!command) {
             AnimationComponent.clearStateWithoutTrasition(petri, context);
             return false;
@@ -84,7 +83,7 @@ function petrisNetworkAnimation(startOrStep) {
 
         if (command === 'FIMSE') {
             AnimationComponent.clearStateWithoutTrasition(petri, context);
-            document.querySelector(`#${arrayElementsId[idx - 2]}`).classList.remove('tracer');
+            document.querySelector(`#${elementsId[idx - 1]}`).classList.remove('tracer');
 
             petri.y = petri.y - 25;
             petri.flag = false;
@@ -93,26 +92,26 @@ function petrisNetworkAnimation(startOrStep) {
             return true;
         }
 
-        if (idx > 1) {
+        if (idx > 0) {
             document
-                .querySelector(`#${arrayElementsId[idx - 2]}`)
+                .querySelector(`#${elementsId[idx - 1]}`)
                 .classList.remove('tracer');
         }
 
-        if (idx > 0 && idx < arrayCommand.length - 1) {
+        if (idx < commands.length - 1) {
             if (!petri.noSkipsConditionalDeviation) {
                 skipState(petri);
                 return true;
             }
 
             document
-                .querySelector(`#${arrayElementsId[idx - 1]}`)
+                .querySelector(`#${elementsId[idx]}`)
                 .classList.add('tracer');
 
             refreshScreen(petri, command);
 
             await CommonUtils.sleep(sleep);
-            petri.noSkipsConditionalDeviation = await stracking(arrayElementsId[idx - 1]);
+            petri.noSkipsConditionalDeviation = await stracking(elementsId[idx]);
 
             if (!petri.noSkipsConditionalDeviation) {
                 petri.flag = false;
@@ -166,7 +165,7 @@ function petrisNetworkAnimation(startOrStep) {
         petri.y = petri.y + 175;
     }
 
-    function captureOfVariables() {
+    function getElementsId() {
         let elements = $('#pseudocode-area-simulation').children();
         let arrayElements = [];
 

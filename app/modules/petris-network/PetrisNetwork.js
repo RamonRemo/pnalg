@@ -1,38 +1,37 @@
-var arrayCommand = [];
+var commands = [];
 
 function petrisNetwork(event) {
     event.preventDefault();
 
-    arrayCommand = [];
-    let arrayElements = [];
+    commands = [];
+    let elements = [];
     let height = 0;
     let y = 50;
     let flag = false;
     let context = null;
     let canvas = null;
-    let downscaleFactor = 0.80;
 
     canvas = document.querySelector('canvas');
     context = canvas.getContext('2d');
 
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.scale(downscaleFactor, downscaleFactor);
+    context.scale(0.80, 0.80);
 
-    captureOfVariables();
+    setCommands();
 
     if (!context) {
         return;
     }
 
-    for (let i = 0; i <= arrayCommand.length; i++) {
-        if (!arrayCommand[i]) {
+    for (let i = 0; i <= commands.length; i++) {
+        if (!commands[i]) {
             continue;
         }
 
-        let variablesIF = newState(arrayCommand[i]);
+        let variablesIF = newState(commands[i]);
 
-        if (!arrayCommand[i + 1]) {
+        if (!commands[i + 1]) {
             continue;
         }
 
@@ -45,7 +44,7 @@ function petrisNetwork(event) {
             continue;
         }
 
-        if (arrayCommand[i + 1] === 'FIMSE') {
+        if (commands[i + 1] === 'FIMSE') {
             y = StateComponent.newArrowEndIf(y, height, context);
             continue;
         }
@@ -79,24 +78,22 @@ function petrisNetwork(event) {
         return true;
     }
 
-    function captureOfVariables() {
-        let elements = document.querySelector('#pseudocode-area').children;
+    function setCommands() {
+        let codes = document.querySelector('#pseudocode-area').children;
 
-        for (element of elements) {
-            arrayElements.push(element.children);
+        for (code of codes) {
+            elements.push(code.children);
         }
 
-        arrayCommand.push('INICIO');
-
-        arrayElements.forEach(element => {
+        elements.forEach(element => {
             for (value of element) {
                 if (CommonUtils.regexTest(value.id)) {
-                    arrayCommand.push(CommonUtils.regexTest(value.id));
+                    commands.push(CommonUtils.regexTest(value.id));
                 }
             }
         });
 
-        arrayCommand.push('FIM');
+        commands.push("FIM");
     }
 }
 
