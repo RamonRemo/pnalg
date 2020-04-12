@@ -1,5 +1,6 @@
 var listPetris = new ListPetris();
 var aux;
+var stack = [];
 
 function petrisNetworkAnimation(run) {
     let canvas = document.querySelector('canvas');
@@ -7,7 +8,8 @@ function petrisNetworkAnimation(run) {
     let elementsId = getElementsId();
 
     if (run == 'start') {
-                listPetris = new ListPetris();
+        document.querySelector('tbody').innerHTML = '';
+        listPetris = new ListPetris();
         animation();
 
         return;
@@ -56,7 +58,7 @@ function petrisNetworkAnimation(run) {
 
         if (commands.length == listPetris._petri._idx) {
             aux = listPetris._petri.clearY;
-            
+
             listPetris = new ListPetris();
 
             document.querySelector('tbody').innerHTML = '';
@@ -71,18 +73,17 @@ function petrisNetworkAnimation(run) {
 
         if (idx === 0) {
             petri.clearY = aux;
-            AnimationComponent.cleanScreen(270, petri, context);
-            AnimationComponent.cleanScreen(185, petri, context);
+            AnimationComponent.cleanScreen(stack, command);
             petri.clearY = 0;
         }
-        
+
         if (!command) {
-            AnimationComponent.clearStateWithoutTrasition(petri, context);
+            AnimationComponent.cleanScreen(stack, command);
             return false;
         }
 
         if (command === 'FIMSE') {
-            AnimationComponent.clearStateWithoutTrasition(petri, context);
+            AnimationComponent.cleanScreen(stack, command);
             document.querySelector(`#${elementsId[idx - 1]}`).classList.remove('tracer');
 
             petri.y = petri.y - 25;
@@ -100,13 +101,14 @@ function petrisNetworkAnimation(run) {
 
         if (idx < commands.length - 1) {
             if (!petri.noSkipsConditionalDeviation) {
-                skipState(petri);
+                skipState(petri, command);
                 return true;
             }
 
             document
                 .querySelector(`#${elementsId[idx]}`)
-                .classList.add('tracer');
+                .classList
+                .add('tracer');
 
             refreshScreen(petri, command);
 
@@ -124,13 +126,12 @@ function petrisNetworkAnimation(run) {
         return true;
     }
 
-    function refreshScreen(petri, message) {
-        if (message === 'SE') {
+    function refreshScreen(petri, command) {
+        if (command === 'SE') {
             petri.flag = true;
 
-            AnimationComponent.cleanScreen(270, petri, context);
-            AnimationComponent.cleanScreen(185, petri, context);
-            AnimationComponent.stateTransition(275, petri, 5, context);
+            AnimationComponent.cleanScreen(stack, command);
+            AnimationComponent.stateTransition(275, petri, 5, context, command);
 
             petri.clearY = petri.y;
             petri.y = petri.y + 163;
@@ -139,9 +140,8 @@ function petrisNetworkAnimation(run) {
         }
 
         if (petri.flag) {
-            AnimationComponent.cleanScreen(270, petri, context);
-            AnimationComponent.cleanScreen(185, petri, context);
-            AnimationComponent.stateTransition(190, petri, 5, context);
+            AnimationComponent.cleanScreen(stack, command);
+            AnimationComponent.stateTransition(190, petri, 5, context, command);
 
             petri.clearY = petri.y;
             petri.y = petri.y + 175;
@@ -149,17 +149,15 @@ function petrisNetworkAnimation(run) {
             return;
         }
 
-        AnimationComponent.cleanScreen(270, petri, context);
-        AnimationComponent.cleanScreen(185, petri, context);
-        AnimationComponent.stateTransition(275, petri, 5, context);
+        AnimationComponent.cleanScreen(stack, command);
+        AnimationComponent.stateTransition(275, petri, 5, context, command);
 
         petri.clearY = petri.y;
         petri.y = petri.y + 175;
     }
 
-    function skipState(petri) {
-        AnimationComponent.cleanScreen(270, petri, context);
-        AnimationComponent.cleanScreen(185, petri, context);
+    function skipState(petri, command) {
+        AnimationComponent.cleanScreen(stack, command);
 
         petri.clearY = petri.y;
         petri.y = petri.y + 175;

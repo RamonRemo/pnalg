@@ -1,39 +1,48 @@
 class StateComponent {
     constructor() {
-        throw new Error("StateComponent não pode ser instanciada");
+        throw new Error('StateComponent não pode ser instanciada');
     }
 
-    static newStateComponent(y, context, message) {
+    static newStateComponent(y, context, command) {
         y = this._newCircle(300, y, context, 275);
 
-        if (message === "FIM") {
+        if (command === 'FIM') {
             return y;
         }
 
         y = this.newArrow(275, y, context);
-        y = this._newRectangle(227, y, context, message);
+        y = this._newRectangle(227, y, context, command);
 
         return y;
     }
 
-    static newStateComponentIf(y, context, message) {
+    static newStateComponentTracer(x, y, context) {
+        this.newArrow(x, y, context)
+    }
+
+    static newArrowIf(y, context) {
+        this._parallelLine(253, y + 12.5, context, 'subtraction');
+        this.newArrow(190, y - 12.5, context);
+    }
+
+    static newStateComponentIf(y, context, command) {
         y = this._newCircle(300, y, context, 275);
 
-        this._parallelLine(297, y + 12.5, context, "sum");
+        this._parallelLine(297, y + 12.5, context, 'sum');
         let tmp = this.newArrow(360, y - 12.5, context);
-        tmp = this._newRectangle(307, tmp, context, "SE NÃO");
+        tmp = this._newRectangle(307, tmp, context, 'SE NÃO');
 
-        this._parallelLine(253, y + 12.5, context, "subtraction");
+        this._parallelLine(253, y + 12.5, context, 'subtraction');
         y = this.newArrow(190, y - 12.5, context);
-        y = this._newRectangle(142, y, context, message);
+        y = this._newRectangle(142, y, context, command);
 
         return y;
     }
 
-    static newStateInternalCommandsIf(y, context, message) {
+    static newStateInternalCommandsIf(y, context, command) {
         y = this._newCircle(215, y, context, 190);
         y = this.newArrow(190, y, context);
-        y = this._newRectangle(142, y, context, message);
+        y = this._newRectangle(142, y, context, command);
 
         return y;
     }
@@ -84,13 +93,13 @@ class StateComponent {
         return y + 12.5;
     }
 
-    static _newRectangle(x, y, context, message) {
+    static _newRectangle(x, y, context, command) {
         let rectangle = new Path2D();
 
         rectangle.rect(x, y, 100, 25);
         context.stroke(rectangle);
 
-        this._newMessage(x, y + 18, context, message);
+        this._newcommand(x, y + 18, context, command);
 
         return y + 25;
     }
@@ -115,37 +124,37 @@ class StateComponent {
         context.closePath();
     }
 
-    static _newMessage(x, y, context, message) {
-        context.font = "10pt Arial";
-        context.fillStyle = "black";
+    static _newcommand(x, y, context, command) {
+        context.font = '10pt Arial';
+        context.fillStyle = 'black';
 
-        switch (message) {
-            case "DECLARE":
-                context.fillText(message, x + 16.5, y);
+        switch (command) {
+            case 'DECLARE':
+                context.fillText(command, x + 16.5, y);
                 break;
 
-            case "ATRIBUICAO":
-                context.fillText(message, x + 8.5, y);
+            case 'ATRIBUICAO':
+                context.fillText(command, x + 8.5, y);
                 break;
 
-            case "LEIA":
-                context.fillText(message, x + 32.5, y);
+            case 'LEIA':
+                context.fillText(command, x + 32.5, y);
                 break;
 
-            case "EXIBA":
-                context.fillText(message, x + 28, y);
+            case 'EXIBA':
+                context.fillText(command, x + 28, y);
                 break;
 
-            case "SE":
-                context.fillText(message, x + 38.5, y);
+            case 'SE':
+                context.fillText(command, x + 38.5, y);
                 break;
 
-            case "SE NÃO":
-                context.fillText(message, x + 28, y);
+            case 'SE NÃO':
+                context.fillText(command, x + 28, y);
                 break;
 
             default:
-                context.fillText(message, x + 29, y);
+                context.fillText(command, x + 29, y);
                 break;
         }
     }
