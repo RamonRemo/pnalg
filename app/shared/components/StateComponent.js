@@ -1,13 +1,12 @@
 class StateComponent {
-
     constructor() {
-        throw new Error('StateComponent não pode ser instanciada');
+        throw new Error("StateComponent não pode ser instanciada");
     }
 
     static newStateComponent(y, context, message) {
         y = this._newCircle(300, y, context, 275);
 
-        if (message === 'FIM') {
+        if (message === "FIM") {
             return y;
         }
 
@@ -20,11 +19,11 @@ class StateComponent {
     static newStateComponentIf(y, context, message) {
         y = this._newCircle(300, y, context, 275);
 
-        this._parallelLine(297, y + 12.5, context, 'sum');
+        this._parallelLine(297, y + 12.5, context, "sum");
         let tmp = this.newArrow(360, y - 12.5, context);
-        tmp = this._newRectangle(307, tmp, context, 'SE NÃO');
+        tmp = this._newRectangle(307, tmp, context, "SE NÃO");
 
-        this._parallelLine(253, y + 12.5, context, 'subtraction');
+        this._parallelLine(253, y + 12.5, context, "subtraction");
         y = this.newArrow(190, y - 12.5, context);
         y = this._newRectangle(142, y, context, message);
 
@@ -44,10 +43,10 @@ class StateComponent {
         y = y + 50;
 
         context.beginPath();
-        context.moveTo((x + 1), y);
-        context.lineTo((x - 10), (y - 15));
-        context.moveTo((x + 1), y);
-        context.lineTo((x + 10), (y - 15));
+        context.moveTo(x + 1, y);
+        context.lineTo(x - 10, y - 15);
+        context.moveTo(x + 1, y);
+        context.lineTo(x + 10, y - 15);
         context.stroke();
         context.closePath();
 
@@ -61,12 +60,18 @@ class StateComponent {
         context.beginPath();
         context.moveTo(190, y);
         context.lineTo(253, y);
+        context.lineTo(253 - 15, y - 10);
+        context.moveTo(253, y);
+        context.lineTo(253 - 15, y + 10);
         context.stroke();
         context.closePath();
 
         context.beginPath();
         context.moveTo(360, y);
         context.lineTo(297, y);
+        context.lineTo(297 + 15, y - 10);
+        context.moveTo(297, y);
+        context.lineTo(297 + 15, y + 10);
         context.stroke();
         context.closePath();
 
@@ -111,36 +116,36 @@ class StateComponent {
     }
 
     static _newMessage(x, y, context, message) {
-        context.font = '10pt Arial';
-        context.fillStyle = 'black';
+        context.font = "10pt Arial";
+        context.fillStyle = "black";
 
         switch (message) {
-            case 'DECLARE':
-                context.fillText(message, (x + 16.5), y);
+            case "DECLARE":
+                context.fillText(message, x + 16.5, y);
                 break;
 
-            case 'ATRIBUICAO':
-                context.fillText(message, (x + 8.5), y);
+            case "ATRIBUICAO":
+                context.fillText(message, x + 8.5, y);
                 break;
 
-            case 'LEIA':
-                context.fillText(message, (x + 32.5), y);
+            case "LEIA":
+                context.fillText(message, x + 32.5, y);
                 break;
 
-            case 'EXIBA':
-                context.fillText(message, (x + 28), y);
+            case "EXIBA":
+                context.fillText(message, x + 28, y);
                 break;
 
-            case 'SE':
-                context.fillText(message, (x + 38.5), y);
+            case "SE":
+                context.fillText(message, x + 38.5, y);
                 break;
 
-            case 'SE NÃO':
-                context.fillText(message, (x + 28), y);
+            case "SE NÃO":
+                context.fillText(message, x + 28, y);
                 break;
 
             default:
-                context.fillText(message, (x + 29), y);
+                context.fillText(message, x + 29, y);
                 break;
         }
     }
