@@ -60,8 +60,6 @@ function petrisNetworkAnimation(run) {
             aux = listPetris._petri.clearY;
 
             listPetris = new ListPetris();
-
-            document.querySelector('tbody').innerHTML = '';
         }
     }
 
@@ -78,7 +76,6 @@ function petrisNetworkAnimation(run) {
         }
 
         if (!command) {
-            AnimationComponent.cleanScreen(stack, command);
             return false;
         }
 
@@ -112,18 +109,30 @@ function petrisNetworkAnimation(run) {
 
             refreshScreen(petri, command);
 
-            await CommonUtils.sleep(sleep);
-            petri.noSkipsConditionalDeviation = await stracking(elementsId[idx]);
-
-            if (!petri.noSkipsConditionalDeviation) {
-                petri.flag = false;
+            if (idx > 0) {
+                await addStracking(sleep, petri, idx);
             }
 
             return true;
         }
 
         refreshScreen(petri, command);
+
+        if (command == 'FIM') {
+            await addStracking(sleep, petri, idx);
+        }
+
         return true;
+    }
+
+    async function addStracking(sleep, petri, idx) {
+        await CommonUtils.sleep(sleep);
+
+        petri.noSkipsConditionalDeviation = await stracking(elementsId[idx - 1]);
+
+        if (!petri.noSkipsConditionalDeviation) {
+            petri.flag = false;
+        }
     }
 
     function refreshScreen(petri, command) {

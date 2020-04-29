@@ -1,21 +1,21 @@
-# CPNAlg v1.0.0
+# PNAlg v1.0.0
 
 ## Origem do nome
 
-As siglas **CPN** vem de redes de Petri coloridas do inglês Coloured Petri nets e **Alg** de algoritmo.
+As siglas **PN** vem de redes de Petri do inglês Petri nets e **Alg** de algoritmo.
 
 ## Introdução
 
-O **CPNAlg** é uma proposta de ferramenta para auxiliar no ensino e aprendizagem de lógica de programação utilizando
-simulações automáticas de modelos de redes de Petri Coloridas Hierárquicas.
+O **PNAlg** é uma proposta de ferramenta para auxiliar no ensino e aprendizagem de lógica de programação utilizando
+simulações automáticas de modelos de redes de Petri.
 
 ## Como Iniciar:
 
-Você pode obter sua cópia local do **CPNAlg** em:
+Você pode obter sua cópia local do **PNAlg** em:
 
-**1)** Neste repositório do github, usando ```git clone https://github.com/RafaelOFreitas/cpnalg.git```
+**1)** Neste repositório do github, usando ```git clone https://github.com/RafaelOFreitas/pnalg.git```
 
-**2)** Para estartar um sevidor local, execute no terminal, dentro do diretório do **CPNAlg**: 
+**2)** Para estartar um sevidor local, execute no terminal, dentro do diretório do **PNAlg**: 
 ```console 
 python start_server.py
 ```
@@ -25,3 +25,4 @@ python start_server.py
 ## Suporte do navegador
 
 - Google Chrome (mais recente).
+- Mozilla Firefox (mais recente).
