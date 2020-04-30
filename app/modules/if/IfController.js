@@ -1,3 +1,10 @@
+/**
+* Classe responsável por adicionar comandos de desvio condicional de dados no modelo e na base de dados
+* referente a condições feitas pelo usuário.
+*
+* @class IfController
+* @constructor
+*/
 class IfController {
 
     constructor() {

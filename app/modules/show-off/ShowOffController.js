@@ -1,3 +1,10 @@
+/**
+* Classe responsável por adicionar comandos de exibição de dados no modelo e na base de dados
+* referente a exibições feitas pelo usuário.
+*
+* @class ShowOffController
+* @constructor
+*/
 class ShowOffController {
 
     constructor() {
@@ -36,7 +43,7 @@ class ShowOffController {
         this._idCode = elemento.idCode;
     }
 
-    catch (event) {
+    catch(event) {
         event.preventDefault();
 
         this._outputField = document.querySelector('#show-off');

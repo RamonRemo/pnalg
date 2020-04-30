@@ -1,0 +1,12 @@
+{
+    "name": "PNAlg",
+    "description": "O PNAlg é uma proposta de ferramenta para auxiliar no ensino e aprendizagem de lógica de programação utilizando simulações automáticas de modelos de redes de Petri.",
+    "version": "1.0.0",
+    "url": "https://github.com/RafaelOFreitas/pnalg",
+    "options": {
+        "linkNatives": "true",
+        "attributesEmit": "true",
+        "selleck": "true",
+        "paths": "app"
+    }
+}

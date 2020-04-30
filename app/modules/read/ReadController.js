@@ -1,3 +1,10 @@
+/**
+* Classe responsável por adicionar comandos de leitura de dados no modelo e na base de dados
+* referente a leituras feitas pelo usuário.
+*
+* @class ReadController
+* @constructor
+*/
 class ReadController {
 
     constructor() {

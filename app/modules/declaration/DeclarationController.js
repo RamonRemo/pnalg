@@ -1,3 +1,10 @@
+/**
+* Classe responsável por adicionar comandos de declaração de dados no modelo e na base de dados
+* referente a declarações feitas pelo usuário.
+*
+* @class DeclarationController
+* @constructor
+*/
 class DeclarationController {
 
     constructor() {
@@ -133,8 +140,8 @@ class DeclarationController {
         let array = Object.values(this._listDeclaration);
 
         if (array[0].length > 0) {
-            $.each(array, function(idx, obj) {
-                $.each(obj, function(idx, declaration) {
+            $.each(array, function (idx, obj) {
+                $.each(obj, function (idx, declaration) {
                     array.push(declaration.name.toLowerCase());
                 });
             });

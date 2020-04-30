@@ -1,3 +1,10 @@
+/**
+* Classe responsável por adicionar comandos de atribuição de dados no modelo e na base de dados
+* referente a atribuições feitas pelo usuário.
+*
+* @class AssignmentController
+* @constructor
+*/
 class AssignmentController {
 
     constructor() {
@@ -12,6 +19,11 @@ class AssignmentController {
         this._directiveAssignments = new DirectiveAssignments();
     }
 
+    /**
+    * Seta o id do elemento de acordo com o ID do elemento do dom.
+    *
+    * @method setId
+    */
     setId(event) {
         event.preventDefault();
 
@@ -24,7 +36,7 @@ class AssignmentController {
             return;
         }
     }
-
+    
     enterComponentIdIf() {
         this._ulSe = ifController._ul;
         addCode('code-assignment');
