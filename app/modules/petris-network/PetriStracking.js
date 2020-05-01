@@ -76,7 +76,7 @@ async function stracking(comand) {
 
             str = `${text} ${results.value}`;
 
-            await Swal.fire(str);
+            await displayOnScreen(str);
 
             return;
         }
@@ -86,7 +86,7 @@ async function stracking(comand) {
 
         str = (results.value ? results.value : results.name);
 
-        await Swal.fire(str);
+        await displayOnScreen(str);
     }
 
     async function _if(text) {
@@ -203,6 +203,7 @@ async function stracking(comand) {
 
     async function promptWindow(type, placeholder, name) {
         let { value: data } = await Swal.fire({
+            position: 'top',
             title: `Leitura da Variável: ${name}`,
             input: type,
             inputPlaceholder: placeholder,
@@ -215,6 +216,15 @@ async function stracking(comand) {
                     return 'Valor Obrigatório!';
                 }
             }
+        });
+
+        return data;
+    }
+
+    async function displayOnScreen(srt) {
+        let { value: data } = await Swal.fire({
+            position: 'top',
+            text: srt
         });
 
         return data;
