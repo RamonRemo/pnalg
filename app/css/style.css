@@ -230,7 +230,7 @@ canvas {
 }
 
 .fa-step-backward, .fa-play, .fa-step-forward {
-    background-color: #007cc6;
+    background-color: transparent;
     color: white;
 }
 
@@ -240,7 +240,7 @@ canvas {
 }
 
 .fa-play:hover, .fa-pause:hover {
-    background-color: #005d92;
+    background-color: transparent;
 }
 
 .tracer {
@@ -249,5 +249,10 @@ canvas {
 }
 
 .btn-custom {
-    border-radius: 25px;
+    padding: 1px 15px 3px 2px;
+    border-radius: 50px;
+}
+
+.btn-icon {
+    padding: 8px;
 }
