@@ -40,7 +40,7 @@ class DirectiveRead extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comment">//Leitura de variaveis</span>';
+            code.innerHTML = '<span class="comment">//Leitura de variáveis</span>';
         }
 
         if (arrayLi.length === 0) {

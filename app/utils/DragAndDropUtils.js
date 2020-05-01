@@ -49,12 +49,6 @@ function iff(id, nodeCopy, listVariable) {
     let _if = nodeCopy.childNodes[3];
     _if.className = 'area-if';
 
-    let endif = document.createElement('button');
-    endif.id = 'btn-end-if'
-    endif.className = 'list-group-item btn btn-end-if'
-    endif.textContent = 'Fim se';
-    nodeCopy.appendChild(endif);
-
     $('#save-changes').find('.btn').removeAttr('disabled');
 
     let idCode = addCode(id, 'code-se');

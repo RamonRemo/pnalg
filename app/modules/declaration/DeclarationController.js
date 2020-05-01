@@ -114,7 +114,7 @@ class DeclarationController {
 
         if (isDigit.test(this._inputName[0])) {
             bootbox.alert({
-                message: 'O nome da variavel não pode ser iniciada com um número! 👨‍🏫',
+                message: 'O nome da variável não pode ser iniciada com um número! 👨‍🏫',
             });
 
             return false;
@@ -130,7 +130,7 @@ class DeclarationController {
 
         if (this._inputType === 'Escolher...') {
             bootbox.alert({
-                message: 'Escolha o tipo da variavel! 🧐',
+                message: 'Escolha o tipo da variável! 🧐',
                 animate: true,
             });
 

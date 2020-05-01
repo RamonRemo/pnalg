@@ -25,7 +25,6 @@
     background-color: #f5f5f5;
 }
 
-
 /* ------------------ general ------------------ */
 
 #pnalg {
@@ -97,7 +96,6 @@ ul {
     background-color: #005d92;
 }
 
-
 /* ------------------ declaration ------------------ */
 
 .component-variable-ul {
@@ -112,13 +110,11 @@ ul {
     padding: 6px;
 }
 
-
 /* ------------------ assignment ------------------ */
 
 .assignment {
     display: none;
 }
-
 
 /* ------------------ conditional branch ------------------ */
 
@@ -137,12 +133,6 @@ ul {
     overflow: auto;
     border: 0.7px solid #007cc6;
 }
-
-.btn-end-if {
-    margin-top: 0;
-    pointer-events: none;
-}
-
 
 /* ------------------ run  ------------------ */
 
@@ -198,7 +188,6 @@ code span {
     text-align: center;
 }
 
-
 /* ------------------ petri net ------------------ */
 
 @media (min-width: 576px) {
@@ -240,25 +229,25 @@ canvas {
     padding-top: 40px;
 }
 
-.fa-step-backward,
-.fa-play,
-.fa-step-forward {
+.fa-step-backward, .fa-play, .fa-step-forward {
     background-color: #007cc6;
     color: white;
 }
 
-.fa-play,
-.fa-pause {
+.fa-play, .fa-pause {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 
-.fa-play:hover,
-.fa-pause:hover {
+.fa-play:hover, .fa-pause:hover {
     background-color: #005d92;
 }
 
 .tracer {
     background-color: rgba(247, 91, 91, 0.678);
     color: white;
+}
+
+.btn-custom {
+    border-radius: 25px;
 }

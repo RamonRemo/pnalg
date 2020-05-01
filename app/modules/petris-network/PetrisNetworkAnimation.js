@@ -66,7 +66,7 @@ function petrisNetworkAnimation(run) {
     async function newAnimation(petri, idx, command, sleep) {
         if (idx % 2 === 0 && idx < commands.length - 2) {
             AnimationComponent.pageScroll(petri);
-            petri.height = petri.height + 225;
+            petri.height = petri.height + 220;
         }
 
         if (idx === 0) {
@@ -86,7 +86,8 @@ function petrisNetworkAnimation(run) {
             petri.y = petri.y - 25;
             petri.flag = false;
             petri.noSkipsConditionalDeviation = true;
-
+            
+            await addStracking(sleep, petri, idx);
             return true;
         }
 

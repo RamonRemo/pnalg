@@ -50,7 +50,7 @@ class DirectiveDeclaration extends Directive {
         let arrayLi = ul.children;
 
         if (arrayLi.length !== 0) {
-            code.innerHTML = '<span class="comment">//Declaracoes de variaveis</span>';
+            code.innerHTML = '<span class="comment">//Declaracoes de variáveis</span>';
         }
 
         if (arrayLi.length === 0) {
