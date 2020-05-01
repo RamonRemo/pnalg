@@ -98,5 +98,5 @@ function petrisNetwork(event) {
 }
 
 function startNetwork() {
-    petrisNetworkAnimation('start');
+    petriRunAnimation();
 }

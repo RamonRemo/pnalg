@@ -2,45 +2,16 @@ var listPetris = new ListPetris();
 var aux;
 var stack = [];
 
-function petrisNetworkAnimation(run) {
+function petrisNetworkAnimation() {
     let canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
     let elementsId = getElementsId();
 
-    if (run == 'start') {
-        document.querySelector('tbody').innerHTML = '';
-        listPetris = new ListPetris();
-        animation();
-
-        return;
-    }
-
     if (listPetris._petri.clearY === 0) {
-        document.querySelector('tbody').innerHTML = '';
+        restartAnimation();
     }
 
     step();
-
-    async function animation() {
-        let petri = new Petris(50, 0, 0, false, true, 0);
-        let result;
-
-        while (true) {
-            result = await newAnimation(
-                petri,
-                petri.idx,
-                commands[petri.idx],
-                0
-            );
-
-            if (result) {
-                petri.idx++;
-                continue;
-            }
-
-            break;
-        }
-    }
 
     async function step() {
         let result;
@@ -69,71 +40,75 @@ function petrisNetworkAnimation(run) {
             petri.height = petri.height + 220;
         }
 
-        if (idx === 0) {
-            petri.clearY = aux;
-            AnimationComponent.cleanScreen(stack, command);
-            petri.clearY = 0;
-        }
-
         if (!command) {
             return false;
         }
 
+        if (command === 'FIM') {
+            await refreshTracer(idx, sleep);
+            refreshScreen(petri, command);
+
+            return true;
+        }
+
         if (command === 'FIMSE') {
-            AnimationComponent.cleanScreen(stack, command);
-            document.querySelector(`#${elementsId[idx - 1]}`).classList.remove('tracer');
+            if (petri.noSkipsConditionalDeviation === true) {
+                await refreshTracer(idx, sleep);
+            }
 
             petri.y = petri.y - 25;
             petri.flag = false;
             petri.noSkipsConditionalDeviation = true;
-            
-            await addStracking(sleep, petri, idx);
+
             return true;
         }
 
-        if (idx > 0) {
+        if (!petri.noSkipsConditionalDeviation) {
             document
                 .querySelector(`#${elementsId[idx - 1]}`)
                 .classList.remove('tracer');
-        }
 
-        if (idx < commands.length - 1) {
-            if (!petri.noSkipsConditionalDeviation) {
-                skipState(petri, command);
-                return true;
-            }
-
-            document
-                .querySelector(`#${elementsId[idx]}`)
-                .classList
-                .add('tracer');
-
-            refreshScreen(petri, command);
-
-            if (idx > 0) {
-                await addStracking(sleep, petri, idx);
-            }
+            skipState(petri, command);
 
             return true;
         }
 
-        refreshScreen(petri, command);
+        if (command === 'SE') {
+            petri.noSkipsConditionalDeviation = await addStracking(sleep, idx);
 
-        if (command == 'FIM') {
-            await addStracking(sleep, petri, idx);
+            if (!petri.noSkipsConditionalDeviation) {
+                petri.flag = false;
+            }
         }
+
+        await refreshTracer(idx, sleep);
+        refreshScreen(petri, command);
 
         return true;
     }
 
-    async function addStracking(sleep, petri, idx) {
+    async function refreshTracer(idx, sleep) {
+        if (idx < commands.length) {
+            if (idx > 0) {
+                document
+                    .querySelector(`#${elementsId[idx - 1]}`)
+                    .classList.remove('tracer');
+
+                await addStracking(sleep, idx - 1);
+            }
+
+            if (idx < commands.length - 1) {
+                document
+                    .querySelector(`#${elementsId[idx]}`)
+                    .classList.add('tracer');
+            }
+        }
+    }
+
+    async function addStracking(sleep, idx) {
         await CommonUtils.sleep(sleep);
 
-        petri.noSkipsConditionalDeviation = await stracking(elementsId[idx - 1]);
-
-        if (!petri.noSkipsConditionalDeviation) {
-            petri.flag = false;
-        }
+        return await stracking(elementsId[idx]);
     }
 
     function refreshScreen(petri, command) {
@@ -171,6 +146,16 @@ function petrisNetworkAnimation(run) {
 
         petri.clearY = petri.y;
         petri.y = petri.y + 175;
+    }
+
+    function restartAnimation() {
+        elementsId.forEach(id => {
+            document.querySelector(`#${id}`).classList.remove('tracer');
+        });
+
+        AnimationComponent.cleanScreen(stack, elementsId[0]);
+
+        document.querySelector('tbody').innerHTML = '';
     }
 
     function getElementsId() {
