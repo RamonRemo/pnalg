@@ -36,41 +36,51 @@ function petriRunAnimation() {
             return false;
         }
 
+        if (command === 'FIM') {
+            await addStracking(sleep, idx - 1);
+
+            return true;
+        }
+
         if (command === 'FIMSE') {
+            if (petri.noSkipsConditionalDeviation) {
+                await addStracking(sleep, idx - 1);
+            }
+
+            petri.y = petri.y - 25;
             petri.flag = false;
             petri.noSkipsConditionalDeviation = true;
 
-            await addStracking(sleep, petri, idx);
             return true;
         }
 
-        if (idx < commands.length - 1) {
+        if (!petri.noSkipsConditionalDeviation) {
+            return true;
+        }
+
+        if (command === 'SE') {
+            await addStracking(sleep, idx - 1);
+
+            petri.noSkipsConditionalDeviation = await addStracking(sleep, idx);
+
             if (!petri.noSkipsConditionalDeviation) {
-                return true;
-            }
-
-            if (idx > 0) {
-                await addStracking(sleep, petri, idx);
+                petri.flag = false;
             }
 
             return true;
         }
 
-        if (command == 'FIM') {
-            await addStracking(sleep, petri, idx);
+        if (idx > 0) {
+            await addStracking(sleep, idx - 1);
         }
 
         return true;
     }
 
-    async function addStracking(sleep, petri, idx) {
+    async function addStracking(sleep, idx) {
         await CommonUtils.sleep(sleep);
 
-        petri.noSkipsConditionalDeviation = await stracking(elementsId[idx - 1]);
-
-        if (!petri.noSkipsConditionalDeviation) {
-            petri.flag = false;
-        }
+        return await stracking(elementsId[idx]);
     }
 
     function restartAnimation() {

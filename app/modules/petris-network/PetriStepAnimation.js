@@ -51,8 +51,6 @@ function petrisNetworkAnimation() {
             return true;
         }
 
-        console.log(petri.noSkipsConditionalDeviation);
-        
         if (command === 'FIMSE') {
             if (petri.noSkipsConditionalDeviation) {
                 await refreshTracer(idx, sleep);
