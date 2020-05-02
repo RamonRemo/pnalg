@@ -101,7 +101,12 @@ async function stracking(comand) {
         let resultsOne = _search(nameOne);
         let resultsTwo = _search(nameTwo);
 
-        if (resultsOne.type != resultsTwo.type) {
+        if ((resultsOne.type === 'inteiro' || resultsOne.type === 'real')
+            && (resultsTwo.type === 'inteiro' || resultsTwo.type === 'real')) {
+            return _logicTest(resultsOne.value, resultsTwo.value, conditional);
+        }
+
+        if (resultsOne.type !== resultsTwo.type) {
             await Swal.fire({
                 title: 'Atenção',
                 text: 'Variáveis de diferentes tipos!',
@@ -233,22 +238,22 @@ async function stracking(comand) {
     function _logicTest(operatorOne, operatorTwo, conditional) {
         switch (conditional) {
             case "≠":
-                return ((operatorOne != operatorTwo) ? true : false);
+                return operatorOne !== operatorTwo ? true : false;
 
             case "==":
-                return ((operatorOne === operatorTwo) ? true : false);
+                return operatorOne === operatorTwo ? true : false;
 
             case ">":
-                return ((operatorOne > operatorTwo) ? true : false);
+                return Number(operatorOne) > Number(operatorTwo) ? true : false;
 
             case "<":
-                return ((operatorOne < operatorTwo) ? true : false);
+                return Number(operatorOne) < Number(operatorTwo) ? true : false;
 
             case "≤":
-                return ((operatorOne <= operatorTwo) ? true : false);
+                return Number(operatorOne) <= Number(operatorTwo) ? true : false;
 
             case "≥":
-                return ((operatorOne >= operatorTwo) ? true : false);
+                return Number(operatorOne) >= Number(operatorTwo) ? true : false;
         }
     }
 }

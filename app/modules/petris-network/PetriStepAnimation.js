@@ -51,8 +51,10 @@ function petrisNetworkAnimation() {
             return true;
         }
 
+        console.log(petri.noSkipsConditionalDeviation);
+        
         if (command === 'FIMSE') {
-            if (petri.noSkipsConditionalDeviation === true) {
+            if (petri.noSkipsConditionalDeviation) {
                 await refreshTracer(idx, sleep);
             }
 
@@ -74,11 +76,17 @@ function petrisNetworkAnimation() {
         }
 
         if (command === 'SE') {
+            await refreshTracer(idx, sleep);
+
             petri.noSkipsConditionalDeviation = await addStracking(sleep, idx);
 
             if (!petri.noSkipsConditionalDeviation) {
                 petri.flag = false;
             }
+
+            refreshScreen(petri, command);
+
+            return true;
         }
 
         await refreshTracer(idx, sleep);
